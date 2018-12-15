@@ -1,0 +1,77 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=0.5in]{geometry}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1.5pt}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+
+\begin{document}
+
+\title{Chapter 1: Basic Properties of Numbers}
+
+\section{Basic Properties of Numbers}
+
+\paragraph{Numbers.} Of the first twelve properties in this chapter, the first nine are concerned with the fundamental operations of addition and multiplication.
+
+\begin{tabular}{l l p{4in}}
+  (P1) & (Associative law for addition) & $a + (b + c) = (a + b) + c$. \label{p1} \\
+  (P2) & (Existence of an additive identity) & $a + 0 = 0 + a = a$. \label{p2} \\
+  (P3) & (Existence of additive inverses) & $a + (-a) = (-a) + a = 0$. \label{p3} \\
+  (P4) & (Commutative law for addition) & $a + b = b + a$. \label{p4} \\
+  (P5) & (Associative law for multiplication) & $a \cdot (b \cdot c) = (a \cdot b) \cdot c$. \label{p5} \\
+  (P6) & (Existence of a multiplicative identity) & $a \cdot 1 = 1 \cdot a = a; 1 \neq 0$. \label{p6} \\
+  (P7) & (Existence of a multiplicative inverse) & $a \cdot a^{-1} = a^{-1} \cdot a = 1, \text{ for } a \neq 0$. \label{p7} \\
+  (P8) & (Commutative law for multiplication) & $a \cdot b = b \cdot a$. \label{p8} \\
+  (P9) & (Distributive law) & $a \cdot (b + c) = a \cdot b + a \cdot c$. \label{p9}
+\end{tabular}
+
+The last three are concerned with inequalities. Considering the collection of all positive numbers, $P$,
+
+\begin{tabular}{l l p{4in}}
+  (P10) & (Trichotomy law) & For every number $a$, one and only one of the following holds: \begin{enumerate}
+      \itemsep0em
+      \item $a = 0$,
+      \item $a$ is in the collection $P$,
+      \item $-a$ is in the collection $P$. \label{p10}
+    \end{enumerate} \\
+  (P11) & (Closure under addition) & If $a$ and $b$ are in $P$, then $a + b$ is in $P$. \\
+  (P12) & (Closure under multiplication) & If $a$ and $b$ are in $P$, then $a \cdot b$ is in $P$.
+\end{tabular}
+
+\section{Exercises}
+
+\setcounter{subsection}{7}
+\subsection{Defining $P$ in terms of $<$}
+
+\paragraph{Problem.} Suppose that P10-12 are replaced by the following properties:
+
+\begin{tabular}{l p{4in}}
+  (P'10) & For every number $a$ and $b$, one and only one of the following holds: \begin{enumerate}
+      \itemsep0em
+      \item $a = b$,
+      \item $a < b$,
+      \item $b < a$. \label{p'10}
+    \end{enumerate} \\
+  (P'11) & For any numbers $a$, $b$, and $c$, if $a < b$ and $b < c$, then $a < c$. \label{p'11} \\
+  (P'12) & For any numbers $a$, $b$, and $c$, if $a < b$, then $a + c < b + c$. \label{p'12} \\
+  (P'13) & For any numbers $a$, $b$, and $c$, if $a < b$ and $0 < c$, then $ac < bc$. \label{p'13} \\
+\end{tabular}
+
+Show that P10-12 can then be deduced as theorems.
+
+\paragraph{Solution.} P10 can be deduced by considering P'10 with $b = 0$. Then, for every number $a$, one and only one of the following holds: \begin{enumerate}
+    \itemsep0em
+    \item $a = 0$,
+    \item $a < 0$ i.e. $-a$ is in $P$,
+    \item $0 < a$ i.e. $a$ is in $P$.
+\end{enumerate}
+
+P11 can be deduced by considering P'12 with $a = 0$. Then, for any numbers $b$ and $c$, if $0 < b$, $0 + c < b + c$. If $0 < c$ too, then $0 < 0 + c < b + c$. Therefore, if $0 < b$ and $0 < c$, $0 < b + c$ i.e. if $b$ and $c$ are in $P$, then $b + c$ is in $P$.
+
+P12 can be deduced by considering P'11 and P'13. From P'11, for any numbers $a$ and $b$, if $0 < a$ and $a < b$, then $0 < b$. Hence, from P'13, for any numbers $a$ and $b$, if $0 < a$ and $0 < b$, then $0 \cdot a < a \cdot b$ i.e. if $a$ and $b$ are in $P$, then $ab$ is in $P$.
+
+\end{document}
