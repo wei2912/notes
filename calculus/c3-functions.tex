@@ -165,5 +165,71 @@ Let $m = \frac{x + y}{2}$. Then, $f(y) - f(m) \leq (y - m)^2 = \left(y - \frac{x
 
 The same process can be repeated indefinitely, with the bound tending towards 0 while remaining positive. Hence, $f(y) - f(x) = 0$ and $f$ is a constant function.
 
+\setcounter{subsection}{21}
+\subsection{Functions composition I}
+
+\paragraph{Problem (a).} Suppose $g = h \circ f$. Prove that if $f(x) = f(y)$, then $g(x) = g(y)$.
+
+\paragraph{Solution (a).} Consider $g(x) = h(f(x))$. Since $f(x) = f(y)$, $g(x) = h(f(y))$. However, $g(y) = h(f(y))$ too. Hence, $g(x) = g(y)$.
+
+\paragraph{Problem (b).} Conversely, suppose that $f$ and $g$ are two functions such that $g(x) = g(y)$ whenever $f(x) = f(y)$. Prove that $g = h \circ f$ for some function $h$.
+
+\paragraph{Solution (b).} If $z = f(x)$, define $h(z) = g(x)$; this definition makes sense, as if $z = f(x')$, then $g(x) = g(x')$ by part (a). For $z$ not of the form $f(x)$, leave $h$ undefined. Then for all $x$ in the domain of $f$, we have $g(x) = h(f(x))$, proving $g = h \circ f$.
+
+\setcounter{subsection}{22}
+\subsection{Functions composition II}
+
+Suppose that $f \circ g = I$, where $I(x) = x$.
+
+\paragraph{Problem (a).} Prove that if $x \neq y$, then $g(x) \neq g(y)$.
+
+\paragraph{Solution (a).} Suppose $x \neq y$. Then, $g(x) = g(y)$ would imply $x = f(g(x)) = f(g(y)) = y$ leading to a contradiction.
+
+\paragraph{Problem (b).} Prove that every number $b$ can be written $b = f(a)$ for some number $a$.
+
+\paragraph{Solution (b).} From $b = f(g(b))$, let $a = g(b)$.
+
+\setcounter{subsection}{23}
+\subsection{Functions composition III}
+
+\paragraph{Problem (a).} Suppose $g$ is a function with the property that $g(x) \neq g(y)$ if $x \neq y$. Prove that there is a function $f$ such that $f \circ g = I$.
+
+\paragraph{Solution (a).} The hypothesis can be stated as the contrapositive: If $x = y$, then $g(x) = g(y)$. Then, applying Q22(b) to $g$ and $I$, $I = h \circ g$ for some function $h$.
+
+\paragraph{Problem (b).} Suppose that $f$ is a function such that every number $b$ can be written $b = f(a)$ for some number $a$. Prove that there is a function $g$ such that $f \circ g = I$.
+
+\paragraph{Solution (b).} For each $x$, pick some number $a$ such that $x = f(a)$. Call this number $g(x)$. Then, $f(g(x)) = x = I(x)$.
+
+\setcounter{subsection}{24}
+\subsection{Functions composition IV}
+
+\paragraph{Problem.} Find a function $f$ such that $g \circ f = I$ for some $g$, but such that there is no function $h$ with $f \circ h = I$.
+
+\paragraph{Solution.} It suffices to find a function $f$ such that $f(x) \neq f(y)$ if $x \neq y$ (as by Q24(a) there will be a function $g$ such that $g \circ f = I$), but such that not every number is of the form $f(x)$ (as by Q22(b) there will not be a function $g$ such that $f \circ g = I$). One such function is:
+
+\begin{equation*}
+  f(x) =
+  \begin{cases}
+    x + 1 & \text{ if } x \geq 0 \\
+    x     & \text{ if } x < 0
+  \end{cases}
+\end{equation*}
+
+which ensures that no number in the range $(0, 1)$ is of the form $f(x)$.
+
+\setcounter{subsection}{25}
+\subsection{Functions composition V}
+
+\paragraph{Problem.} Suppose $f \circ g = I$ and $h \circ f = I$. Prove that $g = h$.
+
+\paragraph{Solution.} Consider $h \circ (f \circ g) = h \circ I = h$. By the associative property of composition, as $(h \circ f) \circ g = I \circ g = g$, this proves $h = g$.
+
+\setcounter{subsection}{26}
+\subsection{Functions composition VI}
+
+\paragraph{Problem (c).} Show that P10-P12 cannot hold. In other words, show that there is no collection $P$ of functions in $F$, such that P10-P12 hold for $P$. (It is sufficient, and will simplify things, to consider only functions which are 0 except at two points $x_0$ and $x_1$.)
+
+\paragraph{Solution (c).} Let $f$ and $g$ be two functions which are 0 except at $x_0$ and $x_1$, with $f(x_0) = 1$, $f(x_1) = 0$ and $g(x_0) = 0$, $g(x_1) = 1$. Taking P10, neither $f$ nor $g$ is 0, so $f$ or $-f$ would have to be in the collection $P$, and likewise for $g$ or $-g$. But $(\pm f)(\pm g) = 0$, which contradicts P12.
+
 \end{document}
 
