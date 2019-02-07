@@ -6,6 +6,7 @@ This repository is meant to be a collection of various notes and solutions to ar
 # Books
 
 * `calculus`: Spivak's Calculus, 4th edition.
+* `mikeandike`: Quantum Computation and Quantum Information, 10th edition. Also known as "Mike and Ike".
 
 # Courses
 
