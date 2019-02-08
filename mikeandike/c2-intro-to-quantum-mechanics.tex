@@ -247,7 +247,7 @@ Clearly, an operator which is Hermitian is also normal.
   Any normal operator $M$ on a vector space $V$ is diagonal with respect to some orthonormal basis for $V$. Conversely, any diagonalizable operator is normal.
 \end{theorem}
 \begin{proof}
-  The converse is a simple exercise, so we prove merely the forward implication, by induction on the dimension $d$ of $V$. The case $d = 1$ is trivial. Let $\lambda$ be an eigenvalue of $M$, $P$ the projector onto the $\lambda$ eigenspace, and $Q$ the projector onto the orthogonal complement. Then $M = (P + Q)M(P + Q) = PMP + QMP + PMQ + QMQ$. As $MP = \lambda P$, $PMP = P(\lambda P) = \lambda P^2 = \lambda P$. Furthermore, $QMP = (I - P)MP = MP - PMP = \lambda P - \lambda P = 0$.
+  The converse is a simple exercise, so we prove merely the forward implication, by induction on the dimension $d$ of $V$. The case $d = 1$ is trivial. Let $\lambda$ be an eigenvalue of $M$, $P$ the projector onto the $\lambda$ eigenspace, and $Q$ the projector onto the orthogonal complement. Then $M = (P + Q)M(P + Q) = PMP + QMP + PMQ + QMQ$. As $MP\ket{v} = \lambda P \ket{v}$ for any vector $\ket{v}$, $PMP = P(\lambda P) = \lambda P^2 = \lambda P$. Furthermore, $QMP = (I - P)MP = MP - PMP = \lambda P - \lambda P = 0$.
 
   We claim that $PMQ = 0$ also. To see this, let $\ket{v}$ be an element of the subspace $P$. Then $M M^\dagger \ket{v} = M^\dagger M \ket{v} = \lambda M^\dagger \ket{v}$. Thus, $M^\dagger \ket{v}$ has eigenvalue $\lambda$ and therefore is an element of the subspace $P$. It follows that $Q M^\dagger P = 0$. Taking the adjoint of this equation gives $PMQ = 0$, as the projectors are Hermitian i.e. $P = P^\dagger$ and $Q = Q^\dagger$. Thus $M = PMP + QMQ$.
 
