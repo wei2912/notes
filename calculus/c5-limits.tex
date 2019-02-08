@@ -1,0 +1,148 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+
+\begin{document}
+
+\title{Chapter 5: Limits}
+\maketitle
+
+\begin{definition}[Limit]
+  The function \emph{$f$ approaches the limit $l$ near $a$} means: for every
+  $\epsilon > 0$ there is some $\delta > 0$ such that, for all $x$, if $0 < |x
+  - a| < \delta$, then $|f(x) - l| < \epsilon$. (This is denoted later on by
+  $\lim_{x \rightarrow a} f(x) = l$.)
+\end{definition}
+
+\begin{theorem}
+  A function cannot approach two different limits near $a$. In other words, if
+  $f$ approaches $l$ near $a$, and $f$ approaches $m$ near $a$, then $l = m$.
+\end{theorem}
+\begin{proof}
+  Since this is our first theorem about limits it will certainly be necessary
+  to translate the hypotheses according to the definition.
+
+  Since $f$ approaches $l$ near $a$, we know that for any $\epsilon > 0$ there
+  is some number $\delta_1 > 0$ such that, for all $x$, \begin{equation*}
+    \text{if } 0 < |x - a| < \delta_1, \text{ then } |f(x) - l| < \epsilon.
+  \end{equation*} 
+  We also know, since $f$ approaches $m$ near $a$, that there is some $\delta_2
+  > 0$ such that, for all $x$, \begin{equation*}
+    \text{if } 0 < |x - a| < \delta_2, \text{ then } |f(x) - m| < \epsilon.
+  \end{equation*}
+  We have had to use two numbers, $\delta_1$ and $\delta_2$, since there is no
+  guarantee that the $\delta$ which works in one definition will work in the
+  other. But, in fact, it is now easy to conclude that for any $\epsilon > 0$
+  there is some $\delta > 0$ such that, for all $x$, \begin{equation*}
+    \text{if } 0 < |x - a| < \delta, \text{ then } |f(x) - l| < \epsilon
+      \text{ and } |f(x) - m| < \epsilon;
+  \end{equation*} we simply choose $\delta = \mathrm{min}(\delta_1, \delta_2)$.
+
+  To complete the proof we just have to pick a particular $\epsilon > 0$ for
+  which the two conditions \begin{equation*}
+    |f(x) - l| < \epsilon\text{ and }|f(x) - m| < \epsilon
+  \end{equation*} cannot both hold, if $l \neq m$. If $l \neq m$, so that $|l -
+  m| > 0$, we can choose $|l - m|/2$ as our $\epsilon$. It follows that there
+  is a $\delta > 0$ such that, for all $x$, \begin{align*}
+    \text{if } 0 < |x - a| < \epsilon,
+      &\text{ then } |f(x) - l| < \frac{|l - m|}{2} \\
+      &\text{ and } |f(x) - m| < \frac{|l - m|}{2}.
+  \end{align*}
+  This implies that for $0 < |x - a| < \delta$ we have \begin{align*}
+    |l - m| = |l - f(x) + f(x) - m| &\leq |l - f(x)| + |f(x) - m| \\
+      &< \frac{|l - m|}{2} + \frac{|l - m|}{2} \\
+      &= |l - m|,
+  \end{align*} a contradiction.
+\end{proof}
+
+\begin{lemma}
+  \begin{enumerate}
+    \item If \begin{equation*}
+        |x - x_0| < \frac{\epsilon}{2} \text{ and } |y - y_0| <
+          \frac{\epsilon}{2},
+      \end{equation*} then \begin{equation*}
+        |(x + y) - (x_0 + y_0)| < \epsilon.
+      \end{equation*}
+    \item If \begin{equation*}
+        |x - x_0| < \mathrm{min}\left(1, \frac{\epsilon}{2(|y_0| + 1)}\right)
+          \text{ and } |y - y_0| < \frac{\epsilon}{2(|x_0| + 1)},
+      \end{equation*} then \begin{equation*}
+        |xy - x_0y_0| < \epsilon.
+      \end{equation*}
+    \item If $y_0 \neq 0$ and \begin{equation*}
+        |y - y_0| < \mathrm{min}\left(\frac{|y_0|}{2},
+          \frac{\epsilon|y_0|^2}{2}\right),
+      \end{equation*} then $y \neq 0$ and \begin{equation*}
+        \left|\frac{1}{y} - \frac{1}{y_0}\right| < \epsilon.
+      \end{equation*}
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+  The proof has been omitted as the statements were proven in Problem 1-20,
+  1-21, and 1-22.
+\end{proof}
+
+\begin{theorem}
+  If $\lim_{x \rightarrow a}f(x) = l$ and $\lim_{x \rightarrow a}g(x) = m$,
+  then \begin{enumerate}
+    \item $\lim_{x \rightarrow a}(f + g)(x) = l + m;$
+    \item $\lim_{x \rightarrow a}(f \cdot g)(x) = l \cdot m.$
+  \end{enumerate} Moreover, if $m \neq 0$, then \begin{enumerate}
+    \setcounter{enumi}{2}
+    \item $\lim_{x \rightarrow a}\left(\frac{1}{g}\right)(x) = \frac{1}{m}.$
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  The hypothesis means that for every $\epsilon > 0$ there are $\delta_1,
+  \delta_2 > 0$ such that, for all $x$, \begin{align*}
+    &\text{if } 0 < |x - a| < \delta_1, \text{ then } |f(x) - l| < \epsilon, \\
+    \text{and } &\text{if } 0 < |x - a| < \delta_2, \text{ then } |g(x) - m| <
+      \epsilon.
+  \end{align*} This means (since, after all, $\epsilon/2$ is also a positive
+  number) that there are $\delta_1, \delta_2 > 0$ such that, for all $x$,
+  \begin{align*}
+    &\text{if } 0 < |x - a| < \delta_1, \text{ then } |f(x) - l| <
+      \frac{\epsilon}{2}, \\
+    \text{and } &\text{if } 0 < |x - a| < \delta_2, \text{ then } |g(x) - m| <
+      \frac{\epsilon}{2}.
+  \end{align*} Now let $\delta = \mathrm{min}(\delta_1, \delta_2)$. If $0 < |x
+  - a| < \delta$, then $0 < |x - a| < \delta_1$ and $0 < |x - a| < delta_2$ are
+  both true, so both \begin{equation*}
+    |f(x) - l) < \frac{\epsilon}{2} \text{ and } |g(x) - m| <
+      \frac{\epsilon}{2}
+  \end{equation*} are true. But by part (1) of the lemma this implies that $|(f
+  + g)(x) - (l + m)| < \epsilon$. This proves (1).
+
+  To prove (2) we proceed similarly, after consulting part (2) of the lemma. If
+  $\epsilon > 0$ there are $\delta_1, \delta_2 > 0$ such that, for all $x$,
+  \begin{align*}
+    &\text{if } 0 < |x - a| < \delta_1, \text{ then } |f(x) - l| < 
+      \mathrm{min}\left(1, \frac{\epsilon}{2(|m| + 1)}\right), \\
+    \text{and } &\text{if } 0 < |x - a| < \delta_2, \text{ then } |g(x) - m| <
+      \frac{\epsilon}{2(|l| + 1)}.
+  \end{align*} Again let $\delta = \mathrm{min}(\delta_1, \delta_2)$. If $0 <
+  |x - a| < \delta$, then \begin{equation*}
+    |f(x) - l| < \mathrm{min}\left(1, \frac{\epsilon}{2(|m| + 1)}\right)
+      \text{ and } |g(x) - m| < \frac{\epsilon}{2(|l| + 1)}.
+  \end{equation*} So, by the lemma, $|(f \cdot g)(x) - l \cdot m| < \epsilon|$,
+  and this proves (2).
+
+  Finally, if $\epsilon > 0$ there is a $\delta > 0$ such that, for all $x$,
+  \begin{equation*}
+    \text{if } 0 < |x - a| < \delta, \text{ then } |g(x) - m| <
+      \mathrm{min}\left(\frac{|m|}{2}, \frac{\epsilon|m|^2}{2}\right).
+  \end{equation*} But according to part (3) of the lemma this means, first,
+  that $g(x) \neq 0$, so $(1/g)(x)$ makes sense, and second that
+  \begin{equation*}
+    \left|\left(\frac{1}{g}\right)(x) - \frac{1}{m}\right| < \epsilon.
+  \end{equation*} This proves (3).
+\end{proof}
+
+\end{document}
+
