@@ -161,7 +161,7 @@ Hence, $(x + y)^5 = x^5 + y^5$ only when $x = 0$ or $y = 0$ or $x = -y$.
 \subsection{Proving inequalities with modulus}
 
 \paragraph{Problem (abridged).} Prove that if \begin{equation*}
-  |x - x_0| < \text{min}\left(\frac{\epsilon}{2(|y_0| + 1)}, 1\right) \text{ and } |y
+  |x - x_0| < \mathrm{min}\left(\frac{\epsilon}{2(|y_0| + 1)}, 1\right) \text{ and } |y
   - y_0| < \frac{\epsilon}{2(|x_0| + 1)},
 \end{equation*} then $|xy - x_0y_0| < \epsilon$.
 
@@ -191,7 +191,7 @@ and applying the triangle inequality, \begin{align*}
 \subsection{Proving inequalities with modulus and reciprocals}
 
 \paragraph{Problem.} Prove that if $y_0 \neq 0$ and \begin{equation*}
-  |y - y_0| < \text{min}\left(\frac{|y_0|}{2}, \frac{\epsilon|y_0|^2}{2}\right),
+  |y - y_0| < \mathrm{min}\left(\frac{|y_0|}{2}, \frac{\epsilon|y_0|^2}{2}\right),
 \end{equation*} then $y \neq 0$ and \begin{equation*}
   \left|\frac{1}{y} - \frac{1}{y_0}\right| < \epsilon.
 \end{equation*}
@@ -225,8 +225,8 @@ If $y_0 \neq 0$ and \begin{equation*}
 
 \paragraph{Solution.} Replacing $y$ and $y_0$ with $\frac{1}{y}$ and
 $\frac{1}{y_0}$ respectively in the result proven by Q21, if \begin{equation*}
-  |x - x_0| < \text{min}\left(\frac{\epsilon}{2(|\frac{1}{y_0}| + 1)}, 1\right)
-  \text{ and } \left|\frac{1}{y} - \frac{1}{y_0}\right| <
+  |x - x_0| < \mathrm{min}\left(\frac{\epsilon}{2(|\frac{1}{y_0}| + 1)},
+  1\right) \text{ and } \left|\frac{1}{y} - \frac{1}{y_0}\right| <
   \frac{\epsilon}{2(|x_0| + 1)}
 \end{equation*} then $|x(\frac{1}{y}) - x_0(\frac{1}{y_0})| = \left|\frac{x}{y}
 - \frac{x_0}{y_0}\right| < \epsilon$ which is what we are looking to prove.
@@ -234,12 +234,12 @@ $\frac{1}{y_0}$ respectively in the result proven by Q21, if \begin{equation*}
 To express the second inequality in terms of $|y - y_0|$, $\epsilon$ must be
 substituted with $\frac{\epsilon}{2(|x_0| + 1)}$ in the result proven by Q22
 which leads to \begin{equation*}
-  |y - y_0| < \text{min}\left(\frac{|y_0|}{2},
+  |y - y_0| < \mathrm{min}\left(\frac{|y_0|}{2},
   \frac{\epsilon|y_0|^2}{4(|x_0| + 1)}\right).
 \end{equation*}
 Therefore, this proves that if $y_0 \neq 0$ and \begin{equation*}
-  |x - x_0| < \text{min}\left(\frac{\epsilon}{2(|\frac{1}{y_0}| + 1)}, 1\right)
-  \text{ and } |y - y_0| < \text{min}\left(\frac{|y_0|}{2},
+  |x - x_0| < \mathrm{min}\left(\frac{\epsilon}{2(|\frac{1}{y_0}| + 1)},
+  1\right) \text{ and } |y - y_0| < \mathrm{min}\left(\frac{|y_0|}{2},
   \frac{\epsilon|y_0|^2}{4(|x_0| + 1)}\right)
 \end{equation*} then $y \neq 0$ and \begin{equation*}
   \left|\frac{x}{y} - \frac{x_0}{y_0}\right| < \epsilon.
