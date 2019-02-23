@@ -1,20 +1,6 @@
-\documentclass{article}
+\chapter{Linear Algebra in Quantum Mechanics}
 
-\usepackage{amsmath,amssymb,amsthm}
-\usepackage{booktabs}
-\usepackage{physics}
-
-\newtheorem{theorem}{Theorem}
-\newtheorem{lemma}{Lemma}
-
-\begin{document}
-
-\title{Chapter 2: Introduction to quantum mechanics}
-\maketitle
-
-\section{Linear algebra}
-
-\subsection{Bases and linear independence}
+\section{Bases and linear independence}
 
 \paragraph{Spanning set.} A \emph{spanning set} for a vector space is a set of
 vectors $\ket{v_1}, \ldots, \ket{v_n}$ such that any vector $\ket{v}$ in the
@@ -35,7 +21,7 @@ call such a set a \emph{basis} for $V$. Furthermore, such a basis set always
 exists. The number of elements in the basis is defined to be the
 \emph{dimension} of $V$.
 
-\subsection{Linear operators and matrices}
+\section{Linear operators and matrices}
 
 \paragraph{Linear operator.} A \emph{linear operator} between vector spaces $V$
 and $W$ is defined to be any function $A : V \rightarrow W$ which is linear in
@@ -150,7 +136,7 @@ suffices to show that a solution satisfies the definition of the linear
 operator, as it is clear that linear transformations from a basis $V$ to $W$
 are unique.)
 
-\subsection{The Pauli matrices}
+\section{The Pauli matrices}
 
 \paragraph{Pauli matrices.} The Pauli matrices are defined accordingly:
 
@@ -175,7 +161,7 @@ are unique.)
   \end{tabular}
 \end{center}
 
-\subsection{Inner products}
+\section{Inner products}
 
 \paragraph{Inner product.} An \emph{inner product} is a function which takes as
 input two vectors $\ket{v}$ and $\ket{w}$ from a vector space and produces a
@@ -336,7 +322,7 @@ basis $\ket{w_j}$.
   $\ket{w} = z\ket{v}$, for some scalar $z$.
 \end{proof}
 
-\subsection{Eigenvectors and eigenvalues}
+\section{Eigenvectors and eigenvalues}
 
 \paragraph{Eigenvector and eigenvalue.} An \emph{eigenvector} of a linear
 operator $A$ on a vector space is a non-zero vector $\ket{v}$ such that
@@ -370,7 +356,7 @@ for an operator on a Hilbert space to be diagonalizable.
 that it is \emph{degenerate}. This occurs when there are multiple linearly
 independent eigenvectors with the same eigenvalue.
 
-\subsection{Adjoints and Hermitian operators}
+\section{Adjoints and Hermitian operators}
 
 \paragraph{Adjoint/Hermitian conjugate.} Suppose $A$ is any linear operator on
 a Hilbert space, $V$. It turns out that there exists a unique linear operator
@@ -622,7 +608,7 @@ $\mel{v}{B}{v}, \mel{v}{C}{v} \in \mathbb{R}$. However, as $\mel{v}{A}{v} \in
 \mathbb{R}$ by definition, $\mel{v}{C}{v} = 0$ for all $\ket{v}$. Hence,
 $\mel{v}{A}{v} = \mel{v}{B}{v}$ which implies that $A = A^\dagger$.
 
-\subsection{Tensor products}
+\section{Tensor products}
 
 \paragraph{Tensor product.} Suppose $V$ and $W$ are vector spaces of dimension
 $m$ and $n$ respectively. For convenience we also suppose that $V$ and $W$ are
@@ -719,7 +705,7 @@ Since $A$ and $B$ are positive operators, it is clear that $\bra{\psi}A
 $\bra{\psi}A\ket{\psi} \bra{\phi}B\ket{\phi} \geq 0$. Hence, $A \otimes B$ is a
 positive operator.
 
-\subsection{Operator functions}
+\section{Operator functions}
 
 Generally speaking, given a function $f$ from the complex numbers to the
 complex numbers, it is possible to define a corresponding matrix function on
@@ -841,7 +827,3 @@ of an operator $A$ to be the trace of any matrix representation of $A$. The
 invariance of the trace under unitary similarity transformations ensures that
 the trace of an operator is well defined.
 
-\bibliographystyle{alpha}
-\bibliography{references} 
-
-\end{document}
