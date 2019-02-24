@@ -812,8 +812,6 @@ element. Then we have \begin{align*}
     &= \bra{\psi}A\ket{\psi}.
 \end{align*}
 
-[fill in exercises on cyclic and linear]
-
 The trace is easily seen to be \emph{cyclic}, $\mathrm{tr}(AB) =
 \mathrm{tr}(BA)$, and \emph{linear}, $\mathrm{tr}(A + B) = \mathrm{tr}(A) +
 \mathrm{tr}(B)$ and $\mathrm{tr}(zA) = z\mathrm{tr}(A)$, where $A$ and $B$ are
@@ -826,4 +824,58 @@ U^\dagger$, as $\mathrm{tr}(U A U^\dagger) = \mathrm{tr}(U^\dagger U A) =
 of an operator $A$ to be the trace of any matrix representation of $A$. The
 invariance of the trace under unitary similarity transformations ensures that
 the trace of an operator is well defined.
+
+\paragraph{\cite{mikeandike} Exercise 2.39: (The Hilbert-Schmidt inner product
+on operators)} The set $L_V$ of linear operators on a Hilbert space $V$ is
+obviously a vector space - the sum of two linear operatotrs is a linear
+operator, $zA$ is a linear operator if $A$ is a linear operator and $z$ is a
+complex number, and there is a zero element 0. An important additional result
+is that the vector space $L_V$ can be given a natural inner product structure,
+turning it into a Hilbert space. \begin{enumerate}
+  \item Show that the function $(\cdot, \cdot)$ on $L_V \cross L_V$ defined by
+    \begin{equation}
+      (A, B) \equiv \mathrm{tr}(A^\dagger B) \label{eq:hs-inn-prod}
+    \end{equation}
+    is an inner product function. This inner product is known as the
+    \emph{Hilbert-Schmidt} or \emph{trace} inner product.
+  \item If $V$ has $d$ dimensions show that $L_V$ has dimension $d^2$.
+  \item Find an orthonormal basis of Hermitian matrices for the Hilbert space
+    $L_V$.
+\end{enumerate}
+
+\paragraph{Solution:} \begin{enumerate}
+  \item To show that the function defined is an inner product function, we need
+    to prove that a few requirements are satisfied: \begin{enumerate}
+      \item \emph{Linearity in the second argument.} This is clear from the
+        linearity of the operators $A$ and $B$, and the trace function.
+      \item \emph{$(A, B) = (B, A)^*$}, which can be rewritten as $\mathrm{tr}
+        (A^\dagger B) = \mathrm{tr}(B^\dagger A)^*$. Working from the
+        right-hand side, \begin{equation*}
+          \mathrm{tr}(B^\dagger A)^* = \mathrm{tr}((B^\dagger)^* A^*) =
+            \mathrm{tr}(B^T A^*).
+        \end{equation*}
+        As the trace function is preserved under transposition of the matrices,
+        one can consider the transpose \begin{equation*}
+          \mathrm{tr}((B^T A^*)^T) = \mathrm{tr}((A^*)^T (B^T)^T) = \mathrm{tr}
+            (A^\dagger B).
+        \end{equation*}
+      \item \emph{$(A, A) \geq 0$ with equality if and only if $A = 0$.} The
+        case of equality is trivial. As for any non-zero $A$, since $A^\dagger
+        A > 0$ for any linear operator $A$, $\mathrm{tr}(A^\dagger A) > 0$ too.
+    \end{enumerate}
+  \item Given an orthonormal basis $\ket{v_1}, \ldots, \ket{v_d}$ for $V$, we
+    construct linear operators $A_{ij}$ on $V$ such that $A_{ij}\ket{v_j} =
+    \ket{v_i}$. (Such a construction is based off \eqref{eq:lin-op}.) It is
+    clear that such a construction of $d^2$ linear operators would be linearly
+    independent and span the whole of $L_V$.
+  \item The construction mentioned in the previous part will produce an
+    orthonormal basis, albeit not solely of Hermitian matrices. However, noting
+    that $A_{ij} = A_{ji}^\dagger$, one can construct an orthonormal basis for
+    any $i < j$ which are provably Hermitian:
+    \begin{align*}
+      B_{ij} &= \frac{1}{\sqrt{2}}(A_{ij} + A_{ji}), \\
+      B_{ii} &= A_{ii}, \\
+      B_{ji} &= \frac{i}{\sqrt{2}}(A_{ij} - A_{ji}). \\
+    \end{align*}
+\end{enumerate}
 
