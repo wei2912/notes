@@ -368,7 +368,7 @@ This linear operator is known as the \emph{adjoint} or \emph{Hermitian
 conjugate} of the operator $A$. From the definition it is easy to see that
 $(AB)^\dagger = B^\dagger A^\dagger$. By convention, if $\ket{v}$ is a vector,
 then we define $\ket{v}^\dagger \equiv \bra{v}$. With this definition it is not
-difficult to see that $(A\ket{v})^\dagger = \bra A^\dagger$.
+difficult to see that $(A\ket{v})^\dagger = \bra{v}A^\dagger$.
 
 In a matrix representation of the operator $A$, the action of the Hermitian
 conjugation operation is to take the matrix of $A$ to the conjugate-transpose
@@ -391,14 +391,6 @@ Show that the adjoint operation is anti-linear, \begin{equation}
     &= \sum_i (a_i^* A_i^\dagger \ket{v}, \ket{w}) \\
     &= \left(\left(\sum_i a_i^* A_i^\dagger\right)\ket{v}, \ket{w}\right).
 \end{align*}
-
-\paragraph{\cite{mikeandike} Exercise 2.15:} Show that $(A^\dagger)^\dagger =
-A$.
-
-\paragraph{Solution:} Conisider $(\ket{v}, (A^\dagger)^\dagger\ket{w})$ for all
-vectors $\ket{v}, \ket{w} \in V$. Using the definition in \eqref{eq:adj},
-$(\ket{v}, (A^\dagger)^\dagger\ket{w}) = ((A^\dagger)\ket{v}, \ket{w}) =
-(\ket{v}, A\ket{w})$.
 
 \paragraph{Hermitian/self-adjoint operators.} An operator $A$ whose adjoint is
 $A$ is known as a \emph{Hermitian} or \emph{self-adjoint} operator.
@@ -697,13 +689,12 @@ two positive operators is positive.
 \paragraph{Solution:} Consider the positive operators $A$ and $B$, and observe
 that \begin{equation*}
   (\bra{\psi} \otimes \bra{\phi})(A \otimes B)(\ket{\psi} \otimes \ket{\phi})
-    = \bra{\psi}A\ket{\psi} \otimes \bra{\phi}B\ket{\phi}
+    = \mel{\psi}{A}{\psi} \otimes \mel{\phi}{B}{\phi}
 \end{equation*} by linearity.
 
-Since $A$ and $B$ are positive operators, it is clear that $\bra{\psi}A
-\ket{\psi} \geq 0$ and $\bra{\phi}B\ket{\phi} \geq 0$, and therefore
-$\bra{\psi}A\ket{\psi} \bra{\phi}B\ket{\phi} \geq 0$. Hence, $A \otimes B$ is a
-positive operator.
+Since $A$ and $B$ are positive operators, it is clear that $\mel{\psi}{A}{\psi}
+\geq 0$ and $\mel{\phi}{B}{\phi} \geq 0$, and therefore $\mel{\psi}{A}{\psi}
+\mel{\phi}{B}{\phi} \geq 0$. Hence, $A \otimes B$ is a positive operator.
 
 \section{Operator functions}
 
@@ -808,8 +799,8 @@ Gram-Schmidt procedure as defined in \eqref{eq:gs-proc} to extend $\ket{\psi}$
 to an orthonormal basis $\ket{i}$ which includes $\ket{\psi}$ as the first
 element. Then we have \begin{align*}
   \mathrm{tr}(A\ketbra{\psi}{\psi})
-    &= \sum_i \bra{i}A\ket{\psi} \braket{\psi}{i} \\
-    &= \bra{\psi}A\ket{\psi}.
+    &= \sum_i \mel{i}{A}{\psi} \braket{\psi}{i} \\
+    &= \mel{\psi}{A}{\psi}.
 \end{align*}
 
 The trace is easily seen to be \emph{cyclic}, $\mathrm{tr}(AB) =
@@ -878,4 +869,129 @@ turning it into a Hilbert space. \begin{enumerate}
       B_{ji} &= \frac{i}{\sqrt{2}}(A_{ij} - A_{ji}). \\
     \end{align*}
 \end{enumerate}
+
+\section{Commutator and anti-commutator}
+
+\paragraph{Commutator.} The \emph{commutator} between two operators $A$ and $B$
+is defined to be \begin{equation}
+  [A, B] \equiv AB - BA. \label{eq:comm}
+\end{equation}
+If $[A, B] = 0$, that is, $AB = BA$, then we say $A$ \emph{commutes} with $B$.
+
+\paragraph{Anti-Commutator.} The \emph{anti-commutator} of two operators $A$
+and $B$ is defined by \begin{equation}
+  {A, B} \equiv AB + BA; \label{eq:anti-comm}
+\end{equation}
+we say $A$ \emph{anti-commutes} with $B$ if ${A, B} = 0$.
+
+It turns out that many important properties of pairs of operators can be
+deduced from their commutator and anti-commutator. Perhaps the most useful
+relation is the following connection between the commutator and the property
+of being able to \emph{simultaneously diagonalize} Hermitian operators $A$ and
+$B$, that is, write $A = \sum_i a_i\ketbra{i}{i}$, $B = \sum_i b_i\ketbra{i}{i}
+$, where $\ket{i}$ is some common orthonormal set of eigenvectors for $A$ and
+$B$.
+
+\begin{theorem}[Simultaneous diagonalization theorem]
+  Suppose $A$ and $B$ are Hermitian operators. Then $[A, B] = 0$ if and only if
+  there exists an orthonormal basis such that both $A$ and $B$ are diagonal
+  with respect to that basis. We say that $A$ and $B$ are \emph{simultaneously
+  diagonalizable} in this case.
+\end{theorem}
+
+This result connects the commutator of two operators, which is often easy to
+compute, to the property of being simultaneously diagonalizable, which is
+\emph{a priori} rather difficult to determine.
+
+\begin{proof}
+  You can (and should!) easily verify that if $A$ and $B$ are diagonal in the
+  same orthonormal basis then $[A, B] = 0$. To show the converse, let $\ket{a,
+  j}$ be an orthonormal basis for the eigenspace $V_a$ of $A$ with eigenvalue
+  $a$; the index $j$ is used to label possible degeneracies. Note that
+  \begin{equation*}
+    AB\ket{a, j} = BA\ket{a, j} = aB\ket{a, j}
+  \end{equation*}
+  and therefore $B\ket{a, j}$ is an element of the eigenspace $V_a$. Let $P_a$
+  denote the projector onto the space $V_a$ and define $B_a \equiv P_aBP_a$.
+  It is easy to see that the restriction of $B_a$ to the space $V_a$ is
+  Hermitian on $V_a$, and therefore has a spectral decomposition in terms of
+  an orthonormal set of eigenvectors which span the space $V_a$. Let's call
+  these eigenvectors $\ket{a, b, k}$, where the indices $a$ and $b$ label the
+  eigenvalues of $A$ and $B_a$, and $k$ is an extra index to allow for the
+  possibility of a degenerate $B_a$. Note that $B\ket{a, b, k}$ is an element
+  of $V_a$, so \begin{equation*}
+    B\ket{a, b, k} = P_aBP_a\ket{a, b, k} = b\ket{a, b, k}.
+  \end{equation*}
+  It follows that $\ket{a, b, k}$ is an eigenvector of $B$ with eigenvalue $b$,
+  and therefore $\ket{a, b, k}$ is an orthonormal set of eigenvectors of both
+  $A$ and $B$, spanning the entire vector space on which $A$ and $B$ are
+  defined. That is, $A$ and $B$ are simultaneously diagonalizable.
+\end{proof}
+
+\section{The polar and singular value decomposition}
+
+The \emph{polar} and \emph{singular value} decompositions are useful ways of
+breaking linear operators up into simpler parts. In particular, these
+decompositions allow us to break general linear operators up into products of
+unitary operators and positive operators.
+
+\begin{theorem}[Polar decomposition]
+  Let $A$ be a linear operator on a vector space $V$. Then there exists unitary
+  $U$ and positive operators $J$ and $K$ such that \begin{equation*}
+    A = UJ = KU,
+  \end{equation*}
+  where the unique positive operators $J$ and $K$ satisfying these equations
+  are defined by $J \equiv \sqrt{A^\dagger A}$ and $K \equiv \sqrt{A
+  A^\dagger}$. Moreover, if $A$ is invertible then $U$ is unique.
+\end{theorem}
+
+We call the expression $A = UJ$ the \emph{left polar decomposition} of $A$, and
+$A = KU$ the \emph{right polar decomposition} of $A$.
+
+\begin{proof}
+  $J \equiv \sqrt{A^\dagger A}$ is a positive operator, so it can be given a
+  spectral decomposition, $J = \sum_i \lambda_i \ketbra{i}{i}$ ($\lambda_i \geq
+  0$). Define $\ket{\psi_i} \equiv A\ket{i}$. From the definition, we see that
+  $\braket{\psi_i}{\psi_i} = \lambda_i^2$. Consider for now only those $i$ for
+  which $\lambda_i \neq 0$. For those $i$ define $\ket{e_i} \equiv \ket{\psi_i}
+  /\lambda_i$, so that the $\ket{e_i}$ are normalized. Moreover, they are
+  orthogonal, since if $i \neq j$ then $\braket{e_i}{e_j} = \mel{i}{A^\dagger A
+  }{j}/\lambda_i\lambda_j = \mel{i}{J^2}{j}/\lambda_i\lambda_j = 0$.
+
+  We have been considering $i$ such that $\lambda_i \neq 0$. Now use the
+  Gram-Schmidt procedure to extend the orthonormal set $\ket{e_i}$ so it forms
+  an orthonormal basis, which we also label $\ket{e_i}$. Define a unitary
+  operator $U \equiv \sum_i \ketbra{e_i}{i}$. When $\lambda_i \neq 0$ we have
+  $UJ\ket{i} = \lambda_i\ket{e_i} = \ket{\psi_i} = A\ket{i}$. When $\lambda_i =
+  0$ we have $UJ\ket{i} = 0 = \ket{\psi_i}$. We have proved that the action of
+  $A$ and $UJ$ agree on the basis $\ket{i}$, and thus that $A = UJ$.
+
+  $J$ is unique, since multiplying $A = UJ$ on the left by the adjoint equation
+  $A^\dagger = JU^\dagger$ gives $J^2 = A^\dagger A$, from which we see that $J
+  = \sqrt{A^\dagger A}$, uniquely. A little thought shows that if $A$ is
+  invertible, then so is $J$, so $U$ is uniquely determined by the equation $U
+  = AJ^{-1}$. The proof of the right polar decomposition follows, since $A = UJ
+  = UJU^\dagger U = KU$, where $K \equiv UJU^\dagger$ is a positive operator.
+  Since $AA^\dagger = KUU^\dagger K = K^2$ we must have $K = \sqrt{A^\dagger
+  A}$, as claimed.
+\end{proof}
+
+The singular value decomposition combines the polar decomposition and the
+spectral theorem.
+
+\begin{corollary}[Singular value decomposition]
+  Let $A$ be a square matrix. Then there exist unitary matrices $U$ and $V$,
+  and a diagonal matrix $D$ with non-negative entries such that
+  \begin{equation*}
+    A = UDV.
+  \end{equation*}
+  The diagonal elements of $D$ are called the \emph{singular values} of $A$.
+\end{corollary}
+
+\begin{proof}
+  By the polar decomposition, $A = SJ$, for unitary $S$, and positive $J$. By
+  the spectral theorem, $J = TDT^\dagger$, for unitary $T$ and diagonal $D$
+  with non-negative entries. Setting $U \equiv ST$ and $V \equiv T^\dagger$
+  completes the proof.
+\end{proof}
 
