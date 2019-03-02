@@ -1,0 +1,151 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+
+\begin{document}
+
+\title{Chapter 6: Continuous Functions}
+\maketitle
+
+\begin{definition}[Continuity]
+  The function $f$ is \emph{continuous at $a$} if $\lim_{x \rightarrow a}f(x)
+  = f(a)$.
+
+  If $f$ is continuous at $x$ for all $x$ in $(a, b)$, then $f$ is called
+  \emph{continuous on $(a, b)$}. A function $f$ is called \emph{continuous on
+  $[a, b]$} if \begin{enumerate}
+    \item $f$ is continuous at $x$ for all $x$ in $(a, b)$,
+    \item $\lim_{x \rightarrow a^+}f(x) = f(a)$ and $\lim_{x \rightarrow b^-}
+      f(x) = f(b)$.
+  \end{enumerate}
+\end{definition}
+
+\begin{theorem}
+  If $f$ and $g$ are continuous at $a$, then \begin{enumerate}
+    \item $f + g$ is continuous at $a$,
+    \item $f \cdot g$ is continuous at $a$.
+  \end{enumerate}
+  Moreover, if $g(a) \neq 0$, then \begin{enumerate}
+    \setcounter{enumi}{2}
+    \item $1/g$ is continuous at $a$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+  Since $f$ and $g$ are continuous at $a$, \begin{equation*}
+    \lim_{x \rightarrow a}f(x) = f(a) \text{ and } \lim_{x \rightarrow a}g(x)
+    = g(a).
+  \end{equation*}
+  By Theorem 2(1) of Chapter 5 this implies that \begin{equation*}
+    \lim_{x \rightarrow a}(f + g)(x) = f(a) + g(a) = (f + g)(a),
+  \end{equation*}
+  which is just the assertion that $f + g$ is continuous at $a$. The proofs or
+  paras (2) and (3) are left to you.
+\end{proof}
+
+\begin{theorem}
+  If $g$ is continuous at $a$, and $f$ is continuous at $g(a)$, then $f \circ
+  g$ is continuous at $a$.
+\end{theorem}
+
+\begin{proof}
+  Let $\epsilon > 0$. We wish to find a $\delta > 0$ such that for all $x$,
+  \begin{align*}
+    \text{if } |x - a| < \delta, &\text{ then } |(f \circ g)(x) -
+    (f \circ g)(a)| < \epsilon, \\
+      &\text{i.e., } |f(g(x)) - f(g(a))| < \epsilon.
+  \end{align*}
+  We first use continuity of $f$ to estimate how close $g(x)$ must be to $g(a)$
+  in order for this inequality to hold. Since $f$ is continuous at $g(a)$,
+  there is a $\delta' > 0$ such that for all $y$, \begin{enumerate}
+    \item if $|y - g(a)| < \delta'$, then $|f(y) - f(g(a))| < \epsilon$.
+  \end{enumerate}
+  In particular, this means that \begin{enumerate}
+    \setcounter{enumi}{1}
+    \item if $|g(x) - g(a)| < \delta'$, then $|f(g(x)) - f(g(a))| < \epsilon$.
+  \end{enumerate}
+  We now use continuity of $g$ to estimate how close $x$ must be to $a$ in
+  order for the inequality $|g(x) - g(a)| < \delta'$ to hold. The number
+  $\delta'$ is a positive number just like any other positive number; we can
+  therefore take $\delta'$ as the $\epsilon$ (!) in the definition of
+  continuity of $g$ at $a$. We conclude that there is a $\delta > 0$ such that,
+  for all $x$, \begin{enumerate}
+    \setcounter{enumi}{2}
+    \item if $|x - a| < \delta$, then $|g(x) - g(a)| < \delta'$.
+  \end{enumerate}
+  Combining (2) and (3) we see that for all $x$, \begin{equation*}
+    \text{if } |x - a| < \delta, \text{ then } |f(g(x)) - f(g(a))| < \epsilon.
+  \end{equation*}
+\end{proof}
+
+\begin{theorem}
+  Suppose $f$ is continuous at $a$, and $f(a) > 0$. Then there is a number
+  $\delta > 0$ such that $f(x) > 0$ for all $x$ satisfying $|x - a| < \delta$.
+  Similarly, if $f(a) < 0$, then there is a number $\delta > 0$ such that $f(x)
+  < 0$ for all $x$ satisfying $|x - a| < \delta$.
+\end{theorem}
+
+\begin{proof}
+  Consider the case $f(a) > 0$. Since $f$ is continuous at $a$, if $\epsilon >
+  0$ there is a $\delta > 0$ such that, for all $x$, \begin{equation*}
+    \text{if } |x - a| < \delta, \text{ then } |f(x) - f(a)| < \epsilon.
+  \end{equation*}
+  Since $f(a) > 0$ we can take $f(a)$ as the $\epsilon$. Thus there is a
+  $\delta > 0$ so that for all $x$, \begin{equation*}
+    \text{if } |x - a| < \delta, \text{ then } |f(x) - f(a)| < f(a),
+  \end{equation*}
+  and this last inequality implies $f(x) > 0$.
+
+  A similar proof can be given in the case $f(a) < 0$; take $\epsilon = -f(a)$.
+  Or one can apply the first case to the function $-f$.
+\end{proof}
+
+\section{Exercises}
+
+\setcounter{subsection}{11}
+\subsection{Continuity of composite functions}
+
+\paragraph{Problem (a).} Prove that if $f$ is continuous at $l$ and $\lim_{x
+\rightarrow a}g(x) = l$, then $\lim_{x \rightarrow a}f(g(x)) = f(l)$.
+
+\paragraph{Solution (a).} Consider a function $G$ with $G(x) = g(x)$ for $x
+\neq a$, and $G(a) = l$. Such a function is guaranteed to be continuous at $a$.
+
+Then, from Theorem 2, it is clear that as $G$ is continuous at $a$ and $f$ is
+continuous at $G(a)$, then $f \circ G$ is continuous at $a$. Thus, $f(l) =
+f(G(a)) = \lim_{x \rightarrow a}f(G(x)) = \lim_{x \rightarrow a}(f \circ G)(x)$
+which proves the statement.
+
+\paragraph{Problem (b).} Show that if continuity of $f$ at $l$ is not assumed,
+then it is not generally true that $\lim_{x \rightarrow a}f(g(x)) = f(\lim_{x
+\rightarrow a}g(x))$.
+
+\paragraph{Solution (b).} Let $g = l + x - a$ and \begin{equation*}
+  f(x) = \begin{cases}
+    0, &x \neq l, \\
+    1, &x = l. \\
+  \end{cases}
+\end{equation*}
+Then, as $\lim_{x \rightarrow a}g(x) = l$, $f(\lim_{x \rightarrow a}g(x)) = 1$.
+Yet, since $g(x) \neq l$ for $x \neq a$, $\lim_{x \rightarrow a}f(g(x)) = 0$.
+
+\setcounter{subsection}{15}
+\subsection{Removable discontinuities}
+
+If $\lim_{x \rightarrow a}f(x)$ exists, but is $\neq f(a)$, then $f$ is said to
+have a \emph{removable discontinuity} at $a$.
+
+\paragraph{Problem (d).} Let $f$ be a function with the property that every
+point of discontinuity is a removable discontinuity. This means that $\lim_{y
+\rightarrow x}f(y)$ exists for all $x$, but $f$ may be discontinuous at some
+(even infinitely many) numbers $x$. Define $g(x) = \lim_{y \rightarrow x}f(y)$.
+Prove that $g$ is continuous.
+
+\paragraph{Solution (d).} [to be added]
+
+\end{document}
+
