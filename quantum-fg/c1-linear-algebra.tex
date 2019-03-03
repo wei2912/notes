@@ -218,9 +218,9 @@ $(\cdot, \cdot)$ is \emph{conjugate-linear} in the first argument,
 if their inner product is zero.
 
 \paragraph{Norm.} We define the \emph{norm} of a vector $\ket{v}$ such that
-$||\ket{v}|| = 1$. We also say that $\ket{v}$ is \emph{normalized} if
-$||\ket{v}|| = 1$. It is convenient to talk of \emph{normalizing} a vector by
-dividing by its norm; thus $\ket{v}/||\ket{v}||$ is the \emph{normalized} form
+$\|\ket{v}\| = 1$. We also say that $\ket{v}$ is \emph{normalized} if
+$\|\ket{v}\| = 1$. It is convenient to talk of \emph{normalizing} a vector by
+dividing by its norm; thus $\ket{v}/\|\ket{v}\|$ is the \emph{normalized} form
 of $\ket{v}$, for any non-zero vector $\ket{v}$.
 
 \paragraph{Orthonormal.} A set $\ket{i}$ of vectors with index $i$ is
@@ -232,11 +232,11 @@ are both chosen from the index set.
 basis set for some vector space $V$ with an inner product. There is a useful
 method, the \emph{Gram-Schmidt} procedure, which can be used to produce an
 orthonormal basis set $\ket{v_1}, \ldots, \ket{v_d}$ for the vector space $V$.
-Define $\ket{v_1} \equiv \ket{w_1}/||\ket{w_1}||$, and for $1 \leq k \leq d -
+Define $\ket{v_1} \equiv \ket{w_1}/\|\ket{w_1}\|$, and for $1 \leq k \leq d -
 1$ define $\ket{v_{k+1}}$ inductively by \begin{equation}
   \ket{v_{k+1}} \equiv \frac{\ket{w_{k+1}} - \sum_{i=1}^k \braket{v_i}{w_{k+1}}
-    \ket{v_i}}{||\ket{w_{k+1}} - \sum_{i=1}^k \braket{v_i}{w_{k+1}}
-    \ket{v_i}||}. \label{eq:gs-proc}
+    \ket{v_i}}{\|\ket{w_{k+1}} - \sum_{i=1}^k \braket{v_i}{w_{k+1}}
+    \ket{v_i}\|}. \label{eq:gs-proc}
 \end{equation}
 
 \paragraph{\cite{mikeandike} Exercise 2.8:} Prove that the Gram-Schmidt
@@ -244,7 +244,7 @@ procedure produces an orthonormal basis for V.
 
 \paragraph{Solution:} The base case for a 1-dimensional vector space $V$ is
 trivial, as the orthonormal basis set must contain only $\ket{v_1} \equiv
-\ket{w_1}/||\ket{w_1}||$ as defined in the Gram-Schmidt procedure.
+\ket{w_1}/\|\ket{w_1}\|$ as defined in the Gram-Schmidt procedure.
 
 Consider a (k+1)-dimensional vector space $V$ with basis set $\ket{w_1},
 \ldots, \ket{w_{k+1}}$. Suppose an orthonormal set $\ket{v_1}, \ldots,
@@ -255,13 +255,13 @@ be shown to be orthogonal to $\ket{v_j}$ for $1 \leq j \leq k$ by working from
 the inductive definition: \begin{align*}
   \braket{v_j}{v_{k+1}}
     &= \frac{\bra{v_j} \left(\ket{w_{k+1}} - \sum_{i=1}^k
-      \braket{v_i}{w_{k+1}}\ket{v_i}\right)}{||\ket{w_{k+1}} - \sum_{i=1}^k
-      \braket{v_i}{w_{k+1}}\ket{v_i}||} \\
+      \braket{v_i}{w_{k+1}}\ket{v_i}\right)}{\|\ket{w_{k+1}} - \sum_{i=1}^k
+      \braket{v_i}{w_{k+1}}\ket{v_i}\|} \\
     &= \frac{\braket{v_j}{w_{k+1}} - \sum_{i=1}^k \braket{v_i}{w_{k+1}}
-      \delta_{ji}}{||\ket{w_{k+1}} - \sum_{i=1}^k \braket{v_i}{w_{k+1}}
-      \ket{v_i}||} \\
-    &= \frac{\braket{v_j}{w_{k+1}} - \braket{v_j}{w_{k+1}}}{||\ket{w_{k+1}} -
-      \sum_{i=1}^k \braket{v_i}{w_{k+1}}\ket{v_i}||} \\
+      \delta_{ji}}{\|\ket{w_{k+1}} - \sum_{i=1}^k \braket{v_i}{w_{k+1}}
+      \ket{v_i}\|} \\
+    &= \frac{\braket{v_j}{w_{k+1}} - \braket{v_j}{w_{k+1}}}{\|\ket{w_{k+1}} -
+      \sum_{i=1}^k \braket{v_i}{w_{k+1}}\ket{v_i}\|} \\
     &= 0.
 \end{align*} It is also clear that $\ket{v_{k+1}}$ as defined is already
 normalized. By induction, the correctness of the Gram-Schmidt procedure is
@@ -316,7 +316,7 @@ basis $\ket{w_j}$.
     \braket{v}{v}\braket{w}{w}
       &= \sum_i \braket{v}{i}\braket{i}{v} \braket{w}{w} \\
       &\geq \frac{\braket{v}{w}\braket{w}{v}}{\braket{w}{w}} \braket{w}{w} \\
-      &= \braket{v}{w}\braket{w}{v} = ||\braket{v}{w}||^2,
+      &= \braket{v}{w}\braket{w}{v} = \|\braket{v}{w}\|^2,
   \end{align*} as required. A little thought shows that equality occurs if and
   only if $\ket{v}$ and $\ket{w}$ are linearly related, $\ket{v} = z\ket{w}$ or
   $\ket{w} = z\ket{v}$, for some scalar $z$.
@@ -423,7 +423,7 @@ satisfies the equation $P^2 = P$.
       \ketbra{i}{i}\right) \\
     &= \left(\sum_{i=1}^k \ket{i}\braket{i}{i}\bra{i}\right) + \left(\sum_{i, j
       \leq k, i \neq j} \ket{i}\braket{i}{j}\bra{j}\right) \\
-    &= \left(\sum_{i=1}^k \ket{i} ||i||^2 \bra{i}\right) + 0 \\
+    &= \left(\sum_{i=1}^k \ket{i} \|i\|^2 \bra{i}\right) + 0 \\
     &= \sum_{i=1}^k \ketbra{i}{i} \\
     &= P.
 \end{align*}
