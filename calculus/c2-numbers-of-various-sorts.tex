@@ -13,17 +13,14 @@
 \paragraph{Mathematical Induction.} That's the whole chapter, it's just about
 natural numbers and mathematical induction.
 
-\section{Exercises}
+\section*{Exercises}
 
-\setcounter{subsection}{6}
-\subsection{Finding general sum of $\sum^n_{k=1} k^p$}
-
-\paragraph{Problem (abridged).} Show that $\sum^n_{k=1} k^p$ can always be
+\paragraph{Problem 2-7 (abridged).} Show that $\sum^n_{k=1} k^p$ can always be
 written in the form \begin{equation*}
   \frac{n^{p+1}}{p + 1} + An^p + Bn^{p-1} + Cn^{p-2} + \cdots.
 \end{equation*}
 
-\paragraph{Solution.} The base case $p = 0$ is trivial. To construct an
+\paragraph{Solution:} The base case $p = 0$ is trivial. To construct an
 inductive hypothesis, consider the formula \begin{equation*}
   (k + 1)^{p+1} - k^{p+1} = \binom{p+1}{1} \cdot k^p + \binom{p+1}{2} \cdot
   k^{p-1} + \cdots + \binom{p+1}{p-1} \cdot k^2 + \binom{p+1}{p} \cdot k + 1.
@@ -55,45 +52,42 @@ that \begin{equation*}
 \end{equation*} where $f(n)$ is a polynomial of degree $p$ in $n$. Clearly, the
 statement is proven true.
 
-\setcounter{subsection}{16}
-\subsection{Proving properties of roots and primes}
+\paragraph{Problem 2-17 (abridged). (a)} Rigorously prove, by complete
+induction, that any natural number can be written as a product of primes by
+factorising it into smaller numbers repeatedly.
 
-\paragraph{Problem (a) (abridged).} Rigorously prove, by complete induction,
-that any natural number can be written as a product of primes by factorising it
-into smaller numbers repeatedly.
-
-\paragraph{Solution (a).} Suppose that every number at least 2 and less than
-$n$ can be written as a product of primes. Clearly, if $n$ is a prime, it can
-be written as a product of primes (namely, itself). If $n$ is not a prime, then
-$n = ab$ for some natural numbers $2 \leq a, b < n$. By the assumption that $a$
+\paragraph{Solution:} Suppose that every number at least 2 and less than $n$
+can be written as a product of primes. Clearly, if $n$ is a prime, it can be
+written as a product of primes (namely, itself). If $n$ is not a prime, then $n
+= ab$ for some natural numbers $2 \leq a, b < n$. By the assumption that $a$
 and $b$ can be written as products of primes, $n = ab$ can also be written as a
 product of primes.
 
-\paragraph{Problem (b) (abridged).} Using the unique factorisation theorem (as
+\paragraph{(b)} Using the unique factorisation theorem (as
 stated in (a)), prove that $\sqrt{n}$ is irrational unless $n = m^2$ for some
 natural number $m$.
 
-\paragraph{Solution (b).} For some rational $\sqrt{n}$ i.e. $\sqrt{n} = a/b$
+\paragraph{Solution:} For some rational $\sqrt{n}$ i.e. $\sqrt{n} = a/b$
 for some natural numbers $a, b$, then $b\sqrt{n} = a$ and their prime
 factorisations must be the same. Squaring both sides, $b^2n = a^2$. Since every
 prime appears an even number of times in the factorisation of $a^2$, and of
 $b^2$, the same must be true of the factorisation of $n$. Hence, $n$ must be a
 square. This proves the statement.
 
-\paragraph{Problem (c) (abridged.)} Prove more generally that $\sqrt[k]{n}$ is
+\paragraph{(c)} Prove more generally that $\sqrt[k]{n}$ is
 irrational unless $n = m^k$.
 
-\paragraph{Solution (c).} Applying the same argument in (b), for some rational
+\paragraph{Solution:} Applying the same argument in (b), for some rational
 $\sqrt[k]{n}$ i.e. $\sqrt[k]{n} = a/b$ for some natural numbers $a, b$, $b^kn =
 a^k$. Since every prime appears a multiple of $k$ times in the factorisation of
 $a^k$, and of $b^k$, the same must be true of the factorisation of $n$. Hence,
 $n = m^k$ for some natural number $m$. This proves the statement.
 
-\paragraph{Problem (d) (abridged.)} Prove that there cannot be only finitely
+\paragraph{(d)} Prove that there cannot be only finitely
 many prime numbers $p_1, p_2, p_3, \ldots, p_n$ by considering $p_1 \cdot p_2
 \cdot \ldots \cdot p_n + 1$ (Euclid's proof of infinitude of primes).
 
-\paragraph{Solution (d).} Suppose that there are a finite number of primes, as
+\paragraph{Solution:} Suppose that there are a finite number of primes, as
 stated in (d). Then, $p_1 \cdot p_2 \cdot \ldots \cdot p_n + 1$ would divide
 each prime $p_1, p_2, p_3, \ldots, p_n$ with remainder 1. Should this be a
 prime, then there is a contradiction; should this be a composite number, by the
@@ -101,17 +95,14 @@ unique factorisation theorem, the number can be rewritten into a product of
 primes none of which are $p_1, p_2, p_3, \ldots, p_n$, leading into a
 contradiction. Hence, there must be an infinite number of primes.
 
-\setcounter{subsection}{17}
-\subsection{Proving properties of polynomials}
-
-\paragraph{Problem (a) (abridged).} Prove that if $x$ satisfies
+\paragraph{Problem 2-18 (abridged). (a)} Prove that if $x$ satisfies
 \begin{equation*}
   x^n + a_{n-1}x^{n-1} + \cdots + a_0 = 0
 \end{equation*} for some integers $a_{n-1}, \ldots, a_0$, then $x$ is
 irrational unless $x$ is an integer.
 
-\paragraph{Solution (a).} For some rational solution $x$ i.e. $x = b/c$ for
-some integers $b, c$ with no common factors, \begin{equation*}
+\paragraph{Solution:} For some rational solution $x$ i.e. $x = b/c$ for some
+integers $b, c$ with no common factors, \begin{equation*}
   \frac{b^n}{c^n} + a_{n-1} \cdot \frac{b^{n-1}}{c^{n-1}} + \cdots + a_0 \cdot
   \frac{b^0}{c^0} = 0
 \end{equation*} which can be multiplied by $c^n$ and rewritten to yield
@@ -123,10 +114,9 @@ divides every term other than $b^n$, so it must divide $b^n$ too. However,
 since $b$ and $c$ share no common factors, the prime factor cannot divide
 $b^n$. Hence, $c = \pm1$. This proves that $x$ is an integer.
 
-\paragraph{Problem (b).} Prove that $\sqrt{6} - \sqrt{2} - \sqrt{3}$ is
-irrational.
+\paragraph{(b)} Prove that $\sqrt{6} - \sqrt{2} - \sqrt{3}$ is irrational.
 
-\paragraph{Solution (b).} Let $x = \sqrt{6} - \sqrt{2} - \sqrt{3}$. Then,
+\paragraph{Solution:} Let $x = \sqrt{6} - \sqrt{2} - \sqrt{3}$. Then,
 \begin{align*}
   x^2 &= 6 + (\sqrt{2} + \sqrt{3})^2 - 2\sqrt{6}(\sqrt{2} + \sqrt{3}) \\
     &= 11 + 2\sqrt{6}[1 - (\sqrt{2} + \sqrt{3})],
@@ -139,9 +129,9 @@ irrational.
 From (a), $x$ is irrational unless it is an integer. It is easy to check that
 $0 < \sqrt{6} - \sqrt{2} - \sqrt{3} < 1$, and so $x$ must be irrational.
 
-\paragraph{Problem (c).} Prove that $\sqrt{2} + \sqrt[3]{2}$ is irrational.
+\paragraph{(c)} Prove that $\sqrt{2} + \sqrt[3]{2}$ is irrational.
 
-\paragraph{Solution (c).} Let $x = \sqrt{2} + \sqrt[3]{2} = \gamma^2 +
+\paragraph{Solution:} Let $x = \sqrt{2} + \sqrt[3]{2} = \gamma^2 +
 \gamma^3$ where $\gamma = 2^{1/6}$. Considering the first sixth powers of $x$
 and constructing a table for the coefficients of each term,
 

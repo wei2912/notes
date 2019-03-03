@@ -147,15 +147,12 @@ l$ or $\lim_{x \downarrow a} f(x) = l$ for limits from above, and $\lim_{x
   \end{equation*} This proves (3).
 \end{proof}
 
-\section{Exercises}
+\section*{Exercises}
 
-\setcounter{subsection}{13}
-\subsection{Limit when divisor is $x$}
+\paragraph{Problem 5-14. (a)} Prove that if $\lim_{x \rightarrow 0} f(x)/x = l$
+and $b \neq 0$, then $\lim_{x \rightarrow 0}f(bx)/x = bl$.
 
-\paragraph{Problem (a) (abridged).} Prove that if $\lim_{x \rightarrow 0}
-f(x)/x = l$ and $b \neq 0$, then $\lim_{x \rightarrow 0}f(bx)/x = bl$.
-
-\paragraph{Solution (a).} By bringing out the constant $b$, \begin{equation*}
+\paragraph{Solution:} By bringing out the constant $b$, \begin{equation*}
   \lim_{x \rightarrow 0}\frac{f(bx)}{x} = \lim_{x \rightarrow 0}
     \frac{bf(bx)}{bx} = b\lim_{x \rightarrow 0}\frac{f(bx)}{bx} =
     b\lim_{y \rightarrow 0}\frac{f(y)}{y} = bl
@@ -165,28 +162,25 @@ is a $\delta > 0$ such that if $0 < |y| < \delta$, then $\left|\frac{f(y)}{y} -
 l\right| < \epsilon$. Then if $0 < |x| < \frac{\delta}{b}$, we have $0 < |bx| <
 \delta$, so $\left|\frac{f(bx)}{bx} - l\right| < \epsilon$.
 
-\paragraph{Problem (b).} What happens if $b = 0$?
+\paragraph{(b)} What happens if $b = 0$?
 
-\paragraph{Solution (b).} In this case, $\lim_{x \rightarrow 0} (bx)/x =
+\paragraph{Solution:} In this case, $\lim_{x \rightarrow 0} (bx)/x =
 \lim_{x \rightarrow 0} f(0)/x$ does not exist as no upper bound can be derived
 for $|bx|$, unless $f(0) = 0$.
 
-\paragraph{Problem (c).} Part (a) enables us to find $\lim_{x \rightarrow 0}
+\paragraph{(c)} Part (a) enables us to find $\lim_{x \rightarrow 0}
 (\sin{x})/x$. Find this limit in another way.
 
-\paragraph{Solution (c).} One could make use of $\sin{2x} = 2\sin{x}\cos{x}$ in
+\paragraph{Solution:} One could make use of $\sin{2x} = 2\sin{x}\cos{x}$ in
 order to derive the limit: \begin{equation*}
   \lim_{x \rightarrow 0}\frac{\sin{2x}}{x} = \lim_{x \rightarrow 0}\frac{2
     \sin{x}\cos{x}}{x} = 2\lim_{x \rightarrow 0}\cos{x}\lim_{x \rightarrow 0}
     \frac{\sin{x}}{x} = 2\lim_{x \rightarrow 0}\frac{\sin{x}}{x}.
 \end{equation*}
 
-\setcounter{subsection}{19}
-\subsection{Limit of a weird function I}
-
-\paragraph{Problem.} Prove that if $f(x) = x$ for rational $x$, and $f(x) = -x$
-for irrational $x$, then $\lim_{x \rightarrow a}f(x)$ does not exist if $a \neq
-0$.
+\paragraph{Problem 5-20.} Prove that if $f(x) = x$ for rational $x$, and $f(x)
+= -x$ for irrational $x$, then $\lim_{x \rightarrow a}f(x)$ does not exist if
+$a \neq 0$.
 
 \paragraph{Solution.} Consider, for simplicity, the case $a > 0$. Then, for any
 choice of $\delta > 0$, there are $x$ with $0 < |x - a| < \delta$ and $f(x) >
@@ -194,25 +188,22 @@ a/2$, as well as $x$ with $0 < |x - a| < \delta$ and $f(x) < -a/2$. Since the
 distance between $a/2$ and $-a/2$ is $a$, this means that we cannot have $|f(x)
 - l| < a$ for all such $x$ with $0 < |x - a| < \delta$, no matter what $l$ is.
 
-\setcounter{subsection}{22}
-\subsection{Limit of product of functions (abridged)}
+\paragraph{Problem 5-23. (a)} Suppose that $\lim_{x \rightarrow 0}f(x)$ exists
+and is $\neq 0$. Prove that if $\lim_{x \rightarrow 0}g(x)$ does not exist,
+then $\lim_{x \rightarrow 0}f(x)g(x)$ also does not exist.
 
-\paragraph{Problem (a).} Suppose that $\lim_{x \rightarrow 0}f(x)$ exists and
-is $\neq 0$. Prove that if $\lim_{x \rightarrow 0}g(x)$ does not exist, then
-$\lim_{x \rightarrow 0}f(x)g(x)$ also does not exist.
-
-\paragraph{Solution (a).} Should $\lim_{x \rightarrow 0}f(x)g(x)$ exist, then
+\paragraph{Solution:} Should $\lim_{x \rightarrow 0}f(x)g(x)$ exist, then
 $\lim_{x \rightarrow 0}g(x) = \lim_{x \rightarrow 0}f(x)g(x)/f(x)$ must also
 exist.
 
-\paragraph{Problem (b).} Prove the same result if $\lim_{x \rightarrow 0}|f(x)|
+\paragraph{(b)} Prove the same result if $\lim_{x \rightarrow 0}|f(x)|
 = \infty$.
 
-\paragraph{Solution (b).} Clearly, if $\lim_{x \rightarrow 0}f(x)g(x)$ exists,
+\paragraph{Solution:} Clearly, if $\lim_{x \rightarrow 0}f(x)g(x)$ exists,
 then $\lim_{x \rightarrow 0}g(x) = 0$.
 
-\paragraph{Problem (c).} Prove that if neither of these two
-conditions holds, then there is a function $g$ such that
+\paragraph{(c)} Prove that if neither of these two conditions holds, then there
+is a function $g$ such that
 $\lim_{x \rightarrow 0}g(x)$ does not exist, but $\lim_{x \rightarrow 0}f(x)
 g(x)$ does exist.
 
@@ -222,7 +213,7 @@ $\epsilon > 0$, there are arbitrarily small $x$ with $|f(x)| < \epsilon$. In
 the second case, begin by choosing points $x_n$ with $|x_n| < 1/n$ and
 $|f(x_n)| < 1/n$.
 
-\paragraph{Solution (c).} For case (1), it is clear that we cannot have
+\paragraph{Solution:} For case (1), it is clear that we cannot have
 $\lim_{x \rightarrow 0}f(x) = 0$, so by the assumption in (a) the limit
 $\lim_{x \rightarrow 0}f(x)$ cannot exist. Let $g = 1/f$. Since it is not true
 that $\lim_{x \rightarrow 0}|f(x)| = \infty$, it follows that if $\lim_{x
@@ -235,34 +226,28 @@ For case (2), choose $x_n$ as in the hint. Define $g(x) = 0$ for $x \neq x_n$,
 and $g(x) = 1$ for $x = x_n$. Then $\lim_{x \rightarrow 0}g(x)$ does not exist,
 but $\lim_{x \rightarrow 0}f(x)g(x) = 0$.
 
-\setcounter{subsection}{23}
-\subsection{Limit of a weird function II}
-
-\paragraph{Problem.} Suppose that $A_n$ is, for each natural number $n$, some
-\emph{finite} set of numbers in $[0, 1]$, and that $A_n$ and $A_m$ have no
+\paragraph{Problem 5-24.} Suppose that $A_n$ is, for each natural number $n$,
+some \emph{finite} set of numbers in $[0, 1]$, and that $A_n$ and $A_m$ have no
 members in common if $m \neq n$. Define $f$ as follows: \begin{equation*}
   f(x) = \begin{cases}
     1/n, &x \text{ in } A_n \\
     0, &x \text{ not in } A_n \text{ for any } n.
   \end{cases}
-\end{equation*} Prove that $\lim_{x \rightarrow a}f(x) = 0$ for all $a$ in $[0,
-1]$.
+\end{equation*}
+Prove that $\lim_{x \rightarrow a}f(x) = 0$ for all $a$ in $[0, 1]$.
 
-\paragraph{Solution.} Given $\epsilon > 0$, pick $n$ with $1/n < \epsilon$ and
+\paragraph{Solution:} Given $\epsilon > 0$, pick $n$ with $1/n < \epsilon$ and
 let $\delta$ be the minimum distance from $a$ to all points in $A_1, \ldots,
 A_n$ (except $a$ itself if $a$ is one of these points). Then, $0 < |x - a| <
 \delta$ implies that $x$ is not in $A_1, \ldots, A_n$, so $f(x) = 0$ or $1/m$
 for $m > n$, so $|f(x)| < \epsilon$.
 
-\setcounter{subsection}{30}
-\subsection{One-sided limits}
+\paragraph{Problem 5-31 (abridged).} Suppose that $\lim_{x \rightarrow a^-}f(x)
+< \lim_{x \rightarrow a^+}f(x)$. Prove that there is some $\delta > 0$ such
+that $f(x) < f(y)$ whenever $x < a < y$ and $|x - a| < \delta$ and $|y - a| <
+\delta$. Is the converse true?
 
-\paragraph{Problem (abridged).} Suppose that $\lim_{x \rightarrow a^-}f(x) <
-\lim_{x \rightarrow a^+}f(x)$. Prove that there is some $\delta > 0$ such that
-$f(x) < f(y)$ whenever $x < a < y$ and $|x - a| < \delta$ and $|y - a| < \delta
-$. Is the converse true?
-
-\paragraph{Solution.} Let $l = \lim_{x \rightarrow a^-}f(x)$ and $m = \lim_{x
+\paragraph{Solution:} Let $l = \lim_{x \rightarrow a^-}f(x)$ and $m = \lim_{x
 \rightarrow a^+}f(x)$. Since $m - l > 0$, there is a $\delta > 0$ such that
 \begin{align*}
   |f(x) - l| < \frac{m - l}{2} &\text{ when } a - \delta < x < a, \\
@@ -276,16 +261,13 @@ The converse is false, as shown by $f(t) = t$ and any $a$. It is only possible
 to conclude that $\lim_{x \rightarrow a^-}f(x) \leq \lim_{x \rightarrow a^+}
 f(x)$.
 
-\setcounter{subsection}{31}
-\subsection{Limits of rational fractions}
-
-\paragraph{Problem.} Prove that $\lim_{x \rightarrow \infty}(a_nx^n + \cdots +
-a_0)/(b_mx^m + \cdots + b_0)$ exists if and only if $m \geq n$. What is the
-limit when $m = n$? When $m > n$? Hint: the one easy limit is $\lim_{x
+\paragraph{Problem 5-32.} Prove that $\lim_{x \rightarrow \infty}(a_nx^n +
+\cdots + a_0)/(b_mx^m + \cdots + b_0)$ exists if and only if $m \geq n$. What
+is the limit when $m = n$? When $m > n$? Hint: the one easy limit is $\lim_{x
 \rightarrow \infty}1/x^k = 0$; do some algebra so that this is the only
 information you need.
 
-\paragraph{Solution.} Naturally, we assume that $a_n, b_m \neq 0$. If $x \neq
+\paragraph{Solution:} Naturally, we assume that $a_n, b_m \neq 0$. If $x \neq
 0$ and $m < n$, we write \begin{equation*}
   \lim_{x \rightarrow \infty}\frac{a_nx^n + \cdots + a_0}{b_mx^m + \cdots + b_0
     } = \lim_{x \rightarrow \infty}\frac{a_n + \cdots + \frac{a_0}{x^n}}{\frac{

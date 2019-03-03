@@ -104,15 +104,12 @@
   Or one can apply the first case to the function $-f$.
 \end{proof}
 
-\section{Exercises}
+\section*{Exercises}
 
-\setcounter{subsection}{11}
-\subsection{Continuity of composite functions}
+\paragraph{Problem 6-12. (a)} Prove that if $f$ is continuous at $l$ and
+$\lim_{x \rightarrow a}g(x) = l$, then $\lim_{x \rightarrow a}f(g(x)) = f(l)$.
 
-\paragraph{Problem (a).} Prove that if $f$ is continuous at $l$ and $\lim_{x
-\rightarrow a}g(x) = l$, then $\lim_{x \rightarrow a}f(g(x)) = f(l)$.
-
-\paragraph{Solution (a).} Consider a function $G$ with $G(x) = g(x)$ for $x
+\paragraph{Solution:} Consider a function $G$ with $G(x) = g(x)$ for $x
 \neq a$, and $G(a) = l$. Such a function is guaranteed to be continuous at $a$.
 
 Then, from Theorem 2, it is clear that as $G$ is continuous at $a$ and $f$ is
@@ -120,11 +117,11 @@ continuous at $G(a)$, then $f \circ G$ is continuous at $a$. Thus, $f(l) =
 f(G(a)) = \lim_{x \rightarrow a}f(G(x)) = \lim_{x \rightarrow a}(f \circ G)(x)$
 which proves the statement.
 
-\paragraph{Problem (b).} Show that if continuity of $f$ at $l$ is not assumed,
+\paragraph{(b)} Show that if continuity of $f$ at $l$ is not assumed,
 then it is not generally true that $\lim_{x \rightarrow a}f(g(x)) = f(\lim_{x
 \rightarrow a}g(x))$.
 
-\paragraph{Solution (b).} Let $g = l + x - a$ and \begin{equation*}
+\paragraph{Solution:} Let $g = l + x - a$ and \begin{equation*}
   f(x) = \begin{cases}
     0, &x \neq l, \\
     1, &x = l. \\
@@ -133,19 +130,16 @@ then it is not generally true that $\lim_{x \rightarrow a}f(g(x)) = f(\lim_{x
 Then, as $\lim_{x \rightarrow a}g(x) = l$, $f(\lim_{x \rightarrow a}g(x)) = 1$.
 Yet, since $g(x) \neq l$ for $x \neq a$, $\lim_{x \rightarrow a}f(g(x)) = 0$.
 
-\setcounter{subsection}{15}
-\subsection{Removable discontinuities}
+\paragraph{Problem 6-16.} If $\lim_{x \rightarrow a}f(x)$ exists, but is $\neq
+f(a)$, then $f$ is said to have a \emph{removable discontinuity} at $a$.
 
-If $\lim_{x \rightarrow a}f(x)$ exists, but is $\neq f(a)$, then $f$ is said to
-have a \emph{removable discontinuity} at $a$.
-
-\paragraph{Problem (d).} Let $f$ be a function with the property that every
-point of discontinuity is a removable discontinuity. This means that $\lim_{y
+\paragraph{(d)} Let $f$ be a function with the property that every point of
+discontinuity is a removable discontinuity. This means that $\lim_{y
 \rightarrow x}f(y)$ exists for all $x$, but $f$ may be discontinuous at some
 (even infinitely many) numbers $x$. Define $g(x) = \lim_{y \rightarrow x}f(y)$.
 Prove that $g$ is continuous.
 
-\paragraph{Solution (d).} [to be added]
+\paragraph{Solution:} [to be added]
 
 \end{document}
 

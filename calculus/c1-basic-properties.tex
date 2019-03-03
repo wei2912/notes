@@ -46,12 +46,9 @@ all positive numbers, $P$,
   \cdot b$ is in $P$.
 \end{tabular}
 
-\section{Exercises}
+\section*{Exercises}
 
-\setcounter{subsection}{7}
-\subsection{Defining $P$ in terms of $<$}
-
-\paragraph{Problem (abridged).} Suppose that P10-12 are replaced by the
+\paragraph{Problem 1-8 (abridged).} Suppose that P10-12 are replaced by the
 following properties:
 
 \begin{tabular}{l p{4in}}
@@ -72,7 +69,7 @@ following properties:
 
 Show that P10-12 can then be deduced as theorems.
 
-\paragraph{Solution.} P10 can be deduced by considering P'10 with $b = 0$.
+\paragraph{Solution:} P10 can be deduced by considering P'10 with $b = 0$.
 Then, for every number $a$, one and only one of the following holds:
 \begin{enumerate}
   \itemsep0em
@@ -91,16 +88,13 @@ and $b$, if $0 < a$ and $a < b$, then $0 < b$. Hence, from P'13, for any
 numbers $a$ and $b$, if $0 < a$ and $0 < b$, then $0 \cdot a < a \cdot b$ i.e.
 if $a$ and $b$ are in $P$, then $ab$ is in $P$.
 
-\setcounter{subsection}{14}
-\subsection{Proving inequalities}
-
-\paragraph{Problem (abridged).} Prove that if $x$ and $y$ are not both 0, then
-\begin{gather*}
+\paragraph{Problem 1-15 (abridged).} Prove that if $x$ and $y$ are not both 0,
+then \begin{gather*}
   x^2 + xy + y^2 > 0, \\
-  x^4 + x^3y + x^2y^2 + xy^3 + y^4 > 0
-\end{gather*}.
+  x^4 + x^3y + x^2y^2 + xy^3 + y^4 > 0.
+\end{gather*}
 
-\paragraph{Solution.} From Problem 1, $x^n - y^n = (x - y)(x^{n-1} + x^{n-2}y +
+\paragraph{Solution:} From Problem 1, $x^n - y^n = (x - y)(x^{n-1} + x^{n-2}y +
 \cdots + xy^{n-2} + y^{n-1})$. Without loss of generality, assume $x > y$.
 Considering these two inequalities, \begin{gather*}
   x^3 - y^3 > 0, \\
@@ -111,41 +105,38 @@ Considering these two inequalities, \begin{gather*}
 \end{gather*}
 This concludes the proof.
 
-\setcounter{subsection}{15}
-\subsection{Proving properties of $(x + y )^n$}
-
-\paragraph{Problem (a).} Show that \begin{gather*}
+\paragraph{Problem 1-16. (a)} Show that \begin{gather*}
   (x + y)^2 = x^2 + y^2 \text{ only when } x = 0 \text{ or } y = 0, \\
   (x + y)^3 = x^3 + y^3 \text{ only when } x = 0 \text{ or } y = 0 \text{ or }
   x = -y.
 \end{gather*}
 
-\paragraph{Solution (a).} $(x + y)^2 = x^2 + 2xy + y^2$. Clearly, for
+\paragraph{Solution:} $(x + y)^2 = x^2 + 2xy + y^2$. Clearly, for
 $(x + y)^2 = x^2 + y^2$, $2xy = 0$ which implies $x = 0$ or $y = 0$. Similarly,
 $(x + y)^3 = x^3 + 3x^2y + 3xy^2 + y^3$, and for $(x + y)^3 = x^3 + y^3$,
 $3x^2y + 3xy^2 = 3xy(x + y) = 0$ which implies $x = 0$ or $y = 0$ or $x = -y$.
 
-\paragraph{Problem (b).} Using the fact that \begin{equation*}
+\paragraph{(b)} Using the fact that \begin{equation*}
   x^2 + 2xy + y^2 = (x + y)^2 \geq 0,
 \end{equation*} show that $4x^2 + 6xy + 4y^2 > 0$ unless $x$ and $y$ are both
 0.
 
-\paragraph{Solution (b).} $4x^2 + 6xy + 4y^2 = (x^2 + y^2) + 3(x + y)^2 \geq
+\paragraph{Solution:} $4x^2 + 6xy + 4y^2 = (x^2 + y^2) + 3(x + y)^2 \geq
 x^2 + y^2 + 0 = x^2 + y^2$. However, $x^2 + y^2 = 0$ only when $x$ and $y$ are
 both 0; otherwise, $x^2 + y^2 > 0$.  Hence, it is clear that $4x^2 + 6xy + 4y^2
 > 0$ unless $x$ and $y$ are both 0.
 
-\paragraph{Problem (c).} Use part (b) to find out when $(x + y)^4 = x^4 + y^4$.
+\paragraph{(c)} Use part (b) to find out when $(x + y)^4 = x^4 + y^4$.
 
-\paragraph{Solution (c).} $(x + y)^4 = x^4 + 4x^3y + 6x^2y^2 + 4xy^3 + y^4 =
+\paragraph{Solution:} $(x + y)^4 = x^4 + 4x^3y + 6x^2y^2 + 4xy^3 + y^4 =
 (x^4 + y^4) + xy(4x^2 + 6xy + 4y^2)$. It is now obvious that for $(x + y)^4 =
 x^4 + y^4$, $xy(4x^2 + 6xy + 4y^2) = 0$ which implies $x = 0$ or $y = 0$ or
 $4x^2 + 6xy + 4y^2 = 0$. From (b), $4x^2 + 6xy + 4y^2 > 0$ unless $x$ and $y$
 are both 0. Hence, $(x + y)^4 = x^4 + y^4$ only when $x = 0$ or $y = 0$.
 
-\paragraph{Problem (d) (abridged).} Find out when $(x + y)^5 = x^5 + y^5$.
+\paragraph{(d)} Find out when $(x + y)^5 = x^5 + y^5$.
 
-\paragraph{Solution (d).} $(x + y)^5 = x^5 + 5x^4y + 10x^3y^2 + 10x^2y^3 +
+\paragraph{Solution:} $(x + y)^5 = x^5 + 5x^4y + 10x^3y^2 + 10x^2y^3 +
 5xy^4 + y^5 = (x^5 + y^5) + 5xy(x^3 + 2x^2y + 2xy^2 + y^3)$. It is clear that
 for $(x + y)^5 = x^5 + y^5$, $5xy(x^3 + 2x^2y + 2xy^2 + y^3) = 0$ which implies
 $x = 0$, $y = 0$ or $x^3 + 2x^2y + 2xy^2 + y^3 = 0$. The problem simplifies to
@@ -157,15 +148,12 @@ y)^3 = xy(x + y)$. Since $xy \neq 0$, $x = -y$.
 
 Hence, $(x + y)^5 = x^5 + y^5$ only when $x = 0$ or $y = 0$ or $x = -y$.
 
-\setcounter{subsection}{20}
-\subsection{Proving inequalities with modulus}
-
-\paragraph{Problem (abridged).} Prove that if \begin{equation*}
-  |x - x_0| < \mathrm{min}\left(\frac{\epsilon}{2(|y_0| + 1)}, 1\right) \text{ and } |y
-  - y_0| < \frac{\epsilon}{2(|x_0| + 1)},
+\paragraph{Problem 1-21 (abridged).} Prove that if \begin{equation*}
+  |x - x_0| < \mathrm{min}\left(\frac{\epsilon}{2(|y_0| + 1)}, 1\right)
+    \text{ and } |y - y_0| < \frac{\epsilon}{2(|x_0| + 1)},
 \end{equation*} then $|xy - x_0y_0| < \epsilon$.
 
-\paragraph{Solution.} The problem can be rewritten in terms of three
+\paragraph{Solution:} The problem can be rewritten in terms of three
 inequalities \begin{align*}
   |x - x_0| &< \frac{\epsilon}{2(|y_0| + 1)}, \\
   |x - x_0| &< 1, \\
@@ -187,16 +175,14 @@ and applying the triangle inequality, \begin{align*}
     &= \epsilon.
 \end{align*}
 
-\setcounter{subsection}{21}
-\subsection{Proving inequalities with modulus and reciprocals}
-
-\paragraph{Problem.} Prove that if $y_0 \neq 0$ and \begin{equation*}
-  |y - y_0| < \mathrm{min}\left(\frac{|y_0|}{2}, \frac{\epsilon|y_0|^2}{2}\right),
+\paragraph{Problem 1-22.} Prove that if $y_0 \neq 0$ and \begin{equation*}
+  |y - y_0| < \mathrm{min}\left(\frac{|y_0|}{2}, \frac{\epsilon|y_0|^2}{2}
+    \right),
 \end{equation*} then $y \neq 0$ and \begin{equation*}
   \left|\frac{1}{y} - \frac{1}{y_0}\right| < \epsilon.
 \end{equation*}
 
-\paragraph{Solution.} From the assumption, since $|y - y_0| <
+\paragraph{Solution:} From the assumption, since $|y - y_0| <
 \frac{\epsilon|y_0|^2}{2}$, \begin{align*}
   \left|\frac{1}{y} - \frac{1}{y_0}\right| &= \frac{|y_0 - y|}{|yy_0|} \\
     &= \frac{|y - y_0|}{|y||y_0|} \\
@@ -210,12 +196,9 @@ By the triangle inequality, $|y_0| = |(y_0 - y) + y| \leq |y_0 - y| + |y| = |y
 \frac{|y_0|}{2} \iff 2|y| > |y_0|$. Hence, $\frac{\epsilon|y_0|}{2|y|} <
 \frac{\epsilon|y_0|}{|y_0|} = \epsilon$.
 
-\setcounter{subsection}{22}
-\subsection{Combining Q21 and Q22}
-
-\paragraph{Problem (abridged).} Replace the question marks in the following
-statement by expressions involving $\epsilon$, $x_0$, and $y_0$ so that the
-conclusion will be true:
+\paragraph{Problem 1-23 (abridged).} Replace the question marks in the
+following statement by expressions involving $\epsilon$, $x_0$, and $y_0$ so
+that the conclusion will be true:
 
 If $y_0 \neq 0$ and \begin{equation*}
   |y - y_0| < ? \text{ and } |x - x_0| < ?
@@ -223,7 +206,7 @@ If $y_0 \neq 0$ and \begin{equation*}
   \left|\frac{x}{y} - \frac{x_0}{y_0}\right| < \epsilon.
 \end{equation*}
 
-\paragraph{Solution.} Replacing $y$ and $y_0$ with $\frac{1}{y}$ and
+\paragraph{Solution:} Replacing $y$ and $y_0$ with $\frac{1}{y}$ and
 $\frac{1}{y_0}$ respectively in the result proven by Q21, if \begin{equation*}
   |x - x_0| < \mathrm{min}\left(\frac{\epsilon}{2(|\frac{1}{y_0}| + 1)},
   1\right) \text{ and } \left|\frac{1}{y} - \frac{1}{y_0}\right| <
@@ -245,21 +228,18 @@ Therefore, this proves that if $y_0 \neq 0$ and \begin{equation*}
   \left|\frac{x}{y} - \frac{x_0}{y_0}\right| < \epsilon.
 \end{equation*}
 
-\setcounter{subsection}{23}
-\subsection{Placement of parentheses in a sum}
-
-\paragraph{Problem (abridged).} Let us agree, for definiteness, that $a_1 +
-\cdots + a_n$ will denote \begin{equation*}
+\paragraph{Problem 1-24 (abridged).} Let us agree, for definiteness, that $a_1
++ \cdots + a_n$ will denote \begin{equation*}
   a_1 + (a_2 + (a_3 + \cdots + (a_{n-2} + (a_{n-1} + a_n)))\cdots).
 \end{equation*}
 Thus $a_1 + a_2 + a_3$ denotes $a_1 + (a_2 + a_3)$, and $a_1 + a_2 + a_3 + a_4$
 denotes $a_1 + (a_2 + (a_3 + a_4))$, etc.
 
-\paragraph{Problem (a).} Prove that \begin{equation*}
+\paragraph{(a)} Prove that \begin{equation*}
   (a_1 + \cdots + a_k) + a_{k+1} = a_1 + \cdots + a_{k+1}.
 \end{equation*}
 
-\paragraph{Solution (a).} The base case $k = 1$ is trivial, since $(a_1) + a_2
+\paragraph{Solution:} The base case $k = 1$ is trivial, since $(a_1) + a_2
 = a_1 + a_2$.
 
 Assuming that $(a_1 + \cdots + a_{k-1}) + a_k = a_1 + \cdots + a_k$ for some $k
@@ -272,11 +252,11 @@ Assuming that $(a_1 + \cdots + a_{k-1}) + a_k = a_1 + \cdots + a_k$ for some $k
     a_{k+1} \text{)}
 \end{align*} This proves the inductive hypothesis.
 
-\paragraph{Problem (b).} Prove that if $n \geq k$, then \begin{equation*}
+\paragraph{(b)} Prove that if $n \geq k$, then \begin{equation*}
   (a_1 + \cdots + a_k) + (a_{k+1} + \cdots + a_n) = a_1 + \cdots + a_n.
 \end{equation*}
 
-\paragraph{Solution (b).} The base case $n = k$ is trivial.
+\paragraph{Solution:} The base case $n = k$ is trivial.
 
 Assuming that $(a_1 + \cdots + a_k) + (a_{k+1} + \cdots + a_n) = a_1 + \cdots +
 a_n$ for some $n \geq k + 1$, \begin{align*}
@@ -288,12 +268,12 @@ a_n$ for some $n \geq k + 1$, \begin{align*}
     &= a_1 + \cdots + a_{n+1} \text{ (from (a))}.
 \end{align*} This proves the inductive hypothesis.
 
-\paragraph{Problem (c).} Let $s(a_1, \ldots, a_k)$ be some sum formed from
+\paragraph{(c)} Let $s(a_1, \ldots, a_k)$ be some sum formed from
 $a_1, \ldots, a_k$. Show that \begin{equation*}
   s(a_1, \ldots, a_k) = a_1 + \ldots + a_k.
 \end{equation*}
 
-\paragraph{Solution (c).} The base case $k = 1$ is trivial.
+\paragraph{Solution:} The base case $k = 1$ is trivial.
 
 Suppose that this statement holds for all sums comprising less than $k$ terms.
 Then, there must be two sums $s'(a_1, \ldots, a_l)$ and $s''(a_{l+1}, \ldots,
