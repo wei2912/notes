@@ -1,0 +1,394 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+
+\begin{document}
+
+\title{Chapter 7: Three Hard Theorems}
+\maketitle
+
+\begin{theorem}
+  If $f$ is continuous on $[a, b]$ and $f(a) < 0 < f(b)$, then there is some
+  $x$ in $[a, b]$ such that $f(x) = 0$.
+\end{theorem}
+
+\begin{theorem}
+  If $f$ is continuous on $[a, b]$, then $f$ is bounded above on $[a, b]$, that
+  is, there is some number $N$ such that $f(x) \leq N$ for all $x$ in $[a, b]$.
+\end{theorem}
+
+\begin{theorem}
+  If $f$ is continuous on $[a, b]$, then there is some number $y$ in $[a, b]$
+  such that $f(y) \geq f(x)$ for all $x$ in $[a, b]$.
+\end{theorem}
+
+Some simple generalizations of the above theorems follow:
+
+\begin{theorem}
+  If $f$ is continuous on $[a, b]$ and $f(a) < c < f(b)$, then there is some
+  $x$ in $[a, b]$ such that $f(x) = c$.
+\end{theorem}
+
+\begin{proof}
+  Let $g = f - c$. Then $g$ is continuous, and $g(a) < 0 < g(b)$. By Theorem 1,
+  there is some $x$ in $[a, b]$ such that $g(x) = 0$. But this means that $f(x)
+  = c$.
+\end{proof}
+
+\begin{theorem}
+  If $f$ is continuous on $[a, b]$ and $f(a) > c > f(b)$, then there is some
+  $x$ in $[a, b]$ such that $f(x) = c$.
+\end{theorem}
+
+\begin{proof}
+  The function $-f$ is continuous on $[a, b]$ and $-f(a) < -c < -f(b)$. By
+  Theorem 4 there is some $x$ in $[a, b]$ such that $-f(x) = -c$, which means
+  that $f(x) = c$.
+\end{proof}
+
+Theorems 4 and 5 together show that $f$ takes on any value between $f(a)$ and
+$f(b)$. We can do even better than this: if $c$ and $d$ are in $[a, b]$, then
+$f$ takes on any value between $f(c)$ and $f(d)$. The proof is simple: if, for
+example, $c < d$, then just apply Theorems 4 and 5 to the interval $[c, d]$.
+Summarizing, if a continuous function on an interval takes on two values, it
+takes on every value in between; this slight generalization of Theorem 1 is
+often called the Intermediate Value Theorem.
+
+\begin{theorem}
+  If $f$ is continuous on $[a, b]$, then $f$ is bounded below on $[a, b]$, that
+  is, there is some number $N$ such that $f(x) \geq N$ for all $x$ in $[a, b]$.
+\end{theorem}
+
+\begin{proof}
+  The function $-f$ is continuous on $[a, b]$, so by Theorem 2 there is a
+  number $M$ such that $-f(x) \leq M$ for all $x$ in $[a, b]$, so we can let $N
+  = -M$.
+\end{proof}
+
+Theorems 2 and 6 together show that a continuous function $f$ on $[a, b]$ is
+bounded on $[a, b]$, that is, there is a number $N$ such that $|f(x)| \leq N$
+for all $x$ in $[a, b]$. In fact, since Theorem 2 ensures the existence of a
+number $N_1$ such that $f(x) \leq N_1$ for all $x$ in $[a, b]$, and Theorem 6
+ensures the existence of a number $N_2$ such that $f(x) \geq N_2$ for all $x$
+in $[a, b]$, we can take $N = \mathrm{max}(|N_1|, |N_2|)$.
+
+\begin{theorem}
+  If $f$ is continuous on $[a, b]$, then there is some $y$ in $[a, b]$ such
+  that $f(y) \leq f(x)$ for all $x$ in $[a, b]$.
+  (A continuous function on a closed interval takes on its minimum value on
+  that interval.)
+\end{theorem}
+
+\begin{proof}
+  The function $-f$ is continuous on $[a, b]$; by Theorem 3 there is some $y$
+  in $[a, b]$ such that $-f(y) \geq -f(x)$ for all $x$ in $[a, b]$, which means
+  that $f(y) \leq f(x)$ for all $x$ in $[a, b]$.
+\end{proof}
+
+Now that we have derived the trivial consequences of Theorems 1, 2, and 3, we
+can begin proving a few interesting things.
+
+\begin{theorem}
+  Every positive number has a square root. In other words, if $a > 0$, then
+  there is some number $x$ such that $x^2 = a$.
+\end{theorem}
+
+\begin{proof}
+  Consider the function $f(x) = x^2$, which is certainly continuous. Notice
+  that the statement of the theorem can be expressed in terms of $f$: "the
+  number $\alpha$ has a square root" means that $f$ takes on the value
+  $\alpha$. The proof of this fact about $f$ will be an easy consequence of
+  Theorem 4.
+
+  There is obviously a number $b > 0$ such that $f(b) > \alpha$; in fact, if
+  $\alpha > 1$ we can take $b = \alpha$, while if $\alpha < 1$ we can take $b =
+  1$. Since $f(0) < \alpha < f(b)$, Theorem 4 applied to $[0, b]$ implies that
+  for some $x$ (in $[0, b]$), we have $f(x) = \alpha$, i.e., $x^2 = \alpha$.
+\end{proof}
+
+Precisely the same argument can be used to prove that a positive number has an
+$n$th root, for any natural number $n$. If $n$ happens to be odd, one can do
+better: \emph{every} number has an $n$th root. To prove this we just note that
+if the positive number $\alpha$ has the $n$th root, i.e., if $x^n = \alpha$,
+then $(-x)^n = -\alpha$ (since $n$ is odd), so $-\alpha$ has the $n$th root
+$-x$. The assertion, that for odd $n$ any number $\alpha$ has an $n$th root,
+is equivalent to the statement that the equation \begin{equation*}
+  x^n - \alpha = 0
+\end{equation*}
+has a root if $n$ is odd. Expressed in this way the result is susceptible of
+great generalization.
+
+\begin{theorem}
+  If $n$ is odd, then any equation \begin{equation*}
+    x^n + a_{n-1}x^{n-1} + \cdots + a_0 = 0
+  \end{equation*}
+  has a root.
+\end{theorem}
+
+\begin{proof}
+  We obviously want to consider the function \begin{equation*}
+    f(x) = x^n + a_{n-1}x^{n-1} + \cdots + a_0;
+  \end{equation*}
+  we would like to prove that $f$ is sometimes positive and sometimes negative.
+  The intuitive idea is that for large $|x|$, the function is very much like
+  $g(x) = x^n$ and, since $n$ is odd, this function is positive for large
+  positive $x$ and negative for large negative $x$. A little algebra is all we
+  need to make this intuitive idea work.
+
+  The proper analysis of the function $f$ depends on writing \begin{equation*}
+    f(x) = x^n + a_{n-1}x^{n-1} + \cdots + a_0 = x^n\left(1 + \frac{a_{n-1}}{x}
+      + \cdots + \frac{a_0}{x^n}\right).
+  \end{equation*}
+  Note that \begin{equation*}
+    \left|\frac{a_{n-1}}{x} + \frac{a_{n-2}}{x^2} + \cdots + \frac{a_0}{x^n}
+      \right| \leq \frac{|a_{n-1}|}{|x|} + \cdots + \frac{|a_0|}{|x^n|}.
+  \end{equation*}
+  Consequently, if we choose $x$ satisfying \begin{equation}
+    |x| \geq 1, 2n|a_{n-1}|, \ldots, 2n|a_0|, \label{eq:thm9-cond} \tag{*}
+  \end{equation}
+  then $|x^k| \geq |x|$ and \begin{equation*}
+    \frac{|a_{n-k}|}{|x^k|} \leq \frac{|a_{n-k}|}{|x|} \leq \frac{|a_{n-k}|}{2n
+    |a_{n-k}|} = \frac{1}{2n},
+  \end{equation*}
+  so \begin{equation*}
+    \left|\frac{a_{n-1}}{x} + \frac{a_{n-2}}{x^2} + \cdots + \frac{a_0}{x^n}
+      \right| \leq \frac{1}{2n} + \cdots + \frac{1}{2n} = \frac{1}{2}.
+  \end{equation*}
+  In other words, \begin{equation*}
+    -\frac{1}{2} \leq \frac{a_{n-1}}{x} + \cdots + \frac{a_0}{x^n} \leq
+      \frac{1}{2}
+  \end{equation*}
+  which implies that \begin{equation*}
+    \frac{1}{2} \leq 1 + \frac{a_{n-1}}{x} + \cdots + \frac{a_0}{x^n}.
+  \end{equation*}
+  Therefore, if we choose an $x_1 > 0$ which satisfies \eqref{eq:thm9-cond},
+  then \begin{equation*}
+    \frac{(x_1)^n}{2} \leq (x_1)^n\left(1 + \frac{a_{n-1}}{x_1} + \cdots +
+      \frac{a_0}{(x_1)^n}\right) = f(x_1),
+  \end{equation*}
+  so that $f(x_1) > 0$. On the other hand, if $x_2 < 0$ satisfies
+  \eqref{eq:thm9-cond}, then $(x_2)^n < 0$ and \begin{equation*}
+    \frac{(x_2)^n}{2} \geq (x_2)^n\left(1 + \frac{a_{n-1}}{x_2} + \cdots +
+      \frac{a_0}{(x_2)^n}\right) = f(x_2),
+  \end{equation*}
+  so that $f(x_2) < 0$.
+
+  Now applying Theorem 1 to the interval $[x_2, x_1]$ we conclude that there is
+  an $x$ in $[x_2, x_1]$ such that $f(x) = 0$.
+\end{proof}
+
+\begin{theorem}
+  If $n$ is even and $f(x) = x^n + a_{n-1}x^{n-1} + \cdots + a_0$, then there
+  is a number $y$ such that $f(y) \leq f(x)$ for all $x$.
+\end{theorem}
+
+\begin{proof}
+  As in the proof of Theorem 9, if \begin{equation*}
+    M = \mathrm{max}(1, 2n|a_{n-1}|, \ldots, 2n|a_0|),
+  \end{equation*}
+  then for all $x$ with $|x| \geq M$, we have \begin{equation*}
+    \frac{1}{2} \leq 1 + \frac{a_{n-1}}{x} + \cdots + \frac{a_0}{x^n}.
+  \end{equation*}
+  Since $n$ is even, $x^n \geq 0$ for all $x$, so \begin{equation*}
+    \frac{x^n}{2} \leq x^n\left(1 + \frac{a_{n-1}}{x} + \cdots +
+      \frac{a_0}{x^n}\right) = f(x),
+  \end{equation*}
+  provided that $|x| \geq M$. Now consider the number $f(0)$. Let $b > 0$ be a
+  number such that $b^n \geq 2f(0)$ and also $b > M$. Then, if $x \geq b$, we
+  have \begin{equation*}
+    f(x) \geq \frac{x^n}{2} \geq \frac{b^n}{2} \geq f(0).
+  \end{equation*}
+  Similarly, if $x \leq -b$, then \begin{equation*}
+    f(x) \geq \frac{x^n}{2} \geq \frac{(-b)^n}{2} = \frac{b^n}{2} \geq f(0).
+  \end{equation*}
+  Summarizing: \begin{equation*}
+    \text{if } x \geq b \text{ or } x \leq -b, \text{then } f(x) \geq f(0).
+  \end{equation*}
+
+  Now apply Theorem 7 to the function $f$ on the interval $[-b, b]$. We
+  conclude that there is a number $y$ such that \begin{enumerate}
+    \item if $-b \leq x \leq b$, then $f(y) \leq f(x)$.
+  \end{enumerate}
+  In particular, $f(y) \leq f(0)$. Thus \begin{enumerate}
+    \setcounter{enumi}{1}
+    \item if $x \leq -b$ or $x \geq b$, then $f(x) \geq f(0) \geq f(y)$.
+  \end{enumerate}
+  Combining (1) and (2) we see that $f(y) \leq f(x)$ for all $x$.
+\end{proof}
+
+Theorem 10 now allows us to prove the following result.
+
+\begin{theorem}
+  Consider the equation \begin{equation*}
+    x^n + a_{n-1}x^{n-1} + \cdots + a_0 = c, \label{eq:thm11-eq} \tag{*}
+  \end{equation*}
+  and suppose $n$ is even. Then there is a number $m$ such that
+  \eqref{eq:thm11-eq} has a solution for $c \geq m$ and has no solution for $c
+  < m$.
+\end{theorem}
+
+\begin{proof}
+  Let $f(x) = x^n + a_{n-1}x^{n-1} + \cdots + a_0$.
+
+  According to Theorem 10 there is a number $y$ such that $f(y) \leq f(x)$ for
+  all $x$. Let $m = f(y)$. If $c < m$, then the equation \eqref{eq:thm11-eq}
+  obviously has no solution, since the left side always has a value $\geq m$.
+  If $c = m$, then \eqref{eq:thm11-eq} has $y$ as a solution. Finally,
+  suppose $c > m$. Let $b$ be a number such that $b > y$ and $f(b) > c$. Then
+  $f(y) = m < c < f(b)$. Consequently, by Theorem 4, there is some number $x$
+  in $[y, b]$ such that $f(x) = c$, so $x$ is a solution of
+  \eqref{eq:thm11-eq}.
+\end{proof}
+
+On the basis of our present knowledge about the real numbers (namely, P1-P12)
+a proof of Theorems 1, 2 and 3 is impossible.
+
+\section*{Exercises}
+
+\paragraph{Problem 7-13. (b)} Suppose that $f$ satisfies the conclusion of the
+Intermediate Value Theorem, and that $f$ takes on each value \emph{only once}.
+Prove that $f$ is continuous.
+
+\paragraph{Solution:} If $f$ were not continuous at $a$, then for all
+$\epsilon > 0$ there would be $x$ arbitrarily close to $a$ with $|f(x) - f(a)|
+> \epsilon$.
+
+Pick some $x > a$ with $f(x) > f(a) + \epsilon$. By the Intermediate Value
+Theorem, there is $x'$ between $a$ and $x$ with $f(x') < f(a) + \epsilon$. But
+there is also $y$ between $a$ and $x'$ with $f(y) > f(a) + \epsilon$. By the
+Intermediate Value Theorem, $f$ takes on the value $f(a) + \epsilon$ between
+$x$ and $x'$ and also between $x'$ and $y$, contradicting the hypothesis.
+
+\paragraph{(c)} Generalize to the case where $f$ takes on each value only
+finitely many times.
+
+\paragraph{Solution:} As in (b), choose $x_1 > a$ with $f(x_1) > f(a) +
+\epsilon$. Then choose $x'_1$ between $a$ and $x_1$ with $f(x'_1) < f(a) +
+\epsilon$. Then choose $x_2$ between $a$ and $x'_1$ with $f(x_2) > f(a) +
+\epsilon$ and $x'_2$ between $a$ and $x_2$ with $f(x'_2) < f(a) + \epsilon$.
+Repeating this process indefinitely, $f$ takes on the value $f(a) + \epsilon$
+on each interval $[x'_n, x_n]$ for any positive integer $n$, contradicting the
+hypothesis.
+
+\paragraph{Problem 7-14.} If $f$ is a continuous function on $[0, 1]$, let
+$\|f\|$ be the maximum value of $|f|$ on $[0, 1]$.
+
+\paragraph{(b)} Prove that $\|f + g\| \leq \|f\| + \|g\|$. Give an example
+where $\|f + g\| \neq \|f\| + \|g\|$.
+
+\paragraph{Solution:} We have \begin{equation*}
+  |f + g|(x) = |f(x) + g(x)| \leq |f(x)| + |g(x)| \leq |f|(x) + |g|(x).
+\end{equation*}
+If $|f + g|$ has its maximum value at $x_0$, then \begin{equation*}
+  \|f + g\| = |f + g|(x_0) \leq |f|(x_0) + |g|(x_0) \leq \|f\| + \|g\|
+\end{equation*}
+
+Consider the functions $f = -2x + 1, g = 2x - 1$. Clearly, $f + g = 0$ leads to
+$\|f + g\| = 0$, whereas $\|f\| = \|g\| = 1$ and $\|f\| + \|g\| = 1 + 1 = 2$.
+
+\paragraph{Problem 7-15 (abridged).} Suppose that $\phi$ is continuous and
+$\lim_{x \rightarrow \infty}\phi(x)/x^n = 0 = \lim_{x \rightarrow -\infty}
+\phi(x)/x^n$.
+
+\paragraph{(a)} Prove that if $n$ is odd, then there is a number $x$ such that
+$x^n + \phi(x) = 0$.
+
+\paragraph{Solution:} Choose $b > 0$ such that $|\phi(b)/b^n| < 1/2$. Then,
+\begin{equation*}
+  b^n + \phi(b) = b^n\left(1 + \frac{\phi(b)}{b^n}\right) > \frac{b^n}{2} > 0.
+\end{equation*}
+Similarly, choose $a < 0$ such that $|\phi(a)/a^n| < 1/2$. Then,
+\begin{equation*}
+  a^n + \phi(a) = a^n\left(1 + \frac{\phi(a)}{a^n}\right) < \frac{a^n}{2} < 0.
+\end{equation*}
+So by the Intermediate Value Theorem, $x^n + \phi(x) = 0$ for some $x$ in $[a,
+b]$.
+
+\paragraph{(b)} Prove that if $n$ is even, then there is a number $y$ such that
+$y^n + \phi(y) \leq x^n + \phi(x)$ for all $x$.
+
+\paragraph{Solution:} Choose $b > 0$ such that $|\phi(x)/x^n| < 1/2$ for $|x| >
+b$. For $|x| > b$, \begin{equation*}
+  x^n + \phi(x) = x^n\left(1 + \frac{\phi(x)}{x^n}\right) > \frac{x^n}{2} >
+    \frac{b^n}{2}.
+\end{equation*}
+Suppose further that $b^n/2 > \phi(0)$. Then, with $x^n + \phi(x) > \phi(0)$
+for $|x| > b$, the minimum of $x^n + \phi(x)$ for $x$ in $[-b, b]$ is the
+minimum for all $x$.
+
+\paragraph{Problem 7-16.} Let $f$ be any polynomial function. Prove that there
+is some number $y$ such that $|f(y)| \leq |f(x)|$ for all $x$.
+
+\paragraph{Solution:} If $f(x) = x^n + a_{n-1}x^{n-1} + \cdots + a_0$, let $M =
+\mathrm{max}(1, 2n|a_{n-1}|, \ldots, 2n|a_0|)$. Then, for all $x$ with $|x|
+\geq M$, \begin{equation*}
+  \frac{1}{2} \leq 1 + \frac{a_{n-1}}{x} + \cdots + \frac{a_0}{x^n},
+\end{equation*} so \begin{equation*}
+  |f(x)| = \left|x^n\left(1 + \frac{a_{n-1}}{x} + \cdots + \frac{a_0}{x^n}
+    \right)\right| \geq \left|\frac{x^n}{2}\right|
+\end{equation*}
+If $b > M$ satisfies $|b^n/2| \geq |f(0)|$, then $|f(x)| \geq |f(0)|$ for $|x|
+\geq b$. Hence, the minimum value of $|f(x)|$ on $[-b, b]$ is the minimum value
+for all $x$.
+
+\paragraph{Problem 7-17 (abridged).} Suppose that $f$ is a continuous function
+with $f(x) > 0$ for all $x$, and $\lim_{x \rightarrow -\infty}f(x) = 0 = \lim_{
+x \rightarrow \infty}f(x)$. Prove that there is some number $y$ such that $f(y)
+\geq f(x)$ for all $x$.
+
+\paragraph{Solution:} Pick $b > 0$ such that $f(x) < f(0)$ for $|x| > b$. Then
+the maximum of $f$ on $[-b, b]$ is also the maximum on $\mathbb{R}$.
+
+\paragraph{Problem 7-18. (a)} Suppose that $f$ is continuous on $[a, b]$, and
+let $x$ be any number. Prove that there is a point on the graph of $f$ which
+is closest to $(x, 0)$; in other words there is some $y$ in $[a, b]$ such that
+the distance from $(x, 0)$ to $(y, f(y))$ is $\leq$ distance from $(x, 0)$ to
+$(z, f(z))$ for all $z$ in $[a, b]$.
+
+\paragraph{Solution:} Theorem 3 can be applied to the continuous function
+\begin{equation*}
+  d(z) = \sqrt{(f(z))^2 + (z - x)^2}
+\end{equation*} which gives the distance from $(x, 0)$ to $(z, f(z))$, for $z$
+in $[a, b]$.
+
+\paragraph{(b)} Show that this assertion is not necessarily true if $[a, b]$
+is replaced by $(a, b)$ throughout.
+
+\paragraph{Solution:} If $f(x) = x$ on $(a, b)$, then no point of the graph is
+closest to the point $(a, a)$.
+
+\paragraph{(c)} Show that the assertion is true if $[a, b]$ is replaced by
+$\mathbb{R}$ throughout.
+
+\paragraph{Solution:} Clearly, the function $d(z)$ satisfies the conditions
+$d(z) > 0$ for all $z$ and $\lim_{z \rightarrow -\infty}d(z) = \infty = \lim_{z
+\rightarrow \infty}d(z)$. Choose $c > 0$ such that $d(z) > d(0)$ for all $|z| >
+c$. Then, the minimum of $d$ on $[-c, c]$ must also be the minimum on
+$\mathbb{R}$.
+
+\paragraph{(d)} In cases (a) and (c), let $g(x)$ be the minimum distance from
+$(x, 0)$ to a point on the graph of $f$. Prove that $g(y) \leq g(x) + |x - y|$,
+and conclude that $g$ is continuous.
+
+\paragraph{Solution:} By definition, $g(x) = \sqrt{(f(z))^2 + (z - x)^2}$ for
+some $z$ in $[a, b]$ or $\mathbb{R}$. Now, for all $z$, \begin{equation*}
+  \sqrt{(f(z))^2 + (z - y)^2} \leq \sqrt{(f(z))^2 + (z - x)^2} + |x - y|,
+\end{equation*} so it is clear that $g(y) \leq g(x) + |x - y|$.
+
+The inequality can be rewritten into $|g(x) - g(y)| \leq |x - y|$. It is clear
+that for any choice of $\epsilon > 0$, one could pick $\delta = \epsilon$,
+proving the continuity of $g$ on $[a, b]$ or $\mathbb{R}$.
+
+\paragraph{(e)} Prove that there are numbers $x_0$ and $x_1$ in $[a, b]$ such
+that the distance from $(x_0, 0)$ to $(x_1, f(x_1))$ is $\leq$ the distance
+from $(x'_0, 0)$ to $(x'_1, f(x'_1))$ for any $x'_0, x'_1$ in $[a, b]$.
+
+\paragraph{Solution:} Apply Theorem 3 to the continuous function $g$ on $[a,
+b]$.
+
+\end{document}
+
