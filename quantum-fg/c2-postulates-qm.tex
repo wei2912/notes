@@ -1,0 +1,113 @@
+\chapter{Postulates of Quantum Mechanics}
+
+\section{State space}
+
+\begin{postulate}
+  Associated to any isolated physical system is a complex vector space with
+  inner product (that is, a Hilbert space) known as the \emph{state space} of
+  the system. The system is completely described by its \emph{state vector},
+  which is a unit vector in the system's state space.
+\end{postulate}
+
+The simplest quantum mechanical system, and the system which we will be most
+concerned with, is the \emph{qubit}. A qubit has a two-dimensional state space.
+Suppose $\ket{0}$ and $\ket{1}$ form an orthonormal basis for that state space.
+Then an arbitrary state vector in the state space can be written
+\begin{equation*}
+  \ket{\psi} = a\ket{0} + b\ket{1},
+\end{equation*} where $a$ and $b$ are complex numbers. The condition that
+$\psi$ be a unit vector, $\ketbra{\psi}{\psi} = 1$, is therefore equivalent to
+$|a|^2 + |b|^2 = 1$. The condition $\ketbra{\psi}{\psi} = 1$ is often known as
+the \emph{normalization condition} for state vectors.
+
+\paragraph{Superposition.} We say that any linear combination $\sum_i \alpha_i
+\ket{\psi_i}$ is a \emph{superposition} of the states $\ket{\psi_i}$ with
+\emph{amplitude} $\alpha_i$ for the state $\ket{\psi_i}$.
+
+\section{Evolution}
+
+\begin{postulate}
+  The evolution of a \emph{closed} quantum system is described by a
+  \emph{unitary transformation}. That is, the state $\ket{\psi}$ of the system
+  at time $t_1$ is related to the state $\ket{\psi'}$ of the system at time
+  $t_2$ by a unitary operator $U$ which depends only on the times $t_1$ and
+  $t_2$, \begin{equation*}
+    \ket{\psi'} = U\ket{\psi}.
+  \end{equation*}
+
+  The evolution of the state of a \emph{closed} quantum system is also
+  described by the \emph{Schr{\"o}dinger equation}, \begin{equation}
+    i\hbar\frac{\mathrm{d}\ket{\psi}}{\mathrm{d}t} = H\ket{\psi}.
+      \label{eq:sch-eq}
+  \end{equation}
+\end{postulate}
+
+In Schr{\"o}dinger's equation, $\hbar$ is a physical constant known
+as \emph{Planck's constant} whose value must be experimentally determined. The
+exact value is not important to us. In practice, it is common to absorb the
+factor $\hbar$ into $H$, effectively setting $\hbar = 1$. $H$ is a fixed
+Hermitian operator known as the \emph{Hamiltonian} of the closed system.
+
+Because the Hamiltonian is a Hermitian operator it has a spectral decomposition
+\begin{equation}
+  H = \sum_E E\ketbra{E}{E}, \label{eq:ham-spec-dec}
+\end{equation} with eigenvalues $E$ and corresponding normalized eigenvectors
+$\ket{E}$. The states $\ket{E}$ are conventionally referred to as \emph{energy
+eigenstates}, or sometimes as \emph{stationary states}, and $E$ is the
+\emph{energy} of the state $\ket{E}$. The lowest energy is known as the
+\emph{ground state energy} for the system, and the corresponding energy
+eigenstate (or eigenspace) is known as the \emph{ground state}. The reason the
+states $\ket{E}$ are sometimes known as stationary states is because their only
+change in time is to acquire an overall numerical factor, \begin{equation*}
+  \ket{E} \rightarrow \exp(-iEt/\hbar)\ket{E}.
+\end{equation*}
+The solution to Sch{\"o}dinger's equation will be verified later to be:
+\begin{equation*} \ket{\psi(t_2)} = \exp\left[\frac{-iH(t_2 - t_1)}{\hbar}\right]
+    \ket{\psi(t_1)} = U(t_1, t_2)\ket{\psi(t_1)},
+\end{equation*} where we define \begin{equation}
+  U(t_1, t_2) \equiv \exp\left[\frac{-iH(t_2 - t_1)}{\hbar}\right].
+    \label{eq:unit-sch-eq}
+\end{equation}
+
+\paragraph{\cite{mikeandike} Exercise 2.54:} Suppose $A$ and $B$ are commuting
+Hermitian operators. Prove that $\exp(A)\exp(B) = \exp(A + B)$.
+
+\paragraph{Solution:} Since $A$ and $B$ are commuting Hermitian operators, they
+are simultaneously diagonalizable. We write $A = \sum_i a_i\ketbra{i}{i}$,
+$B = \sum_j b_j\ketbra{j}{j}$, noting that $A + B = \sum_i (a_i + b_i)
+\ketbra{i}{i}$. Then, $\exp(A) = \sum_i e^{a_i}\ketbra{i}{i}$, $\exp(B) =
+\sum_j e^{b_j}\ketbra{j}{j}$, $\exp(A + B) = \sum_i e^{a_i + b_i}
+\ketbra{i}{i}$. It is clear that \begin{align*}
+  \exp(A)\exp(B)
+    &= \left(\sum_i e^{a_i}\ketbra{i}{i}\right)\left(\sum_j e^{b_j}
+      \ketbra{j}{j}\right) \\
+    &= \sum_{i, j} e^{a_i}e^{b_j}\ket{i}\delta_{ij}\bra{j} \\
+    &= \sum_i e^{a_i}e^{b_i}\ketbra{i}{i} \\
+    &= \sum_i e^{a_i + b_i}\ketbra{i}{i} = \exp(A + B),
+\end{align*} which proves the result.
+
+\paragraph{\cite{mikeandike} (modified) Exercise 2.55:} Prove that $U(t_1,
+t_2)$ as defined in \eqref{eq:unit-sch-eq} is unitary.
+
+\paragraph{Solution:} Consider $U(t_1, t_2) = \exp\left[\frac{-iH(t_2 - t_1)}
+{\hbar}\right]$ and $U(t_1, t_2)^\dagger = \exp\left[\frac{iH^\dagger(t_2 -
+t_1)}{\hbar}\right]$. Rewriting $U(t_1, t_2) = \exp(A)$ and $U(t_1,
+t_2)^\dagger = \exp(B)$ where $A$ and $B$ are Hermitian operators, it is clear
+that $A = -B$ and commute. Hence, $\exp(A)\exp(B) = \exp(A + B) = I$.
+
+\paragraph{\cite{mikeandike} Exercise 2.56:} Use the spectral decomposition to
+show that $K \equiv -i\log(U)$ is Hermitian for any unitary $U$, and thus $U =
+\exp(iK)$ for some Hermitian $K$.
+
+\paragraph{Solution:} Noting that all eigenvalues of $U$ are of modulus 1, one
+could express $U = \sum_i e^{i\theta_i}\ketbra{i}{i}$ with the spectral
+decomposition theorem, leading to $K = -i\log(U) = \sum_i \theta_i\ketbra{i}
+{i}$. Clearly, $K = K^\dagger$, so $K$ is Hermitian.
+
+\paragraph{}
+
+These exercises show that $U(t_1, t_2)$ is unitary. There is therefore a
+one-to-one correspondence between the discrete-time description of dynamics
+using unitary operators, and the continuous time description using
+Hamiltonians.
+
