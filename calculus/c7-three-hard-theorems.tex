@@ -390,5 +390,26 @@ from $(x'_0, 0)$ to $(x'_1, f(x'_1))$ for any $x'_0, x'_1$ in $[a, b]$.
 \paragraph{Solution:} Apply Theorem 3 to the continuous function $g$ on $[a,
 b]$.
 
+\paragraph{Problem 7-19 (abridged). (a)} Suppose that $f$ is continuous on $[0,
+1]$ and $f(0) = f(1)$. Let $n$ be any natural number. Prove that there is some
+number $x$ such that $f(x) = f(x + 1/n)$. Hint: Consider the function $g(x) =
+f(x) - f(x + 1/n)$.
+
+\paragraph{Solution:} Suppose that there exists no number $x$ such that $f(x) =
+f(x + 1/n)$, which implies that $g(x) \neq 0$ for all $x$. Since $g$ is
+continuous on $[0, 1]$, this must mean that $g(x) > 0$ or $g(x) < 0$ for all
+$x$, i.e. $f(x) > f(x + 1/n)$ or $f(x) < f(x + 1/n)$. In the case where $f(x) >
+f(x + 1/n)$, we would have \begin{equation*}
+  f(0) > f(1/n) > f(2/n) > \cdots > f(n/n) = f(1)
+\end{equation*} which is a contradiction. Similarly, the case where $f(x) < f(x
++ 1/n)$ would lead to a contradiction.
+
+\paragraph{(b)} Suppose $0 < a < 1$, but that $a$ is not equal to $1/n$ for any
+natural number $n$. Find a function $f$ which is continuous on $[0, 1]$ and
+which satisfies $f(0) = f(1)$, but which does not satisfy $f(x) = f(x + a)$ for
+any $x$.
+
+[solution to be inserted]
+
 \end{document}
 
