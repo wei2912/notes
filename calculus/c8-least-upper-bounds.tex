@@ -1,0 +1,399 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{lemma}{Lemma}
+
+\begin{document}
+
+\title{Chapter 8: Least Upper Bounds}
+\maketitle
+
+\begin{definition}
+  A set $A$ of real numbers is \emph{bounded above} if there is a number $x$
+  such that \begin{equation*}
+    x \geq a \text{ for every } a \text{ in } A.
+  \end{equation*}
+  Such a number $x$ is called an \emph{upper bound} for $A$.
+\end{definition}
+
+\begin{definition}
+  A number $x$ is the \emph{least upper bound} of $A$ if \begin{itemize}
+    \item $x$ is an upper bound of $A$, and
+    \item if $y$ is an upper bound of $A$, then $x \leq y$.
+  \end{itemize}
+
+  The term \emph{supremum} of $A$ is synonymous with "least upper bound" and
+  abbreviates to $\sup A$.
+\end{definition}
+
+\begin{definition}
+  A set $A$ of real number is \emph{bounded below} if there is a number $x$
+  such that \begin{equation*}
+    x \leq a \text{ for every } a \text{ in } A.
+  \end{equation*}
+\end{definition}
+
+\begin{definition}
+  A number $x$ is the \emph{greatest lower bound} of $A$ if \begin{itemize}
+    \item $x$ is an upper bound of $A$, and
+    \item if $y$ is an upper bound of $A$, then $x \geq y$.
+  \end{itemize}
+
+  The term \emph{infimum} of $A$ is synonymous with "least upper bound" and
+  abbreviates to $\inf A$.
+\end{definition}
+
+The last property of the real numbers can be stated:
+
+\begin{tabular}{l p{4in}}
+  (P13) & (The least upper bound property) If $A$ is a set of real numbers, $A
+  \neq \varnothing$, and $A$ is bounded above, then $A$ has a least upper
+  bound.
+\end{tabular}
+
+We shall apply P13 to the proofs that were omitted in Chapter 7.
+
+\begin{theorem*}[Theorem 7-1]
+  If $f$ is continuous on $[a, b]$ and $f(a) < 0 < f(b)$, then there is some
+  number $x$ in $[a, b]$ such that $f(x) = 0$.
+\end{theorem*}
+
+\begin{proof}
+  Define the set $A$ as follows: \begin{equation*}
+    A = \{x : a \leq x \leq b, \text{ and } f \text{ is negative on the interval
+      } [a, x]\}.
+  \end{equation*}
+  Clearly $A \neq \varnothing$, since $a$ is in $A$; in fact, there is some
+  $\delta > 0$ such that $A$ contains all points $x$ satisfying $a \leq x < a +
+  \delta$; this follows from Problem 6-15, since $f$ is continuous on $[a, b]$
+  and $f(a) < 0$. Similarly, $b$ is an upper bound for $A$ and, in fact, there is
+  a $\delta > 0$ such that all points $x$ satisfying $b - \delta < x \leq b$ are
+  upper bounds for $A$; this also follows from Problem 6-15, since $f(b) > 0$.
+
+  From these remarks it follows that $A$ has a least upper bound $\alpha$ and
+  that $a < \alpha < b$. We now wish to show that $f(\alpha) = 0$, by eliminating
+  the possibilities $f(\alpha) < 0$ and $f(\alpha) > 0$.
+
+  Suppose first that $f(\alpha) < 0$. By Theorem 6-3, there is a $\delta > 0$
+  such that $f(x) < 0$ for $\alpha - \delta < x < \alpha + \delta$. Now there is
+  some number $x_0$ in $A$ which satisfies $\alpha - \delta < x_0 < \alpha$
+  (because otherwise $\alpha$ would not be the \emph{least} upper bound of $A$).
+  This means that $f$ is negative on the whole interval $[a, x_0]$. But if $x_1$
+  is a number between $\alpha$ and $\alpha + \delta$, then $f$ is also negative
+  on the whole interval $[x_0, x_1]$. Therefore $f$ is negative on the interval
+  $[a, x_1]$, so $x_1$ is in $A$. But this contradicts the fact that $\alpha$ is
+  an upper bound for $A$; our original assumption that $f(\alpha) < 0$ must be
+  false.
+
+  Suppose, on the other hand, that $f(\alpha) > 0$. Then there is a number
+  $\delta > 0$ such that $f(x) > 0$ for $\alpha - \delta < x < \alpha + \delta$.
+  Once again we know that there is an $x_0$ in $A$ satisfying $\alpha - \delta <
+  x_0 < \alpha$; but this means that $f$ is negative on $[a, x_0]$, which is
+  impossible, since $f(x_0) > 0$. Thus the assumption $f(\alpha) > 0$ also leads
+  to a contradiction, leaving $f(\alpha) = 0$ as the only possible alternative.
+\end{proof}
+
+The proofs of Theorems 2 and 3 of Chapter 7 require a simple preliminary
+result, which will play much the same role as Theorem 6-3 played in the
+previous proof.
+
+\begin{theorem}
+  If $f$ is continuous at $a$, then there is a number $\delta > 0$ such that
+  $f$ is bounded above on the interval $(a - \delta, a + \delta)$.
+\end{theorem}
+
+\begin{proof}
+  Since $\lim_{x \rightarrow a}f(x) = f(a)$, there is, for every $\epsilon >
+  0$, a $\delta > 0$ such that, for all $x$, \begin{equation*}
+    \text{if } |x - a| < \delta, \text{ then } |f(x) - f(a)| < \epsilon.
+  \end{equation*}
+  It follows that if $|x - a| < \delta$, then $f(x) - f(a) < \epsilon$. This
+  completes the proof: on the interval $(a - \delta, a + \delta)$ the function
+  $f$ is bounded above by $f(a) + \epsilon$.
+\end{proof}
+
+It should hardly be necessary to add that we can now also prove that $f$ is
+bounded below on some interval $(a - \delta, a + \delta)$, and, finally, that
+$f$ is bounded on some open interval containing $a$.
+
+A more significant point is the observation that if $\lim_{x \rightarrow a^+}
+f(x) = f(a)$, then there is a $\delta > 0$ such that $f$ is bounded on the set
+${x: a \leq x < a + \delta}$, and a similar observation holds if $\lim_{x
+\rightarrow b^-}f(x) = f(b)$. Having made these observations (and assuming that
+you will supply the proofs), we tackle our second major theorem.
+
+\begin{theorem*}[Theorem 7-2]
+  if $f$ is continuous on $[a, b]$, then $f$ is bounded above on $[a, b]$.
+\end{theorem*}
+
+\begin{proof}
+  Let \begin{equation*}
+    A = \{x: a \leq x \leq b \text{ and } f \text{ is bounded above on } [a,
+      x]\}.
+  \end{equation*}
+  Clearly $A \neq \varnothing$ (since $a$ is in $A$), and $A$ is bounded above
+  (by $b$), so $A$ has a least upper bound $\alpha$. Notice that we are here
+  applying the term "bounded above" both to the set $A$, which can be
+  visualized as lying on the horizontal axis, and to $f$, i.e., to the sets
+  $\{f(y): a \leq y \leq x\}$, which can be visualized as lying on the vertical
+  axis.
+
+  Our first step is to prove that we actually have $\alpha = b$. Suppose,
+  instead, that $\alpha < b$. By Theorem 1 there is $\delta > 0$ such that $f$
+  is bounded on $(\alpha - \delta, \alpha + \delta)$. Since $\alpha$ is the
+  least upper bound of $A$ there is some $x_0$ in $A$ satisfying $\alpha -
+  \delta < x_0 < \alpha$. This means that $f$ is bounded on $[a, x_0]$. But if
+  $x_1$ is any number with $\alpha < x_1 < \alpha + \delta$, then $f$ is also
+  bounded on $[x_0, x_1]$. Therefore $f$ is bounded on $[a, x_1]$, so $x_1$ is
+  in $A$, contradicting the fact that $\alpha$ is an upper bound for $A$. This
+  contradiction shows that $\alpha = b$. One detail should be mentioned: this
+  demonstration implicitly assumed that $a < \alpha$ [so that $f$ would be
+  defined on some interval $(\alpha - \delta, \alpha + \delta)$]; the
+  possibility $a = \alpha$ can be ruled out similarly, using the existence of a
+  $\delta > 0$ such that $f$ is bounded on $\{x: a \leq x < a + \delta\}$.
+
+  The proof is not quite complete - we only know that $f$ is bounded on $[a,
+  x]$ for every $x < b$, not necessarily that $f$ is bounded on $[a, b]$.
+  However, only one small argument needs to be added.
+
+  There is a $\delta > 0$ such that $f$ is bounded on $\{x: b - \delta < x \leq
+  b\}$. There is $x_0$ in $A$ such that $b - \delta < x_0 < b$. There is $x_0$
+  in $A$ such that $b - \delta < x_0 < b$. Thus $f$ is bounded on $[a, x_0]$
+  and also $[x_0, b]$, so $f$ is bounded on $[a, b]$.
+\end{proof}
+
+To prove the third important theorem we resort to a trick.
+
+\begin{theorem*}[Theorem 7-3]
+  If $f$ is continuous on $[a, b]$, then there is a number $y$ in $[a, b]$ such
+  that $f(y) \geq f(x)$ for all $x$ in $[a, b]$.
+\end{theorem*}
+
+\begin{proof}
+  We already know that $f$ is bounded on $[a, b]$, which means that the set
+  \begin{equation*}
+    \{f(x): x \in [a, b]\}
+  \end{equation*} is bounded. This set is obviously not $\varnothing$, so it
+  has a least upper bound $\alpha$. Since $\alpha \geq f(x)$ for $x$ in $[a,
+  b]$ it suffices to show that $\alpha = f(y)$ for some $y$ in $[a, b]$.
+
+  Suppose instead that $\alpha \neq f(y)$ for all $y$ in $[a, b]$. Then the
+  function $g$ defined by \begin{equation*}
+    g(x) = \frac{1}{\alpha - f(x)}, x \in [a, b]
+  \end{equation*} is continuous on $[a, b]$, since the denominator of the right
+  side is never 0. On the other hand, $\alpha$ is the least upper bound of
+  $\{f(x): x \in [a, b]\}$; this means that \begin{equation*}
+    \text{for every } \epsilon > 0 \text{ there is } x \in [a, b] \text{ with }
+      \alpha - f(x) < \epsilon.
+  \end{equation*}
+  This, in turn, means that \begin{equation*}
+    \text{for every } \epsilon > 0 \text{ there is } x \in [a, b] \text{ with }
+      g(x) > \frac{1}{\epsilon}.
+  \end{equation*}
+  But \emph{this} means that $g$ is not bounded on $[a, b]$, contradicting the
+  previous theorem.
+\end{proof}
+
+\begin{theorem}
+  $\mathbb{N}$ is not bounded above.
+\end{theorem}
+
+\begin{proof}
+  Suppose $\mathbb{N}$ were bounded above. Since $\mathbb{N} \neq \varnothing$,
+  there would be a least upper bound $\alpha$ for $\mathbb{N}$. Then
+  \begin{equation*}
+    \alpha \geq n \text{ for all } n \in \mathbb{N}.
+  \end{equation*}
+  Consequently, \begin{equation*}
+    \alpha \geq n + 1 \text{ for all } n \in \mathbb{N},
+  \end{equation*} since $n + 1$ is in $\mathbb{N}$ if $n$ is in $\mathbb{N}$.
+  But this means that \begin{equation*}
+    \alpha - 1 \geq n \text{ for all } n \in \mathbb{N},
+  \end{equation*} and \emph{this} means that $\alpha - 1$ is also an upper
+  bound for $\mathbb{N}$, contradicting the fact that $\alpha$ is the least
+  upper bound.
+\end{proof}
+
+There is a consequence of Theorem 2 (actually an equivalent formulation) which
+we have very often assumed implicitly.
+
+\begin{theorem}
+  For any $\epsilon > 0$ there is a natural number $n$ with $1/n < \epsilon$.
+\end{theorem}
+
+\begin{proof}
+  Suppose not; then $1/n \geq \epsilon$ for all $n$ in $\mathbb{N}$. Thus $n
+  \leq 1/\epsilon$ for all $n$ in $\mathbb{N}$. But this means that
+  $1/\epsilon$ is an upper bound for $\mathbb{N}$, contradicting Theorem 2.
+\end{proof}
+
+\section*{Exercises}
+
+\paragraph{Problem 8-6 (abridged).} A set $A$ of real numbers is said to be
+\emph{dense} if every open interval contains a point of $A$. For example, the
+set of rational numbers and the set of irrational numbers are each dense.
+
+\paragraph{(a)} Prove that if $f$ is continuous and $f(x) = 0$ for all numbers
+$x$ in a dense set $A$, then $f(x) = 0$ for all $x$.
+
+\paragraph{Solution:} By definition of continuity, we have $f(a) = \lim_{x
+\rightarrow a}f(x)$ for all $a$, so it suffices to prove that $\lim_{x
+\rightarrow a}f(x) = 0$ (knowing that the limit $l$ exists).
+
+Given $\epsilon > 0$, there exists a $\delta > 0$ such that for $|f(x) - l| <
+\epsilon$ for all $x$ satisfying $0 < |x - a| < \delta$. Since $A$ is dense,
+there is a number $x$ in $A$ satisfying $0 < |x - a| < \delta$; so $|0 - l| <
+\epsilon$. Since this is true for all $\epsilon > 0$, it follows that $l = 0$.
+
+\paragraph{(b)} Prove that if $f$ and $g$ are continuous and $f(x) = g(x)$ for
+all $x$ in a dense set $A$, then $f(x) = g(x)$ for all $x$.
+
+\paragraph{Solution:} Consider $h = f - g$, which is continuous, and apply the
+part (a).
+
+\paragraph{(c)} If we assume instead that $f(x) \geq g(x)$ for all $x$ in $A$,
+show that $f(x) \geq g(x)$ for all $x$. Can $\geq$ be replaced by $>$
+throughout?
+
+\paragraph{Solution:} As in part (a) and (b), it suffices to prove that if $f$
+is continuous and $f(x) \geq 0$ for all numbers $x$ in $A$, then $l = \lim_{x
+\rightarrow a}f(a) \geq 0$ for all $a$. Pick $\epsilon = |l|/2$; now, there is
+a $\delta > 0$ such that, for all $x$, if $0 < |x - a| < \delta$, then $|f(x) -
+l| < |l|/2$. This implies that $f(x) < l + |l|/2$; if $l < 0$, it would follow
+that $f(x) < l/2 < 0$, which would be false for those $x$ in $A$ which satisfy
+$0 < |x - a| < \delta$.
+
+It is not possible to replace $\geq$ by $>$; consider the case of $f(x) = |x|$
+for the dense set $A = \{x : x \in \mathbb{R}, x \neq 0\}$, where $f(x) > 0$
+for all $x \in A$, but $f(0) \ngtr 0$.
+
+\paragraph{Problem 8-8 (abridged).} Suppose that $f$ is a function such that
+$f(a) \leq f(b)$ whenever $a < b$.
+
+\paragraph{(a)} Prove that $\lim_{x \rightarrow a^-}f(x)$ and $\lim_{x
+\rightarrow a^+}f(x)$ both exist.
+
+\paragraph{Solution:} The set $\{f(x): x < a\}$ is bounded above (by $f(a)$);
+let $\alpha = \sup\{f(x): x < a\}$. Then it suffices to prove $\lim_{x
+\rightarrow a^-}f(x) = \alpha$.
+
+Given any $\epsilon > 0$, there is some $f(x)$ for $x < a$ with $f(x) > \alpha
+- \epsilon$, since $\alpha$ is the least upper bound of $\{f(x): x < a\}$. Let
+$\delta = a - x$. If $a - \delta < y < a$, then $x < y < a$, so $f(x) \leq
+f(y)$. This means that $\alpha \geq f(y) > \alpha - \epsilon$,  so surely
+$|f(y) - \alpha| < \epsilon$.
+
+The proof that $\lim_{x \rightarrow a^+}f(x) = \inf\{f(x): x > a\}$ is similar.
+
+\paragraph{(b)} Prove that $f$ never has a removable discontinuity.
+
+\paragraph{Solution:} It is clear from (a) that \begin{equation*}
+  \lim_{x \rightarrow a^-}f(x) \leq f(a) \leq \lim_{x \rightarrow a^+}f(x).
+\end{equation*}
+If $\lim_{x \rightarrow a}f(x)$ exists, it follows that \begin{equation*}
+  \lim_{x \rightarrow a}f(x) = \lim_{x \rightarrow a^-}f(x) \leq f(a) \leq
+    \lim_{x \rightarrow a^+}f(x) = \lim_{x \rightarrow a}f(x),
+\end{equation*} so $\lim_{x \rightarrow a}f(x) = f(a)$. This means that $f$ is
+continuous at $a$, so $f$ cannot have a removable discontinuity.
+
+\paragraph{(c)} Prove that if $f$ satisfies the conclusions of the Intermediate
+Value Theorem, then $f$ is continuous.
+
+\paragraph{Solution:} Suppose that $f$ is not continuous at some point $a$. It
+follows from (b) that \begin{equation*}
+  \sup\{f(x): x < a\} = \lim_{x \rightarrow a^-}f(x) < \lim_{x \rightarrow a^+}
+    f(x) = \inf\{f(x): x > a\},
+\end{equation*} and so $f(x)$ cannot have any value between $\lim_{x
+\rightarrow a^-}f(x)$ and $\lim_{x \rightarrow a^+}$, except $f(a)$, so $f$
+cannot satisfy the Intermediate Value Theorem.
+
+\paragraph{Problem 8-14 (Nested Interval Theorem). (a)} Consider a sequence of
+closed intervals $I_1 = [a_1, b_1], I_2 = [a_2, b_2], \ldots$. Suppose that
+$a_n \leq a_{n+1}$ and $b_{n+1} \leq b_n$ for all $n$. Prove that there is a
+point $x$ which is in every $I_n$.
+
+\paragraph{Solution:} For every $m$ and $n$ we have $a_m \leq b_n$, because
+$a_m \leq a_{m+n} \leq b_{m+n} \leq b_m$. It follows that $\sup\{a_n: n \in
+\mathbb{N}\} \leq \inf\{b_n: n \in \mathbb{N}\}$. Let $x$ be any number between
+these two numbers. Then $a_n \leq x \leq b_n$ for all $n$, so $x$ is in every
+$I_n$.
+
+\paragraph{(b)} Show that this conclusion is false if we consider open
+intervals instead of closed intervals.
+
+\paragraph{Solution:} Consider $I_n = (0, 1/n)$.
+
+\paragraph{Problem 8-15 (modified).} Suppose $f$ is continuous on $[a, b]$ and
+$f(a) < 0 < f(b)$. Then either $f((a + b)/2) = 0$, or $f$ has different signs
+at the end points of the interval $[a, (a + b)/2]$, or $f$ has different signs
+at the end points of the interval $[(a + b)/2, b]$. If $f((a + b)/2) \neq 0$,
+let $I_1$ be one of the two intervals on which $f$ changes sign. Now bisect
+$I_1$.  Either $f$ is 0 at the midpoint, or $f$ changes sign on one of the two
+intervals. Let $I_2$ be such an interval. Continue in this way, to define $I_n$
+for each $n$ (unless $f$ is 0 at some midpoint). Use the Nested Interval
+Theorem to find a point $x$ where $f(x) = 0$.
+
+\paragraph{Solution:} Let $c$ be in each $I_n$. If $f(c) < 0$, then there is
+some $\delta > 0$ such that $f(x) < 0$ for all $x$ in $[a, b]$ with $|x - c| <
+\delta$. Choose $n$ with $1/2^n < \delta$. Since $c$ is in $I_n$, which has
+total length $1/2^n$, it follows that all points of $I_n$ satisfy $|x - c| <
+\delta$. This contradicts the fact that $f$ changes sign on $I_n$. Similarly,
+we cannot have $f(c) > 0$. So $f(c) = 0$.
+
+\paragraph{Problem 8-16.} Suppose $f$ were continuous on $[a, b]$, but not
+bounded on $[a, b]$. Then $f$ would be unbounded on either $[a, (a + b)/2]$ or
+$[(a + b)/2, b]$. Why? Let $I_1$ be one of these intervals on which $f$ is
+unbounded. Proceed as in Problem 15 to obtain a contradiction.
+
+\paragraph{Solution:} Let $c$ be in each $I_n$. Since $f$ is continuous at $c$,
+there is a $\delta > 0$ such that $f$ is bounded on the set of all points on
+$[0, 1]$ satisfying $|x - c| < \delta$. Choose $n$ with $1/2^n < \delta$. Since
+$c$ is in $I_n$, all points $x$ of $I_n$ satisfy $|x - c| < \delta$. This
+contradicts the fact that $f$ is not bounded on $I_n$.
+
+\paragraph{Problem 8-18 (modified).} A number $x$ is called an \emph{almost
+upper bound} for $A$ if there are only finitely many numbers $y$ in $A$ with $y
+\geq x$. An \emph{almost lower bound} is defined similarly.
+
+\paragraph{(b)} Suppose that $A$ is a bounded infinite set. Prove that the set
+$B$ of all almost upper bounds of $A$ is nonempty, and bounded below.
+
+\paragraph{Solution:} Any upper bound of $A$ is certainly an almost upper
+bound, so $B \neq \varnothing$. However, no lower bound of $A$ can possibly be
+an almost lower bound (as $A$ is infinite), so $B$ is bounded below by any
+lower bound for $A$.
+
+It follows from Problem 8-18 (b) that $\inf B$ exists; this number is
+called the \emph{limit superior} of $A$, and denoted by $\overline{\lim} A$ or
+$\lim \sup A$. $\underline{\lim} A$ is defined similarly.
+
+\paragraph{Problem 8-19.} If $A$ is a bounded infinite set prove:
+
+\paragraph{(a)} $\underline{\lim} A \leq \overline{\lim} A$.
+
+\paragraph{Solution:} If $x$ is an almost lower bound of $A$ and $y$ is an
+almost upper bound of $A$, then there are only finitely many numbers in $A$
+which are $< x$ or $> y$. Since $A$ is infinite, it follows that we must have
+$x \leq y$. Thus $\underline{\lim} A \leq \overline{\lim} A$.
+
+\paragraph{(b)} $\overline{\lim} A \leq \sup A$.
+
+\paragraph{Solution:} This is clear, since $\overline{\lim} A \leq \alpha$ for
+any almost upper bound $\alpha$, and $\alpha = \sup A$ is an almost upper
+bound.
+
+\paragraph{(c)} If $\overline{\lim} A < \sup A$, then $A$ contains a largest
+element.
+
+\paragraph{Solution:} If $\overline{\lim} A < \sup A$ then there is some
+almost upper bound $x$ of $A$ with $x < \sup A$. So, there are only finitely
+many numbers which are greater than $x$ (and there is at least one, since $x <
+\sup A$. The largest of these finitely many numbers greater than $x$ is the
+largest element of $A$.
+
+\end{document}
+
