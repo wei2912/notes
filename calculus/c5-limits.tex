@@ -26,9 +26,6 @@ l$ or $\lim_{x \downarrow a} f(x) = l$ for limits from above, and $\lim_{x
   $f$ approaches $l$ near $a$, and $f$ approaches $m$ near $a$, then $l = m$.
 \end{theorem}
 \begin{proof}
-  Since this is our first theorem about limits it will certainly be necessary
-  to translate the hypotheses according to the definition.
-
   Since $f$ approaches $l$ near $a$, we know that for any $\epsilon > 0$ there
   is some number $\delta_1 > 0$ such that, for all $x$, \begin{equation*}
     \text{if } 0 < |x - a| < \delta_1, \text{ then } |f(x) - l| < \epsilon.
@@ -52,8 +49,8 @@ l$ or $\lim_{x \downarrow a} f(x) = l$ for limits from above, and $\lim_{x
   m| > 0$, we can choose $|l - m|/2$ as our $\epsilon$. It follows that there
   is a $\delta > 0$ such that, for all $x$, \begin{align*}
     \text{if } 0 < |x - a| < \epsilon,
-      &\text{ then } |f(x) - l| < \frac{|l - m|}{2} \\
-      &\text{ and } |f(x) - m| < \frac{|l - m|}{2}.
+      \text{ then } &|f(x) - l| < \frac{|l - m|}{2} \\
+      \text{ and } &|f(x) - m| < \frac{|l - m|}{2}.
   \end{align*}
   This implies that for $0 < |x - a| < \delta$ we have \begin{align*}
     |l - m| = |l - f(x) + f(x) - m| &\leq |l - f(x)| + |f(x) - m| \\
@@ -102,22 +99,16 @@ l$ or $\lim_{x \downarrow a} f(x) = l$ for limits from above, and $\lim_{x
 \end{theorem}
 
 \begin{proof}
-  The hypothesis means that for every $\epsilon > 0$ there are $\delta_1,
+  The hypothesis means that for every $\epsilon/2 > 0$ there are $\delta_1,
   \delta_2 > 0$ such that, for all $x$, \begin{align*}
-    &\text{if } 0 < |x - a| < \delta_1, \text{ then } |f(x) - l| < \epsilon, \\
-    \text{and } &\text{if } 0 < |x - a| < \delta_2, \text{ then } |g(x) - m| <
-      \epsilon.
-  \end{align*} This means (since, after all, $\epsilon/2$ is also a positive
-  number) that there are $\delta_1, \delta_2 > 0$ such that, for all $x$,
-  \begin{align*}
     &\text{if } 0 < |x - a| < \delta_1, \text{ then } |f(x) - l| <
       \frac{\epsilon}{2}, \\
     \text{and } &\text{if } 0 < |x - a| < \delta_2, \text{ then } |g(x) - m| <
       \frac{\epsilon}{2}.
   \end{align*} Now let $\delta = \mathrm{min}(\delta_1, \delta_2)$. If $0 < |x
-  - a| < \delta$, then $0 < |x - a| < \delta_1$ and $0 < |x - a| < delta_2$ are
-  both true, so both \begin{equation*}
-    |f(x) - l) < \frac{\epsilon}{2} \text{ and } |g(x) - m| <
+  - a| < \delta$, then $0 < |x - a| < \delta_1$ and $0 < |x - a| < \delta_2$
+  are both true, so both \begin{equation*}
+    |f(x) - l| < \frac{\epsilon}{2} \text{ and } |g(x) - m| <
       \frac{\epsilon}{2}
   \end{equation*} are true. But by part (1) of the lemma this implies that $|(f
   + g)(x) - (l + m)| < \epsilon$. This proves (1).
@@ -133,7 +124,7 @@ l$ or $\lim_{x \downarrow a} f(x) = l$ for limits from above, and $\lim_{x
   |x - a| < \delta$, then \begin{equation*}
     |f(x) - l| < \mathrm{min}\left(1, \frac{\epsilon}{2(|m| + 1)}\right)
       \text{ and } |g(x) - m| < \frac{\epsilon}{2(|l| + 1)}.
-  \end{equation*} So, by the lemma, $|(f \cdot g)(x) - l \cdot m| < \epsilon|$,
+  \end{equation*} So, by the lemma, $|(f \cdot g)(x) - l \cdot m| < \epsilon$,
   and this proves (2).
 
   Finally, if $\epsilon > 0$ there is a $\delta > 0$ such that, for all $x$,
@@ -164,9 +155,8 @@ l\right| < \epsilon$. Then if $0 < |x| < \frac{\delta}{b}$, we have $0 < |bx| <
 
 \paragraph{(b)} What happens if $b = 0$?
 
-\paragraph{Solution:} In this case, $\lim_{x \rightarrow 0} (bx)/x =
-\lim_{x \rightarrow 0} f(0)/x$ does not exist as no upper bound can be derived
-for $|bx|$, unless $f(0) = 0$.
+\paragraph{Solution:} In this case, $\lim_{x \rightarrow 0} f(bx)/x = \lim_{x
+\rightarrow 0} f(0)/x$ does not exist unless $f(0) = 0$.
 
 \paragraph{(c)} Part (a) enables us to find $\lim_{x \rightarrow 0}
 (\sin{x})/x$. Find this limit in another way.
@@ -254,7 +244,7 @@ that $f(x) < f(y)$ whenever $x < a < y$ and $|x - a| < \delta$ and $|y - a| <
   |f(y) - m| < \frac{m - l}{2} &\text{ when } a < y < a + \delta.
 \end{align*}
 \begin{equation*}
-  f(x) < l + \frac{m - l}{2} = \frac{l}{2} = m - \frac{m - l}{2} < f(y)
+  f(x) < l + \frac{m - l}{2} = \frac{m + l}{2} = m - \frac{m - l}{2} < f(y)
 \end{equation*}
 
 The converse is false, as shown by $f(t) = t$ and any $a$. It is only possible
@@ -275,11 +265,7 @@ information you need.
 \end{equation*} for $f(x) = a_n + \cdots + \frac{a_0}{x^n}$ and $g(x) = \frac{
 b_m}{x^{n - m}} + \cdots + \frac{b_0}{x^n}$. With $m < n$, it is clear that
 $\lim_{x \rightarrow \infty}f(x) = a_n$ while $\lim_{x \rightarrow \infty}g(x)
-= 0$, which implies that $\lim_{x \rightarrow \infty}f(x)/g(x)$ cannot exist,
-as if it were to exist, then \begin{equation*}
-  \lim_{x \rightarrow \infty}f(x) = \lim_{x \rightarrow \infty}\frac{f(x)}{g(x)
-  } \cdot \lim_{x \rightarrow \infty}g(x) = 0
-\end{equation*} which is contradictory.
+= 0$, which implies that $\lim_{x \rightarrow \infty}f(x)/g(x)$ cannot exist.
 
 If $x \neq 0$ and $m \geq n$, we write \begin{equation*}
   \lim_{x \rightarrow \infty}\frac{a_nx^n + \cdots + a_0}{b_mx^m + \cdots + b_0

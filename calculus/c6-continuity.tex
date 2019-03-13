@@ -36,15 +36,7 @@
 \end{theorem}
 
 \begin{proof}
-  Since $f$ and $g$ are continuous at $a$, \begin{equation*}
-    \lim_{x \rightarrow a}f(x) = f(a) \text{ and } \lim_{x \rightarrow a}g(x)
-    = g(a).
-  \end{equation*}
-  By Theorem 2(1) of Chapter 5 this implies that \begin{equation*}
-    \lim_{x \rightarrow a}(f + g)(x) = f(a) + g(a) = (f + g)(a),
-  \end{equation*}
-  which is just the assertion that $f + g$ is continuous at $a$. The proofs or
-  paras (2) and (3) are left to you.
+  Proofs are self-evident from Theorem 5-2.
 \end{proof}
 
 \begin{theorem}
@@ -59,25 +51,16 @@
     (f \circ g)(a)| < \epsilon, \\
       &\text{i.e., } |f(g(x)) - f(g(a))| < \epsilon.
   \end{align*}
-  We first use continuity of $f$ to estimate how close $g(x)$ must be to $g(a)$
-  in order for this inequality to hold. Since $f$ is continuous at $g(a)$,
-  there is a $\delta' > 0$ such that for all $y$, \begin{enumerate}
-    \item if $|y - g(a)| < \delta'$, then $|f(y) - f(g(a))| < \epsilon$.
-  \end{enumerate}
-  In particular, this means that \begin{enumerate}
-    \setcounter{enumi}{1}
-    \item if $|g(x) - g(a)| < \delta'$, then $|f(g(x)) - f(g(a))| < \epsilon$.
-  \end{enumerate}
-  We now use continuity of $g$ to estimate how close $x$ must be to $a$ in
-  order for the inequality $|g(x) - g(a)| < \delta'$ to hold. The number
-  $\delta'$ is a positive number just like any other positive number; we can
-  therefore take $\delta'$ as the $\epsilon$ (!) in the definition of
-  continuity of $g$ at $a$. We conclude that there is a $\delta > 0$ such that,
-  for all $x$, \begin{enumerate}
-    \setcounter{enumi}{2}
-    \item if $|x - a| < \delta$, then $|g(x) - g(a)| < \delta'$.
-  \end{enumerate}
-  Combining (2) and (3) we see that for all $x$, \begin{equation*}
+  Since $f$ is continuous at $g(a)$, there is a $\delta' > 0$ such that for all
+  $x$, \begin{equation*}
+    \text{if } |g(x) - g(a)| < \delta', \text{ then } |f(g(x)) - f(g(a))| <
+      \epsilon.
+  \end{equation*}
+  We also conclude, by the continuity of $g$ at $a$, that there is a $\delta >
+  0$ such that for all $x$, \begin{equation*}
+    \text{if } |x - a| < \delta, \text{ then } |g(x) - g(a)| < \delta'.
+  \end{equation*}
+  Combining these two statements, we see that for all $x$, \begin{equation*}
     \text{if } |x - a| < \delta, \text{ then } |f(g(x)) - f(g(a))| < \epsilon.
   \end{equation*}
 \end{proof}
@@ -98,10 +81,8 @@
   $\delta > 0$ so that for all $x$, \begin{equation*}
     \text{if } |x - a| < \delta, \text{ then } |f(x) - f(a)| < f(a),
   \end{equation*}
-  and this last inequality implies $f(x) > 0$.
-
-  A similar proof can be given in the case $f(a) < 0$; take $\epsilon = -f(a)$.
-  Or one can apply the first case to the function $-f$.
+  and this last inequality implies $f(x) > 0$. A similar proof can be given in
+  the case $f(a) < 0$.
 \end{proof}
 
 \section*{Exercises}
@@ -139,7 +120,11 @@ discontinuity is a removable discontinuity. This means that $\lim_{y
 (even infinitely many) numbers $x$. Define $g(x) = \lim_{y \rightarrow x}f(y)$.
 Prove that $g$ is continuous.
 
-\paragraph{Solution:} [to be added]
+\paragraph{Solution:} Let $g(a) = \lim_{y \rightarrow a}f(y)$. By definition,
+for any $\epsilon > 0$, there is a $\delta > 0$ such that $|f(y) - g(a)| <
+\epsilon$ for $|y - a| < \delta$. Similarly, $|g(x) - g(a)| = |\lim_{y
+\rightarrow x}f(y) - g(a)| < \epsilon$ for $|x - a| < \delta$, which shows that
+$g$ is continuous at $a$.
 
 \end{document}
 

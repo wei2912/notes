@@ -47,14 +47,12 @@
   abbreviates to $\inf A$.
 \end{definition}
 
-The last property of the real numbers can be stated:
-
+\paragraph{} The last property of the real numbers can be stated:
 \begin{tabular}{l p{4in}}
   (P13) & (The least upper bound property) If $A$ is a set of real numbers, $A
   \neq \varnothing$, and $A$ is bounded above, then $A$ has a least upper
   bound.
 \end{tabular}
-
 We shall apply P13 to the proofs that were omitted in Chapter 7.
 
 \begin{theorem*}[Theorem 7-1]
@@ -70,13 +68,14 @@ We shall apply P13 to the proofs that were omitted in Chapter 7.
   Clearly $A \neq \varnothing$, since $a$ is in $A$; in fact, there is some
   $\delta > 0$ such that $A$ contains all points $x$ satisfying $a \leq x < a +
   \delta$; this follows from Problem 6-15, since $f$ is continuous on $[a, b]$
-  and $f(a) < 0$. Similarly, $b$ is an upper bound for $A$ and, in fact, there is
-  a $\delta > 0$ such that all points $x$ satisfying $b - \delta < x \leq b$ are
-  upper bounds for $A$; this also follows from Problem 6-15, since $f(b) > 0$.
+  and $f(a) < 0$. Similarly, $b$ is an upper bound for $A$ and, in fact, there
+  is a $\delta > 0$ such that all points $x$ satisfying $b - \delta < x \leq b$
+  are upper bounds for $A$; this also follows from Problem 6-15, since $f(b) >
+  0$.
 
   From these remarks it follows that $A$ has a least upper bound $\alpha$ and
-  that $a < \alpha < b$. We now wish to show that $f(\alpha) = 0$, by eliminating
-  the possibilities $f(\alpha) < 0$ and $f(\alpha) > 0$.
+  that $a < \alpha < b$. We now wish to show that $f(\alpha) = 0$, by
+  eliminating the possibilities $f(\alpha) < 0$ and $f(\alpha) > 0$.
 
   Suppose first that $f(\alpha) < 0$. By Theorem 6-3, there is a $\delta > 0$
   such that $f(x) < 0$ for $\alpha - \delta < x < \alpha + \delta$. Now there is
@@ -117,17 +116,17 @@ previous proof.
 \end{proof}
 
 It should hardly be necessary to add that we can now also prove that $f$ is
-bounded below on some interval $(a - \delta, a + \delta)$, and, finally, that
-$f$ is bounded on some open interval containing $a$.
+bounded below on some interval $(a - \delta, a + \delta)$ by $f(a) - \epsilon$,
+and, finally, that $f$ is bounded on some open interval containing $a$.
 
 A more significant point is the observation that if $\lim_{x \rightarrow a^+}
 f(x) = f(a)$, then there is a $\delta > 0$ such that $f$ is bounded on the set
-${x: a \leq x < a + \delta}$, and a similar observation holds if $\lim_{x
+$\{x: a \leq x < a + \delta\}$, and a similar observation holds if $\lim_{x
 \rightarrow b^-}f(x) = f(b)$. Having made these observations (and assuming that
 you will supply the proofs), we tackle our second major theorem.
 
 \begin{theorem*}[Theorem 7-2]
-  if $f$ is continuous on $[a, b]$, then $f$ is bounded above on $[a, b]$.
+  If $f$ is continuous on $[a, b]$, then $f$ is bounded above on $[a, b]$.
 \end{theorem*}
 
 \begin{proof}
@@ -161,9 +160,8 @@ you will supply the proofs), we tackle our second major theorem.
   However, only one small argument needs to be added.
 
   There is a $\delta > 0$ such that $f$ is bounded on $\{x: b - \delta < x \leq
-  b\}$. There is $x_0$ in $A$ such that $b - \delta < x_0 < b$. There is $x_0$
-  in $A$ such that $b - \delta < x_0 < b$. Thus $f$ is bounded on $[a, x_0]$
-  and also $[x_0, b]$, so $f$ is bounded on $[a, b]$.
+  b\}$. There is $x_0$ in $A$ such that $b - \delta < x_0 < b$. Thus $f$ is
+  bounded on $[a, x_0]$ and also $[x_0, b]$, so $f$ is bounded on $[a, b]$.
 \end{proof}
 
 To prove the third important theorem we resort to a trick.
@@ -244,7 +242,7 @@ $x$ in a dense set $A$, then $f(x) = 0$ for all $x$.
 \rightarrow a}f(x)$ for all $a$, so it suffices to prove that $\lim_{x
 \rightarrow a}f(x) = 0$ (knowing that the limit $l$ exists).
 
-Given $\epsilon > 0$, there exists a $\delta > 0$ such that for $|f(x) - l| <
+Given $\epsilon > 0$, there exists a $\delta > 0$ such that $|f(x) - l| <
 \epsilon$ for all $x$ satisfying $0 < |x - a| < \delta$. Since $A$ is dense,
 there is a number $x$ in $A$ satisfying $0 < |x - a| < \delta$; so $|0 - l| <
 \epsilon$. Since this is true for all $\epsilon > 0$, it follows that $l = 0$.
@@ -317,7 +315,7 @@ $a_n \leq a_{n+1}$ and $b_{n+1} \leq b_n$ for all $n$. Prove that there is a
 point $x$ which is in every $I_n$.
 
 \paragraph{Solution:} For every $m$ and $n$ we have $a_m \leq b_n$, because
-$a_m \leq a_{m+n} \leq b_{m+n} \leq b_m$. It follows that $\sup\{a_n: n \in
+$a_m \leq a_{m+n} \leq b_{m+n} \leq b_n$. It follows that $\sup\{a_n: n \in
 \mathbb{N}\} \leq \inf\{b_n: n \in \mathbb{N}\}$. Let $x$ be any number between
 these two numbers. Then $a_n \leq x \leq b_n$ for all $n$, so $x$ is in every
 $I_n$.
@@ -350,10 +348,10 @@ $[(a + b)/2, b]$. Why? Let $I_1$ be one of these intervals on which $f$ is
 unbounded. Proceed as in Problem 15 to obtain a contradiction.
 
 \paragraph{Solution:} Let $c$ be in each $I_n$. Since $f$ is continuous at $c$,
-there is a $\delta > 0$ such that $f$ is bounded on the set of all points on
-$[0, 1]$ satisfying $|x - c| < \delta$. Choose $n$ with $1/2^n < \delta$. Since
-$c$ is in $I_n$, all points $x$ of $I_n$ satisfy $|x - c| < \delta$. This
-contradicts the fact that $f$ is not bounded on $I_n$.
+there is a $\delta > 0$ such that $f$ is bounded on the set of all points $x$
+satisfying $|x - c| < \delta$. Choose $n$ with $1/2^n < \delta$. Since $c$ is
+in $I_n$, all points $x$ of $I_n$ satisfy $|x - c| < \delta$. This contradicts
+the fact that $f$ is not bounded on $I_n$.
 
 \paragraph{Problem 8-18 (modified).} A number $x$ is called an \emph{almost
 upper bound} for $A$ if there are only finitely many numbers $y$ in $A$ with $y
@@ -367,9 +365,9 @@ bound, so $B \neq \varnothing$. However, no lower bound of $A$ can possibly be
 an almost lower bound (as $A$ is infinite), so $B$ is bounded below by any
 lower bound for $A$.
 
-It follows from Problem 8-18 (b) that $\inf B$ exists; this number is
-called the \emph{limit superior} of $A$, and denoted by $\overline{\lim} A$ or
-$\lim \sup A$. $\underline{\lim} A$ is defined similarly.
+\paragraph{} It follows from Problem 8-18(b) that $\inf B$ exists; this number
+is called the \emph{limit superior} of $A$, and denoted by $\overline{\lim} A$
+or $\lim \sup A$. $\underline{\lim} A$ is defined similarly.
 
 \paragraph{Problem 8-19.} If $A$ is a bounded infinite set prove:
 
