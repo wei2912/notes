@@ -1,0 +1,168 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{lemma}{Lemma}
+
+\begin{document}
+
+\title{Chapter 9: Derivatives}
+\maketitle
+
+\begin{definition}
+  The function $f$ is \emph{differentiable at $A$} if \begin{equation*}
+    \lim_{h \rightarrow 0}\frac{f(a + h) - f(a)}{h}
+  \end{equation*} exists.
+
+  In this case the limit is denoted by $f'(a)$ and is called the
+  \emph{derivative of $f$ at $a$}. (We also say that $f$ is
+  \emph{differentiable} if $f$ is differentiable at $a$ for every $a$ in the
+  domain of $f$.)
+\end{definition}
+
+\begin{theorem}
+  If $f$ is differentiable at $a$, then $f$ is continuous at $a$.
+\end{theorem}
+
+\begin{proof}
+  \begin{align*}
+    \lim_{h \rightarrow 0}{f(a + h) - f(a)} &= \lim_{h \rightarrow 0}{\frac
+      {f(a + h) - f(a)}{h} \cdot h} \\
+      &= \lim_{h \rightarrow 0}{\frac{f(a + h) - f(a)}{h} \cdot \lim_{h
+        \rightarrow 0}h} \\
+      &= f'(a) \cdot 0 \\
+      &= 0.
+  \end{align*}
+
+  As pointed out in Chapter 5, the equation $\lim_{h \rightarrow 0}{f(a + h) -
+  f(a)} = 0$ is equivalent to $\lim_{x \rightarrow a}{f(x)} = f(a)$; thus $f$
+  is continuous at $a$.
+\end{proof}
+
+\section*{Exercises}
+
+\paragraph{Exercise 9-14 (abridged).} Let $f(x) = x^2$ if $x$ is rational, and
+$f(x) = 0$ if $x$ is irrational. Prove that $f$ is differentiable at 0.
+
+\paragraph{Solution:} Consider $g(x) = f(x)/x$; $g(x) = x$ if $x$ is rational,
+and $g(x) = 0$ if $x$ is irrational. Hence, \begin{equation*}
+  \lim_{h \rightarrow 0}{\frac{f(h) - f(0)}{h}} = \lim_{h \rightarrow 0}{\frac
+  {f(h)}{h}} = \lim_{h \rightarrow 0}{g(h)} = 0,
+\end{equation*} so $f$ is differentiable at 0.
+
+\paragraph{Exercise 9-15 (abridged). (a)} Let $f$ be a function such that
+$|f(x)| \leq x^2$ for all $x$. Prove that $f$ is differentiable at 0.
+
+\paragraph{Solution:} Note that by the definition of $f$, $|f(0)| \leq 0^2$, so
+$f(0) = 0$. Similar to Exercise 9-14, consider $g(x) = |f(x)|/x$; from $0 \leq
+g(x) \leq x^2/x = x$, it is clear that $0 \leq \lim_{h \rightarrow 0}{g(h)}$
+and $\lim_{h \rightarrow 0}{g(h)} \leq \lim_{h \rightarrow 0}{h} = 0$, so
+$\lim_{h \rightarrow 0}{g(h)} = 0$. Hence, \begin{equation*}
+  \lim_{h \rightarrow 0}{\frac{f(h) - f(0)}{h}} = \lim_{h \rightarrow 0}{\frac
+  {f(h)}{h}} = \lim_{h \rightarrow 0}{g(h)} = 0,
+\end{equation*} so $f$ is differentiable at 0.
+
+\paragraph{(b)} This result can be generalized if $x^2$ is replaced by
+$|g(x)|$, where $g$ has what property?
+
+\paragraph{Solution:} Any function $g$ with $\lim_{h \rightarrow 0}g(h)/h = 0$
+i.e. a function $g$ with $g(0) = g'(0) = 0$.
+
+\paragraph{Exercise 9-18.} Let $f(x) = 0$ for irrational $x$, and $1/q$ for $x
+= p/q$ in lowest terms. Prove that $f$ is not differentiable at $a$ for any
+$a$.
+
+\paragraph{Solution:} Since $f$ is not continuous at $a$ if $a$ is rational, it
+is also not differentiable at rational $a$. If $a = m.a_1a_2a_3\ldots$ is
+irrational and $h$ is rational, then $a + h$ is irrational, so $f(a + h) - f(a)
+= 0$. But if $h = -0.00\ldots0a_{n+1}a_{n+2}\ldots$, then $a + h = m.a_1a_2a_3
+\ldots a_n000\ldots$, so $f(a + h) \geq 10^{-n}$, while $|h| < 10^{-n}$, so we
+have $|[f(a + h) - f(a)]/h| \geq 1$. Thus $[f(a + h) - f(a)]/h$ is 0 for
+arbitrarily small $h$ and also has absolute value $\geq 1$ for arbitarily small
+$h$. It follows that $\lim_{h \rightarrow 0}{[f(a + h) - f(a)]/h}$ cannot
+exist.
+
+\paragraph{Exercise 9-23 (abridged).} Prove that if $f$ is even, then $f'(x) =
+-f'(-x)$.
+
+\paragraph{Solution:} Noting that $f(x) = f(-x)$, \begin{align*}
+  f'(-x) &= \lim_{h \rightarrow 0}\frac{f(-x - h) - f(-x)}{-h} \\
+    &= \lim_{h \rightarrow 0}\frac{f(-x) - f(-x - h)}{h} \\
+    &= \lim_{h \rightarrow 0}\frac{f(x) - f(x + h)}{h} \\
+    &= -\lim_{h \rightarrow 0}\frac{f(x + h) - f(x)}{h} \\
+    &= -f'(x),
+\end{align*} which can be rewritten as $f'(x) = -f'(-x)$.
+
+\paragraph{Exercise 9-24 (abridged).} Prove that if $f$ is odd, then $f'(x) =
+f'(-x)$.
+
+\paragraph{Solution:} Noting that $f(x) = -f(-x)$, \begin{align*}
+  f'(-x) &= \lim_{h \rightarrow 0}\frac{f(-x - h) - f(-x)}{-h} \\
+    &= \lim_{h \rightarrow 0}\frac{f(-x) - f(-x - h)}{h} \\
+    &= \lim_{h \rightarrow 0}\frac{-f(x) + f(x + h)}{h} \\
+    &= \lim_{h \rightarrow 0}\frac{f(x + h) - f(x)}{h} \\
+    &= f'(x).
+\end{align*}
+
+\paragraph{Exercise 9-28. (a)} Find $f'(x)$ if $f(x) = |x|^3$. Find $f''(x)$.
+Does $f'''(x)$ exist for all $x$?
+
+\paragraph{Solution:} Since \begin{equation*}
+  f(x) = \begin{cases}
+    x^3, x > 0 \\
+    -x^3, x < 0,
+  \end{cases}
+\end{equation*} we have \begin{equation*}
+  f'(x) = \begin{cases}
+    3x^2, x > 0 \\
+    -3x^2, x < 0
+  \end{cases}
+  f''(x) = \begin{cases}
+    6x, x > 0 \\
+    -6x, x < 0.
+  \end{cases}
+\end{equation*}
+Moreover, $f'(0) = f''(0) = 0$, while $f'''(0)$ does not exist.
+
+\paragraph{(b)} Analyze $f$ similarly if $f(x) = x^4$ for $x \geq 0$ and $f(x)
+= -x^4$ for $x \leq 0$.
+
+\paragraph{Solution:} Since \begin{equation*}
+  f(x) = \begin{cases}
+    x^4, x > 0 \\
+    -x^4, x < 0,
+  \end{cases}
+\end{equation*} we have \begin{equation*}
+  f'(x) = \begin{cases}
+    4x^3, x > 0 \\
+    -4x^3, x < 0
+  \end{cases}
+  f''(x) = \begin{cases}
+    12x^2, x > 0 \\
+    -12x^2, x < 0.
+  \end{cases}
+  f'''(x) = \begin{cases}
+    24x, x > 0 \\
+    -24x, x < 0.
+  \end{cases}
+\end{equation*}
+Moreover, $f'(0) = f''(0) = f'''(0) = 0$, while $f^{(4)}(0)$ does not exist.
+
+\paragraph{Exercise 9-29.} Let $f(x) = x^n$ for $x \geq 0$ and let $f(x) = 0$
+for $x \leq 0$. Prove that $f^{(n-1)}$ exists (and find a formula for it), but
+that $f^(n)(0)$ does not exist.
+
+\paragraph{Solution:} It is clear that \begin{equation*}
+  f^{(n-1)}(x) = \begin{cases}
+    n!x, x > 0 \\
+    0, x \leq 0.
+  \end{cases}
+\end{equation*}
+So $f^{(n)}(0)$ does not exist since $\lim_{h \rightarrow 0^+}n!h/h = n!$,
+while $\lim_{h \rightarrow 0^-}0/h = 0$.
+
+\end{document}
+
