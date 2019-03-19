@@ -1,0 +1,414 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{lemma}{Lemma}
+
+\begin{document}
+
+\title{Chapter 10: Differentiation}
+\maketitle
+
+\begin{theorem}
+  If $f$ is a constant function, $f(x) = c$, then \begin{equation*}
+    f'(a) = 0 \text{ for all numbers } a.
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  \begin{equation*}
+    f'(a) = \lim_{h \rightarrow 0}\frac{f(a + h) - f(a)}{h} = \lim_{h
+      \rightarrow 0}\frac{c - c}{h} = 0.
+  \end{equation*}
+\end{proof}
+
+\begin{theorem}
+  If $f$ is the identity function, $f(x) = x$, then \begin{equation*}
+    f'(a) = 1 \text{ for all numbers } a.
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  \begin{equation*}
+    f'(a) = \lim_{h \rightarrow 0}\frac{f(a + h) - f(a)}{h} = \lim_{h
+      \rightarrow 0}\frac{a + h - a}{h} = \lim_{h \rightarrow 0}\frac{h}{h} =
+      1.
+  \end{equation*}
+\end{proof}
+
+\begin{theorem}
+  If $f$ and $g$ are differentiable at $a$, then $f + g$ is also differentiable
+  at $a$, and \begin{equation*}
+    (f + g)'(a) = f'(a) + g'(a).
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  \begin{align*}
+    (f + g)'(a) &= \lim_{h \rightarrow 0}\frac{(f + g)(a + h) - (f + g)(a)}{h}
+      \\
+      &= \lim_{h \rightarrow 0}\frac{f(a + h) + g(a + h) - [f(a) + g(a)]}{h} \\
+      &= \lim_{h \rightarrow 0}{\left[\frac{f(a + h) - f(a)}{h} + \frac{g(a +
+        h) - g(a)}{h}\right]} \\
+      &= \lim_{h \rightarrow 0}\frac{f(a + h) - f(a)}{h} + \lim_{h \rightarrow
+        0}\frac{g(a + h) - g(a)}{h} \\
+      &= f'(a) + g'(a).
+  \end{align*}
+\end{proof}
+
+\begin{theorem}
+  If $f$ and $g$ are differentiable at $a$, then \begin{equation*}
+    (f \cdot g)'(a) = f'(a) \cdot g(a) + f(a) \cdot g'(a).
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  \begin{align*}
+    (f \cdot g)'(a) &= \lim_{h \rightarrow 0}\frac{(f \cdot g)(a + h) - (f
+      \cdot g)(a)}{h} \\
+      &= \lim_{h \rightarrow 0}\frac{f(a + h)g(a + h) - f(a)g(a)}{h} \\
+      &= \lim_{h \rightarrow 0}{\left[\frac{f(a + h)[g(a + h) - g(a)]}{h} +
+        \frac{[f(a + h) - f(a)]g(a)}{h}\right]} \\
+      &= \lim_{h \rightarrow 0}f(a + h) \cdot \lim_{h \rightarrow 0}\frac{g(a +
+        h) - g(a)}{h} + \lim_{h \rightarrow 0}\frac{f(a + h) - f(a)}{h} \cdot
+        \lim_{h \rightarrow 0}g(a) \\
+      &= f(a) \cdot g'(a) + f'(a) \cdot g(a).
+  \end{align*}
+\end{proof}
+
+\begin{theorem}
+  If $g(x) = cf(x)$ and $f$ is differentiable at $a$, then $g$ is
+  differentiable at $a$, and \begin{equation*}
+    g'(a) = c \cdot f'(a).
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  If $h(x) = c$, so that $g = h \cdot f$, then by Theorem 4, \begin{align*}
+    g'(a) &= (h \cdot f)'(a) \\
+      &= h(a) \cdot f'(a) + h'(a) \cdot f(a) \\
+      &= c \cdot f'(a) + 0 \cdot f(a) \\
+      &= c \cdot f'(a).
+  \end{align*}
+\end{proof}
+
+\begin{theorem}
+  If $f(x) = x^n$ for some natural number $n$, then \begin{equation*}
+    f'(a) = na^{n-1} \text{ for all } a.
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  The proof will be by induction on $n$. For $n = 1$ this is simply Theorem 2.
+  Now assume that the theorem is true for $n$, so that if $f(x) = x^n$, then
+  \begin{equation*}
+    f'(a) = na^{n-1} \text{ for all } a.
+  \end{equation*}
+  Let $g(x) = x^{n+1}$. If $I(x) = x$, the equation $x^{n+1} = x^n \cdot x$
+  can be written \begin{equation*}
+    g(x) = f(x) \cdot I(x) \text{ for all } x;
+  \end{equation*} thus $g = f \cdot I$. It follows from Theorem 4 that
+  \begin{align*}
+    g'(a) = (f \cdot I)'(a) &= f'(a) \cdot I(a) + f(a) \cdot I'(a) \\
+      &= na^{n - 1} \cdot a + a^n \cdot 1 \\
+      &= na^n + a^n \\
+      &= (n + 1)a^n, \text{ for all } a.
+  \end{align*}
+  This is precisely the case $n + 1$ which we wished to prove.
+\end{proof}
+
+\begin{theorem}
+  If $g$ is differentiable at $a$, and $g(a) \neq 0$, then $1/g$ is
+  differentiable at $a$, and \begin{equation*}
+    \left(\frac{1}{g}\right)'(a) = \frac{-g'(a)}{[g(a)]^2}.
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  Before we even write \begin{equation*}
+    \frac{\left(\frac{1}{g}\right)(a + h) - \left(\frac{1}{g}\right)(a)}{h}
+  \end{equation*} we must be sure that this expression makes sense - it is
+  necessary to check that $(1/g)(a + h)$ is defined for sufficiently small $h$.
+  This requires only two observations. Since $g$ is, by hypothesis,
+  differentiable at $a$, it follows from Theorem 9-1 that $g$ is continuous at
+  $a$. Since $g(a) \neq 0$, it follows from Theorem 6-3 that there is some
+  $\delta > 0$ such that $g(a + h) \neq 0$ for $|h| < \delta$. Therefore $(1/g)
+  (a + h)$ does make sense for small enough $h$, and we can write
+  \begin{align*}
+    \lim_{h \rightarrow 0}\frac{\left(\frac{1}{g}\right)(a + h) - \left(\frac
+    {1}{g}\right)(a)}{h}
+      &= \lim_{h \rightarrow 0}\frac{\frac{1}{g(a + h)} - \frac{1}{g(a)}}{h} \\
+      &= \lim_{h \rightarrow 0}\frac{g(a) - g(a + h)}{h[g(a) \cdot g(a + h)]}
+        \\
+      &= \lim_{h \rightarrow 0}{\frac{-[g(a + h) - g(a)]}{h} \cdot \frac{1}
+        {g(a)g(a + h)}} \\
+      &= \lim_{h \rightarrow 0}{\frac{-[g(a + h) - g(a)]}{h} \cdot \lim_{h
+        \rightarrow 0}\frac{1}{g(a) \cdot g(a + h)}} \\
+      &= -g'(a) \cdot \frac{1}{[g(a)]^2}
+  \end{align*}
+  (Notice that we have used continuity of $g$ at $a$ once again.)
+\end{proof}
+
+\begin{theorem}
+  If $f$ and $g$ are differentiable at $a$ and $g(a) \neq 0$, then $f/g$ is
+  differentiable at $a$, and \begin{equation*}
+    \left(\frac{f}{g}\right)'(a) = \frac{g(a) \cdot f'(a) - f(a) \cdot g'(a)}
+      {[g(a)]^2}.
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  Since $f/g = f \cdot (1/g)$ we have \begin{align*}
+    \left(\frac{f}{g}\right)'(a) &= \left(f \cdot \frac{1}{g}\right)'(a) \\
+      &= f'(a) \cdot \left(\frac{1}{g}\right)(a) + f(a) \cdot \left(\frac{1}{g}
+        \right)'(a) \\
+      &= \frac{f'(a)}{g(a)} + \frac{f(a)(-g'(a))}{[g(a)]^2} \\
+      &= \frac{f'(a) \cdot g(a) - f(a) \cdot g'(a)}{[g(a)]^2}.
+  \end{align*}
+\end{proof}
+
+\begin{theorem}[The Chain rule]
+  If $g$ is differentiable at $a$, and $f$ is differentiable at $g(a)$, then $f
+  \circ g$ is differentiable at $a$, and \begin{equation*}
+    (f \circ g)'(a) = f'(g(a)) \cdot g'(a).
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  Define a function $\phi$ as follows: \begin{equation*}
+    \phi(h) = \begin{cases}
+      \frac{f(g(a + h)) - f(g(a))}{g(a + h) - g(a)}, &\text{ if } g(a + h) -
+        g(a) \neq 0 \\
+      f'(g(a)), &\text{ if } g(a + h) - g(a) = 0.
+    \end{cases}
+  \end{equation*}
+  It should be intuitively clear that $\phi$ is continuous at 0: When $h$ is
+  small, $g(a + h) - g(a)$ is also small, so if $g(a + h) - g(a)$ is not zero,
+  then $\phi(h)$ will be close to $f'(g(a))$; and if it is zero, then $\phi(h)$
+  actually equals $f'(g(a))$, which is even better. Since the continuity of
+  $\phi$ is the crux of the whole proof we will provide a careful translation
+  of this intuitive argument.
+
+  We know that $f$ is differentiable at $g(a)$. This means that
+  \begin{equation*}
+    \lim_{k \rightarrow 0}\frac{f(g(a) + k) - f(g(a))}{k} = f'(g(a)).
+  \end{equation*}
+  Thus, if $\epsilon > 0$ there is some number $\delta' > 0$ such that, for all
+  $k$, \begin{equation*}
+    \text{(1) if } 0 < |k| < \delta', \text{ then } \left|\frac{f(g(a) + k) -
+      f(g(a))}{k} - f'(g(a))\right| < \epsilon.
+  \end{equation*}
+  Now $g$ is differentiable at $a$, hence continuous at $a$, so there is a
+  $\delta > 0$ such that, for all $h$, \begin{equation*}
+    \text{(2) if } |h| < \delta, \text{ then } |g(a + h) - g(a)| < \delta'.
+  \end{equation*}
+  Consider now any $h$ with $|h| < \delta$. If $k = g(a + h) - g(a) \neq 0$,
+  then \begin{equation*}
+    \phi(h) = \frac{f(g(a + h)) - f(g(a))}{g(a + h) - g(a)} = \frac{f(g(a) + k)
+      - f(g(a))}{k};
+  \end{equation*} it follows from (2) that $|k| < \delta'$, and hence from (1)
+  that \begin{equation*}
+    |\phi(h) - f'(g(a))| < \epsilon.
+  \end{equation*}
+  On the other hand, if $g(a + h) - g(a) = 0$, then $\phi(h) = f'(g(a))$, so it
+  is surely true that \begin{equation*}
+    |\phi(h) - f'(g(a))| < \epsilon.
+  \end{equation*}
+  We have therefore proven that \begin{equation*}
+    \lim_{h \rightarrow 0}\phi(h) = f'(g(a)),
+  \end{equation*} so $\phi(h)$ is continuous at 0. The rest of the proof is
+  easy. If $h \neq 0$, then we have \begin{equation*}
+    \frac{f(g(a + h)) - f(g(a))}{h} = \phi(h) \cdot \frac{g(a + h) - g(a)}{h}
+  \end{equation*} even if $g(a + h) - g(a) = 0$ (because in that case both
+  sides are 0). Therefore \begin{align*}
+    (f \circ g)'(a) &= \lim_{h \rightarrow 0}\frac{f(g(a + h)) - f(g(a))}{h} =
+      \lim_{h \rightarrow 0}\phi(h) \cdot \lim_{h \rightarrow 0}\frac{g(a + h)
+      - g(a)}{h} \\
+      &= f'(g(a)) \cdot g'(a).
+  \end{align*}
+\end{proof}
+
+\section*{Exercises}
+
+\paragraph{Problem 10-22. (a)} The number $a$ is called a \emph{double root} of
+the polynomial function $f$ if $f(x) = (x - a)^2g(x)$ for some polynomial
+function $g$. Prove that $a$ is a double root of $f$ if and only if $a$ is a
+root of both $f$ and $f'$.
+
+\paragraph{Solution:} If $a$ is a double root of $f$, so that $f(x) = (x - a)^2
+g(x)$, then $f'(x) = 2(x - a)g(x) + (x - a)^2g'(x)$ and so $f(a) = f'(a) = 0$.
+Conversely, if $f(a) = 0$ and $f'(a) = 0$, then $f(x) = (x - a)g(x)$ for some
+$g$ and $f'(x) = (x - a)g'(x) + g(x)$, so $0 = f'(a) = g(a)$; thus $g(x) =
+(x - a)h(x)$ for some $h$, so $f(x) = (x - a)^2h(x)$.
+
+\paragraph{(b)} When does $f(x) = ax^2 + bx + c (a \neq 0)$ have a double root?
+What does the condition say geometrically?
+
+\paragraph{Solution:} The only root of $0 = f'(x) = 2ax + b$ is $-b/2a$, so $f$
+has a double root if and only if \begin{equation*}
+  0 = f\left(-\frac{b}{2a}\right) = a\left(\frac{b^2}{4a^2}\right) + b\left(
+    -\frac{b}{2a}\right) + c = -\frac{b^2}{4a} + c
+\end{equation*} or $b^2 = 4ac$. Geometrically, this is precisely the condition
+that the graph of $f$ touches the horizontal axis at the single point $-b/2a$.
+
+\paragraph{Problem 10-24.} Let $a_1, \ldots, a_n$ and $b_1, \ldots, b_n$ be
+given numbers.
+
+\paragraph{(a)} If $x_1, \ldots, x_n$ are distinct numbers, prove that there is
+a polynomial function $f$ of degree $2n - 1$, such that $f(x_j) = f'(x_j) = 0$
+for $j \neq i$, and $f(x_i) = a_i$ and $f'(x_i) = b_i$.
+
+\paragraph{Solution:} Clearly $f$ will have to be the form \begin{equation*}
+  f(x) = (ax + b)\prod_{1 \leq j \leq n, j \neq i}{(x - x_j)^2}
+\end{equation*} with degree $2n - 1$ (as each $x_j$ with $j \neq i$ is a double
+root by Problem 22). It suffices to show that $a$ and $b$ can be picked such
+that $f(x_i) = a_i$ and $f'(x_i) = b_i$.
+
+If we write $f$ in the form $f(x) = (ax + b)g(x)$, then we must solve
+\begin{align*}
+  [g(x_i)x_i] \cdot a + g(x_i) \cdot b &= a_i, \\
+  [g'(x_i)x_i + g(x_i)] \cdot a + g'(x_i) \cdot b &= b_i;
+\end{align*} these equations can always be solved as \begin{equation*}
+  [g(x_i)x_i]g'(x_i) - [g'(x_i)x_i + g(x_i)]g(x_i) = -[g(x_i)]^2 \neq 0.
+\end{equation*}
+
+\paragraph{(b)} Prove that there is a polynomial function $f$ of degree $2n -
+1$ with $f(x_i) = a_i$ and $f'(x_i) = b_i$ for all $i$.
+
+\paragraph{Solution:} Let $f_i$ be the function constructed in (a). Then, let
+$f = f_1 + \ldots + f_n$.
+
+\paragraph{Problem 10-25 (abridged).} Suppose that $a$ and $b$ are two
+consecutive roots of a polynomial function $f$, but that $a$ and $b$ are not
+double roots, so that we can write $f(x) = (x - a)(x - b)g(x)$ where $g(a) \neq
+0$ and $g(b) \neq 0$.
+
+\paragraph{(a)} Prove that $g(a)$ and $g(b)$ have the same sign. (Remember that
+$a$ and $b$ are consecutive roots.)
+
+\paragraph{Solution:} If $g(a)$ and $g(b)$ had different signs, then $g(x)$
+would be 0 for some $x$ in $(a, b)$, which implies that $f(x) = 0$,
+contradicting the fact that $a$ and $b$ are consecutive roots.
+
+\paragraph{(b)} Prove that there is some number $x$ with $a < x < b$ and $f'(x)
+= 0$.
+
+\paragraph{Solution:} We have \begin{equation*}
+  f'(x) = (x - a)g(x) + (x - b)g(x) + (x - a)(x - b)g'(x),
+\end{equation*} so $f'(a) = (a - b)g(a)$, $f'(b) = (b - a)g(b)$. Since $g(a)$
+and $g(b)$ have the same sign, $f'(a)$ and $f'(b)$ have different signs. So
+$f'(x) = 0$ for some $x$ in $(a, b)$, since $f'$ is a continuous function.
+
+\paragraph{(c)} Now prove the same fact, even if $a$ and $b$ are multiple
+roots.
+
+\paragraph{Solution:} Let $f(x) = (x - a)^m(x - b)^ng(x)$ where $g(a) \neq 0$
+and $g(b) \neq 0$; then, \begin{multline*}
+  f'(x) = m(x - a)^{m - 1}(x - b)^ng(x) + n(x - a)^m(x - b)^{n - 1}g(x) \\
+    + (x - a)^m(x - b)^ng'(x).
+\end{multline*}
+Consider the polynomial $h(x) = f'(x)/(x - a)^{m - 1}(x - b)^{n - 1}$:
+\begin{equation*}
+  h(x) = m(x - b)g(x) + n(x - a)g(x) + (x - a)(x - b)g'(x),
+\end{equation*} so \begin{align*}
+  h(a) &= m(x - b)g(a), \\
+  h(b) &= n(b - a)g(b).
+\end{align*}
+Since $m$ and $n$ are positive integers, and $g(a)$ and $g(b)$ are the same
+sign, $h(a)$ and $h(b)$ are of different signs, so $h(x) = 0$ for some $x$ in
+$(a, b)$, which implies that $f'(x) = 0$ for some $x$ in $(a, b)$.
+
+\paragraph{Problem 10-27 (abridged).} Suppose $f$ is differentiable at 0, and
+that $f(0) = 0$. Prove that $f(x) = xg(x)$ for some function $g$ which is
+continuous at 0.
+
+\paragraph{Solution:} Let \begin{equation*}
+  g(x) = \begin{cases}
+    \frac{f(x)}{x}, &x \neq 0; \\
+    f'(0), &x = 0.
+  \end{cases}
+\end{equation*}
+Then $f(x) = xg(x)$ for all $x$, and \begin{equation*}
+  g(0) = f'(0) = \lim_{x \rightarrow 0}\frac{f(x) - f(0)}{x} = \lim_{x
+    \rightarrow 0}g(x),
+\end{equation*} so $g$ is continuous at 0.
+
+\paragraph{Problem 10-29 (abridged).} Prove that it is impossible to write $x =
+f(x)g(x)$ where $f$ and $g$ are differentiable and $f(0) = g(0) = 0$.
+
+\paragraph{Solution:} Differentiating both sides, \begin{equation*}
+  1 = f'(x)g(x) + f(x)g'(x).
+\end{equation*}
+But there is no solution for $x = 0$; noting that $f(0) = g(0) = 0$, the right
+side simplifies to $f'(0)g(0) + f(0)g'(0) = 0 + 0 = 0 \neq 1$. So $f$ and $g$
+are not differentiable at 0.
+
+\paragraph{Problem 10-31, 10-32 (combined).} Let $f(x) = x^m\sin{1/x}$ for some
+positive integer $m$ if $x \neq 0$, and let $f(0) = 0$.
+
+For $m = 2n$, prove that $f'(0), \ldots, f^{(n)}(0)$ exist, and that $f^{(n)}$
+is not continuous at 0.
+
+For $m = 2n + 1$, prove that $f'(0), \ldots, f^{(n)}(0)$ exist, that $f^{(n)}$
+is continuous at 0, and that $f^{(n)}$ is not differentiable at 0.
+
+\paragraph{Solution:} The formulas \begin{align*}
+  f(x) &= x^m\sin{\frac{1}{x}}, \\
+  f'(x) &= mx^{m - 1}\sin{\frac{1}{x}} - x^{m - 2}\cos{\frac{1}{x}}, \\
+  f''(x) &= m(m - 1)x^{m - 2}\sin{\frac{1}{x}} - mx^{m - 3}\cos{\frac{1}{x}} \\
+    &\quad - (m - 2)x^{m - 3}\cos{\frac{1}{x}} + x^{m - 4}\sin{\frac{1}{x}}, \\
+    &= m(m - 1)x^{m - 2}\sin{\frac{1}{x}} + (2 - 2m)x^{m - 3}\cos{\frac{1}{x}}
+      + x^{m - 4}\sin{\frac{1}{x}}, \\
+  f'''(x) &= m(m - 1)(m - 2)x^{m - 3}\sin{\frac{1}{x}} - m(m - 1)x^{m - 4}\cos{
+    \frac{1}{x}} \\
+    &\quad + (2 - 2m)(m - 3)x^{m - 4}\cos{\frac{1}{x}} - (2 - 2m)x^{m - 5}\sin{
+      \frac{1}{x}} \\
+    &\quad + (m - 4)x^{m - 5}\sin{\frac{1}{x}} - x^{m - 6}\cos{\frac{1}{x}}
+\end{align*} suggest the following conjecture: If $f(x) = x^m\sin{1/x}$, for $x
+\neq 0$, then \begin{multline*}
+  f^{(k)}(x) = ax^{m - k}\sin{\frac{1}{x}} \\
+    + \sum_{l = k + 1}^{2k - 1}\left(a_lx^{m - l}\sin{\frac{1}{x}} + b_lx^{m -
+    l}\cos{\frac{1}{x}}\right) \pm \begin{cases}
+      x^{m - 2k}\sin{\frac{1}{x}}, &k \text{ even}, \\
+      x^{m - 2k}\cos{\frac{1}{x}}, &k \text{ odd}.
+    \end{cases}
+\end{multline*} for specific numbers $a, a_l, b_l$. Once this conjecture is
+made, it is easy to check it by induction. Differentiating the first term
+yields \begin{equation*}
+  a(m - k)x^{m - k - 1}\sin{\frac{1}{x}} - ax^{m - k - 2}\cos{\frac{1}{x}},
+\end{equation*} and the second half of this expression can be incorporated in
+the sum $\sum_{l = k + 2}^{2k + 1}$ appearing in the desired expression for
+$f^{(k + 1)}(x)$. Similarly, differentiating the last term yields
+\begin{equation*}
+  \begin{cases}
+    \pm(m - 2k)x^{m - (2k + 1)}\sin{\frac{1}{x}} \mp x^{m - (2k + 2)}\cos{
+      \frac{1}{x}}, &k \text{ even} (k + 1 \text{ odd}), \\
+    \pm(m - 2k)x^{m - (2k + 1)}\cos{\frac{1}{x}} \pm x^{m - (2k + 2)}\sin{
+      \frac{1}{x}}, &k \text{ odd} (k + 1 \text{ even}), \\
+  \end{cases}
+\end{equation*} and the first half of each expression can be incorporated in
+the sum $\sum_{l = k + 2}^{2k + 1}$. Finally, each term in the sum $\sum_{l = k
++ 1}^{2k - 1}$ yield upon differentiation two terms that can be incorporated in
+the sum $\sum_{l = k + 2}^{2k + 1}$.
+
+It follows, in particular, that if $m = 2n$, then $f^{(k)}(x)$ always has a
+factor of at least $x^2$ for $k < n$. So if we define $f(0) = 0$, then
+\begin{equation*}
+  f'(0) = \lim_{h \rightarrow 0}\frac{f(h) - f(0)}{h}= \lim_{h \rightarrow 0}
+    \frac{f(h)}{h} = 0;
+\end{equation*} similarly, $f''(0) = \lim_{h \rightarrow 0}\frac{f'(h) - f'(0)}
+{h} = \lim_{h \rightarrow 0}\frac{f'(h)}{h} = 0$, and so on until $f^{(n)}(0) =
+0$. On the other hand, $f^{(n)}(x)$ has the term $\pm \sin{1/x}$ or $\cos{1/x}$
+and so $f^{(n)}$ is not continuous at 0.
+
+On the other hand, for $m = 2n + 1$, $f^{(k)}(x)$ always has a factor of at
+least $x^2$ for $k < n$, so $f'(0) = \cdots = f^{(n)}(0) = 0$. But,
+$f^{(n)}(x)$ is a sum of terms which do have a factor of at least $x^2$,
+together with $\pm x\sin{1/x}$ or $x\cos{1/x}$. It follows that $f^{(n)}$ is
+continuous, but not differentiable, at 0.
+
+\end{document}
+
