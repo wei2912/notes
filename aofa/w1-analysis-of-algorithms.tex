@@ -1,0 +1,138 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+
+\begin{document}
+
+\title{Week 1: Analysis of Algorithms}
+\maketitle
+
+\section*{Exercises}
+
+\paragraph{1.14} Follow through the steps above to solve the recurrence
+\begin{equation*}
+  A_N = 1 + \frac{2}{N}\sum_{1 \leq j \leq N}A_{j - 1} \text{ for } N > 0
+\end{equation*} with $A_0 = 0$. This is the number of times quicksort is called
+with \verb|hi >= lo|.
+
+\paragraph{Solution:} Multiplying by $N$ and subtracting away the same equation
+for $N - 1$, \begin{align*}
+  NA_N &= N + 2\sum_{1 \leq j \leq N}A_{j - 1}, \\
+  (N - 1)A_{N - 1} &= N - 1 + 2\sum_{1 \leq j \leq N - 1}A_{j - 1},
+\end{align*} which leads to the much simpler recurrence relation
+\begin{equation*}
+  NA_N = (N + 1)A_{N - 1} + 1,
+\end{equation*} that can be rewritten into \begin{equation*}
+  \frac{A_N}{N + 1} = \frac{A_{N - 1}}{N} + \frac{1}{N(N + 1)}.
+\end{equation*} Telescoping leads to the neat result \begin{equation*}
+  \frac{A_N}{N + 1} = \frac{A_0}{1} + \sum_{1 \leq j \leq N}\frac{1}{j(j + 1)}
+    = \sum_{1 \leq j \leq N}\frac{1}{j(j + 1)}
+\end{equation*} since $A_0 = 0$. It should be noted that $\sum_{1 \leq j \leq
+N}\frac{1}{j(j + 1)} = \sum_{1 \leq j \leq N}\left(\frac{1}{j} - \frac{1}{j +
+1}\right)$ has an exact solution $\frac{1}{1} - \frac{1}{N + 1} = \frac{N}{N +
+1}$. Therefore, $A_N = N$.
+
+\paragraph{1.15} Show that the average number of exchanges used during the
+first partitioning stage (before the pointers cross) is $(N - 2)/6$. (Thus, by
+linearity of the recurrences, the average number of exchanges used by quicksort
+is $\frac{1}{6}C_N - \frac{1}{2}A_N$.)
+
+\paragraph{Solution:} The average number of exchanges used during the first
+partitioning stage (before the pointers cross), given that $i$ is the rank of
+the pivot, is equal to the expected number of elements of rank more than $i -
+1$ in the first $i - 1$ elements.
+
+Noting that the probability of any element (other than the pivot) being of rank
+more than $i - 1$ is $\frac{(N - 1) - (i - 1)}{N - 1} = \frac{N - i}{N - 1}$
+and summing up the probabilities for the first $i - 1$ elements, the expected
+number of exchanges given that $i$ is the rank of the pivot is $(i - 1)\frac{N
+- i}{N - 1}$.
+
+Since the probability of $i$ being the rank of the pivot is $\frac{1}{N}$, the
+expected number of exchanges in the first partitioning stage is
+\begin{align*}
+  \sum_{i = 1}^N{\frac{1}{N} \cdot (i - 1)\frac{N - i}{N - 1}} &= -\frac{1}{N(N
+    - 1)}\sum_{i = 1}^N{i^2} + \frac{N + 1}{N(N - 1)}\sum_{i = 1}^N{i} -
+    \frac{1}{N - 1}\sum_{i = 1}^N{1} \\
+    &= -\frac{1}{N(N - 1)} \cdot \frac{N(N + 1)(2N + 1)}{6} \\
+      &+ \frac{N + 1}{N(N - 1)} \cdot \frac{N(N + 1)}{2} - \frac{1}{N - 1}
+      \cdot N \\
+    &= \frac{N - 2}{6}
+\end{align*} after a fair bit of algebra.
+
+\paragraph{1.16} How many subarrays of size $k$ or less (not counting subarrays
+of size 0 or less) are encountered, on the average, when sorting a random file
+of size $N$ with quicksort?
+
+\paragraph{Solution:} Let $B_N$ be the average number of subarrays of size $k$
+or less encountered when sorting a random file of size $N$ with quicksort.
+The probability that the left subarray takes on $m - 1$ number of elements is
+equal to the probability that the rank of the pivot is $m$, or $\frac{1}{N -
+1}$. A recurrence relation can be formulated for $B_N$,
+\begin{equation*}
+  B_N = \begin{cases}
+    \frac{1}{N - 1}\sum_{1 \leq j \leq N}(B_{j - 1} + B_{N - j}), &N > k; \\
+    1 + \frac{1}{N - 1}\sum_{1 \leq j \leq N}(B_{j - 1} + B_{N - j}), &N \leq
+      k,
+  \end{cases}
+\end{equation*} with $B_1 = 1$. For $N - 1 > k$, the recurrence relation can be
+simplified to $(N - 1)B_N - (N - 2)B_{N - 1} = 2B_{N - 1}$, or
+\begin{equation*}
+  \frac{B_N}{N} = \frac{B_{N - 1}}{N - 1} \text{ for } N - 1 > k.
+\end{equation*} With telescoping, $B_N = \frac{N}{k}B_k$. Now, we proceed to
+solve for $B_k$.
+
+For $N \leq k$, the recurrence relation can be simplified to $(N - 1)B_N - (N -
+2)B_{N - 1} = 1 + 2B_{N - 1}$, or \begin{equation*}
+  \frac{B_N}{N} = \frac{B_{N - 1}}{N - 1} + \frac{1}{N(N - 1)} \text{ for } N
+    \leq k.
+\end{equation*} Applying to this $B_k$, \begin{align*}
+  \frac{B_k}{k} &= \frac{B_{k - 1}}{k - 1} + \frac{1}{k(k - 1)} \\
+    &= \frac{B_1}{1} + \sum_{2 \leq j \leq k}\frac{1}{j(j - 1)} \\
+    &= 1 + \sum_{2 \leq j \leq k}\frac{1}{j(j - 1)}.
+\end{align*} Noting that $\sum_{2 \leq j \leq k}\frac{1}{j(j - 1)} = \sum_{2
+\leq j \leq k}\left(\frac{1}{j - 1} - \frac{1}{j}\right) = \frac{1}{1} -
+\frac{1}{k}$, \begin{equation*}
+  B_k = 2k - 1
+\end{equation*} and therefore \begin{equation*}
+  B_N = N\left(2 - \frac{1}{k}\right), \text{ for } N - 1 > k.
+\end{equation*}
+
+\paragraph{1.17} If we change the first line of the quicksort implementation
+above to call insertion sort when \verb|hi - lo <= M| then the total number of
+comparisons to sort $N$ elements is described by the recurrence
+\begin{equation*}
+  C_N = \begin{cases}
+    N + 1 + \frac{1}{N}\sum_{1 \leq j \leq N}(C_{j - 1} + C_{N - j}), &N > M;
+      \\
+    \frac{1}{4}N(N - 1), &N \leq M.
+  \end{cases}
+\end{equation*}
+
+\paragraph{Solution:} For $N - 1 > M$, following the steps in the lecture to
+the point before telescoping, \begin{align*}
+  \frac{C_N}{N + 1} &= \frac{C_{N - 1}}{N} + \frac{2}{N + 1} \\
+    &= \frac{C_M}{M + 1} + \sum_{M + 1 \leq j \leq N}\frac{2}{j + 1} \\
+    &= \frac{M(M - 1)}{4(M + 1)} + 2(H_{N + 1} - H_{M + 1})
+\end{align*} and so \begin{equation*}
+  C_N = (N + 1)\left(\frac{M(M - 1)}{4(M + 1)} + 2(H_{N + 1} - H_{M + 1})
+    \right).
+\end{equation*}
+
+\paragraph{1.18} Ignoring small terms (those significantly less than $N$) in
+the answer to the previous exercise, find a function $f(M)$ so that the number
+of comparisons is approximately \begin{equation*}
+  2N\ln N + f(M)N.
+\end{equation*}
+Plot the function $f(M)$, and find the value of $M$ that minimizes the
+function.
+
+\paragraph{Solution:} Using the approximation $H_{N + 1} \sim \ln N$,
+\begin{align*}
+  C_N &\sim N\left(\frac{M(M - 1)}{4(M + 1)} + 2(\ln N - H_{M + 1})\right)
+    \\
+    &= 2N\ln N + \left(\frac{M(M - 1)}{4(M + 1)} - 2H_{M + 1}\right)N.
+\end{align*}
+A quick plot reveals that $M = 7$ yields the minimum value of $f(M)$.
+
+\end{document}
