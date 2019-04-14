@@ -1,0 +1,565 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+
+\title{Chapter 11: Significance of the Derivative}
+\maketitle
+
+\begin{definition}
+  Let $f$ be a function and $A$ a set of numbers contained in the domain of
+  $f$. A point $x$ in $A$ is a \emph{maximum point} for $f$ on $A$ if
+  \begin{equation*}
+    f(x) \geq f(y) \text{ for every } y \text{ in } A.
+  \end{equation*}
+  The number $f(x)$ itself is called the \emph{maximum value} of $f$ on $A$
+  (and we also say that $f$ "has the maximum value on $A$ at $x$").
+\end{definition}
+
+\begin{theorem}
+  Let $f$ be any function defined on $(a, b)$. If $x$ is a maximum (or a
+  minimum) point for $f$ on $(a, b)$, and $f$ is differentiable at $x$, then
+  $f'(x) = 0$.
+  (Notice that we do not assume differentiability, or even continuity, of $f$
+  at other points.)
+\end{theorem}
+
+\begin{proof}
+  Consider the case where $f$ has a maximum at $x$. If $h$ is any number such
+  that $x + h$ is in $(a, b)$, then \begin{equation*}
+    f(x) \geq f(x + h),
+  \end{equation*} since $f$ has a maximum on $(a, b)$ at $x$. This means that
+  \begin{equation*}
+    f(x + h) - f(x) \leq 0.
+  \end{equation*} Thus, if $h > 0$ we have \begin{equation*}
+    \frac{f(x + h) - f(x)}{h} \leq 0
+  \end{equation*} and consequently \begin{equation*}
+    \lim_{x \rightarrow 0^+} \frac{f(x + h) - f(x)}{h} \leq 0.
+  \end{equation*} On the other hand, if $h < 0$, we have \begin{equation*}
+    \frac{f(x + h) - f(x)}{h} \geq 0,
+  \end{equation*} so \begin{equation*}
+    \lim_{x \rightarrow 0^-} \frac{f(x + h) - f(x)}{h} \geq 0.
+  \end{equation*} By hypothesis, $f$ is differentiable at $x$, so these two
+  limits must be equal, in fact equal to $f'(x)$. This means that
+  \begin{equation*}
+    f'(x) \leq 0 \text{ and } f'(x) \geq 0,
+  \end{equation*} from which it follows that $f'(x) = 0$.
+
+  The case where $f$ has a minimum at $x$ is left to you.
+\end{proof}
+
+\begin{definition}
+  Let $f$ be a function, and $A$ a set of numbers contained in the domain of
+  $f$. A point $x$ in $A$ is a \emph{local maximum [minimum] point} for $f$ on
+  $A$ if there is some $\delta > 0$ such that $x$ is a maximum [minimum]
+  point for $f$ on $A \cap (x - \delta, x + \delta)$.
+\end{definition}
+
+\begin{theorem}
+  If $f$ is defined on $(a, b)$ and has a local maximum (or minimum) at $x$,
+  and $f$ is differentiable at $x$, then $f'(x) = 0$.
+\end{theorem}
+
+\begin{proof}
+  You should see why this is an easy application of Theorem 1.
+\end{proof}
+
+\begin{definition}
+  A \emph{critical point} of a function $f$ is a number $x$ such that
+  \begin{equation*}
+    f'(x) = 0.
+  \end{equation*} The number $f(x)$ itself is called a \emph{critical value} of
+  $f$.
+\end{definition}
+
+\begin{theorem}[Rolle's Theorem]
+  If $f$ is continuous on $[a, b]$ and differentiable on $(a, b)$, and $f(a) =
+  f(b)$, then there is a number $x$ in $(a, b)$ such that $f'(x) = 0$.
+\end{theorem}
+
+\begin{proof}
+  It follows from the continuity of $f$ on $[a, b]$ that $f$ has a maximum and
+  a minimum value on $[a, b]$.
+
+  Suppose first that the maximum value occurs at a point $x$ in $(a, b)$. Then
+  $f'(x) = 0$ by Theorem 1, and we are done.
+
+  Suppose next that the minimum value occurs at some point $x$ in $(a, b)$.
+  Then, again, $f'(x) = 0$ by Theorem 1.
+
+  Finally, suppose the maximum and minimum values both occur at the end points.
+  Since $f(a) = f(b)$, the maximum and minimum values of $f$ are equal, so $f$
+  is a constant function, and for a constant function we can choose any $x$ in
+  $(a, b)$.
+\end{proof}
+
+\begin{theorem}[The Mean Value Theorem]
+  If $f$ is continuous on $[a, b]$ an differentiable on $(a, b)$, then there is
+  a number $x$ in $(a, b)$ such that \begin{equation*}
+    f'(x) = \frac{f(b) - f(a)}{b - a}.
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  Let \begin{equation*}
+    h(x) = f(x) - \left[\frac{f(b) - f(a)}{b - a}\right](x - a).
+  \end{equation*} Clearly, $h$ is continuous on $[a, b]$ and differentiable on
+  $(a, b)$, and \begin{align*}
+    h(a) &= f(a), \\
+    h(b) &= f(b) - \left[\frac{f(b) - f(a)}{b - a}\right](b - a) \\
+      &= f(a).
+  \end{align*} Consequently, we may apply Rolle's Theorem to $h$ and conclude
+  that there is some $x$ in $(a, b)$ such that \begin{equation*}
+    0 = h'(x) = f'(x) - \frac{f(b) - f(a)}{b - a},
+  \end{equation*} so that \begin{equation*}
+    f'(x) = \frac{f(b) - f(a)}{b - a}.
+  \end{equation*} Notice that the Mean Value Theorem still fits into the
+  pattern exhibited by previous theorems - information about $f$ yields
+  information about $f'$. This information is so strong, however, that we can
+  now go in the other direction.
+\end{proof}
+
+\begin{corollary}
+  If $f$ is defined on an interval and $f'(x) = 0$ for all $x$ in the interval,
+  then $f$ is constant on the interval.
+\end{corollary}
+
+\begin{proof}
+  Let $a$ and $b$ be any two points in the interval with $a \neq b$. Then there
+  is some $x$ in $(a, b)$ such that \begin{equation*}
+    f'(x) = \frac{f(b) - f(a)}{b - a}.
+  \end{equation*} But $f'(x) = 0$ for all $x$ in the interval, so
+  \begin{equation*}
+    0 = \frac{f(b) - f(a)}{b - a},
+  \end{equation*} and consequently $f(a) = f(b)$. Thus the value of $f$ at any
+  two points in the interval is the same, i.e., $f$ is constant on the
+  interval.
+\end{proof}
+
+Naturally, Corollary 1 does not hold for functions defined on two or more
+intervals.
+
+\begin{corollary}
+  If $f$ and $g$ are defined on the same interval, and $f'(x) = g'(x)$ for all
+  $x$ in the interval, then there is some number $c$ such that $f = g + c$.
+\end{corollary}
+
+\begin{proof}
+  For all $x$ in the interval we have $(f - g)'(x) = f'(x) - g'(x) = 0$ so, by
+  Corollary 1, there is a number $c$ such that $f - g = c$.
+\end{proof}
+
+\begin{definition}
+  A function is \emph{increasing} on an interval if $f(a) < f(b)$ whenever $a$
+  and $b$ are two numbers in the interval with $a < b$. The function $f$ is
+  \emph{decreasing} on an interval if $f(a) > f(b)$ for all $a$ and $b$ in the
+  interval with $a < b$. (We often say simply that $f$ is increasing or
+  decreasing, in which case the interval is understood to be the domain of
+  $f$.)
+\end{definition}
+
+\begin{corollary}
+  If $f'(x) > 0$ for all $x$ in an interval, then $f$ is increasing on the
+  interval; if $f'(x) < 0$ for all $x$ in the interval, then $f$ is decreasing
+  on the interval.
+\end{corollary}
+
+\begin{proof}
+  Consider the case where $f'(x) > 0$. Let $a$ and $b$ be two points in the
+  interval with $a < b$. Then there is some $x$ in $(a, b)$ with
+  \begin{equation*}
+    f'(x) = \frac{f(b) - f(a)}{b - a}.
+  \end{equation*} But $f'(x) > 0$ for all $x$ in $(a, b)$, so \begin{equation*}
+    \frac{f(b) - f(a)}{b - a} > 0.
+  \end{equation*} Since $b - a > 0$ it follows that $f(b) > f(a)$.
+
+  The proof when $f'(x) < 0$ for all $x$ is left to you.
+\end{proof}
+
+\begin{theorem}
+  Suppose $f'(a) = 0$. If $f''(a) > 0$, then $f$ has a local minimum at $a$; if
+  $f''(a) < 0$, then $f$ has a local maximum at $a$.
+\end{theorem}
+
+\begin{proof}
+  By definition, \begin{equation*}
+    f''(a) = \lim_{h \rightarrow 0} \frac{f'(a + h) - f'(a)}{h}.
+  \end{equation*} Since $f'(a) = 0$, this can be written \begin{equation*}
+    f''(a) = \lim_{h \rightarrow 0} \frac{f'(a + h)}{h}.
+  \end{equation*} Suppose now that $f''(a) > 0$. Then $f'(a + h) / h$ must be
+  positive for sufficiently small $h$. Therefore: \begin{align*}
+    &f'(a + h) \text{ must be positive for sufficiently small } h > 0 \\
+    \text{and } &f'(a + h) \text{ must be positive for sufficiently small }h <
+    0.
+  \end{align*}
+  This means (Corollary 3) that $f$ is increasing in some interval to the right
+  of $a$ and $f$ is decreasing in some interval to the left of $a$.
+  Consequently, $f$ has a local minimum at $a$.
+
+  The proof for the case $f''(a) < 0$ is similar.
+\end{proof}
+
+Theorem 5 automatically proves a partial converse of itself.
+
+\begin{theorem}
+  Suppose $f''(a)$ exists. If $f$ has a local minimum at $a$, then $f''(a) \geq
+  0$; if $f$ has a local maximum at $a$, then $f''(a) \leq 0$.
+\end{theorem}
+
+\begin{proof}
+  Suppose $f$ has local minimum at $a$. If $f''(a) < 0$, then $f$ would also
+  have a local maximum at $a$, by Theorem 5. Thus $f$ would be constant in some
+  interval containing $a$, so that $f''(a) = 0$, a contradiction. Thus we must
+  have $f''(a) \geq 0$.
+
+  The case of a local maximum is handled similarly.
+\end{proof}
+
+The remainder of the theorems deal with three consequences of the Mean Value
+Theorem.
+
+\begin{theorem}
+  Suppose that $f$ is continuous at $a$, and that $f'(x)$ exists for all $x$ in
+  some interval containing $a$, except perhaps for $x = a$. Suppose, moreover,
+  that $\lim_{x \rightarrow a} f'(x)$ exists. Then $f'(a)$ also exists, and
+  \begin{equation*}
+    f'(a) = \lim_{x \rightarrow a} f'(x).
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  By definition, \begin{equation*}
+    f'(a) = \lim_{h \rightarrow 0} \frac{f(a + h) - f(a)}{h}.
+  \end{equation*} For sufficiently small $h > 0$ the function $f$ will be
+  continuous on $[a, a + h]$ and differentiable on $(a, a + h)$ (a similar
+  assertion holds for sufficiently small $h < 0$). By the Mean Value Theorem
+  there is a number $\alpha_h$ in $(a, a + h)$ such that \begin{equation*}
+    \frac{f(a + h) - f(a)}{h} = f'(\alpha_h).
+  \end{equation*}
+
+  Now $\alpha_h$ approaches $a$ as $h$ approaches 0, because $\alpha_h$ is in
+  $(a, a + h)$; since $\lim_{x \rightarrow a} f'(x)$ exists, it follows that
+  \begin{equation*}
+    f'(a) = \lim_{h \rightarrow 0} \frac{f(a + h) - f(a)}{h} = \lim_{h
+      \rightarrow 0} f'(\alpha_h) = \lim_{x \rightarrow a} f'(x).
+  \end{equation*} (It is a good idea to supply a rigorous $\epsilon$-$\delta$
+  argument for this final step, which we have treated somewhat informally.)
+\end{proof}
+
+The next theorem, a generalization of the Mean Value Theorem, is of interest
+mainly because of its applications.
+
+\begin{theorem}[The Cauchy Mean Value Theorem]
+  If $f$ and $g$ are continuous on $[a, b]$ and differentiable on $(a, b)$,
+  then there is a number $x$ in $(a, b)$ such that \begin{equation*}
+    [f(b) - f(a)]g'(x) = [g(b) - g(a)]f'(x).
+  \end{equation*} (If $g(b) \neq g(a)$, and $g'(x) \neq 0$, this equation can
+  be written \begin{equation*}
+    \frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(x)}{g'(x)}.
+  \end{equation*} Notice that if $g(x) = x$ for all $x$, then $g'(x) = 1$, and
+  we obtain the Mean Value Theorem. On the other hand, applying the Mean Value
+  Theorem to $f$ and $g$ separately, we find that there are $x$ and $y$ in $(a,
+  b)$ with \begin{equation*}
+    \frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(x)}{g'(y)};
+  \end{equation*} but there is no guarantee that $x$ and $y$ found in this way
+  will be equal. These remarks may suggest that the Cauchy Mean Value Theorem
+  will be quite difficult to prove, but actually the simplest of tricks
+  suffices.)
+\end{theorem}
+
+\begin{proof}
+  Let \begin{equation*}
+    h(x) = f(x)[g(b) - g(a)] - g(x)[f(b) - f(a)].
+  \end{equation*} Then $h$ is continuous on $[a, b]$, differentiable on $(a,
+  b)$, and \begin{equation*}
+    h(a) = f(a)g(b) - g(a)f(b) = h(b).
+  \end{equation*} It follows from Rolle's Theorem that $h'(x) = 0$ for some $x$
+  in $(a, b)$, which means that \begin{equation*}
+    0 = f'(x)[g(b) - g(a)] - g'(x)[f(b) - f(a)].
+  \end{equation*}
+\end{proof}
+
+The Cauchy Mean Value Theorem is the basic tool needed to prove a theorem which
+facilitates evaluation of limits of the form \begin{equation*}
+  \lim_{x \rightarrow a} \frac{f(x)}{g(x)},
+\end{equation*} when \begin{equation*}
+  \lim_{x \rightarrow a} f(x) = 0 \text{ and } \lim_{x \rightarrow a} g(x) = 0.
+\end{equation*}
+
+\begin{theorem}[L'H{\^o}pital's Rule]
+  Suppose that \begin{equation*}
+    \lim_{x \rightarrow a} f(x) = 0 \text{ and } \lim_{x \rightarrow a} g(x) =
+    0,
+  \end{equation*} and suppose also that $\lim_{x \rightarrow a} f'(x)/g'(x)$
+  exists. Then $\lim_{x \rightarrow a} f(x)/g(x)$ exists, and \begin{equation*}
+    \lim_{x \rightarrow a} \frac{f(x)}{g(x)} = \lim_{x \rightarrow a}
+      \frac{f'(x)}{g'(x)}.
+  \end{equation*} (Notice that Theorem 7 is a special case.)
+\end{theorem}
+
+\begin{proof}
+  The hypothesis that $\lim_{x \rightarrow a} f'(x)/g'(x)$ exists contains two
+  implicit assumptions: \begin{enumerate}
+    \item there is an interval $(a - \delta, a + \delta)$ such that $f'(x)$ and
+      $g'(x)$ exist for all $x$ in $(a - \delta, a + \delta)$ except, perhaps,
+      for $x = a$,
+    \item in this interval $g'(x) \neq 0$ with, once again, the possible
+      exception of $x = a$.
+  \end{enumerate} On the other hand, $f$ and $g$ are not even assumed to be
+  defined at $a$. If we define $f(a) = g(a) = 0$ (changing the previous value
+  of $f(a)$ and $g(a)$, if necessary), then $f$ and $g$ are continuous at $a$.
+  If $a < x < a + \delta$, then the Mean Value Theorem and the Cauchy Mean
+  Value Theorem apply to $f$ and $g$ on the interval $[a, x]$ (and a similar
+  statement holds for $a - \delta < x < a$). First applying the Mean Value
+  Theorem to $g$, we see that $g(x) \neq 0$, for if $g(x) = 0$ there would be
+  some $x_1$ in $(a, x)$ with $g'(x_1) = 0$, contradicting (2). Now applying
+  the Cauchy Mean Value Theorem to $f$ and $g$, we see that there is a number
+  $\alpha_x$ in $(a, x)$ such that \begin{equation*}
+    [f(x) - 0]g'(\alpha_x) = [g(x) - 0]f'(\alpha_x)
+  \end{equation*} or \begin{equation*}
+    \frac{f(x)}{g(x)} = \frac{f'(\alpha_x)}{g'(\alpha_x)}.
+  \end{equation*} Now $\alpha_x$ approaches $a$ as $x$ approaches $a$, because
+  $\alpha_x$ is in $(a, x)$; since $\lim_{y \rightarrow a} f'(y)/g'(y)$ exists,
+  it follows that \begin{equation*}
+    \lim_{x \rightarrow a} \frac{f(x)}{g(x)} = \lim_{x \rightarrow a}
+      \frac{f'(\alpha_x)}{g'(\alpha_x)} = \lim_{y \rightarrow a}
+      \frac{f'(y)}{g'(y)}.
+  \end{equation*} (Once again, the reader is invited to supply the details of
+  this part of the argument.)
+\end{proof}
+
+\section*{Exercises}
+
+\paragraph{Problem 11-4 (abridged). (a)} If $a_1 < \cdots < a_n$, find the
+minimum value of $f(x) = \sum_{i = 1}^n (x - a_i)^2$.
+
+\paragraph{Solution:} $f$ is defined over all $x$, and also differentiable for
+all $x$, with \begin{equation*}
+  f'(x) = \sum_{i = 1}^n 2(x - a_i).
+\end{equation*} By considering $f$ on a closed interval $[a_1, a_n]$, it is
+clear that neither of the endpoints $f(a_1)$ and $f(a_n)$ are the minimum
+value, so the local minimum in $[a_1, a_n]$ must be the minimum of $f$.
+
+To obtain the critical point $a$ where $f'(a) = 0$, \begin{equation*}
+  0 = \sum_{i = 1}^n 2(a - a_i)
+\end{equation*} and so $a = \frac{1}{n}\sum_{i = 1}^n a_i$. By Theorem 5, as
+$f'(a) = 0$, one only needs to consider the sign of $f''(a)$ to determine if
+the critical point $a$ is a local minimum or local maximum. Thus, as
+\begin{equation*}
+  f''(x) = \sum_{i = 1}^n 2 = 2n > 0 \text{ for all } n,
+\end{equation*} $f$ must have a local minimum at $a$. The minimum value of $f$
+is therefore $f(a) = \sum_{i = 1}^n (a - a_i)^2$ which could also be expressed
+as $\sum_{i = 1}^n (\overline{a} - a_i)^2$
+
+\paragraph{(b)} Now find the minimum value of $f(x) = \sum_{i = 1}^n |x -
+a_i|$.
+
+\paragraph{Solution:} Suppose $x$ and $y$ are points in $[a_{j - 1}, a_j]$ and
+$[a_j, a_{j + 1}]$, respectively, with $|x - a_j| = |y - a_j|$. Then
+\begin{equation*}
+  |y - a_i| = \begin{cases}
+    |x - a_i| + |y - x| &\text{ if } i \leq j - 1, \\
+    |x - a_i| - |y - x| &\text{ if } i \geq j + 1.
+  \end{cases}
+\end{equation*} so \begin{align*}
+  f(y) &= f(x) + |y - x| \cdot [(j - 1) - (n - j)] \\
+    &= f(x) + |y - x| \cdot (2j - n - 1).
+\end{align*} This shows that $f$ decreases until it reaches the "middlemost
+$a_i$" and then increases. The minimum occurs at $a_{(n - 1)/2}$ if $n$ is odd
+and on the whole interval $[a_{n/2}, a_{n/2 + 1}]$ if $n$ is even.
+
+\paragraph{(c)} Let $a > 0$. Show that the maximum value of \begin{equation*}
+  f(x) = \frac{1}{1 + |x|} + \frac{1}{1 + |x - a|}
+\end{equation*} is $(2 + a)/(1 + a)$.
+
+\paragraph{Solution:} Consider $f'(x)$ for $x$ in $(-\infty, 0)$, $(0, a)$,
+$(a, \infty)$, noting that $f(x)$ cannot be differentiated for $x = 0$ and $x =
+a$:
+\begin{equation*}
+  f'(x) = \begin{cases}
+    \frac{1}{(1 - x)^2} + \frac{1}{(1 - x + a)^2} &\text{ if } x \in (-\infty,
+      0), \\
+    -\frac{1}{(1 + x)^2} + \frac{1}{(1 - x + a)^2} &\text{ if } x \in (0, a),
+      \\
+    -\frac{1}{(1 + x)^2} - \frac{1}{(1 + x - a)^2} &\text{ if } x \in (a,
+      \infty).
+  \end{cases}
+\end{equation*} Thus $f$ is increasing on $(-\infty, 0]$ and decreasing on $[a,
+\infty)$, so the maximum of $f$ on $[0, a]$ is the maximum on $\mathbb{R}$. If
+$f'(x) = 0$ for $x$ in $(0, a)$, then $(1 + x)^2 - (1 - x + a)^2 = 0$, whose
+only solution is $x = a/2$. Since \begin{equation*}
+  f\left(\frac{a}{2}\right) = \frac{4}{2 + a} < \frac{2 + a}{1 + a} = f(0) =
+    f(a),
+\end{equation*} the maximum value is $(2 + a)/(1 + a)$.
+
+\paragraph{Problem 11-26.} Suppose that $f'(x) \geq M > 0$ for all $x$ in $[0,
+1]$. Show that there is an interval of length $\frac{1}{4}$ on which $|f| \geq
+M/4$.
+
+\paragraph{Solution:} Note that $f$ is increasing. If $f(1/2) > 0$, then
+$f(3/4) \geq M/4$, so certainly $f \geq M/4$ on the interval $[3/4, 1]$. On the
+other hand, if $f(1/2) \leq 0$, then $f(1/4) \leq -M/4$, so $f \leq -M/4$ on
+the interval $[0, 1/4]$.
+
+\paragraph{Problem 11-39 (abridged). (a)} Prove that if $f$ is a twice
+differentiable function with $f(0) = 0$ and $f(1) = 1$ and $f'(0) = f'(1) = 0$,
+then $|f''(x)| \geq 4$ for some $x$ in $[0, 1]$.
+
+\paragraph{Solution:} Suppose that $f''(x) < 4$ for all $x$ in $[0, 1/2]$.
+Then, by the Mean Value Theorem, for all $x$ in $[0, 1/2]$ we have
+\begin{align*}
+  \frac{f'(x) - f'(0)}{x - 0} &= f''(x') \text{ for some } x' \text{ in } (0,
+    x) \\
+    &< 4,
+\end{align*} so $f'(x) < 4x$. Applying the Mean Value Theorem again, we have
+\begin{align*}
+  \frac{f(x) - f(0)}{x - 0} &= f'(x') \text{ for some } x' \text{ in } (0, x)
+    \\
+    &< 4x' < 4x,
+\end{align*} so $f(x) < 4x^2$. Consequently, $f(1/2) < 1/2$.
+
+The same sort of analysis can be applied to $f$ on $[1/2, 1]$ if $f''(x) > -4$
+for all $x$ in $[0, 1/2]$. It is a little more convenient to introduce the
+function $g(x) = 1 - f(1 - x)$, which satisfies $g(0) = 0$ and $g''(x) = -f''(1
+- x) < 4$ for $x$ in $[0, 1/2]$. As we have just shown, \begin{equation*}
+  1/2 > g(1/2) = 1 - f(1/2),
+\end{equation*} so $f(1/2) > 1/2$, contradicting the result above.
+
+\paragraph{(b)} Show that in fact we must have $|f''(x)| > 4$ for some $x$ in
+$[0, 1]$.
+
+\paragraph{Solution:} Note first that we cannot have $f''(x) = 4$ for $0 < x <
+1/2$ and also $f''(x) = -4$ for $1/2 < x < 1$, since this would imply that
+$f'(x) = 4x$ for $0 \leq x \leq 1/2$ and $f'(x) = -4x$ for $1/2 \leq x \leq 1$,
+in which case $f''(1/2)$ would not exist.
+
+On the other hand, if we have $f''(x) \leq 4$ for all $x$ in $(0, 1/2)$ but
+$f''(x) < 4$ for at least one $x$, then we have $f'(x) < 4x$ for at least one
+$x$, and consequently for all larger $x$ in $(0, 1/2)$, and therefore $f(x) <
+4x^2$ for these $x$, so that $f(1/2) < 1/2$; if we also had $f''(x) \geq -4$
+for all $x$ in $(1/2, 1)$, then $f(1/2) \geq 1/2$, a contradiction.
+
+\paragraph{Problem 11-41 (abridged).} Suppose that $f$ satisfies
+\begin{equation*}
+  f''(x) + f'(x)g(x) - f(x) = 0
+\end{equation*} for some function $g$. Prove that if $f$ is 0 at two points,
+then $f$ is 0 on the interval between them.
+
+\paragraph{Solution:} Suppose $f(a) = f(b) = 0$ for $a < b$. If $x$ is a local
+maximum of $f$ on $[a, b]$, then $f'(x) = 0$ and $f''(x) \geq 0$; from the
+equation we can deduce that $f(x) \leq 0$, so $f$ cannot have a positive local
+maximum on $(a, b)$. Similarly, $f$ cannot have a negative local minimum on
+$(a, b)$.
+
+\paragraph{Problem 11-47 (abridged).} Prove that if $f$ and $g$ are continuous
+on $[a, b]$ and differentiable on $(a, b)$, and $g'(x) \neq 0$ for $x$ in $(a,
+b)$, then there is some $x$ in $(a, b)$ with \begin{equation*}
+  \frac{f'(x)}{g'(x)} = \frac{f(x) - f(a)}{g(b) - g(x)}.
+\end{equation*}
+
+\paragraph{Solution:} Let \begin{equation*}
+  h(x) = g(b)f(x) + f(a)g(x) - f(x)g(x).
+\end{equation*} Then, $h(a) = h(b) = f(a)g(b)$, so by Rolle's theorem, there is
+a number $x$ in $(a, b)$ such that $h'(x) = 0$, i.e. \begin{equation*}
+  g(b)f'(x) + f(a)g'(x) - [f'(x)g(x) + f(x)g'(x)] = 0
+\end{equation*} or \begin{equation*}
+  f'(x)[g(b) - g(x)] = g'(x)[f(x) - f(a)].
+\end{equation*} Since $g'(x) \neq 0$ for $x$ in $(a, b)$, we also have $g(b)
+\neq g(x)$ for all $x$ in $(a, b)$ (otherwise Rolle's Theorem, applied to the
+interval $[x, b]$, would imply that $g'(x) = 0$ for some $x'$ in $(x, b)$).
+
+\paragraph{Problem 11-54 (abridged). (a)} Suppose that $f$ is differentiable on
+$[a, b]$. Prove that if the minimum of $f$ on $[a, b]$ is at $a$, then $f'(a)
+\geq 0$, and if it is at $b$, then $f'(b) \leq 0$.
+
+\paragraph{Solution:} Suppose that the minimum of $f$ on $[a, b]$ is at $a$.
+Then for all sufficiently small $h > 0$ we have \begin{equation*}
+  \frac{f(a + h) - f(a)}{h} \geq 0;
+\end{equation*} this implies that $f'(a) \geq 0$. The proof for $f'(b) \leq 0$
+is similar.
+
+\paragraph{(b)} Suppose that $f'(a) < 0$ and $f'(b) > 0$. Show that $f'(x) = 0$
+for some $x$ in $(a, b)$.
+
+\paragraph{Solution:} Suppose that the minimum of $f$ on $[a, b]$ is at $a$ or
+$b$; then by part (a), $f'(a) \geq 0$ or $f'(b) \leq 0$ which contradicts the
+assumption. Hence, the minimum of $f$ must occur at some point $x$ in $(a, b)$;
+therefore, $f'(x) = 0$.
+
+\paragraph{(c)} Prove that if $f'(a) < c < f'(b)$, then $f'(x) = c$ for some
+$x$ in $(a, b)$. (This result is known as Darboux's Theorem.)
+
+\paragraph{Solution:} Consider a function $g(x) = f(x) - cx$ defined on the
+interval $[a, b]$. Then, $g'(x) = f'(x) - c$, and $g'(a) < 0 < g'(b)$. By part
+(b), $g'(x) = 0$ for some $x$ in $(a, b)$; likewise, $f'(x) = c$ for some $x$
+in $(a, b)$.
+
+\paragraph{Problem 11-56 (abridged).} Prove that if $|f|$ is differentiable at
+$a$, and $f$ is continuous at $a$, then $f$ is also differentiable at $a$.
+
+\paragraph{Solution:} If $f(a) \neq 0$, then continuity of $f$ implies that $f
+= |f|$ or $f = -|f|$ in some interval around $a$, so $f$ is differentiable
+at $a$. If $f(a) = 0$, then $a$ is a minimum point for $|f|$, so $|f|'(a) = 0$.
+This means that \begin{equation*}
+  0 = \lim_{h \rightarrow 0} \frac{|f(a + h)| - |f(a)|}{h} = \lim_{h
+    \rightarrow 0} \frac{|f(a + h)|}{h}.
+\end{equation*} This equation also says that $f'(a) = 0$.
+
+\paragraph{Problem 11-57 (abridged). (a)} Let $y \neq 0$ and let $n$ be even.
+Prove that $x^n + y^n = (x + y)^n$ only when $x = 0$.
+
+\paragraph{Solution:} Suppose that for some $x_0 \neq 0$, $x_0^n + y^n = (x_0 +
+y)^n$. Let $f(x) = x^n + y^n - (x + y)^n$ on $[0, x_0]$; then, $f(0) = f(x_0) =
+0$. By Rolle's Theorem, $f'(x) = 0$ for some number in $(x_0, 0)$ or $(0,
+x_0)$. Yet, that would suggest that $f'(x) = n[x^{n - 1} - (x + y)^{n - 1}] =
+0$ which implies that $x^{n - 1} = (x + y)^{n - 1}$; this is impossible for $y
+\neq 0$, as $x^{n - 1}$ is increasing ($n - 1$ is odd).
+
+\paragraph{(b)} Prove that if $y \neq 0$ and $n$ is odd, then $x^n + y^n = (x +
+y)^n$ only if $x = 0$ or $x = -y$.
+
+\paragraph{Solution:} Now we have $f(0) = f(-y) = 0$. If $f$ were zero at three
+points $a < b < c$, then Rolle's Theorem could be applied to $[a, b]$ and $[b,
+c]$ to prove that there are two numbers with $f'(x) = n[x^{n - 1} - (x + y)^{n
+- 1}] = 0$; but this equation holds only for $x = \pm(x + y)$ ($n - 1$ is
+even), and clearly neither of the two solutions $x = 0$ or $x = -y$ are
+consistent with this equation, so there is a contradiction.
+
+\paragraph{Problem 11-63 (abridged). (a)} Prove that if $f'(a) > 0$ and $f'$ is
+continuous at $a$, then $f$ is increasing in some interval containing $a$.
+
+\paragraph{Solution:} Since $f'$ is continuous, $f'(x) > 0$ for all $x$ in some
+interval around $a$, so $f$ is increasing in this interval.
+
+\paragraph{(b)} If $g(x) = x^2\sin{1/x}$, show that there are numbers $x$
+arbitrarily close to 0 with $g'(x) = 1$ and also with $g'(x) = -1$.
+\paragraph{Solution:} We have \begin{equation*}
+  g'(x) = 2x\sin{\frac{1}{x}} - \cos{\frac{1}{x}}
+\end{equation*} so $g'(x) = 1$ when $\cos{\frac{1}{x}} = -1$, and $g'(x) = -1$
+when $\cos{\frac{1}{x}} = 1$. (Note that in both cases, $\sin{\frac{1}{x}} =
+0$.)
+
+For $\cos{\frac{1}{x}} = 1$, $x = \frac{1}{2k\pi}$ for any integer $k$;
+similarly, for $\cos{\frac{1}{x}} = -1$, $x = \frac{1}{(2k + 1)\pi}$ for any
+integer $k$. Hence, there are numbers $x$ arbitrarily close to 0 satisfying the
+conditions.
+
+\paragraph{(c)} Suppose $0 < \alpha < 1$. Let $f(x) = \alpha x + x^2\sin{1/x}$
+for $x \neq 0$, and let $f(0) = 0$. Show that $f$ is not increasing in any open
+interval containing 0, by showing that in any interval there are points $x$
+with $f'(x) > 0$ and also points $x$ with $f'(x) < 0$.
+
+\paragraph{Solution:} Note that $f(x) = \alpha x + g(x)$, so $f'(x) = \alpha +
+g'(x)$. From (b) there exist numbers $x$ arbitrarily close to 0 satisfying
+either $g'(x) = 1$ or $g'(x) = -1$, which can be rewritten as $f'(x) = \alpha +
+1$ and $f'(x) = \alpha - 1$. Clearly, $\alpha + 1 > 0$ and $\alpha - 1 < 0$, so
+in any interval containing 0 there are points $x$ with $f'(x) > 0$ and also
+points $x$ with $f'(x) < 0$.
+
+\end{document}
+
