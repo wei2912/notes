@@ -1,0 +1,89 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+
+\begin{document}
+
+\title{Week 2: Recurrences}
+\maketitle
+
+\paragraph{Telescoping.} For a linear first-order recurrence relation $a_n =
+x_na_{n - 1} + x_{n - 1}a_{n - 2} + \cdots + x_1a_0$, divide by $x_nx_{n - 1}
+\cdots{}x_1$.
+
+\paragraph{Mergesort (General Case).} Number of compares for mergesort is
+\begin{equation*}
+  C_N = C_{\lfloor N/2 \rfloor} + C_{\lceil N/2 \rceil} + N
+\end{equation*} for $N > 1$ with $C_1 = 1$. Considering $C_{N + 1}$,
+\begin{align*}
+  C_{N + 1} &= C_{\lfloor (N+1)/2 \rfloor} + C_{\lceil (N+1)/2 \rceil} + N + 1
+    \\
+    &= C_{\lceil N/2 \rceil} + C_{\lfloor N/2 \rfloor + 1} + N + 1.
+\end{align*} Subtracting $C_N$ from $C_{N + 1}$, \begin{equation*}
+  C_{N + 1} - C_N = C_{\lfloor N/2 \rfloor + 1} - C_{\lfloor N/2 \rfloor} + 1.
+\end{equation*} Let $D_n = C_{n + 1} - C_n$ for any $n > 1$. Then,
+\begin{equation*}
+  D_N = D_{\lfloor N/2 \rfloor} + 1 = \lfloor \lg{N} \rfloor + 2.
+\end{equation*} With telescoping, \begin{equation*}
+  C_N = N - 1 + \sum_{1 \leq k < N}(\lfloor \lg{N} \rfloor + 1).
+\end{equation*}
+
+Let $S_n$ be the the number of bits in binary representations of all numbers $<
+n$. A combinatorial approach suggests that $S_N = S_{\lfloor N/2 \rfloor} +
+S_{\lceil N/2 \rceil} + N - 1$, which leads to a similar recurrence relation to
+Mergesort that proves \begin{equation*}
+  S_N = \sum_{1 \leq k < N}(\lfloor \lg{N} \rfloor + 1).
+\end{equation*} So, $C_N = S_N + N - 1$. One could also consider directly
+counting all the bits of binary representations of numbers below $N$, which
+results in the formula \begin{align*}
+  S_N &= N(\lfloor \lg{N} \rfloor + 1) - \sum_{0 \leq k \leq \lfloor \lg{N}
+    \rfloor} 2^k \\
+    &= N\lfloor \lg{N} \rfloor - 2^{\lfloor \lg{N} \rfloor + 1} + N + 1,
+\end{align*} which reduces to $C_N = N\lfloor \lg{N} \rfloor - 2^{\lfloor
+\lg{N} \rfloor + 1} + 2N$. From $\lg{N} = \lfloor \lg{N} \rfloor + \{\lg{N}\}$,
+one could express $C_N$ as \begin{equation*}
+  C_N = N\lg{N} + N\alpha(N)
+\end{equation*} where $\alpha(x) = (1 - \{\lg{x}\}) + (1 - 2^{1 -
+\{\lg{x}\}})$ which is an oscillating function.
+
+\paragraph{Master Theorem.} Suppose that an algorithm attacks a problem of size
+$n$ by dividing into $\alpha$ parts of size about $n/\beta$ with extra cost
+$\Theta(n^{\gamma}(\log{n})^{\delta})$. The solution to the recurrence
+\begin{equation}
+  a_n = \underbrace{a_{n/\beta + O(1)} + \cdots + a_{n/\beta + O(1)}}_{\alpha
+    \text{ terms}} + \Theta(n^{\gamma}(\log{n})^{\delta})
+\end{equation} is given by \begin{equation}
+  a_n = \begin{cases}
+    \Theta(n^{\gamma}(\log{n})^{\delta}) &\text{ when } \gamma <
+      \log_{\beta}{\alpha}; \\
+    \Theta(n^{\gamma}(\log{n})^{\delta + 1}) &\text{ when } \gamma =
+      \log_{\beta}{\alpha}; \\
+    \Theta(n^{\log_{\beta}{\alpha}}) &\text{ when } \gamma >
+      \log_{\beta}{\alpha}. \\
+  \end{cases}
+\end{equation}
+
+\section*{Exercises}
+
+\paragraph{2.17} Solve the recurrence $A_N = A_{N - 1} - \frac{2A_{N - 1}}{N} +
+2(1 - \frac{2A_{N - 1}}{N})$.
+
+\paragraph{Solution:} Rewriting the recurrence relation, \begin{equation*}
+  A_N = \left(1 - \frac{6}{N}\right)A_{N - 1} + 2.
+\end{equation*} Noting that $A_6 = 2$, we shall only consider $N \geq 6$ in our
+solution. Defining the summation factor $X_N$, \begin{align*}
+  X_N &= \prod_{n = 7}^N \left(1 - \frac{6}{n}\right) \text{ for } N \geq 7
+    \\
+    &= \prod_{n = 7}^N \frac{n - 6}{n} = \frac{6!}{N(N - 1) \cdots (N - 5)}.
+\end{align*} With $B_N = A_N/X_N$ and $B_6 = 2$, \begin{align*}
+  B_N &= B_{N - 1} + \frac{2}{X_N} = B_6 + 2\sum_{n = 7}^N\frac{1}{X_n} \\
+    &= B_6 + 2\sum_{n = 7}^N \frac{n(n - 1)\cdots(n - 5)}{6!} \\
+    &= B_6 + 2\sum_{n = 7}^N \left[\frac{(n + 1)(n)(n - 1)\cdots(n -
+      5) - (n)(n - 1)(n - 2)\cdots(n - 6)}{7!}\right] \\
+    &= B_6 + 2\sum_{n = 7}^N [f(n + 1) - f(n)] \text{ for } f(k) =
+      \frac{k(k - 1)(k - 2)\cdots(k - 6)}{7!} \\
+    &= B_6 + 2[f(N + 1) - f(7)] \\
+    &= B_6 + 2\left[\frac{N + 1}{7X_N} - 1\right] = \frac{2(N + 1)}{7X_N}.
+\end{align*} Therefore, $A_N = \frac{2}{7}(N + 1)$ for $N \geq 6$.
+
+\end{document}
