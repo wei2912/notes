@@ -7,6 +7,38 @@
 \title{Week 1: Analysis of Algorithms}
 \maketitle
 
+\paragraph{Quicksort.} Assume array of size $N$ with entries distinct and
+randomly ordered. Let $C_N$ be the expected number of compares used by
+quicksort. Given that $N + 1$ compares are used for partitioning, and the
+probability that $k$ is the partitioning element, a recurrence relation can
+be formed for $C_N$ with $C_0 = 0$: \begin{equation*}
+  C_N = N + 1 + \sum_{1 \leq k \leq N}\frac{1}{N}(C_{k - 1} + C_{N - k}).
+\end{equation*} By symmetry, \begin{equation*}
+  C_N = N + 1 + \frac{2}{N}\sum_{1 \leq k \leq N}C_{k - 1},
+\end{equation*} and multiplying both sides by $N$, \begin{equation*}
+  NC_N = N(N + 1) + 2\sum_{1 \leq k \leq N}C_{k - 1}.
+\end{equation*} Subtracting the same formula by $(N - 1)C_{N - 1}$,
+\begin{equation*}
+  NC_N - (N - 1)C_{N - 1} = 2N + 2C_{N - 1}
+\end{equation*} and thus \begin{equation*}
+  NC_N = (N + 1)C_{N - 1} + 2N.
+\end{equation*}
+
+The tricky step is to divide the whole equation by $N(N + 1)$:
+\begin{equation*}
+  \frac{C_N}{N + 1} = \frac{C_{N - 1}}{N} + \frac{2}{N + 1}.
+\end{equation*} Applying telescoping, \begin{align*}
+  \frac{C_N}{N + 1} &= \frac{C_{N - 1}}{N} + \frac{2}{N + 1} =
+    \frac{C_{N - 2}}{N - 1} + \frac{2}{N} + \frac{2}{N + 1} \\
+    &= \frac{C_1}{2} + \frac{2}{3} + \cdots + \frac{2}{N} + \frac{2}{N + 1}.
+\end{align*} This leads us to \begin{equation*}
+  C_N \sim 2N\sum_{1 \leq k \leq N}\frac{1}{k} - 2N,
+\end{equation*} which can be approximated by an integral: \begin{align*}
+  C_N &\sim 2N\left(\int^{\infty}_1 \frac{1}{x} \mathrm{d}x + \gamma\right)
+    - 2N \\
+    &= 2N\ln{N} - 2(1 - \gamma)N.
+\end{align*}
+
 \section*{Exercises}
 
 \paragraph{1.14} Follow through the steps above to solve the recurrence
