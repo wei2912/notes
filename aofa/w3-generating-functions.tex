@@ -1,0 +1,148 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{lemma}{Lemma}
+
+\begin{document}
+
+\title{Week 3: Generating Functions}
+\maketitle
+
+\section{Ordinary Generating Functions}
+
+\paragraph{Ordinary Generating Function (OGF).} The sequence $\{a_n\}_{n \geq
+0}$ can be represented by an OGF \begin{equation*}
+  A(z) = \sum_{n \geq 0}a_nz^n.
+\end{equation*} $[z^n]A(z)$ is the coefficient of $z^n$ in $A(z)$.
+
+Multiple operations can be performed on $A(z)$:
+
+\begin{align*}
+  A(cz) &= \sum_{k \geq 0}c^ka_kz^k &\text{ (Scaling)} \\
+  zA'(z) &= \sum_{k \geq 0}ka_kz^k &\text{ (Differentiation)} \\
+  \int^z_0 A(t) \mathrm{d}t &= \sum_{k \geq 1}\frac{a_{k-1}}{k}z^k
+    &\text{ (Integration)}
+\end{align*}
+
+\subsection{Partial Sum}
+
+\begin{lemma}
+  If $A(z) = \sum_{n \geq 0}a_nz^n$ is the OGF of $\{a_n\}_{n \geq 0}$, then
+  $\frac{1}{1 - z}A(z)$ is the OGF of $\{\sum_{0 \leq k \leq n} a_k\}_{n \geq
+  0}$.
+\end{lemma}
+
+\begin{proof}
+  \begin{align*}
+    \frac{1}{1 - z}A(z) &= \left(\sum_{k \geq 0} z^k\right) \left(\sum_{n \geq
+      0} a_nz^n\right) \\
+      &= \sum_{k \geq 0} \sum_{n \geq 0} a_nz^{n + k} \\
+      &= \sum_{k \geq 0} \sum_{n \geq k} a_{n - k}z^n \\
+      &= \sum_{n \geq 0} \left(\sum_{0 \leq k \leq n} a_{n - k}\right) z^n \\
+      &= \sum_{n \geq 0} \left(\sum_{0 \leq k \leq n} a_k\right) z^n.
+  \end{align*}
+\end{proof}
+
+\subsection{Convolution}
+
+\begin{lemma}
+  If $A(z) = \sum_{n \geq 0}a_nz^n$ is the OGF of $\{a_n\}_{n \geq 0}$ and
+  $B(z) = \sum_{n \geq 0}b_nz^n$ is the OGF of $\{b_n\}_{n \geq 0}$, then
+  $A(z)B(z)$ is the OGF of $\{\sum_{0 \leq k \leq n}a_kb_{n - k}\}_{n \geq 0}$.
+\end{lemma}
+
+\begin{proof}
+  \begin{align*}
+    A(z)B(z) &= \left(\sum_{k \geq 0} a_kz^k\right) \left(\sum_{n \geq 0}
+      b_nz^n\right) \\
+      &= \sum_{k \geq 0} \sum_{n \geq 0} a_kb_nz^{k + n} \\
+      &= \sum_{k \geq 0} \sum_{n \geq k} a_kb_{n - k}z^n \\
+      &= \sum_{n \geq 0} \left(\sum_{0 \leq k \leq n} a_kb_{n - k}\right) z^n.
+  \end{align*}
+\end{proof}
+
+\subsection{Solving Recurrences}
+
+\begin{enumerate}
+  \item Make recurrence relation valid for all $n \in \mathbb{Z}_{\geq 0}$
+    using Kronecker delta notation.
+  \item Multiply by $z^n$ and sum on all $n$.
+  \item Solve for OGF.
+\end{enumerate}
+
+\section{Exponential Generating Functions}
+
+\paragraph{Exponential Generating Function (EGF).} The sequence $\{a_n\}_{n
+\geq 0}$ can be represented by an EGF \begin{equation*}
+  A(z) = \sum_{n \geq 0}a_n\frac{z^n}{n!}.
+\end{equation*}
+
+\subsection{Binomial Convolution}
+
+\begin{lemma}
+  If $A(z) = \sum_{n \geq 0}a_n\frac{z^n}{n!}$ is the EGF of $\{a_n\}_{n \geq
+  0}$ and $B(z) = \sum_{n \geq 0}b_n\frac{z^n}{n!}$ is the EGF of $\{b_n\}_{n
+  \geq 0}$, then $A(z)B(z)$ is the OGF of $\{\sum_{0 \leq k \leq n}\binom{n}{k}
+  a_kb_{n - k}\}_{n \geq 0}$.
+\end{lemma}
+
+\begin{proof}
+  \begin{align*}
+    A(z)B(z) &= \left(\sum_{k \geq 0} a_k\frac{z^k}{k!}\right) \left(\sum_{n
+      \geq 0} b_n\frac{z^n}{n!}\right) \\
+      &= \sum_{k \geq 0} \sum_{n \geq 0} \frac{a_k}{k!}\frac{b_n}{n!}z^{k + n}
+        \\
+      &= \sum_{k \geq 0} \sum_{n \geq k} \frac{a_k}{k!}\frac{b_{n - k}}{(n -
+      k)!}z^n \\
+      &= \sum_{k \geq 0} \sum_{n \geq k} \binom{n}{k} a_kb_{n - k}
+        \frac{z^n}{n!} \\
+      &= \sum_{n \geq 0} \left(\sum_{0 \leq k \leq n} \binom{n}{k} a_kb_{n -
+        k}\right) \frac{z^n}{n!} \\
+  \end{align*}
+\end{proof}
+
+\section*{Exercises}
+
+\paragraph{3.20} Solve the recurrence $a_n = 3a_{n - 1} - 3a_{n - 2} + a_{n -
+3}$ for $n > 2$ with $a_0 = a_1 = 0$ and $a_2 = 1$.
+
+\paragraph{Solution:} For $n \geq 0$, \begin{equation*}
+  a_n = 3a_{n - 1} - 3a_{n - 2} + a_{n - 3} + \delta_{n2}.
+\end{equation*} Let $A(z)$ be the OGF of $\{a_n\}_{n \geq 0}$. Then,
+\begin{equation*}
+  A(z) = 3zA(z) - 3z^2A(z) + z^3A(z) + z^2
+\end{equation*} which can be rewritten into \begin{align*}
+  A(z) &= \frac{z^2}{(1 - z)^3} \\
+    &= \frac{1}{(1 - z)^3} - \frac{2}{(1 - z)^2} + \frac{1}{1 - z},
+\end{align*} leading to $a_n = \frac{1}{2}(n + 1)(n + 2) - 2(n + 1) + 1 =
+\frac{1}{2}n(n - 1)$.
+
+\paragraph{3.28} Find an expression for \begin{equation*}
+  [z^n]\frac{1}{\sqrt{1 - z}}\ln\frac{1}{1 - z}.
+\end{equation*}
+
+\paragraph{Solution:} Let $x = (1 - z)^{-\alpha}$. Then, \begin{align*}
+  \ln x = -\alpha\ln(1 - z) = \alpha\ln\frac{1}{1 - z}.
+\end{align*} Differentiating $x$ wrt $\alpha$ leads to \begin{equation*}
+  \frac{1}{x}\frac{\partial x}{\partial \alpha} = \alpha\ln\frac{1}{1 - z}
+\end{equation*} which can be rewritten as $\frac{\partial}{\partial \alpha}(1 -
+z)^{-\alpha} = \alpha(1 - z)^{-\alpha}\ln\frac{1}{1 - z}$.
+
+Consider $A(z) = \frac{1}{\sqrt{1 - z}}$. Then, \begin{align*}
+  [z^n]A(z) &= \binom{-\frac{1}{2}}{n}(-1)^n \\
+    &= \frac{(-\frac{1}{2})(-\frac{3}{2})\cdots(-\frac{2n - 1}{2})}{n!}
+      (-1)^n \\
+    &= \frac{(1)(3)\cdots(2n - 1)}{2^n(n!)} \\
+    &= \frac{1}{2^n(n!)} \cdots \frac{(2n - 1)!}{2^{n - 1}(n - 1)!} \\
+    &= 2(4^{-n})\binom{2n - 1}{n}.
+\end{align*} Noting that $[z^n]zA'(z) = 2n(4^{-n})\binom{2n - 1}{n}$,
+\begin{equation*}
+  [z^n]A'(z) = 2(n - 1)(4^{1 - n})\binom{2n - 3}{n - 1}.
+\end{equation*} But the expression to be found is $[z^n]2A'(z)$, so
+\begin{equation*}
+  [z^n]\frac{1}{\sqrt{1 - z}}\ln\frac{1}{1 - z} = (n - 1)(4^{2 - n})\binom{2n -
+    3}{n - 1}.
+\end{equation*}
+
+\end{document}
