@@ -5,7 +5,7 @@ This repository is meant to be a collection of various notes and solutions to ar
 
 # Books
 
-* `calculus`: Spivak's Calculus, 4th edition.
+* `calculus`: Spivak's Calculus, 3rd edition.
 
 # Courses
 
