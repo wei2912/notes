@@ -1,0 +1,882 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+
+\title{Chapter 13: Integrals}
+\maketitle
+
+The number which we will eventually assign as the area of $R(f, a, b)$ given a
+function $f$ is called the \emph{integral} of $f$ on $[a, b]$.
+
+\begin{definition}
+  Let $a < b$. A \emph{partition} of the interval $[a, b]$ is a finite
+  collection of points in [a, b], one of which is $a$, and one of which is $b$.
+\end{definition}
+
+The points in a partition can be numbered $t_0, \ldots, t_n$ so that
+\begin{equation*}
+  a = t_0 < t_1 < \cdots < t_{n - 1} < t_n = b;
+\end{equation*} we shall always assume that such a numbering has been assigned.
+
+\begin{definition}
+  Suppose $f$ is bounded on $[a, b]$ and $P = \{t_0, \ldots, t_n\}$ is a
+  partition of $[a, b]$. Let \begin{align*}
+    m_i &= \inf\{f(x): t_{i - 1} \leq x \leq t_i\}, \\
+    M_i &= \sup\{f(x): t_{i - 1} \leq x \leq t_i\},
+  \end{align*}
+
+  The \emph{lower sum} of $f$ for $P$, denoted by $L(f, P)$, is defined as
+  \begin{equation*}
+    L(f, P) = \sum_{i = 1}^n m_i(t_i - t_{i - 1}).
+  \end{equation*}
+
+  The \emph{upper sum} of $f$ for $P$, denoted by $U(f, P)$, is defined as
+  \begin{equation*}
+    U(f, P) = \sum_{i = 1}^n M_i(t_i - t_{i - 1}).
+  \end{equation*}
+\end{definition}
+
+We begin by considering two partitions $P$ and $Q$.
+
+\begin{lemma}
+  If $Q$ contains $P$ (i.e., if all points of $P$ are also in $Q$), then
+  \begin{align*}
+    L(f, P) \leq L(f, Q), \\
+    U(f, P) \geq U(f, Q).
+  \end{align*}
+\end{lemma}
+
+\begin{proof}
+  Consider first the special case in which $Q$ contains just one more point
+  than $P$: \begin{align*}
+    P &= \{t_0, \ldots, t_n\}, \\
+    Q &= \{t_0, \ldots, t_{k - 1}, u, t_{k + 1}, \ldots, t_n\},
+  \end{align*} where \begin{equation*}
+    a = t_0 < t_1 < \cdots < t_{k - 1} < u < t_k < \cdots < t_n = b.
+  \end{equation*}
+
+  Let \begin{align*}
+    m' &= \inf\{f(x): t_{k - 1} \leq x \leq u\}, \\
+    m'' &= \inf\{f(x): u \leq x \leq t_k\}.
+  \end{align*} Then \begin{align*}
+    L(f, P) &= \sum_{i = 1}^n m_i(t_i - t_{i - 1}), \\
+    L(f, Q) &= \sum_{i = 1}^{k - 1} m_i(t_i - t_{i - 1}) + m'(u - t_{k - 1}) +
+      m''(t_k - u) + \sum_{i = k + 1}^n m_i(t_i - t_{i - 1}).
+  \end{align*} To prove that $L(f, P) \leq L(f, Q)$ it therefore suffices to
+  show that \begin{equation*}
+    m_k(t_k - t_{k - 1}) \leq m'(u - t_{k - 1}) + m''(t_k - u).
+  \end{equation*} Now the set $\{f(x): t_{k - 1} \leq x \leq t_k\}$ contains
+  all the numbers in $\{f(x): t_{k - 1} \leq x \leq u\}$, and possibly some
+  smaller ones, so the greatest lower bound of the first set is \emph{less than
+  or equal to} the greatest lower bound of the second; thus \begin{equation*}
+    m_k \leq m'.
+  \end{equation*} Similarly, \begin{equation*}
+    m_k \leq m''.
+  \end{equation*} Therefore, \begin{equation*}
+    m_k(t_k - t_{k - 1}) = m_k(u - t_{k - 1}) + m_k(t_k - u) \leq m'(u - t_{k -
+      1}) + m''(t_k - u).
+  \end{equation*} This proves, in the special case, that $L(f, P) \leq L(f,
+  Q)$. The proof that $U(f, P) \geq U(f, q)$ is similar, and is left to you as
+  an easy, but valuable, exercise.
+
+  The general case can now be deduced quite easily. The partition $Q$ can be
+  obtained from $P$ by adding one point at a time; in other words, there is a
+  sequence of partitions \begin{equation*}
+    P = P_1, P_2, \ldots, P_{\alpha} = Q
+  \end{equation*} such that $P_{j + 1}$ contains just one more point than
+  $P_j$. Then \begin{equation*}
+    L(f, P) = L(f, P_1) \leq L(f, P_2) \leq \cdots \leq L(f, P_{\alpha}) = L(f,
+      Q),
+  \end{equation*} and \begin{equation*}
+    U(f, P) = U(f, P_1) \geq U(f, P_2) \geq \cdots \geq U(f, P_{\alpha}) = U(f,
+      Q).
+  \end{equation*}
+\end{proof}
+
+The theorem we wish to prove is a simple consequence of this lemma.
+
+\begin{theorem}
+  Let $P_1$ and $P_2$ be partitions of $[a, b]$, and let $f$ be a function
+  which is bounded on $[a, b]$. Then \begin{equation*}
+    L(f, P_1) \leq U(f, P_2).
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  There is a partition $P$ which contains both $P_1$ and $P_2$ (let $P$ consist
+  of all points of $P_1$ and $P_2$). According to the lemma, \begin{equation*}
+    L(f, P_1) \leq L(f, P) \leq U(f, P) \leq U(f, P_2).
+  \end{equation*}
+\end{proof}
+
+Theorem 1 leads to the consequence that $\sup\{L(f, P)\} \leq \inf\{U(f, P)\}$.
+It may well happen that $\sup\{L(f, P)\} = \inf\{U(f, P)\}$ which is an ideal
+candidate for the area of $R(f, a, b)$, and we could maintain that whenever
+$\sup\{L(f, P)\} \neq \inf\{U(f, P)\}$ the region $R(f, a, b)$ is too
+unreasonable to have an area.
+
+\begin{definition}
+  A function $f$ which is bounded on $[a, b]$ is \emph{integrable} on $[a, b]$
+  if \begin{equation*}
+    \sup\{L(f, P): P \text{ a partition of } [a, b]\} = \inf\{U(f, P): P
+      \text{ a partition of } [a, b]\}.
+  \end{equation*} In this case, this common number is called the
+  \emph{integral} of $f$ on $[a, b]$ and is denoted by \begin{equation*}
+    \int_a^b f.
+  \end{equation*} The integral $\int_a^b f$ is also called the \emph{area} of
+  $R(f, a, b)$ when $f(x) \geq 0$ for all $x$ in $[a, b]$.
+\end{definition}
+
+If $f$ is integrable, then according to this definition, \begin{equation*}
+  L(f, P) \leq \int_a^b f \leq U(f, P) \text{ for all partitions } P
+    \text{ of } [a, b].
+\end{equation*} Moreover, $\int_a^b f$ is the \emph{unique} number with this
+property.
+
+\begin{theorem}
+  If $f$ is bounded on $[a, b]$, then $f$ is integrable on $[a, b]$ if and only
+  if for every $\epsilon > 0$ there is a partition $P$ of $[a, b]$ such that
+  \begin{equation*}
+    U(f, P) - L(f, P) < \epsilon.
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  Suppose first that for every $\epsilon > 0$ there is a partition $P$ with
+  \begin{equation*}
+    U(f, P) - L(f, P) < \epsilon.
+  \end{equation*} Since \begin{align*}
+    \inf\{U(f, P')\} &\leq U(f, P), \\
+    \sup\{L(f, P')\} &\geq L(f, P),
+  \end{align*} it follows that \begin{equation*}
+    \inf\{U(f, P')\} - \sup\{L(f, P')\} < \epsilon.
+  \end{equation*} Since this is true for all $\epsilon > 0$, it follows that
+  \begin{equation*}
+    \sup\{L(f, P')\} = \inf\{U(f, P')\};
+  \end{equation*} by definition, then, $f$ is integrable. The proof of the
+  converse assertion is similar: If $f$ is integrable, then \begin{equation*}
+    \sup\{L(f, P)\} = \inf\{U(f, P)\}.
+  \end{equation*} This means that for each $\epsilon > 0$ there are partitions
+  $P'$, $P''$ with \begin{equation*}
+    U(f, P'') - L(f, P') < \epsilon.
+  \end{equation*} Let $P$ be a partition which contains both $P'$ and $P''$.
+  Then, according to the lemma, \begin{align*}
+    U(f, P) \leq U(f, P''), \\
+    L(f, P) \geq L(f, P');
+  \end{align*} consequently, \begin{equation*}
+    U(f, P) - L(f, P) \leq U(f, P'') - L(f, P') < \epsilon.
+  \end{equation*}
+\end{proof}
+
+\begin{theorem}
+  If $f$ is continuous on $[a, b]$, then $f$ is integrable on $[a, b]$.
+\end{theorem}
+
+\begin{proof}
+  Notice, first, that $f$ is bounded on $[a, b]$, because it is continuous on
+  $[a, b]$. To prove that $f$ is integrable on $[a, b]$, we want to use Theorem
+  2, and show that for every $\epsilon > 0$ there is a partition $P$ of $[a,
+  b]$ such that \begin{equation*}
+    U(f, P) - L(f, P) < \epsilon.
+  \end{equation*} Now we know, by Theorem 1 of the Appendix to Chapter 8, that
+  $f$ is uniformly continuous on $[a, b]$. So there is some $\delta > 0$ such
+  that for all $x$ and $y$ in $[a, b]$, \begin{equation*}
+    \text{if } |x - y| < \delta, \text{ then } |f(x) - f(y)| <
+      \frac{\epsilon}{2(b - a)}.
+  \end{equation*} The trick is simply to choose a partition $P = \{t_0, \ldots,
+  t_n\}$ such that each $|t_i - t_{i - 1}| < \delta$. Then for each $i$ we
+  have \begin{equation*}
+    |f(x) - f(y)| < \frac{\epsilon}{2(b - a)} \text{ for all } x, y \text{ in }
+      [t_{i - 1}, t_i],
+  \end{equation*} and it follows easily that \begin{equation*}
+    M_i - m_i \leq \frac{\epsilon}{2(b - a)} < \frac{\epsilon}{b - a}.
+  \end{equation*} Since this is true for all $i$, we then have
+  \begin{align*}
+    U(f, P) - L(f, P) &= \sum_{i = 1}^n (M_i - m_i)(t_i - t_{i - 1}) \\
+      &< \frac{\epsilon}{b - a}\sum_{i = 1}^n t_i - t_{i - 1} \\
+      &= \frac{\epsilon}{b - a} \cdot (b - a) \\
+      &= \epsilon,
+  \end{align*} which is what we wanted.
+\end{proof}
+
+Proofs of integrability could use the criteria of either Theorem 2 or 3.
+
+\begin{theorem}
+  Let $a < c < b$. If $f$ is integrable on $[a, b]$, then $f$ is integrable on
+  $[a, c]$ and on $[c, b]$. Conversely, if $f$ is integrable on $[a, c]$ and on
+  $[c, b]$, then $f$ is integrable on $[a, b]$. Finally, if $f$ is integrable
+  on $[a, b]$, then \begin{equation*}
+    \int_a^b f = \int_a^c f + \int_c^b f.
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  Suppose $f$ is integrable on $[a, b]$. If $\epsilon > 0$, there is a
+  partition $P = \{t_0, \ldots, t_n\}$ of $[a, b]$ such that \begin{equation*}
+    U(f, P) - L(f, P) < \epsilon.
+  \end{equation*} We might as well assume that $c = t_j$ for some $j$.
+  (Otherwise, let $Q$ be the partition which contains $t_0, \ldots, t_n$ and
+  $c$; then $Q$ contains $P$, so $U(f, Q) - L(f, Q) \leq U(f, P) - L(f, P) <
+  \epsilon$.)
+
+  Now $P' = \{t_0, \ldots, t_j\}$ is a partition of $[a, c]$ and $P'' = \{t_j,
+  \ldots, t_n\}$ is a partition of $[c, b]$. Since \begin{align*}
+    L(f, P) &= L(f, P') + L(f, P''), \\
+    U(f, P) &= U(f, P') + U(f, P''),
+  \end{align*} we have \begin{equation*}
+    [U(f, P') - L(f, P')] + [U(f, P'') - L(f, P'')] = U(f, P) - L(f, P) <
+      \epsilon.
+  \end{equation*} Since each of the terms in brackets is nonnegative, each is
+  less than $\epsilon$. This shows that $f$ is integrable on $[a, c]$ and $[c,
+  b]$. Note also that \begin{align*}
+    L(f, P') &\leq \int_a^c f \leq U(f, P'), \\
+    L(f, P'') &\leq \int_c^b f \leq L(f, P''), \\
+  \end{align*} so that \begin{equation*}
+    L(f, P) \leq \int_a^c f + \int_c^b f \leq U(f, P).
+  \end{equation*} Since this is true for any $P$, this proves that
+  \begin{equation*}
+    \int_a^c f + \int_c^b f = \int_a^b f.
+  \end{equation*} Now suppose that $f$ is integrable on $[a, c]$ and on $[c,
+  b]$. If $\epsilon > 0$, there is a partition $P'$ of $[a, c]$ and a partition
+  P'' of $[c, b]$ such that \begin{align*}
+    U(f, P') - L(f, P') &< \epsilon/2, \\
+    U(f, P'') - L(f, P'') &< \epsilon/2.
+  \end{align*} If $P$ is the partition of $[a, b]$ containing all the points of
+  $P'$ and $P''$, then \begin{align*}
+    L(f, P) &= L(f, P') + L(f, P''), \\
+    U(f, P) &= U(f, P') + U(f, P''); \\
+  \end{align*} consequently, \begin{equation*}
+    U(f, P) - L(f, P) = [U(f, P') - L(f, P')] + [U(f, P'') - L(f, P'')] <
+      \epsilon.
+  \end{equation*}
+\end{proof}
+
+\begin{theorem}
+  If $f$ and $g$ are integrable on $[a, b]$, then $f + g$ is integrable on $[a,
+  b]$ and \begin{equation*}
+    \int_a^b (f + g) = \int_a^b f + \int_a^b g.
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  Let $P = \{t_0, \ldots, t_n\}$ be any partition of $[a, b]$. Let
+  \begin{align*}
+    m_i = \inf\{(f + g)(x): t_{i - 1} \leq x \leq t_i\}, \\
+    m'_i = \inf\{f(x): t_{i - 1} \leq x \leq t_i\}, \\
+    m''_i = \inf\{g(x): t_{i - 1} \leq x \leq t_i\},
+  \end{align*} and define $M_i$, $M'_i$ and $M''_i$ similarly. It is not
+  necessarily true that \begin{equation*}
+    m_i = m'_i + m''_i,
+  \end{equation*} but it is true that (Problem 10) that \begin{equation*}
+    m_i \geq m'_i + m''_i.
+  \end{equation*} Similarly, \begin{equation*}
+    M_i \geq M'_i + M''_i.
+  \end{equation*} Therefore, \begin{equation*}
+    L(f, P) + L(g, P) \leq L(f + g, P)
+  \end{equation*} and \begin{equation*}
+    U(f + g, P) \leq U(f, P) + U(g, P).
+  \end{equation*} Thus, \begin{equation*}
+    L(f, P) + L(g, P) \leq L(f + g, P) \leq U(f + g, P) \leq U(f, P) + U(g, P).
+  \end{equation*} Since $f$ and $g$ are integrable, there are partitions $P'$,
+  $P''$ with \begin{align*}
+    U(f, P') - L(f, P') &< \epsilon/2, \\
+    U(g, P'') - L(g, P'') &< \epsilon/2, \\
+  \end{align*} If $P$ contains both $P'$ and $P''$, then \begin{equation*}
+    U(f, P) + U(g, P) - [L(f, P) + L(g, P)] < \epsilon,
+  \end{equation*} and consequently \begin{equation*}
+    U(f + g, P) - L(f + g, P) < \epsilon.
+  \end{equation*} This proves that $f + g$ is integrable on $[a, b]$. Moreover,
+  \begin{align*}
+    L(f, P) + L(g, P) &\leq L(f + g, P) \\
+      &\leq \int_a^b (f + g) \\
+      &\leq U(f + g, P) \leq U(f, P) + U(g, P);
+  \end{align*} and also \begin{equation*}
+    L(f, P) + L(g, P) \leq \int_a^b f + \int_a^b g \leq U(f, P) + U(g, P).
+  \end{equation*} Since $U(f, P) - L(f, P)$ and $U(g, P) - L(g, P)$ can both be
+  made as small as desired, it follows that \begin{equation*}
+    [U(f, P) + U(g, P)] - [L(f, P) + L(g, P)]
+  \end{equation*} can also be made as small as desired; it therefore follows
+  that \begin{equation*}
+    \int_a^b (f + g) = \int_a^b f + \int_a^b g.
+  \end{equation*}
+\end{proof}
+
+\begin{theorem}
+  If $f$ is integrable on $[a, b]$, then for any number $c$, the function $cf$
+  is integrable on $[a, b]$ and \begin{equation*}
+    \int_a^b cf = c \cdot \int_a^b f.
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  The proof has been omitted. Theorem 6 is a special case of the more general
+  theorem that $f \cdot g$ is integrable on $[a, b]$, if $f$ and $g$ are, but
+  this result is quite hard to prove (see Problem 38).
+\end{proof}
+
+\begin{theorem}
+  Suppose $f$ is integrable on $[a, b]$ and that \begin{equation*}
+    m \leq f(x) \leq M \text{ for all } x \text{ in } [a, b].
+  \end{equation*} Then \begin{equation*}
+    m(b - a) \leq \int_a^b f \leq M(b - a).
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  It is clear that \begin{equation*}
+    m(b - a) \leq L(f, P) \text{ and } U(f, P) \leq M(b - a)
+  \end{equation*} for every partition $P$. Since $\int_a^b f = \sup\{L(f, P)\}
+  = \inf\{U(f, P)\}$, the desired inequality follows immediately.
+\end{proof}
+
+With an integrable function $f$, one can define a function $F(x) = \int_a^x f$.
+
+\begin{theorem}
+  If $f$ is integrable on $[a, b]$ and $F$ is defined on $[a, b]$ by
+  \begin{equation*}
+    F(x) = \int_a^b f,
+  \end{equation*} then $F$ is continuous on $[a, b]$.
+\end{theorem}
+
+\begin{proof}
+  Suppose $c$ is in $[a, b]$. Since $f$ is integrable on $[a, b]$ it is, by
+  definition, bounded on $[a, b]$; let $M$ be a number such that
+  \begin{equation*}
+    |f(x)| \leq M \text{ for all } x \text{ in } [a, b].
+  \end{equation*}
+
+  If $h > 0$, then \begin{equation*}
+    F(c + h) - F(c) = \int_a^{c + h} f - \int_a^c f = \int_c^{c + h} f.
+  \end{equation*} Since \begin{equation*}
+    -M \leq f(x) \leq M \text{ for all } x,
+  \end{equation*} it follows from Theorem 7 that \begin{equation*}
+    -Mh \leq \int_c^{c + h} f \leq Mh;
+  \end{equation*} in other words, \begin{equation*}
+    -Mh \leq F(c + h) - F(c) \leq Mh.
+  \end{equation*} If $h < 0$, a similar inequality can be derived: Note that
+  \begin{equation*}
+    F(c + h) - F(c) = \int_c^{c + h} f = -\int_{c + h}^c f.
+  \end{equation*} Applying Theorem 7 to the interval $[c + h, c]$, of length
+  $-h$, we obtain \begin{equation*}
+    Mh \leq \int_{c + h}^c f \leq -Mh;
+  \end{equation*} multiplying by -1, which reverses all the inequalities, we
+  have \begin{equation*}
+    Mh \leq F(c + h) - F(c) \leq -Mh.
+  \end{equation*}
+
+  Combining these two cases: \begin{equation*}
+    |F(c + h) - F(c)| \leq M \cdot |h|.
+  \end{equation*} Therefore, if $\epsilon > 0$, we have \begin{equation*}
+    |F(c + h) - F(c)| < \epsilon,
+  \end{equation*} provided that $|h| < \epsilon/M$. This proves that
+  \begin{equation*}
+    \lim_{h \rightarrow 0} F(c + h) = F(c);
+  \end{equation*} in other words $F$ is continuous at $c$.
+\end{proof}
+
+\section*{Exercises}
+
+\paragraph{Problem 13-3. (a)} Using Problem 2-7, show that the sum
+$\sum_{k = 1}^n k^p/n^{p + 1}$ can be made as close to $1/(p + 1)$ as desired,
+by choosing $n$ large enough.
+
+\paragraph{Solution:} Rewriting the sum, \begin{align*}
+  \sum_{k = 1}^n k^p/n^{p + 1} &= \frac{1}{n^{p + 1}}\sum_{k = 1}^n k^p \\
+    &= \frac{1}{n^{p + 1}}\left(\frac{n^{p + 1}}{p + 1} + An^p + Bn^{p - 1} +
+      \cdots\right) \\
+    &= \frac{1}{p + 1} + \frac{A}{n} + \frac{B}{n^2} + \cdots.
+\end{align*} As \begin{equation*}
+  \lim_{n \rightarrow \infty}\left(\frac{A}{n} + \frac{B}{n^2} + \cdots\right)
+    = 0,
+\end{equation*} it follows that \begin{equation*}
+  \lim_{n \rightarrow \infty}\sum_{k = 1}^n k^p/n^{p + 1} = \frac{1}{p + 1}.
+\end{equation*}
+
+\paragraph{(b)} Prove that $\int_0^b x^p \,\mathrm{d}x = b^{p + 1}/(p + 1)$.
+
+\paragraph{Solution:} Let $f(x) = x^p$. For any partition $P_n = \{0,
+\frac{b}{n}, 2\frac{b}{n}, \ldots, (n - 1)\frac{b}{n}, b\}$, we have
+\begin{align*}
+  L(f, P_n) &= \frac{b}{n}\sum_{k = 0}^{n - 1}\left(\frac{kb}{n}\right)^p =
+    \frac{b^{p + 1}}{n^{p + 1}}\sum_{k = 0}^{n - 1}k^p, \\
+  U(f, P_n) &= \frac{b}{n}\sum_{k = 1}^n\left(\frac{kb}{n}\right)^p =
+    \frac{b^{p + 1}}{n^{p + 1}}\sum_{k = 1}^nk^p. \\
+\end{align*} Part (a) shows that $L(f, P_n)$ and $U(f, P_n)$ can be made as
+close to $b^{p + 1}/(p + 1)$ as desired by choosing $n$ sufficiently large. As
+in Problem 1, this implies that $\int_0^b x^p \,\mathrm{d}x = b^{p + 1}/(p +
+1)$.
+
+\paragraph{Problem 13-4 (abridged).} This problem outlines a clever way to find
+$\int_a^b x^p \,\mathrm{d}x$ for $0 < a < b$.
+
+\paragraph{(a)} Show that for a partition $P = \{t_0,
+\ldots, t_n\}$ for which all ratios $r = t_i/t_{i - 1}$ are equal, we have
+\begin{equation*}
+  t_i = a \cdot c^{i/n} \text{ for } c = \frac{b}{a}.
+\end{equation*}
+
+\paragraph{Solution:} The product \begin{equation*}
+  \frac{t_1}{t_0}\frac{t_2}{t_1}\cdots\frac{t_i}{t_{i - 1}} = \frac{t_i}{t_0}
+\end{equation*} can be rewritten into \begin{equation*}
+  r^i = \frac{t_i}{a}
+\end{equation*} for some ratio $r$. With $i = n$, $r^n = \frac{b}{a} = c$ and
+$r = c^{1/n}$ which naturally follows to the above result for $t_i$.
+
+\paragraph{(b)} If $f(x) = x^p$, show, using the formula in Problem 2-5, that
+\begin{align*}
+  U(f, P) &= a^{p + 1}(1 - c^{-1/n})\sum_{i = 1}^n(c^{(p + 1)/n})^i \\
+    &= (a^{p + 1} - b^{p + 1})c^{(p + 1)/n}\frac{1 - c^{-1/n}}{1 - c^{(p +
+      1)/n}} \\
+    &= (b^{p + 1} - a^{p + 1})c^{p/n} \cdot \frac{1}{1 + c^{1/n} + \cdots +
+      c^{p/n}}
+\end{align*} and find a similar formula for $L(f, P)$.
+
+\paragraph{Solution:} We have \begin{align*}
+  U(f, P) &= \sum_{i = 1}^n[a \cdot c^{i/n}]^p \cdot [a \cdot c^{i/n} - a \cdot
+    c^{(i - 1)/n}] \\
+    &= a^{p + 1}(1 - c^{1/n})\sum_{i = 1}^n(c^{(p + 1)/n})^i \\
+    &= \cdots \\
+    &= (b^{p + 1} - a^{p + 1})c^{p/n} \cdot \frac{1}{1 + c^{1/n} + \cdots +
+      c^{p/n}}
+\end{align*} which leads to the formulae \begin{align*}
+  U(f, P) &= (b^{p + 1} - a^{p + 1})c^{p/n} \cdot \frac{1}{1 + c^{1/n} + \cdots
+    + c^{p/n}} \\
+  L(f, P) = c^{-p/n}U(f, P) &= (b^{p + 1} - a^{p + 1})\frac{1}{1 + c^{1/n} +
+    \cdots + c^{p/n}}.
+\end{align*}
+
+\paragraph{(c)} Conclude that \begin{equation*}
+  \int_a^b x^p \,\mathrm{d}x = \frac{b^{p + 1} - a^{p + 1}}{p + 1}.
+\end{equation*}
+
+\paragraph{Solution:} By making $n$ large enough, we can make $c^{1/n}$ as
+close to 1 as desired. The same holds for each of the $p$ numbers $c^{1/n},
+c^{2/n}, \ldots, c^{p/n}$. So $U(f, P)$ and $L(f, P)$ can both be made as close
+as desired to \begin{equation*}
+  \frac{b^{p + 1} - a^{p + 1}}{p + 1}.
+\end{equation*}
+
+\paragraph{Problem 13-15.} Prove that \begin{equation*}
+  \int_1^a \frac{1}{t} \,\mathrm{d}t + \int_1^b \frac{1}{t} \,\mathrm{d}t =
+    \int_1^{ab} \frac{1}{t} \,\mathrm{d}t.
+\end{equation*} Hint: This can be written $\int_1^a 1/t \,\mathrm{d}t =
+\int_b^{ab} 1/t \,\mathrm{d}t$. Every partition $P = \{t_0, \ldots, t_n\}$ of
+$[1, a]$ gives rise to a partition $P' = \{bt_0, \ldots, bt_n\}$ of $[b, ab]$,
+and conversely.
+
+\paragraph{Solution:} Let $m_i = \inf\{\frac{1}{x}: t_{i - 1} \leq x \leq
+t_i\}$ and $m'_i = \inf\{\frac{1}{x}: bt_{i - 1} \leq x \leq bt_i\}$. Then,
+noting that $m_i/b = m'_i$, we have \begin{align*}
+  L(f, P') &= \sum_{i = 1}^n m'_i(bt_i - bt_{i - 1}) \\
+    &= \sum_{i = 1}^n bm'_i(t_i - t_{i - 1}) \\
+    &= \sum_{i = 1}^n m_i(t_i - t_{i - 1}) \\
+    &= L(f, P).
+\end{align*} So \begin{equation*}
+  \int_b^{ab} 1/t \,\mathrm{d}t = \sup\{L(f, P')\} = \sup\{L(f, P)\} = \int_1^a
+    1/t \,\mathrm{d}t.
+\end{equation*}
+
+\paragraph{Problem 13-16.} Prove that \begin{equation*}
+  \int_{ca}^{cb} f(t) \,\mathrm{d}t = c\int_a^b f(ct) \mathrm{d}t.
+\end{equation*} (Notice that Problem 15 is a special case.)
+
+\paragraph{Solution:} If $P = \{t_0, \ldots, t_n\}$ is a partition of $[a, b]$,
+and $P' = \{ct_0, \ldots, ct_n\}$, then \begin{equation*}
+  m_i = \inf\{f(ct): t_{i - 1} \leq t \leq t_i\} = \inf\{f(t): ct_{i - 1} \leq
+    t \leq ct_i\} = m'_i.
+\end{equation*} So if $g(t) = f(ct)$, then \begin{align*}
+  cL(g, P) &= c\sum_{i = 1}^n m_i(t_i - t_{i - 1}) \\
+    &= \sum_{i = 1}^n m'_i(ct_i - ct_{i - 1}) \\
+    &= L(f, P').
+\end{align*} Hence \begin{equation*}
+  \int_{ca}^{cb} f(t) \,\mathrm{d}t = \sup\{L(f, P')\} = c \cdot \sup\{L(g,
+    P)\} = c \cdot \int_a^b f(ct) \,\mathrm{d}t.
+\end{equation*} (The problem is only solved for $c \geq 0$, but the case $c <
+0$ can be easily deduced.)
+
+\paragraph{Problem 13-21 (abridged).} Suppose that $f$ is increasing. It is
+suggested that: \begin{equation*}
+  \int_a^b f^{-1} = bf^{-1}(b) - af^{-1}(a) - \int_{f^{-1}(a)}^{f^{-1}(b)} f.
+\end{equation*}
+
+\paragraph{(a)} If $P = \{t_0, \ldots, t_n\}$ is a partition of $[a, b]$, let
+$P' = \{f^{-1}(t_0), \ldots, f^{-1}(t_n)\}$. Prove that \begin{equation*}
+  L(f^{-1}, P) + U(f, P') = bf^{-1}(b) - af^{-1}(a).
+\end{equation*}
+
+\paragraph{Solution:} \begin{align*}
+  L(f^{-1}, P) + U(f, P')
+    &= \sum_{i = 1}^n f^{-1}(t_{i - 1})(t_i - t_{i - 1}) +
+      \sum_{i = 1}^n t_i(f^{-1}(t_i) - f^{-1}(t_{i - 1})) \\
+    &= \sum_{i = 1}^n [t_if^{-1}(t_i) - t_{i - 1}f^{-1}(t_{i - 1})] \\
+    &= t_nf^{-1}(t_n) - t_0f^{-1}(t_0) = bf^{-1}(b) - af^{-1}(a).
+\end{align*}
+
+\paragraph{(b)} Now prove the formula stated above.
+
+\paragraph{Solution:} It follows from (a) that \begin{align*}
+  \int_a^b f^{-1} = \sup\{L(f^{-1}, P)\}
+    &= \sup\{bf^{-1}(b) - af^{-1}(a) - U(f, P')\} \\
+    &= bf^{-1}(b) - af^{-1}(a) - \inf\{U(f, P')\} \\
+    &= bf^{-1}(b) - af^{-1}(a) - \int_{f^{-1}(a)}^{f^{-1}(b)} f.
+\end{align*}
+
+\paragraph{(c)} Find $\int_a^b \sqrt[n]{x} \,\mathrm{d}x$ for $0 \leq a < b$.
+
+\paragraph{Solution:} \begin{align*}
+  \int_a^b \sqrt[n]{x}
+    &= b\sqrt[n]{x} - a\sqrt[n]{x} - \int_{\sqrt[n]{a}}^{\sqrt[n]{b}} x^n \\
+    &= b\sqrt[n]{x} - a\sqrt[n]{x} - \frac{1}{n + 1}[(\sqrt[n]{b})^{n + 1} -
+      (\sqrt[n]{a})^{n + 1}] \\
+    &= b\sqrt[n]{x} - a\sqrt[n]{x} - \frac{1}{n + 1}(b\sqrt[n]{b} -
+      a\sqrt[n]{a}) \\
+    &= \frac{n}{n + 1}(b\sqrt[n]{b} - a\sqrt[n]{a}).
+\end{align*}
+
+\paragraph{Problem 13-25 (abridged).} Let $f$ be a continuous function on $[a,
+b]$. If $P = \{t_0, \ldots, t_n\}$ is a partition of $[a, b]$, define
+\begin{equation*}
+  l(f, P) = \sum_{i = 1}^n \sqrt{(t_i - t_{i - 1})^2 + [(f(t_i) -
+    f(t_{i - 1})]^2}.
+\end{equation*} The number $l(f, P)$ represents the length of a polygonal curve
+inscribed on the graph of $f$. We define the \emph{length} of $f$ on $[a, b]$
+to be the least upper bound of all $l(f, P)$ for all partitions $P$ (provided
+that the set of all such $l(f, P)$ is bounded above).
+
+\paragraph{(a)} If $f$ is a linear function on $[a, b]$, prove that the length
+of $f$ is the distance from $(a, f(a))$ to $(b, f(b))$.
+
+\paragraph{Solution:} If $f(x) = \alpha x + \beta$, then $f(t_i) - f(t_{i - 1})
+= \alpha (t_i - t_{i - 1})$, and so \begin{align*}
+  l(f, P) &= \sum_{i = 1}^n \sqrt{(t_i - t_{i - 1})^2 + (\alpha(t_i -
+    t_{i - 1}))^2} \\
+    &= \sqrt{1 + \alpha^2}\sum_{i = 1}^n (t_i - t_{i - 1}) \\
+    &= \sqrt{1 + \alpha^2}(t_n - t_0) = \sqrt{1 + \alpha^2}(b - a).
+\end{align*} The distance from $(a, \alpha a + \beta)$ to $(b, \alpha b +
+\beta)$ is \begin{equation*}
+  \sqrt{(b - a)^2 + ((\alpha b + \beta) - (\alpha a + \beta))^2}
+\end{equation*} which simplifies to the same expression.
+
+\paragraph{(b)} If $f$ is not linear, prove that there is a partition $P = \{a,
+t, b\}$ of $[a, b]$ such that $l(f, P)$ is greater than the distance from $(a,
+f(a))$ to $(b, f(b))$.
+
+\paragraph{Solution:} By the triangle inequality, \begin{align*}
+  l(f, P) &= \sqrt{(t - a)^2 + (f(t) - f(a))^2} + \sqrt{(b - t)^2 + (f(b) -
+    f(t))^2} \\
+    &\geq \sqrt{(b - a)^2 + (f(b) - f(a))^2}
+\end{align*} which is the distance from $(a, f(a))$ to $(b, f(b))$. But $f$ is
+not linear, so there must exist a $t$ such that $(a, f(a))$, $(t, f(t))$ and
+$(b, f(b))$ do not lie on a straight line, so that $l(f, P) \neq
+\sqrt{(b - a)^2 + (f(b) - f(a))^2}$.
+
+\paragraph{(c)} Conclude that of all functions $f$ on $[a, b]$ with $f(a) = c$
+and $f(b) = d$, the length of the linear function is less than the length of
+any other.
+
+\paragraph{Solution:} This follows immediately from (b).
+
+\paragraph{(d)} Suppose that $f'$ is bounded on $[a, b]$. If $P$ is any
+partition of $[a, b]$ show that \begin{equation*}
+  L(\sqrt{1 + (f')^2}, P) \leq l(f, P) \leq U(\sqrt{1 + (f')^2}, P).
+\end{equation*}
+
+\paragraph{Solution:} By the Mean Value Theorem, there is some $x_i$ in
+$(t_{i - 1}, t_i)$ with \begin{equation*}
+  f'(x_i)(t_i - t_{i - 1}) = f(t_i) - f(t_{i - 1}),
+\end{equation*} so \begin{equation*}
+  L(\sqrt{1 + (f')^2}, P) \leq \sum_{i = 1}^n \sqrt{1 + [f'(x_i)]^2}(t_i -
+    t_{i - 1}) \leq U(\sqrt{1 + (f')^2}, P)
+\end{equation*} and \begin{align*}
+  \sum_{i = 1}^n \sqrt{1 + [f'(x_i)]^2}(t_i - t_{i - 1}) &= \sum_{i = 1}^n
+    \sqrt{(t_i - t_{i - 1})^2 + [f'(x_i)(t_i - t_{i - 1})]^2} \\
+    &= \sum_{i = 1}^n \sqrt{(t_i - t_{i - 1})^2 + [f(t_i) - f(t_{i - 1})]^2} \\
+    &= l(f, P).
+\end{align*}
+
+\paragraph{(e)} Why is $\sup\{L(\sqrt{1 + (f')^2}, P)\} \leq \sup\{l(f, P)\}$?
+
+\paragraph{Solution:} Since $\sup\{l(f, P)\}$ is an upper bound for the set of
+all $l(f, P)$, it is also an upper bound for the set of all
+$L(\sqrt{1 + (f')^2}, P)$ by part (d).
+
+\paragraph{(f)} Now show that $\sup\{l(f, P)\} \leq \inf\{U(\sqrt{1 + (f')^2},
+P)\}$, thereby proving that the length of $f$ on $[a, b]$ is $\int_a^b \sqrt{1
++ (f')^2}$, if $\sqrt{1 + (f')^2}$ is integrable on $[a, b]$.
+
+\paragraph{Solution:} It suffices to show that \begin{equation*}
+  \sup\{l(f, P)\} \leq U(\sqrt{1 + (f')^2}, P'')
+\end{equation*} for any partition $P''$, and to prove this it suffices to show
+that \begin{equation*}
+  l(f, P') \leq U(\sqrt{1 + (f')^2}, P'')
+\end{equation*} for any partition $P'$. If $P$ contains the points of $P'$ and
+$P''$, then $l(f, P) \geq l(f, P')$ by part (b), putting in one point at a
+time, so \begin{equation*}
+  l(f, P') \leq l(f, P) \leq U(\sqrt{1 + (f')^2}, P) \leq U(\sqrt{1 + (f')^2},
+    P'').
+\end{equation*}
+
+\paragraph{(g)} Let $\mathcal{L}(x)$ be the length of the graph of $f$ on $[a,
+x]$, and let $d(x)$ be the length of the straight line segment from $(a, f(a))$
+to $(x, f(x))$. Show that \begin{equation*}
+  \lim_{x \rightarrow a} \frac{\mathcal{L}(x)}{d(x)} = 1.
+\end{equation*}
+
+\paragraph{Solution:} We are considering \begin{equation*}
+  \lim_{x \rightarrow a} \frac{\int_a^x \sqrt{1 + (f')^2}}{\sqrt{(x - a)^2 +
+    [f(x) - f(a)]^2}} = 1.
+\end{equation*} By the Mean Value Theorem, $f(x) - f(a) = (x - a)f'(b)$ for
+some $b$ in $(a, x)$, and by the Mean Value Theorem for integrals (Problem 23),
+the numerator is $(x - a)\sqrt{1 + (f'(c))^2}$ for some $c$ in $(a, x)$. So we
+are considering \begin{equation*}
+  \frac{(x - a)\sqrt{1 + f'(c)^2}}{\sqrt{(x - a)^2 + f'(b)^2(x - a)^2}}
+    = \frac{\sqrt{1 + f'(c)^2}}{\sqrt{1 + f'(b)^2}}
+\end{equation*} which approaches 1 as $x \rightarrow a$ (assuming $f'$ is
+continuous at $a$).
+
+\paragraph{Problem 13-30 (abridged).} The purpose of this problem is to show
+that if $f$ is integrable on $[a, b]$, then $f$ must be continuous at many
+points in $[a, b]$.
+
+\paragraph{(a)} Let $P = \{t_0, \ldots, t_n\}$ be a partition of $[a, b]$ with
+$U(f, P) - L(f, P) < b - a$. Prove that for some $i$ we have $M_i - m_i < 1$.
+
+\paragraph{Solution:} Noting that \begin{align*}
+  U(f, P) - L(f, P) &= \sum_{i = 1}^n M_i(t_i - t_{i - 1}) - \sum_{i = 1}^n m_i
+    (t_i - t_{i - 1}) \\
+    &= \sum_{i = 1}^n (M_i - m_i)(t_i - t_{i - 1}),
+\end{align*} should $M_i - m_i \geq 1$ for all $i$, clearly $U(f, P) - L(f, P)
+\geq b - a$ which is a contradiction.
+
+\paragraph{(b)} Prove that there are numbers $a_1$ and $b_1$ with $a < a_1 <
+b_1 < b$ and $\sup\{f(x): a_1 \leq x \leq b_1\} - \inf\{f(x): a_1 \leq x \leq
+b_1\} < 1$.
+
+\paragraph{Solution:} It suffices to pick $[a_1, b_1] = [t_{i - 1}, t_i]$ from
+part (a), unless $i = 1$ or $n$. For $i = 1$, it suffices to pick $b_1 = t_1$
+and choose any $a_1$ with $t_0 < a_1 < t_1$. Similarly, for $i = n$, it
+suffices to pick $a_1 = t_{n - 1}$ and choose any $b_1$ with $t_{n - 1} < b_1 <
+t_n$.
+
+\paragraph{(c)} Prove that there are numbers $a_2$ and $b_2$ with $a_1 < a_2 <
+b_2 < b_1$ and $\sup\{f(x): a_2 \leq x \leq b_2\} - \inf\{f(x): a_2 \leq x \leq
+b_2\} < \frac{1}{2}$.
+
+\paragraph{Solution:} Choose a partition $P$ of $[a_1, b_1]$ with $U(f, P) -
+L(f, P) < (b_1 - a_1)/2$. Then $M_i - m_i < 1/2$ for some $i$. Choose $[a_2,
+b_2] = [t_{i - 1}, t_i]$ unless $i = 1$ or $n$, in which case use the
+modification in part (b).
+
+\paragraph{(d)} Continue in this way to find a sequence of intervals $I_n =
+[a_n, b_n]$ such that $\sup\{f(x): x \text{ in } I_n\} - \inf\{f(x): x
+\text{ in } I_n\} < 1/n$. Apply the Nested Intervals Theorem (Problem 8-14) to
+find a point $x$ at which $f$ is continuous.
+
+\paragraph{Solution:} Let $x$ be a point in each $I_n$. For all $n$, $a_n < x <
+b_n$. If $\epsilon > 0$, there is some $n$ such that \begin{equation*}
+  \sup\{f(y): y \text{ in } I_n\} - \inf\{f(y): y \text{ in } I_n\} < \epsilon.
+\end{equation*} Then $|f(y) - f(x)| < \epsilon$ for all $y$ in $I_n$; since $x$
+is in $(a_n, b_n)$, this means that $|f(y) - f(x)| < \epsilon$ for all $y$
+satisfying $|y - x| < \delta$ where $\delta > 0$ is the minimum of $x - a_n$
+and $b_n - x$. Thus $f$ is continuous at $x$.
+
+\paragraph{(e)} Prove that $f$ is continuous at infinitely many points in $[a,
+b]$.
+
+\paragraph{Solution:} $f$ must be continuous at some point in every interval
+contained in $[a, b]$, since it is integrable on every such interval.
+
+\paragraph{Problem 13-31 (abridged).} Recall, from Problem 13, that $\int_a^b f
+\geq 0$ if $f(x) \geq 0$ for all $x$ in $[a, b]$.
+
+\paragraph{(a)} Give an example where $f(x) \geq 0$ for all $x$, and $f(x) > 0$
+for some $x$ in $[a, b]$, and $\int_a^b f = 0$.
+
+\paragraph{Solution:} Choose $x_0$ in $[a, b]$, and let $f(x) = 0$ for all $x
+\neq x_0$ and $f(x_0) = 1$.
+
+\paragraph{(b)} Suppose $f(x) \geq 0$ for all $x$ in $[a, b]$ and $f$ is
+continuous at $x_0$ in $[a, b]$ and $f(x_0) > 0$. Prove that $\int_a^b f > 0$.
+Hint: It suffices to find one lower sum $L(f, P)$ which is positive.
+
+\paragraph{Solution:} There is a partition $P$ of $[a, b]$ such that $f(x) >
+x_0/2$ for all $x$ in some $[t_{i - 1}, t_i]$. Then $L(f, P) > x_0(t_i -
+t_{i - 1})/2$.
+
+\paragraph{(c)} Suppose $f$ is integrable on $[a, b]$ and $f(x) \geq 0$ for all
+$x$ in $[a, b]$. Prove that $\int_a^b f > 0$.
+
+\paragraph{Solution:} This follows from part (b), since $f$ is continuous at
+some $x_0$, by Problem 30.
+
+\paragraph{Problem 13-32 (abridged). (a)} Suppose that $f$ is continuous on
+$[a, b]$ and $\int_a^b fg = 0$ for all continuous functions $g$ on $[a, b]$.
+Prove that $f = 0$.
+
+\paragraph{Solution:} Choose $g = f$; then $\int_a^b f^2 = 0$. Since $f$ is
+continuous, this implies that $f = 0$.
+
+\paragraph{(b)} Suppose $f$ is continuous on $[a, b]$ and that $\int_a^b fg =
+0$ for those continuous functions $g$ on $[a, b]$ which satisfy the extra
+condition $g(a) = g(b) = 0$. Prove that $f = 0$.
+
+\paragraph{Solution:} Suppose that for some $x_0$ in $[a, b]$, $f(x_0) > 0$. As
+$f$ is continuous, $f(x) > 0$ for all $x$ in $(x_0 - \delta, x_0 + \delta)$ for
+some $\delta > 0$. Choose a continuous $g$ with $g > 0$ on $(x_0 - \delta, x_0
++ \delta)$ and 0 elsewhere. Then $\int_a^b fg > 0$, a contradiction. A similar
+argument can be made for $f(x_0) < 0$.
+
+\paragraph{Problem 13-34.} Let $f(x) = 0$ for irrational $x$, and $1/q$ if $x =
+p/q$ in lowest terms. Show that $f$ is integrable on $[0, 1]$ and that
+$\int_0^1 f = 0$. (Every lower sum is clearly 0; you must figure out how to
+make upper sums small.)
+
+\paragraph{Solution:} Let $\epsilon > 0$. Choose $n$ such that $1/n <
+\epsilon/2$. Let $x_0 < x_1 < \ldots < x_m$ be those rational points $p/q$ in
+$[0, 1]$ for $q < n$. Choose a partition with $\{t_0, \ldots, t_k\}$ such that
+the intervals $[t_{i - 1}, t_i]$ which contain some $x_j$ have total length $<
+\epsilon/2$. On all intervals we have $M_i \leq 1$, with intervals not
+containing $x_j$ having $M_i \leq 1/n < \epsilon/2$. Let $I_1$ denote all
+these $i$ from $1, \ldots, n$ for which $[t_{i - 1}, t_i]$ contains some $x_j$,
+and $I_2$ denote all the other $i$ from $1, \ldots, n$. Then \begin{align*}
+  U(f, P) &= \sum_{i \in I_1} M_i(t_i - t_{i - 1}) + \sum_{i \in I_2} M_i(t_i -
+    t_{i - 1}) \\
+    &\leq 1 \cdot \sum_{i \in I_1} (t_i - t_{i - 1}) + \frac{\epsilon}{2} \cdot
+      \sum_{i \in I_2} (t_i - t_{i - 1}) \\
+    &\leq 1 \cdot \frac{\epsilon}{2} + \frac{\epsilon}{2} \cdot 1 = \epsilon.
+\end{align*}
+
+\paragraph{Problem 13-35.} Find two functions $f$ and $g$ which are integrable,
+but whose composition $g \circ f$ is not. Hint: Problem 34 is relevant.
+
+\paragraph{Solution:} Let $f$ be the function in Problem 34, and let $g(x) = 0$
+for $x = 0$, and $g(x) = 1$ for $x \neq 0$. Then $(f \circ g)(x) = 0$ if $x$ is
+irrational, and 1 if $x$ is rational.
+
+\paragraph{Problem 13-36.} Let $f$ be a bounded function on $[a, b]$ and let
+$P$ be a partition of $[a, b]$. Let $M_i$ and $m_i$ have their usual meanings,
+and let $M'_i$ and $m'_i$ have the corresponding meanings for the function
+$|f|$.
+
+\paragraph{(a)} Prove that $M'_i - m'_i \leq M_i - m_i$.
+
+\paragraph{Solution:} If $f \geq 0$ on $[t_{i - 1}, t_i]$, then $M'_i = M_i$
+and $m'_i = m_i$. If $f \leq 0$ on $[t_{i - 1}, t_i]$, then $M'_i = -m_i$ and
+$m'_i = -M_i$. Either ways, $M'_i - m'_i \leq M_i - m_i$. Now suppose that $f$
+has both positive and negative values on $[t_{i - 1}, t_i]$, so that $m_i < 0 <
+M_i$. There are two cases to consider. If $-m_i \leq M_i$ then
+\begin{equation*}
+  M'_i = M_i,
+\end{equation*} so \begin{equation*}
+  M'_i - m'_i \leq M'_i = M_i < M_i - m_i
+\end{equation*} since $m_i < 0$. A similar argument works if $-m_i \geq M_i$.
+
+\paragraph{(b)} Prove that if $f$ is integrable on $[a, b]$, then so is $|f|$.
+
+\paragraph{Solution:} If $P$ is a partition of $[a, b]$, then \begin{align*}
+  U(|f|, P) - L(|f|, P) &= \sum_{i = 1}^n (M'_i - m'_i)(t_i - t_{i - 1}) \\
+    &\leq \sum_{i = 1}^n (M_i - m_i)(t_i - t_{i - 1}) \\
+    &= U(f, P) - L(f, P).
+\end{align*} So integrability of $f$ implies integrability of $|f|$, by
+Theorem 2.
+
+\paragraph{(c)} Prove that if $f$ and $g$ are integrable on $[a, b]$, then so
+are $\max(f, g)$ and $\min(f, g)$.
+
+\paragraph{Solution:} This follows from part (b) and with the application of
+Theorem 5 on \begin{equation*}
+  \max(f, g) = \frac{f + g + |f - g|}{2}, \min(f, g)
+  = \frac{f + g - |f - g|}{2}.
+\end{equation*}
+
+\paragraph{(d)} Prove that $f$ is integrable on $[a, b]$ if and only if its
+"positive part" $\max(f, 0)$ and its "negative part" $\min(f, 0)$ are
+integrable on $[a, b]$.
+
+\paragraph{Solution:} If $f$ is integrable, then $\max(f, 0)$ and $\min(f, 0)$
+are integrable by part (c). Conversely, if $\max(f, 0)$ and $\min(f, 0)$ are
+integrable, then $f = \max(f, 0) + \min(f, 0)$ is integrable too by Theorem 5.
+
+\paragraph{Problem 13-38.} Suppose that $f$ and $g$ are integrable on $[a, b]$
+and $f(x), g(x) \geq 0$ for all $x$ in $[a, b]$. Let $P$ be a partition of $[a,
+b]$. Let $M'_i$ and $m'_i$ denote the appropriate $\sup$'s and $\inf$'s for
+$f$, define $M''_i$ and $m''_i$ similarly for $g$, and define $M_i$ and $m_i$
+similarly for $fg$.
+
+\paragraph{(a)} Prove that $M_i \leq M'_iM''_i$ and $m_i \geq m'_im''_i$.
+
+\paragraph{Solution:} For all $x$ in $[t_{i - 1}, t_i]$, \begin{equation*}
+  0 \leq m'_i \leq f(x) \leq M'_i \text{ and } 0 \leq m''_i \leq g(x) \leq
+    M''_i.
+\end{equation*} Hence, we have \begin{equation*}
+  m'_im''_i \leq f(x)g(x) \leq M'_iM''_i
+\end{equation*} which implies that $m'_im''_i \leq m_i$ and $M_i \leq
+M'_iM''_i$.
+
+\paragraph{(b)} Show that \begin{equation*}
+  U(fg, P) - L(fg, P) \leq \sum_{i = 1}^n (M'_iM''_i - m'_im''_i)(t_i -
+    t_{i - 1}).
+\end{equation*}
+
+\paragraph{Solution:} This follows immediately from part (a).
+
+\paragraph{(c)} Using the fact that $f$ and $g$ are bounded, so that $|f(x)|,
+|g(x)| \leq M$ for $x$ in $[a, b]$, show that \begin{multline*}
+  U(fg, P) - L(fg, P) \\
+    \leq M\left\{\sum_{i = 1}^n (M'_i - m'_i)(t_i - t_{i - 1})
+      + \sum_{i = 1}^n (M''_i - m''_i)(t_i - t_{i - 1})\right\}.
+\end{multline*}
+
+\paragraph{Solution:} By part (b), \begin{align*}
+  U(fg, P) - L(fg, P)
+    &\leq \sum_{i = 1}^n (M'_iM''_i - m'_im''_i)(t_i - t_{i - 1}) \\
+    &= \sum_{i = 1}^n M''_i(M'_i - m'_i)(t_i - t_{i - 1})
+      + \sum_{i = 1}^n m'_i(M''_i - m''_i)(t_i - t_{i - 1}) \\
+    &\leq M\left\{\sum_{i = 1}^n (M'_i - m'_i)(t_i - t_{i - 1})
+      + \sum_{i = 1}^n (M''_i - m''_i)(t_i - t_{i - 1})\right\}.
+\end{align*}
+
+\paragraph{(d)} Prove that $fg$ is integrable.
+
+\paragraph{Solution:} Integrability of $fg$ follows immediately from part (c)
+and Theorem 2.
+
+\paragraph{(e)} Now eliminate the restriction that $f(x), g(x) \geq 0$ for $x$
+in $[a, b]$.
+
+\paragraph{Solution:} The result cleary holds if $f \leq 0$ or $g \leq 0$ on
+$[a, b]$. Now write $f = \max(f, 0) + \min(f, 0)$ and $g = \max(g, 0) + \min(g,
+0)$, so that $fg$ is the sum of four products, each of which is integrable.
+
+\paragraph{Problem 13-40.} Suppose that $f$ is continuous and $\lim_{x
+\rightarrow \infty} f(x) = a$. Prove that \begin{equation*}
+  \lim_{x \rightarrow \infty} \frac{1}{x}\int_0^x f(t) \,\mathrm{d}t = a.
+\end{equation*} Hint: The condition $\lim_{x \rightarrow \infty} f(x) = a$
+implies that $f(t)$ is close to $a$ for $t \geq$ some $N$. This means
+that $\int_N^{N + M} f(t) \,\mathrm{d}t$ is close to $Ma$. If $M$ is large in
+comparison to $N$, then $Ma/(N + M)$ is close to $a$.
+
+\paragraph{Solution:} If $\epsilon > 0$, pick $N \geq 0$ so that $|f(t) - a| <
+\epsilon$ for $t \geq N$. Then for $N \geq 0$ we have \begin{equation*}
+  \left|\int_N^{N + M} f(t) - a \,\mathrm{d}t\right|
+    = \left|\int_N^{N + M} f(t) \,\mathrm{d}t - Ma\right| < \epsilon M,
+\end{equation*} and so \begin{equation*}
+  \left|\frac{1}{N + M}\int_N^{N + M} f(t) \,\mathrm{d}t
+    - \frac{Ma}{N + M}\right| < \frac{\epsilon M}{N + M} < \epsilon.
+\end{equation*} Choose $M$ so that \begin{equation*}
+  \left|\frac{Ma}{N + M} - a\right| < \epsilon \text{ and }
+    \left|\frac{1}{N + M}\int_0^N f(t) \,\mathrm{d}t\right| < \epsilon.
+\end{equation*} Then \begin{equation*}
+    \left|\frac{1}{N + M}\int_0^{N + M} f(t) \,\mathrm{d}t - a\right|
+    < 3\epsilon.
+\end{equation*}
+
+\end{document}
+
