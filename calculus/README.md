@@ -1,4 +1,6 @@
-This folder contains notes and selected solutions for Spivak's Calculus, Third Edition.
+This folder contains notes and selected solutions for Calculus, Third Edition
+by Michael Spivak.
 
-Chapter 4, Graphs, was omitted as the content and exercises should be done with the graphics in the book.
+Chapter 4, Graphs, was omitted as the content and exercises should be done with
+the graphics in the book.
 
