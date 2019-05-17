@@ -1,0 +1,66 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+
+\title{Week 4: Asymptotics}
+\maketitle
+
+\paragraph{Asymptotic Scale.} A decreasing series $g_k(N)$ with $g_{k+1}(N) =
+o(g_k(N))$ is called an \emph{asymptotic scale}. The series \begin{equation*}
+  f(N) \sim c_0g_0(N) + c_1g_1(N) + c_2g_2(N) + \ldots
+\end{equation*} is called an asymptotic expansion of $f$. The expansion
+represents the collection of formulae \begin{align*}
+  f(N) &= O(g_0(N)) \\
+  f(N) &= c_0g_0(N) + O(g_1(N)) \\
+  f(N) &= c_0g_0(N) + c_1g_1(N) + O(g_2(N)) \\
+  f(N) &= c_0g_0(N) + c_1g_1(N) + c_2g_2(N) + O(g_3(N)) \\
+  \vdots
+\end{align*} The standard scale is products of powers of $N$, $\log N$,
+iterated logs and exponentials.
+
+\begin{theorem}
+  Assume that a rational GF $f(z)/g(z)$ with $f(z)$ and $g(z)$ relatively
+  prime and $g(0) = 0$ has a unique pole $1/\beta$ of smallest modulus and that
+  the multiplicity of $\beta$ is $\nu$. Then \begin{equation*}
+    [z^n]\frac{f(z)}{g(z)} \sim C\beta^nn^{\nu - 1} \text{ where } C = \nu
+      \frac{(-\beta)^{\nu}f(1/\beta)}{g^{(\nu)}(1/\beta)}.
+  \end{equation*}
+\end{theorem}
+
+\begin{proof}
+  \begin{equation*}
+    \sum_{0 \leq j < m_1} c_{1j}n^j\beta_1^n + \sum_{0 \leq j < m_2}c_{2j}n^j
+      \beta_2^n + \ldots + \sum_{0 \leq j < m_r}c_{rj}n^j\beta_r^n
+  \end{equation*} Largest term dominates.
+\end{proof}
+
+\subsection{Asymptotics of finite sums}
+
+\paragraph{Bounding the tail.} Make a \emph{rapidly decreasing sum} infinite.
+\begin{align*}
+  N!\sum_{0 \leq k \leq N}\frac{(-1)^k}{k!} &= N!e^{-1} - R_n \text{ where }
+    R_n = N!\sum_{k > N}\frac{(-1)^k}{k!} \\
+    &= \frac{N!}{e} + O\left(\frac{1}{N}\right).
+\end{align*}
+
+\paragraph{Using the tail.} The last term of a \emph{rapidly increasing sum}
+may dominate. \begin{align*}
+  \sum_{0 \leq k \leq N}k! = N!\left(1 + \frac{1}{N} + \sum_{0 \leq k \leq N -
+    2}\frac{k!}{N!}\right) = N!\left(1 + O\left(\frac{1}{N}\right)\right)
+\end{align*}
+
+\begin{theorem}[Euler-Maclaurin Summation]
+  Let $f$ be a function defined on $[1, \infty)$ whose derivatives exist and
+  are absolutely integrable. Then \begin{equation*}
+    \sum_{1 \leq k \leq N}f(k) = \int_1^N f(x)\,\mathrm{d}x + \frac{1}{2}f(N) +
+      C_f + \frac{1}{12}f'(N) - \frac{1}{720}f'''(N) + \ldots
+  \end{equation*}
+\end{theorem}
+
+\end{document}
+
