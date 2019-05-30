@@ -1,0 +1,182 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+
+\title{Week 7: Permutations}
+\maketitle
+
+\section{Involution}
+
+An \textbf{involution} is a mapping of the numbers $1$ through $N$ to itself
+with all 1- or 2-cycles.
+
+We define the combinatorial class $I$ of involutions
+\begin{equation*}
+  I = \mathrm{SET}(\mathrm{CYC}_1(z)) \star \mathrm{SET}(\mathrm{CYC}_2(z)),
+\end{equation*} which has a corresponding EGF \begin{equation*}
+  I(z) = e^{z + z^2/2}.
+\end{equation*} Extracting the coefficient to obtain the number of involutions
+of length $N$, \begin{equation*}
+I_N \equiv N![z^N]e^{z + z^2/2} = \sum_{0 \leq 2k \leq N}
+\frac{N!}{k!2^k(N - 2k)!} \sim \frac{1}{\sqrt{2\sqrt{e}}}
+\left(\frac{N}{e}\right)^{N/2}e^{\sqrt{N}}.
+\end{equation*}
+
+\section{Left-Right Minima}
+
+A \textbf{left-right minimum} (lrm) is a permutation that is smaller than any
+item to its left. Define $\mathrm{lrm}(p)$ as the number of left-right minima
+of permutation $p$.
+
+By taking the star product of a permutation $p$ with an atom, $|p| + 1$
+permutations are created, with one permutation having an extra left-right
+minima. Hence, the set of constructed permutations has $(|p| + 1)
+\mathrm{lrm}(p) + 1$ left-right-minima.
+
+To find the average number of left-right minimum, we construct a cumulative
+generating function \begin{align*}
+  B(z) &= \sum_{p \in P} \mathrm{lrm}(p)\frac{z^{|p|}}{|p|!} \\
+       &= \sum_{p \in P} ((|p| + 1)\mathrm{lrm}(p) + 1)
+       \frac{z^{|p| + 1}}{(|p| + 1)!} \\
+       &= \sum_{p \in P} \mathrm{lrm}(p)\frac{z^{|p| + 1}}{|p|!} +
+       \sum_{p \in P} \frac{z^{|p| + 1}}{(|p| + 1)!} \\
+       &= zB(z) + \sum_{k \geq 0} \frac{z^{k + 1}}{k + 1} = zB(z) +
+       \ln\frac{1}{1 - z}
+\end{align*} which solves to \begin{equation*}
+  B(z) = \frac{1}{1 - z}\ln\frac{1}{1 - z}
+\end{equation*} and yields coefficients $[z^N]B(z) = \frac{B_N}{N!} = H_N$.
+
+\section{Cycles}
+
+To find the average number of cycles, the exact same derivation for left-right
+minimum is used.
+
+\subsection{1-cycles}
+
+Creating $|p| + 1$ permutations from a permutation $p$ by inserting $|p| + 1$
+into every position in every cycle (including the null cycle), the set of
+constructed permutations has $(|p| + 1)\mathrm{cyc}_1(p) + 1 -
+\mathrm{cyc}_1(p) = |p|\mathrm{cyc}_1(p) + 1$ 1-cycles.
+
+To find the average number of 1-cycles, we construct a cumulative generating
+function \begin{align*}
+  B(z) &= \sum_{p \in P} \mathrm{cyc}_1(p)\frac{z^{|p|}}{|p|!} \\
+       &= \sum_{p \in P} (|p|\mathrm{cyc}_1(p) + 1)
+       \frac{z^{|p| + 1}}{(|p| + 1)!},
+\end{align*} which when differentiated yields \begin{equation*}
+  B'(z) = \sum_{p \in P} |p|\mathrm{cyc}_1(p)\frac{z^{|p|}}{|p|!} +
+  \sum_{p \in P} \frac{z^{|p|}}{|p|!} = zB'(z) + \frac{1}{1 - z}
+\end{equation*} and solves to \begin{equation*}
+  B(z) = \frac{1}{1 - z}.
+\end{equation*} with coefficient $[z^N]B(z) = \frac{B_N}{N!} = 1$.
+
+\section{Inversions}
+
+The number of \textbf{inversions} in a permutation is the number of pairs $(i,
+j)$ with $i > j$. We define $\mathrm{inv}(p)$ to be the number of inversions in
+the permutation $p$.
+
+Creating $|p| + 1$ permutations from a permutation $p$ leads to the set of
+constructed permutations having $(|p| + 1)\mathrm{inv}(p) + (|p| + 1)|p|/2$
+inversions.
+
+To find the average number of inversions, we construct a cumulative generating
+function \begin{align*}
+  B(z) &= \sum_{p \in P} \mathrm{inv}(p)\frac{z^{|p|}}{|p|!} \\
+       &= \sum_{p \in P} ((|p| + 1)\mathrm{inv}(p) + (|p| + 1)|p|/2)
+       \frac{z^{|p| + 1}}{(|p| + 1)!} \\
+       &= \sum_{p \in P} \mathrm{inv}(p)\frac{z^{|p| + 1}}{|p|!} +
+       \frac{1}{2}\sum_{p \in P} |p|\frac{z^{|p| + 1}}{|p|!} = zB(z) +
+       \frac{z}{2}\sum_{k \geq 0} kz^k \\
+       &= zB(z) + \frac{1}{2}\frac{z^2}{(1 - z)^2}
+\end{align*} with coefficient $[z^N]B(z) = \frac{B_N}{N!} =
+\frac{N(N - 1)}{4}$.
+
+\section{Bivariate Generating Functions (BGFs)}
+
+A \textbf{bivariate generating function} associated with an unlabelled class
+is the formal power series \begin{equation*}
+  A(z, u) = \sum_{a \in A} z^{|a|}u^{\mathrm{cost}(a)}
+\end{equation*} where $|a|$ is the size and $\mathrm{cost}(a)$ is the value of
+the parameter. Similarly, for a labelled class, one can define the power series
+\begin{equation*}
+  A(z, u) = \sum_{a \in A} \frac{z^{|a|}}{|a|!}u^{\mathrm{cost}(a)} =
+  \sum_{N \geq 0} \sum_{k \geq 0} A_{Nk}\frac{z^N}{N!}u^k \end{equation*}
+
+The average value of a parameter of permutation can be calculated by taking
+the partial derivative \begin{equation*}
+  \frac{\partial}{\partial u} A(z, u) = \sum_{N \geq 0} \sum_{k \geq 0} kA_{Nk}
+  \frac{z^N}{N!}u^{k - 1}
+\end{equation*} and defining the function \begin{equation*}
+  A_u(z, 1) \equiv \left.\frac{\partial}{\partial u}A(z, u)\right|_{u = 1} =
+  \sum_{N \geq 0} \sum_{k \geq 0} kA_{Nk}\frac{z^N}{N!}.
+\end{equation*} The average value of the parameter is therefore
+\begin{equation*}
+  [z^N]A_u(z, 1) = \left.\frac{\partial}{\partial u}A(z, u)\right|_{u = 1} =
+  \sum_{k \geq 0} k\frac{A_{Nk}}{N!}.
+\end{equation*}
+
+\section*{Exercises}
+
+\paragraph{7.29} An \emph{arrangement} of $N$ elements is a sequence formed
+from a subset of the elements. Prove that the EGF for arrangements is $e^z/(1 -
+z)$. Express the coefficients as a simple sum and interpret that sum
+combinatorially.
+
+\paragraph{Solution:} An arrangement of $N$ elements can be viewed as a pair of
+permutation of selected elements and a set of remaining elements. Hence,
+\begin{equation*}
+  \mathrm{ARR}(z) = \mathrm{SET}(z) \star \mathrm{SEQ}(z)
+\end{equation*} and its corresponding EGF is \begin{equation*}
+  A(z) = e^z \cdot \frac{1}{1 - z}
+\end{equation*}. The number of arrangements of size $N$ is therefore
+$N![z^N]A(z) = \sum_{k = 0}^N \frac{N!}{k!} = \sum_{k = 0}^N \binom{N}{k}k!$.
+
+\paragraph{7.45} Find the CGF for the total number of inversions in all
+involutions of length $N$. Use this to find the average number of inversions in
+an involution.
+
+\paragraph{Solution (using BGFs):} Defining an involution as \begin{equation*}
+  I = \mathrm{SET}(\mathrm{CYC}_1(z)) \star \mathrm{SET}(u\mathrm{CYC}_2(z)),
+\end{equation*} its corresponding BGF is \begin{equation*}
+  J(z, u) = e^{z + uz^2/2}
+\end{equation*} Taking its partial derivative with respect to $u$,
+\begin{equation*}
+  J_u(z, 1) = \left.\frac{\partial}{\partial u}I(z, u)\right|_{u = 1} =
+  \frac{z^2}{2} e^{z + z^2/2}
+\end{equation*} and so the average number of inversions in an involution of
+length $N$ is \begin{equation*}
+  [z^N]J_u(z, 1) = \frac{I_{N - 2}}{2}
+\end{equation*} where $I_N$ is the number of involutions of length $N$.
+
+\paragraph{7.61} Use asymptotics from generating functions or a direct argument
+to show that the probability for a random permutation to have $j$ cycles of
+length $k$ is asymptotic to the Poisson distribution $e^{-\lambda}\lambda^j/j!$
+with $\lambda = 1/k$.
+
+\paragraph{Solution:} The class of such permutations can be constructed as
+\begin{equation*}
+  \mathrm{SET}(\mathrm{CYC}_{\neq k}(Z)) \star
+  \mathrm{SET}_j(\mathrm{CYC}_k(Z))
+\end{equation*} which translates to the EGF \begin{align*}
+  F(z) &= \exp\left(\log\frac{1}{1 - z} - \frac{z^k}{k}\right) \cdot
+  \frac{(z^k/k)^j}{j!} \\
+       &= \frac{1}{1 - z}e^{-z^k/k}z^{jk}\frac{\lambda^j}{j!}.
+\end{align*} Considering the coefficients of $F(z)$, it suffices to prove that
+\begin{equation*}
+  [z^N]F(z) = [z^{N - jk}]\frac{1}{1 - z}e^{-z^k/k}\frac{\lambda^j}{j!} \sim
+  \frac{e^{-\lambda}\lambda^j}{j!},
+\end{equation*} which is done by considering the asymptotic growth of the
+coefficients, \begin{equation*}
+  \lim_{N \rightarrow \infty} [z^N]\frac{1}{1 - z}e^{-z^k/k} =
+  \sum_{i \geq 0} \frac{\lambda^i}{i!} \sim e^{-\lambda}.
+\end{equation*}
+
+\end{document}
+
