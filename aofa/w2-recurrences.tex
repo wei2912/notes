@@ -11,7 +11,9 @@
 x_na_{n - 1} + x_{n - 1}a_{n - 2} + \cdots + x_1a_0$, divide by $x_nx_{n - 1}
 \cdots{}x_1$.
 
-\paragraph{Mergesort (General Case).} Number of compares for mergesort is
+\section{Mergesort (General Case)}
+
+Number of compares for mergesort is
 \begin{equation*}
   C_N = C_{\lfloor N/2 \rfloor} + C_{\lceil N/2 \rceil} + N
 \end{equation*} for $N > 1$ with $C_1 = 1$. Considering $C_{N + 1}$,
@@ -46,8 +48,10 @@ one could express $C_N$ as \begin{equation*}
 \end{equation*} where $\alpha(x) = (1 - \{\lg{x}\}) + (1 - 2^{1 -
 \{\lg{x}\}})$ which is an oscillating function.
 
-\paragraph{Master Theorem.} Suppose that an algorithm attacks a problem of size
-$n$ by dividing into $\alpha$ parts of size about $n/\beta$ with extra cost
+\section{Master Theorem}
+
+Suppose that an algorithm attacks a problem of size $n$ by dividing into
+$\alpha$ parts of size about $n/\beta$ with extra cost
 $\Theta(n^{\gamma}(\log{n})^{\delta})$. The solution to the recurrence
 \begin{equation}
   a_n = \underbrace{a_{n/\beta + O(1)} + \cdots + a_{n/\beta + O(1)}}_{\alpha
