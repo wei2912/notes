@@ -134,26 +134,9 @@ permutation of selected elements and a set of remaining elements. Hence,
 \begin{equation*}
   \mathrm{ARR}(z) = \mathrm{SET}(z) \star \mathrm{SEQ}(z)
 \end{equation*} and its corresponding EGF is \begin{equation*}
-  A(z) = e^z \cdot \frac{1}{1 - z}
-\end{equation*}. The number of arrangements of size $N$ is therefore
+  A(z) = e^z \cdot \frac{1}{1 - z}.
+\end{equation*} The number of arrangements of size $N$ is therefore
 $N![z^N]A(z) = \sum_{k = 0}^N \frac{N!}{k!} = \sum_{k = 0}^N \binom{N}{k}k!$.
-
-\paragraph{7.45} Find the CGF for the total number of inversions in all
-involutions of length $N$. Use this to find the average number of inversions in
-an involution.
-
-\paragraph{Solution (using BGFs):} Defining an involution as \begin{equation*}
-  I = \mathrm{SET}(\mathrm{CYC}_1(z)) \star \mathrm{SET}(u\mathrm{CYC}_2(z)),
-\end{equation*} its corresponding BGF is \begin{equation*}
-  J(z, u) = e^{z + uz^2/2}
-\end{equation*} Taking its partial derivative with respect to $u$,
-\begin{equation*}
-  J_u(z, 1) = \left.\frac{\partial}{\partial u}I(z, u)\right|_{u = 1} =
-  \frac{z^2}{2} e^{z + z^2/2}
-\end{equation*} and so the average number of inversions in an involution of
-length $N$ is \begin{equation*}
-  [z^N]J_u(z, 1) = \frac{I_{N - 2}}{2}
-\end{equation*} where $I_N$ is the number of involutions of length $N$.
 
 \paragraph{7.61} Use asymptotics from generating functions or a direct argument
 to show that the probability for a random permutation to have $j$ cycles of
@@ -175,7 +158,7 @@ with $\lambda = 1/k$.
 \end{equation*} which is done by considering the asymptotic growth of the
 coefficients, \begin{equation*}
   \lim_{N \rightarrow \infty} [z^N]\frac{1}{1 - z}e^{-z^k/k} =
-  \sum_{i \geq 0} \frac{\lambda^i}{i!} \sim e^{-\lambda}.
+  \sum_{i \geq 0} \frac{(-\lambda)^i}{i!} = e^{-\lambda}.
 \end{equation*}
 
 \end{document}
