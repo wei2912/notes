@@ -6,6 +6,8 @@ This repository is meant to be a collection of various notes and solutions to ar
 # Books
 
 * `calculus`: Calculus, 3rd edition by Michael Spivak.
+* `intro-to-qm`: Introduction to Quantum Mechanics, 2nd edition by David
+Jeffrey Griffiths.
 
 # Courses
 
