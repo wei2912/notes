@@ -19,15 +19,15 @@ which can be obtained by solving \emph{Schr\"{o}dinger's equation}:
 \begin{equation}
   i\hbar\frac{\partial \Psi}{\partial t} = -\frac{\hbar^2}{2m}
   \frac{\partial^2 \Psi}{\partial x^2} + V\Psi. \label{eq:sch-eqn}
-\end{equation} Born's \emph{statistical interpretation} of the wave function
-states the probability of finding the particle between $a$ and $b$ at time $t$
-is \begin{equation*}
-  \int_a^b |\Psi(x, t)|^2 \,dx.
-\end{equation*}
+\end{equation}
+Born's \emph{statistical interpretation} of the wave function states the
+probability of finding the particle between $a$ and $b$ at time $t$ is \[
+\int_a^b |\Psi(x, t)|^2 \,dx. \].
 
 It follows that the integral of $|\Psi|^2$ must be 1, i.e. the particle must be
-somewhere: \begin{equation}
-  \int_{-\infty}^{+\infty} |\Psi(x, t)|^2 \,dx = 1.
+somewhere:
+\begin{equation}
+  \int_{-\infty}^{+\infty} |\Psi(x, t)|^2 \,dx = 1. \label{eq:sch-prob}
 \end{equation}
 
 \subsection{Normalisation}
@@ -42,23 +42,32 @@ to normalise the wave function.
 \end{lemma*}
 
 \begin{proof}
-  To begin with, \begin{equation}
+  To begin with,
+  \begin{equation}
     \frac{d}{dt}\int_{-\infty}^{+\infty} |\Psi(x, t)|^2
     \,dx = \int_{-\infty}^{+\infty} \frac{\partial}{\partial t}
     |\Psi(x, t)|^2 \,dx. \label{eq:sch-norm-1}
-  \end{equation} By the product rule, \begin{equation}
+  \end{equation}
+  By the product rule,
+  \begin{equation}
     \frac{\partial}{\partial t}|\Psi|^2 = \frac{\partial}{\partial t}
     (\Psi^*\Psi) = \Psi^*\frac{\partial \Psi}{\partial t} + \frac{\partial
     \Psi^*}{\partial t}\Psi. \label{eq:sch-norm-2}
-  \end{equation} Now the Schr\"{o}dinger equation says that \begin{equation}
+  \end{equation}
+  Now the Schr\"{o}dinger equation says that
+  \begin{equation}
     \frac{\partial \Psi}{\partial t} = \frac{i\hbar}{2m}
     \frac{\partial^2 \Psi}{\partial x^2} - \frac{i}{\hbar}V\Psi,
     \label{eq:sch-norm-3}
-  \end{equation} and hence also \begin{equation}
+  \end{equation}
+  and hence also
+  \begin{equation}
     \frac{\partial \Psi^*}{\partial t} = -\frac{i\hbar}{2m}
     \frac{\partial^2 \Psi^*}{\partial x^2} + \frac{i}{\hbar}V\Psi^*,
     \label{eq:sch-norm-4}
-  \end{equation} so \begin{equation}
+  \end{equation}
+  so
+  \begin{equation}
     \frac{\partial}{\partial t}|\Psi|^2 = \frac{i\hbar}{2m}\left(
       \Psi^*\frac{\partial^2 \Psi}{\partial x^2} -
       \frac{\partial^2 \Psi^*}{\partial x^2}\Psi
@@ -66,27 +75,30 @@ to normalise the wave function.
       \Psi^*\frac{\partial \Psi}{\partial x} -
       \frac{\partial \Psi^*}{\partial x}\Psi
     \right)\right] \label{eq:sch-norm-5}
-  \end{equation} The integral in \eqref{eq:sch-norm-1} can now be evaluated
-  explicitly: \begin{equation}
+  \end{equation}
+  The integral in \eqref{eq:sch-norm-1} can now be evaluated explicitly:
+  \begin{equation}
     \frac{\partial}{\partial t}\int_{-\infty}^{+\infty} |\Psi(x, t)|^2
     \,dx = \frac{i\hbar}{2m}\left.\left(
       \Psi^*\frac{\partial \Psi}{\partial x} -
       \frac{\partial \Psi^*}{\partial x}\Psi
     \right)\right|_{-\infty}^{+\infty}. \label{eq:sch-norm-6}
-  \end{equation} But $\Psi(x, t)$ must go to zero as $x$ goes to $\pm\infty$
-  --- otherwise the wave function would not be normalizable.\footnote{While
-  mathematical counterexamples to this exist, they do not arise in physics.} It
-  follows that \begin{equation}
+  \end{equation}
+  But $\Psi(x, t)$ must go to zero as $x$ goes to $\pm\infty$ --- otherwise the
+  wave function would not be normalizable.\footnote{While mathematical
+  counterexamples to this exist, they do not arise in physics.} It follows that
+  \begin{equation}
     \frac{\partial}{\partial t}\int_{-\infty}^{+\infty} |\Psi(x, t)|^2
     \,dx = 0, \label{eq:sch-norm-7}
-  \end{equation} and hence that the integral is \emph{constant} (independent of
-  time); if $\Psi$ is normalized at $t = 0$, it \emph{stays} normalized for all
-  future time.
+  \end{equation}
+  and hence that the integral is \emph{constant} (independent of time); if
+  $\Psi$ is normalized at $t = 0$, it \emph{stays} normalized for all future
+  time.
 \end{proof}
 
-\paragraph{Problem 1.5} Consider the wave function \begin{equation*}
-  \Psi(x, t) = Ae^{-\lambda|x|}e^{-i \omega t},
-\end{equation*} where $A$, $\lambda$ and $\omega$ are positive real constants.
+\paragraph{Problem 1.5} Consider the wave function \[ \Psi(x, t) =
+Ae^{-\lambda|x|}e^{-i\omega t} \] where $A$, $\lambda$ and $\omega$ are
+positive real constants.
 \begin{enumerate}[(a)]
   \item Normalize $\Psi$.
   \item Determine the expectation values of $x$ and $x^2$.
@@ -97,10 +109,11 @@ to normalise the wave function.
     would be found outside this range?
 \end{enumerate}
 
-\paragraph{Solution:} \begin{enumerate}[(a)]
-  \item Since \begin{equation*}
-      |\Psi(x, t)|^2 = |A|^2e^{-2\lambda|x|},
-    \end{equation*} the integral evaluates to \begin{align*}
+\paragraph{Solution:}
+\begin{enumerate}[(a)]
+  \item Since \[ |\Psi(x, t)|^2 = |A|^2e^{-2\lambda|x|}, \] the integral
+    evaluates to
+    \begin{align*}
       \int_{-\infty}^{+\infty} |\Psi(x, t)|^2 \,dx
       &= |A|^2\left[
         \int_{-\infty}^0 e^{-2\lambda x} \,dx +
@@ -110,8 +123,10 @@ to normalise the wave function.
       &= 2|A|^2 \cdot \left.
         \frac{1}{-2\lambda}e^{-2\lambda x}
       \right|_0^{+\infty} = \frac{|A|^2}{\lambda},
-    \end{align*} so $A = \sqrt{\lambda}$.
-  \item By symmetry, $\langle x \rangle = 0$, and \begin{equation*}
+    \end{align*}
+    so $A = \sqrt{\lambda}$.
+  \item By symmetry, $\langle x \rangle = 0$, and
+    \begin{equation*}
       \langle x^2 \rangle = 2\lambda\int_0^{+\infty} x^2e^{-2\lambda x}
       \,dx = \frac{1}{2\lambda^2}.
     \end{equation*}
@@ -124,42 +139,49 @@ to normalise the wave function.
 \subsection{Momentum}
 
 From equation \eqref{eq:sch-norm-2}, the expectation value of \emph{velocity}
-can be calculated through \begin{equation}
+can be calculated through
+\begin{equation}
   \frac{d\langle x \rangle}{dt}
-  = \int_{-\infty}^{+\infty} x\frac{\partial}{\partial t}|\Psi|^2 \,dx
-  = \frac{i\hbar}{2m} \int_{-\infty}^{+\infty} x\frac{\partial}{\partial x}
+  = \int_{-\infty}^{+ \infty} x\frac{\partial}{\partial t}|\Psi|^2 \,dx
+  = \frac{i \hbar}{2m} \int_{- \infty}^{+ \infty} x\frac{\partial}{\partial x}
   \left(
     \Psi^*\frac{\partial \Psi}{\partial x} - \frac{\partial \Psi^*}{\partial x}
     \Psi
   \right) \,dx. \label{eq:sch-mom-1}
-\end{equation} This can be simplified using integration by parts,
+\end{equation}
+This can be simplified using integration by parts,
 \begin{equation}
   \frac{d\langle x \rangle}{dt}
   = -\frac{i\hbar}{2m} \int_{-\infty}^{+\infty} \left(
     \Psi^*\frac{\partial \Psi}{\partial x} - \frac{\partial \Psi^*}{\partial x}
     \Psi
   \right) \,dx. \label{eq:sch-mom-2}
-\end{equation} Performing another integration by parts, on the second term, we
-conclude: \begin{equation}
+\end{equation}
+Performing another integration by parts, on the second term, we conclude:
+\begin{equation}
   \frac{d\langle x \rangle}{dt}
   = -\frac{i\hbar}{m} \int_{-\infty}^{+\infty} \Psi^*
   \frac{\partial \Psi}{\partial x} \,dx. \label{eq:sch-mom-3}
-\end{equation} Working with \emph{momentum} instead, rather than velocity,
+\end{equation}
+Working with \emph{momentum} instead, rather than velocity,
 \begin{equation}
   \langle p \rangle
   = m\frac{d \langle x \rangle}{dt}
   = -i\hbar\int_{-\infty}^{+\infty} \Psi^*
   \frac{\partial \Psi}{\partial x} \,dx. \label{eq:sch-mom-4}
-\end{equation} Finally, writing the equations for $\langle x \rangle$ and
-$\langle p \rangle$ in a more suggestive way: \begin{gather}
+\end{equation}
+Finally, writing the equations for $\langle x \rangle$ and $\langle p \rangle$
+in a more suggestive way:
+\begin{gather}
   \langle x \rangle = \int_{-\infty}^{+\infty}
     \Psi^*(x)\Psi
   \,dx, \label{eq:sch-vel} \\
   \langle p \rangle = \int_{-\infty}^{+\infty} \Psi^* \left(
     \frac{\hbar}{i}\frac{\partial}{\partial x}
   \right)\Psi \,dx. \label{eq:sch-mom}
-\end{gather} To calculate the expectation value of any quantity $Q(x, p)$, we
-integrate \begin{equation}
+\end{gather}
+To calculate the expectation value of any quantity $Q(x, p)$, we integrate
+\begin{equation}
   \langle Q(x, p) \rangle = \int_{-\infty}^{+\infty}
     \Psi^*Q\left(x, \frac{\hbar}{i}\frac{\partial}{\partial x}\right)\Psi
   \,dx. \label{eq:sch-qty}
@@ -167,7 +189,8 @@ integrate \begin{equation}
 
 \paragraph{Problem 1.7} Calculate $d\langle p \rangle/dt$.
 
-\paragraph{Solution:} \begin{align*}
+\paragraph{Solution:}
+\begin{align*}
   \frac{d\langle p \rangle}{dt}
   &= \frac{d}{dt} \int_{-\infty}^{+\infty} \Psi^* \left(
     \frac{\hbar}{i}\frac{\partial}{\partial x}
@@ -177,8 +200,10 @@ integrate \begin{equation}
   &= \frac{\hbar}{i} \int_{-\infty}^{+\infty} \left(
     \Psi^*_t\Psi_x + \Psi^*\Psi_{xt}
   \right) \,dx.
-\end{align*} Using equations \eqref{eq:sch-norm-3} and \eqref{eq:sch-norm-4} to
-work out the time derivatives of $\Psi$ and $\Psi^*$, \begin{align*}
+\end{align*}
+Using equations \eqref{eq:sch-norm-3} and \eqref{eq:sch-norm-4} to work out the
+time derivatives of $\Psi$ and $\Psi^*$,
+\begin{align*}
   \frac{d\langle p \rangle}{dt}
   &= \frac{\hbar}{i} \int_{-\infty}^{+\infty} \left[
     \left(
@@ -208,35 +233,36 @@ work out the time derivatives of $\Psi$ and $\Psi^*$, \begin{align*}
       \frac{\hbar^2}{2m}\Psi_{xxx} - V_x\Psi
     \right)
   \right] \,dx.
-\end{align*} Performing integration by parts twice on the first term, we find
-that \begin{equation*}
+\end{align*}
+Performing integration by parts twice on the first term, we find that \[
   \int_{-\infty}^{+\infty}
     -\frac{h^2}{2m}\Psi^*_{xx}\Psi_x
   \,dx
   = \int_{-\infty}^{+\infty}
     -\frac{h^2}{2m}\Psi^*\Psi_{xxx}
   \,dx
-\end{equation*} since the boundary terms can be ignored, as the wave function
-and all its derivatives are zero at infinity. This simplifies $d\langle p
-\rangle/dt$ to \begin{equation*}
+\] since the boundary terms can be ignored, as the wave function and all its
+derivatives are zero at infinity. This simplifies $d\langle p \rangle/dt$ to \[
   \frac{d\langle p \rangle}{dt} = -\int_{-\infty}^{+\infty} \Psi^* V_x\Psi \,dx
   = \left\langle -\frac{\partial V}{\partial x} \right\rangle.
-\end{equation*}
+\]
 
 \subsection{The Uncertainty Principle}
 
 The wavelength of $\Psi$ is related to the \emph{momentum} of the particle by
-the \textbf{de Broglie formula}: \begin{equation}
+the \textbf{de Broglie formula}:
+\begin{equation}
   p = \frac{h}{\lambda} = \frac{2\pi\hbar}{\lambda}, \label{eq:de-brog}
-\end{equation} which leads to \begin{equation}
+\end{equation}
+which leads to
+\begin{equation}
   \sigma_x\sigma_p \geq \frac{\hbar}{2},
-\end{equation} where $\sigma_x$ and $\sigma_p$ are the standard deviation in
-$x$ and $p$ respectively.
+\end{equation}
+where $\sigma_x$ and $\sigma_p$ are the standard deviation in $x$ and $p$
+respectively.
 
-\paragraph{Problem 1.9} A particle of mass $m$ is in the state
-\begin{equation*}
-  \Psi(x, t) = Ae^{-a[(mx^2/\hbar) + it]},
-  \end{equation*} where $A$ and $a$ are positive real constants.
+\paragraph{Problem 1.9} A particle of mass $m$ is in the state \[ \Psi(x, t) =
+Ae^{-a[(mx^2/\hbar) + it]}, \] where $A$ and $a$ are positive real constants.
 \begin{enumerate}[(a)]
   \item Find $A$.
   \item For what potential energy function $V(x)$ does $\Psi$ satisfy the
@@ -246,17 +272,18 @@ $x$ and $p$ respectively.
     uncertainty principle?
 \end{enumerate}
 
-\paragraph{Solution:} \begin{enumerate}[(a)]
-  \item Since \begin{equation*}
-      \Psi(x, t) = Ae^{-a(mx^2/\hbar)}e^{-iat},
-    \end{equation*} the integral evaluates to \begin{align*}
+\paragraph{Solution:}
+\begin{enumerate}[(a)]
+  \item Since \[ \Psi(x, t) = Ae^{-a(mx^2/\hbar)}e^{-iat}, \] the integral
+    evaluates to
+    \begin{align*}
       \int_{-\infty}^{+\infty} |\Psi(x, t)|^2 \,dx
       &= |A|^2 \int_{-\infty}^{+\infty} e^{-2a(mx^2/\hbar)} \,dx \\
       &= |A|^2 \sqrt{\frac{\pi\hbar}{2ma}},
-    \end{align*} so \begin{equation*}
-      A = \left(\frac{2ma}{\pi\hbar}\right)^{1/4}.
-    \end{equation*}
-  \item Working with these equations, \begin{align*}
+    \end{align*}
+    so \[ A = \left(\frac{2ma}{\pi\hbar}\right)^{1/4}. \]
+  \item Working with these equations,
+    \begin{align*}
       \Psi &= Ae^{-a[(mx^2/\hbar) + it]}, \\
       \frac{\partial\Psi}{\partial t}
            &= -iaAe^{-a[(mx^2/\hbar) + it]} = -ia\Psi, \\
@@ -270,46 +297,52 @@ $x$ and $p$ respectively.
            = -\frac{2ma}{\hbar}\Psi\left(
              1 - \frac{2ma}{\hbar}x^2
            \right),
-    \end{align*} this leads us to \begin{equation*}
+    \end{align*}
+    this leads us to
+    \begin{equation*}
       i\hbar(-ia\Psi) = \frac{-\hbar^2}{2m} \cdot \left[
         -\frac{2ma}{\hbar}\Psi\left(1 - \frac{2ma}{\hbar}x^2\right)
       \right] + V\Psi
-    \end{equation*} and finally resolves to \begin{equation*}
-      V = 2ma^2x^2.
+    \end{equation*} and finally resolves to \[ V = 2ma^2x^2. \]
+  \item Firstly, as $|\Psi|^2x$ is odd,
+    \begin{equation*}
+      \langle x \rangle
+      = \int_{-\infty}^{+\infty} |\Psi|^2x \,dx
+      = 0.
     \end{equation*}
-  \item Firstly, as $|\Psi|^2x$ is odd, \begin{equation*}
-    \langle x \rangle
-    = \int_{-\infty}^{+\infty} |\Psi|^2x \,dx
-    = 0.
-  \end{equation*} With some integration and disposing away boundary terms,
-  \begin{equation*}
-    \langle x^2 \rangle
-    = \int_{-\infty}^{+\infty} |\Psi|^2x^2 \,dx
-    = \frac{\hbar}{4ma}.
-  \end{equation*} Using \eqref{eq:sch-mom}, as $\Psi^*
-  \frac{\partial\Psi}{\partial x}$ is odd, \begin{equation*}
-    \langle p \rangle
-    = -i\hbar\int_{-\infty}^{+\infty}
-      \Psi^*\frac{\partial\Psi}{\partial x}
-    \,dx
-    = 0.
-  \end{equation*} By \eqref{eq:sch-qty}, \begin{align*}
-    \langle p^2 \rangle
-    &= -\hbar^2\int_{-\infty}^{+\infty}
-      \Psi^*\frac{\partial^2\Psi}{\partial x^2}
-    \,dx \\
-    &= 2ma\hbar\int_{-\infty}^{+\infty}
-    \Psi^*\Psi\left(1 - \frac{2ma}{\hbar}x^2\right)
-    \,dx \\
-    &= 2ma\hbar\left(1 - \frac{2ma}{\hbar}\langle x^2 \rangle\right) \\
-    &= ma\hbar.
-  \end{align*} The standard deviations are \begin{align*}
-    \sigma_x &= \frac{1}{2}\sqrt{\frac{\hbar}{ma}}, \\
-    \sigma_p &= \sqrt{ma\hbar},
-  \end{align*} so \begin{equation*}
-    \sigma_x\sigma_p = \frac{\hbar}{2}
-  \end{equation*} which is consistent with the uncertainty principle, and in
-  fact the minimum possible.
+    With some integration and disposing away boundary terms,
+    \begin{equation*}
+      \langle x^2 \rangle
+      = \int_{-\infty}^{+\infty} |\Psi|^2x^2 \,dx
+      = \frac{\hbar}{4ma}.
+    \end{equation*}
+    Using \eqref{eq:sch-mom}, as $\Psi^* \frac{\partial\Psi}{\partial x}$ is
+    odd,
+    \begin{equation*}
+      \langle p \rangle
+      = -i\hbar\int_{-\infty}^{+\infty}
+        \Psi^*\frac{\partial\Psi}{\partial x}
+      \,dx
+      = 0.
+    \end{equation*}
+    By \eqref{eq:sch-qty},
+    \begin{align*}
+      \langle p^2 \rangle
+      &= -\hbar^2\int_{-\infty}^{+\infty}
+        \Psi^*\frac{\partial^2\Psi}{\partial x^2}
+      \,dx \\
+      &= 2ma\hbar\int_{-\infty}^{+\infty}
+      \Psi^*\Psi\left(1 - \frac{2ma}{\hbar}x^2\right)
+      \,dx \\
+      &= 2ma\hbar\left(1 - \frac{2ma}{\hbar}\langle x^2 \rangle\right) \\
+      &= ma\hbar.
+    \end{align*} The standard deviations are
+    \begin{align*}
+      \sigma_x &= \frac{1}{2}\sqrt{\frac{\hbar}{ma}}, \\
+      \sigma_p &= \sqrt{ma\hbar},
+    \end{align*}
+    so \[ \sigma_x\sigma_p = \frac{\hbar}{2} \] which is consistent with the
+    uncertainty principle, and in fact the minimum possible.
 \end{enumerate}
 
 \end{document}
