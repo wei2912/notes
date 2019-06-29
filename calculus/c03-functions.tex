@@ -1,7 +1,9 @@
 \documentclass{article}
 
 \usepackage{amsmath,amssymb,amsthm}
+\usepackage[shortlabels]{enumitem}
 
+\newtheorem{definition}{Definition}
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
 
@@ -10,294 +12,220 @@
 \title{Chapter 3: Functions}
 \maketitle
 
-\paragraph{Functions.} A \textbf{function} is a collection of pairs of numbers
-with the following properties: if $(a, b)$ and $(a, c)$ are both in the
-collection, then $b = c$; in other words, the collection must not contain two
-different pairs with the same first element.
+\begin{definition}
+  A \emph{function} is a collection of pairs of numbers with the following
+  properties: if $(a, b)$ and $(a, c)$ are both in the collection, then $b =
+  c$; in other words, the collection must not contain two different pairs with
+  the same first element.
+\end{definition}
 
-\paragraph{Domain.} If $f$ is a function, the \textbf{domain} of $f$ is the set
-of all $a$ for which there is some $b$ such that $(a, b)$ is in $f$. If $a$ is
-in the domain of $f$, it follows from the definition of a function that there
-is, in fact, a \emph{unique} number $b$ such that $(a, b)$ is in $f$. This
-unique $b$ is denoted by $f(a)$.
+If $f$ is a function, the \emph{domain} of $f$ is the set of all $a$ for which
+there is some $b$ such that $(a, b)$ is in $f$. If $a$ is in the domain of $f$,
+it follows from the definition of a function that there is, in fact, a
+\emph{unique} number $b$ such that $(a, b)$ is in $f$. This unique $b$ is
+denoted by $f(a)$.
 
 \section*{Exercises}
 
-\paragraph{Problem 3-10. (c)} For which functions $b$ and $c$ can we find a function $x$ such
-that \begin{equation*}
-  (x(t))^2 + b(t)x(t) + c(t) = 0
-\end{equation*} for all numbers $t$?
+\paragraph{Problem 10}
+\begin{enumerate}[(c)]
+  \item (The scope is limited to real functions.) Applying the quadratic
+    formula, \[
+      x(t) = \frac{-b(t) \pm \sqrt{(b(t))^2 - 4(1)(c(t))}}{2(1)}.
+    \] It is clear that for $x(t)$ to be real for all $t$, $(b(t))^2 -
+    4(1)(c(t)) \geq 0 \iff (b(t))^2 \geq 4c(t)$ for all $t$.
+  \item If $x(t) = 0$ for all $t$, then the only condition is $b(t) = 0$ for
+    all $t$. Otherwise, $x = b/a$ and the condition is $a(t) \neq 0$ for all
+    $t$. There will only be one function $x$ in either case.
+\end{enumerate}
 
-\paragraph{Solution:} (The scope is limited to real functions.) Applying the
-quadratic formula, \begin{equation*}
-  x(t) = \frac{-b(t) \pm \sqrt{(b(t))^2 - 4(1)(c(t))}}{2(1)}
-\end{equation*}. It is clear that for $x(t)$ to be real for all $t$, $(b(t))^2
-- 4(1)(c(t)) \geq 0 \iff (b(t))^2 \geq 4c(t)$ for all $t$.
+\paragraph{Problem 11}
+\begin{enumerate}[(d)]
+  \item It is clear that the six conditions can be expressed as $H(H(1)) = H(1)
+    = 36$, $H(H(2)) = H(2) = \pi/3$ and $H(H(13)) = H(13) = 47$. What is left
+    is to construct a rule for the remaining numbers in the domain. A simple
+    way of constructing a rule that fits the condition $H(H(x)) = H(x)$ would
+    be to yield the number $47 = H(13)$. Hence, the function $H$ can be defined
+    in this manner: \[
+      H(x) =
+      \begin{cases}
+        36, \text{ if } x = 1 \text{ or } 36 \\
+        \pi/3, \text{ if } x = 2 \text{ or } \pi/3 \\
+        47, \text{ otherwise.} \\
+      \end{cases}
+    \]
+  \item Using a similar method to the previous part, one simply needs to impose
+    the condition $H(H(1)) = H(1) = 7$ and to yield the number $18 = H(17)$.
+    The function $H$ can be defined in this manner: \[
+      H(x) =
+      \begin{cases}
+        7, \text{ if } x = 1 \text{ or } 7 \\
+        18, \text{ otherwise} \\
+      \end{cases}
+    \]
+\end{enumerate}
 
-\paragraph{(d)} What conditions must the functions $a$ and $b$ satisfy if there
-is to be a function $x$ such that \begin{equation*}
-  a(t)x(t) + b(t) = 0
-\end{equation*} for all numbers $t$? How many such functions $x$ will there be?
+\paragraph{Problem 13}
+\begin{enumerate}[(a)]
+  \item Consider $f(x)$ and $f(-x)$:
+    \begin{align*}
+      f(x)  &= E(x) + O(x), \\
+      f(-x) &= E(-x) + O(-x) \\
+            &= E(x) - O(x).
+    \end{align*}
+    It is clear that $E(x)$ and $O(x)$ can be solved to obtain these two unique
+    solutions: \[
+      E(x) = \frac{f(x) + f(-x)}{2}, O(x) = \frac{f(x) - f(-x)}{2}.
+    \]
+  \item Solved in (a).
+\end{enumerate}
 
-\paragraph{Solution:} If $x(t) = 0$ for all $t$, then the only condition is
-$b(t) = 0$ for all $t$. Otherwise, $x = b/a$ and the condition is $a(t) \neq 0$
-for all $t$. There will only be one function $x$ in either case.
+\paragraph{Problem 16}
+\begin{enumerate}[(a)]
+  \item By definition, the base case $n = 2$ is trivially proved. Suppose that
+    the statement holds for $n = k$ for some integer $k \geq 2$. Then,
+    \begin{multline*}
+      f(x_1 + \cdots + x_k + x_{k+1}) \\
+      \begin{aligned}
+        &= f(x_1 + \cdots + x_k) + f(x_{k+1}) &\text{ (by definition)} \\
+        &= (f(x_1) + \cdots + f(x_k)) + f(x_{k+1}) &\text{ (by assumption)} \\
+        &= f(x_1) + \cdots + f(x_{k+1}).
+      \end{aligned}
+    \end{multline*}
+    This proves the statement for all $n \geq 2$.
+  \item Let $c = f(1)$. Then, it is clear that $f(n) = cn$ for any natural
+    number $n$.
 
-\paragraph{Problem 3-11 (abridged) (d)} Find a function $H$ such that $H(H(x))
-= H(x)$ for all numbers $x$, and such that $H(1) = 36, H(2) = \pi/3, H(13) =
-47, H(36) = 36, H(\pi/3) = \pi/3, H(47) = 47$.
+    Since $f(x) + f(0) = f(x + 0) = f(x)$, it follows that $f(0) = 0$. Since
+    $f(x) + f(-x) = f(x + (-x)) = f(0) = 0$, it also follows that $f(x) =
+    -f(-x)$. In particular, for any natural number $n$, $f(-n) = -f(n) = -cn =
+    c(-n)$.
 
-\paragraph{Solution:} It is clear that the six conditions can be expressed as
-$H(H(1)) = H(1) = 36$, $H(H(2)) = H(2) = \pi/3$ and $H(H(13)) = H(13) = 47$.
-What is left is to construct a rule for the remaining numbers in the domain. A
-simple way of constructing a rule that fits the condition $H(H(x)) = H(x)$
-would be to yield the number $47 = H(13)$. Hence, the function $H$ can be
-defined in this manner: \begin{equation*}
-  H(x) = \begin{cases}
-    36, \text{ if } x = 1 \text{ or } 36 \\
-    \pi/3, \text{ if } x = 2 \text{ or } \pi/3 \\
-    47, \text{ otherwise.} \\
-  \end{cases}
-\end{equation*}
+    Moreover, $nf(1/n) = f(1) = c$ which implies that $f(1/n) = c(1/n)$.
+    Consequently, $f(-1/n) = -f(1/n) = c(-1/n)$. Finally, writing any rational
+    number as $m/n$ with a natural number $m$ and integer $n$, $f(m/n) =
+    mf(1/n) = mc/n = c(m/n)$. This proves the statement $f(x) = cx$ for all
+    rational numbers $x$.
+\end{enumerate}
 
-\paragraph{(e)} Find a function $H$ such that $H(H(x)) = H(x)$ for all $x$, and
-such that $H(1) = 7$, $H(17) = 18$.
+\paragraph{Problem 17.}
+\begin{enumerate}[(a)]
+  \item From the property $f(x \cdot y) = f(x) \cdot f(y)$, \[
+      f(1) = f(1 \cdot 1) = f(1) \cdot f(1)
+    \] which implies $f(1) = 0, 1$. However, if $f(1) = 0$, then for any $y$,
+    $f(y) = f(1 \cdot y) = f(1) \cdot f(y) = 0$ which implies that $f(y) = 0$
+    for all $y$ contrary to the assumption made. Hence, $f(1) = 1$.
+  \item Let $c = f(1)$. The proof that $f(x) = cx$ for all rational $x$ is
+    similar to that in Q16. Since $c = 1$, the statement is proven.
+  \item If $x > 0$, then $x = y^2$ for some real $y$, so $f(x) = f(y)^2 =
+    (f(y))^2 \geq 0$ by definition. Since $y \neq 0$ (from (a)), it must follow
+    that $f(y) \neq 0$ and thus $f(x) > 0$.
+  \item If $x > y$, then $x - y > 0$. By (c), $f(x) - f(y) > 0$, which proves
+    $f(x) > f(y)$.
+  \item Suppose that $f(x) > x$ for some $x$. Choose a rational number $r$ with
+    $x < r < f(x)$. Then, by (b) and (d), \[
+      f(x) < f(r) = r < f(x)
+    \] which is a contradiction. Similarly, if $f(x) < x$ for some $x$, by
+    choosing a rational number $r'$ with $f(x) < r' < x$, by (b) and (d), \[
+      r' = f(r') < f(x) < r'
+    \] which is a contradiction. Hence, $f(x) = x$ for all $x$.
+\end{enumerate}
 
-\paragraph{Solution:} Using a similar method to the previous part, one simply
-needs to impose the condition $H(H(1)) = H(1) = 7$ and to yield the number $18
-= H(17)$. The function $H$ can be defined in this manner:
-\begin{equation*}
-  H(x) = \begin{cases}
-    7, \text{ if } x = 1 \text{ or } 7 \\
-    18, \text{ otherwise} \\
-  \end{cases}
-\end{equation*}
+\paragraph{Problem 18} If either $f = 0$ or $g = 0$ holds, and also either $h =
+0$ or $k = 0$, then the equation certainly holds. If not, then there exists
+some $x'$ with $f(x') \neq 0$ and some $y'$ with $g(y') \neq 0$. Then, $0 \neq
+f(x')g(y') = h(x')k(y')$, so we have $h(x') \neq 0$ and $k(y') \neq 0$. Letting
+$\alpha = h(x')/f(x')$, $g(y) = \alpha k(y)$ for all $y$. Similarly, from
+$\alpha = g(y')/k(y')$, $h(x) = \alpha f(x)$ for all $x$. Hence, $h = \alpha f$
+and $g = \alpha k$ for some $\alpha \neq 0$.
 
-\paragraph{Problem 3-13 (abridged). (a)} Prove that any function $f$ with
-domain $\mathbb{R}$ can be written $f = E + O$, where $E$ is even and $O$ is
-odd. (A function $g$ is \emph{even} if $g(x) = g(-x)$ and \emph{odd} if $g(x) =
--g(-x)$.
+\paragraph{Problem 19}
+\begin{enumerate}[(a)]
+  \item Assuming that there exist functions meeting the first
+    condition, $f(x) + g(0) = x \cdot 0 = 0$ for all $x$, so $f(x) = -g(0)$.
+    Likewise, $f(0) + g(y) = 0 \cdot y = 0$ for all $y$, so $g(y) = -f(0) =
+    g(0)$. This would imply that $f(x) + g(y) = -g(0) + g(0) = 0 = xy$ for all
+    $x$ and $y$, which is absurd.
 
-\paragraph{Solution:} Consider $f(x)$ and $f(-x)$: \begin{align*}
-  f(x)  &= E(x) + O(x), \\
-  f(-x) &= E(-x) + O(-x) \\
-        &= E(x) - O(x).
-\end{align*} It is clear that $E(x)$ and $O(x)$ can be solved to obtain these
-two unique solutions: \begin{align*}
-  E(x) = \frac{f(x) + f(-x)}{2}, O(x) = \frac{f(x) - f(-x)}{2}.
-\end{align*}
+    Assuming that there exist functions meeting the second condition, $f(x)
+    \cdot g(0) = x + 0 = x$ for all $x$, so $f(x) = x/g(0)$. Likewise, $f(0)
+    \cdot g(y) = 0 + y = y$ for all $y$, so $g(y) = y/f(0)$. This would imply
+    that $f(x) \cdot g(y) = x/g(0) \cdot y/f(0) = x + y$ for all $x$ and $y$.
+    For $y = 0$, $x = 0$ for all $x$ which is absurd.
+  \item Let $f$ and $g$ be the same constant function.
+\end{enumerate}
 
-\paragraph{(b)} Prove that this way of writing $f$ is unique.
+\paragraph{Problem 20}
+\begin{enumerate}[(a)]
+  \item Since $0 \leq |f(y) - f(x)| \leq |y - x|$, the function $f(x) = cx$ for
+    some $0 < c \leq 1$ will satisfy the condition.
+  \item Suppose that $f(y) < f(x)$. Naturally, $f(y) - f(x) < 0 \leq
+    (y - x)^2$. Swapping $x$ and $y$, for $f(x) < f(y)$, the statement $0 \leq
+    f(x) - f(y) < (x - y)^2$ must also hold. Hence, $|f(y) - f(x)| = |f(x) -
+    f(y)| \leq (y - x)^2$ for all $x$ and $y$.
 
-\paragraph{Solution:} Solved in (a).
+    Let $m = \frac{x + y}{2}$. Then, $f(y) - f(m) \leq (y - m)^2 = \left( y -
+    \frac{x + y}{2} \right)^2 = \left( \frac{y - x}{2}\right)^2 = \frac{1}{4}
+    (y - x)^2$. Similarly, $f(m) - f(x) \leq (m - x)^2 = \left( \frac{x + y}{2}
+    - x \right)^2 = \left( \frac{y - x}{2} \right)^2 = \frac{1}{4}(y - x)^2$.
+    This suggests that $f(y) - f(x) \leq \frac{1}{2}(y - x)^2$, providing a
+    stricter bound than $(y - x)^2$.
 
-\paragraph{Problem 3-16.} Suppose $f$ satisfies $f(x + y) = f(x) + f(y)$ for
-all $x$ and $y$.
+    The same process can be repeated indefinitely, with the bound tending
+    towards 0 while remaining positive. Hence, $f(y) - f(x) = 0$ and $f$ is a
+    constant function.
+\end{enumerate}
 
-\paragraph{(a)} Prove that $f(x_1 + \cdots + x_n) = f(x_1) + \cdots + f(x_n)$.
+\paragraph{Problem 22}
+\begin{enumerate}[(a)]
+  \item Consider $g(x) = h(f(x))$. Since $f(x) = f(y)$, $g(x) = h(f(y))$.
+    However, $g(y) = h(f(y))$ too. Hence, $g(x) = g(y)$.
+  \item If $z = f(x)$, define $h(z) = g(x)$; this definition makes sense, as if
+    $z = f(x')$, then $g(x) = g(x')$ by part (a). For $z$ not of the form
+    $f(x)$, leave $h$ undefined. Then for all $x$ in the domain of $f$, we have
+    $g(x) = h(f(x))$, proving $g = h \circ f$.
+\end{enumerate}
 
-\paragraph{Solution:} By definition, the base case $n = 2$ is trivially
-proved. Suppose that the statement holds for $n = k$ for some integer $k \geq
-2$. Then, \begin{align*}
-  f(x_1 + \cdots + x_k + x_{k+1}) &= f(x_1 + \cdots + x_k) + f(x_{k+1})
-  \text{ (by definition)} \\
-    &= (f(x_1) + \cdots + f(x_k)) + f(x_{k+1}) \text{ (by assumption)} \\
-    &= f(x_1) + \cdots + f(x_{k+1}).
-\end{align*}
-This proves the statement for all $n \geq 2$.
+\paragraph{Problem 23}
+\begin{enumerate}[(a)]
+  \item Suppose $x \neq y$. Then, $g(x) = g(y)$ would imply $x = f(g(x)) =
+    f(g(y)) = y$ leading to a contradiction.
+  \item From $b = f(g(b))$, let $a = g(b)$.
+\end{enumerate}
 
-\paragraph{(b)} Prove that there is some number $c$ such that $f(x) = cx$ for
-all rational numbers $x$.
+\paragraph{Problem 24}
+\begin{enumerate}[(a)]
+  \item The hypothesis can be stated as the contrapositive: If $x = y$, then
+    $g(x) = g(y)$. Then, applying Q22(b) to $g$ and $I$, $I = h \circ g$ for
+    some function $h$.
+  \item For each $x$, pick some number $a$ such that $x = f(a)$. Call this
+    number $g(x)$. Then, $f(g(x)) = x = I(x)$.
+\end{enumerate}
 
-\paragraph{Solution:} Let $c = f(1)$. Then, it is clear that $f(n) = cn$ for
-any natural number $n$.
-
-Since $f(x) + f(0) = f(x + 0) = f(x)$, it follows that $f(0) = 0$. Since $f(x)
-+ f(-x) = f(x + (-x)) = f(0) = 0$, it also follows that $f(x) = -f(-x)$. In
-particular, for any natural number $n$, $f(-n) = -f(n) = -cn = c(-n)$.
-
-Moreover, $nf(1/n) = f(1) = c$ which implies that $f(1/n) = c(1/n)$.
-Consequently, $f(-1/n) = -f(1/n) = c(-1/n)$. Finally, writing any rational
-number as $m/n$ with a natural number $m$ and integer $n$, $f(m/n) = mf(1/n) =
-mc/n = c(m/n)$. This proves the statement $f(x) = cx$ for all rational numbers
-$x$.
-
-\paragraph{Problem 3-17.} If $f(x) = 0$ for all $x$, then $f$ satisfies $f(x +
-y) = f(x) + f(y)$ for all $x$ and $y$, and also $f(x \cdot y) = f(x) \cdot
-f(y)$ for all $x$ and $y$. Now suppose that $f$ satisfies these two properties,
-but that $f(x)$ is not always 0. Prove that $f(x) = x$ for all $x$, as follows:
-
-\paragraph{(a)} Prove that $f(1) = 1$.
-
-\paragraph{Solution:} From the property $f(x \cdot y) = f(x) \cdot f(y)$,
-\begin{equation*}
-  f(1) = f(1 \cdot 1) = f(1) \cdot f(1)
-\end{equation*} which implies $f(1) = 0, 1$. However, if $f(1) = 0$, then for
-any $y$, $f(y) = f(1 \cdot y) = f(1) \cdot f(y) = 0$ which implies that $f(y) =
-0$ for all $y$ contrary to the assumption made. Hence, $f(1) = 1$.
-
-\paragraph{(b)} Prove that $f(x) = x$ if $x$ is rational.
-
-\paragraph{Solution:} Let $c = f(1)$. The proof that $f(x) = cx$ for all
-rational $x$ is similar to that in Q16. Since $c = 1$, the statement is proven.
-
-\paragraph{(c)} Prove that $f(x) > 0$ if $x > 0$.
-
-\paragraph{Solution:} If $x > 0$, then $x = y^2$ for some real $y$, so $f(x) =
-f(y)^2 = (f(y))^2 \geq 0$ by definition. Since $y \neq 0$ (from (a)), it must
-follow that $f(y) \neq 0$ and thus $f(x) > 0$.
-
-\paragraph{(d)} Prove that $f(x) > f(y)$ if $x > y$.
-
-\paragraph{Solution:} If $x > y$, then $x - y > 0$. By (c), $f(x) - f(y) > 0$,
-which proves $f(x) > f(y)$.
-
-\paragraph{(e)} Prove that $f(x) = x$ for all $x$.
-
-\paragraph{Solution:} Suppose that $f(x) > x$ for some $x$. Choose a rational
-number $r$ with $x < r < f(x)$. Then, by (b) and (d), \begin{equation*}
-  f(x) < f(r) = r < f(x)
-\end{equation*} which is a contradiction. Similarly, if $f(x) < x$ for some
-$x$, by choosing a rational number $r'$ with $f(x) < r' < x$, by (b) and (d),
-\begin{equation*}
-  r' = f(r') < f(x) < r'
-\end{equation*} which is a contradiction. Hence, $f(x) = x$ for all $x$.
-
-\paragraph{Problem 3-18.} Precisely what conditions must $f$, $g$, $h$, and $k$
-satisfy in order that $f(x)g(y) = h(x)k(y)$ for all $x$ and $y$?
-
-\paragraph{Solution:} If either $f = 0$ or $g = 0$ holds, and also either
-$h = 0$ or $k = 0$, then the equation certainly holds. If not, then there
-exists some $x'$ with $f(x') \neq 0$ and some $y'$ with $g(y') \neq 0$. Then,
-$0 \neq f(x')g(y') = h(x')k(y')$, so we have $h(x') \neq 0$ and $k(y') \neq 0$.
-Letting $\alpha = h(x')/f(x')$, $g(y) = \alpha k(y)$ for all $y$. Similarly,
-from $\alpha = g(y')/k(y')$, $h(x) = \alpha f(x)$ for all $x$. Hence, $h =
-\alpha f$ and $g = \alpha k$ for some $\alpha \neq 0$.
-
-\paragraph{Problem 3-19 (abridged). (a)} Prove that there do not exist
-functions $f$ and $g$ with either of the following properties: \begin{align*}
-  f(x) + g(y) = xy \text{ for all } x \text{ and } y, \\
-  f(x) \cdot g(y) = x + y \text{ for all } x \text{ and } y.
-\end{align*}
-
-\paragraph{Solution:} Assuming that there exist functions meeting the first
-condition, $f(x) + g(0) = x \cdot 0 = 0$ for all $x$, so $f(x) = -g(0)$.
-Likewise, $f(0) + g(y) = 0 \cdot y = 0$ for all $y$, so $g(y) = -f(0) = g(0)$.
-This would imply that $f(x) + g(y) = -g(0) + g(0) = 0 = xy$ for all $x$ and
-$y$, which is absurd.
-
-Assuming that there exist functions meeting the second condition, $f(x) \cdot
-g(0) = x + 0 = x$ for all $x$, so $f(x) = x/g(0)$. Likewise, $f(0) \cdot g(y) =
-0 + y = y$ for all $y$, so $g(y) = y/f(0)$. This would imply that $f(x) \cdot
-g(y) = x/g(0) \cdot y/f(0) = x + y$ for all $x$ and $y$. For $y = 0$, $x = 0$
-for all $x$ which is absurd.
-
-\paragraph{(b)} Find functions $f$ and $g$ such that $f(x + y) = g(xy)$ for all
-$x$ and $y$.
-
-\paragraph{Solution:} Let $f$ and $g$ be the same constant function.
-
-\paragraph{Problem 3-20 (abridged). (a)} Find a function $f$, other than a
-constant function, such that $|f(y) - f(x)| \leq |y - x|$.
-
-\paragraph{Solution:} Since $0 \leq |f(y) - f(x)| \leq |y - x|$, the
-function $f(x) = cx$ for some $0 < c \leq 1$ will satisfy the condition.
-
-\paragraph{(b)} Suppose that $f(y) - f(x) \leq (y - x)^2$ for all $x$ and $y$.
-(Why does this imply that $|f(y) - f(x)| \leq (y - x)^2$?) Prove that $f$ is a
-constant function.
-
-\paragraph{Solution:} Suppose that $f(y) < f(x)$. Naturally, $f(y) - f(x) < 0
-\leq (y - x)^2$. Swapping $x$ and $y$, for $f(x) < f(y)$, the statement $0 \leq
-f(x) - f(y) < (x - y)^2$ must also hold. Hence, $|f(y) - f(x)| = |f(x) - f(y)|
-\leq (y - x)^2$ for all $x$ and $y$.
-
-Let $m = \frac{x + y}{2}$. Then, $f(y) - f(m) \leq (y - m)^2 = \left(y -
-\frac{x + y}{2}\right)^2 = \left(\frac{y - x}{2}\right)^2 = \frac{1}{4}(y -
-x)^2$. Similarly, $f(m) - f(x) \leq (m - x)^2 = \left(\frac{x + y}{2} -
-x\right)^2 = \left(\frac{y - x}{2}\right)^2 = \frac{1}{4}(y - x)^2$. This
-suggests that $f(y) - f(x) \leq \frac{1}{2}(y - x)^2$, providing a stricter
-bound than $(y - x)^2$.
-
-The same process can be repeated indefinitely, with the bound tending towards 0
-while remaining positive. Hence, $f(y) - f(x) = 0$ and $f$ is a constant
-function.
-
-\paragraph{Problem 3-22. (a)} Suppose $g = h \circ f$. Prove that if $f(x) =
-f(y)$, then $g(x) = g(y)$.
-
-\paragraph{Solution:} Consider $g(x) = h(f(x))$. Since $f(x) = f(y)$, $g(x) =
-h(f(y))$. However, $g(y) = h(f(y))$ too. Hence, $g(x) = g(y)$.
-
-\paragraph{(b)} Conversely, suppose that $f$ and $g$ are two functions such
-that $g(x) = g(y)$ whenever $f(x) = f(y)$. Prove that $g = h \circ f$ for some
-function $h$.
-
-\paragraph{Solution:} If $z = f(x)$, define $h(z) = g(x)$; this definition
-makes sense, as if $z = f(x')$, then $g(x) = g(x')$ by part (a). For $z$ not of
-the form $f(x)$, leave $h$ undefined. Then for all $x$ in the domain of $f$, we
-have $g(x) = h(f(x))$, proving $g = h \circ f$.
-
-\paragraph{Problem 3-23.} Suppose that $f \circ g = I$, where $I(x) = x$.
-
-\paragraph{(a)} Prove that if $x \neq y$, then $g(x) \neq g(y)$.
-
-\paragraph{Solution:} Suppose $x \neq y$. Then, $g(x) = g(y)$ would imply $x =
-f(g(x)) = f(g(y)) = y$ leading to a contradiction.
-
-\paragraph{(b)} Prove that every number $b$ can be written $b = f(a)$ for some
-number $a$.
-
-\paragraph{Solution:} From $b = f(g(b))$, let $a = g(b)$.
-
-\paragraph{Problem 3-24. (a)} Suppose $g$ is a function with the property that
-$g(x) \neq g(y)$ if $x \neq y$. Prove that there is a function $f$ such that $f
-\circ g = I$.
-
-\paragraph{Solution:} The hypothesis can be stated as the contrapositive: If $x
-= y$, then $g(x) = g(y)$. Then, applying Q22(b) to $g$ and $I$, $I = h \circ g$
-for some function $h$.
-
-\paragraph{(b)} Suppose that $f$ is a function such that every number $b$ can
-be written $b = f(a)$ for some number $a$. Prove that there is a function $g$
-such that $f \circ g = I$.
-
-\paragraph{Solution:} For each $x$, pick some number $a$ such that $x = f(a)$.
-Call this number $g(x)$. Then, $f(g(x)) = x = I(x)$.
-
-\paragraph{Problem 3-25.} Find a function $f$ such that $g \circ f = I$ for
-some $g$, but such that there is no function $h$ with $f \circ h = I$.
-
-\paragraph{Solution:} It suffices to find a function $f$ such that $f(x) \neq
+\paragraph{Problem 25} It suffices to find a function $f$ such that $f(x) \neq
 f(y)$ if $x \neq y$ (as by Q24(a) there will be a function $g$ such that $g
 \circ f = I$), but such that not every number is of the form $f(x)$ (as by
 Q22(b) there will not be a function $g$ such that $f \circ g = I$). One such
-function is: \begin{equation*}
+function is: \[
   f(x) =
   \begin{cases}
     x + 1 & \text{ if } x \geq 0 \\
     x     & \text{ if } x < 0
   \end{cases}
-\end{equation*} which ensures that no number in the range $(0, 1)$ is of the
-form $f(x)$.
+\] which ensures that no number in the range $(0, 1)$ is of the form $f(x)$.
 
-\paragraph{Problem 3-26.} Suppose $f \circ g = I$ and $h \circ f = I$. Prove
-that $g = h$.
-
-\paragraph{Solution:} Consider $h \circ (f \circ g) = h \circ I = h$. By the
+\paragraph{Problem 26} Consider $h \circ (f \circ g) = h \circ I = h$. By the
 associative property of composition, as $(h \circ f) \circ g = I \circ g = g$,
 this proves $h = g$.
 
-\paragraph{Problem 2-27. (c)} Show that P10-P12 cannot hold. In other words,
-show that there is no collection $P$ of functions in $F$, such that P10-P12
-hold for $P$. (It is sufficient, and will simplify things, to consider only
-functions which are 0 except at two points $x_0$ and $x_1$.)
-
-\paragraph{Solution:} Let $f$ and $g$ be two functions which are 0 except at
-$x_0$ and $x_1$, with $f(x_0) = 1$, $f(x_1) = 0$ and $g(x_0) = 0$, $g(x_1) =
-1$. Taking P10, neither $f$ nor $g$ is 0, so $f$ or $-f$ would have to be in
-the collection $P$, and likewise for $g$ or $-g$. But $(\pm f)(\pm g) = 0$,
-which contradicts P12.
+\paragraph{Problem 27}
+\begin{enumerate}[(c)]
+  \item Let $f$ and $g$ be two functions which are 0 except at $x_0$ and $x_1$,
+    with $f(x_0) = 1$, $f(x_1) = 0$ and $g(x_0) = 0$, $g(x_1) = 1$. Taking P10,
+    neither $f$ nor $g$ is 0, so $f$ or $-f$ would have to be in the collection
+    $P$, and likewise for $g$ or $-g$. But $(\pm f)(\pm g) = 0$, which
+    contradicts P12.
+\end{enumerate}
 
 \end{document}
 

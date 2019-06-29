@@ -1,6 +1,7 @@
 \documentclass{article}
 
 \usepackage{amsmath,amssymb,amsthm}
+\usepackage[shortlabels]{enumitem}
 
 \newtheorem{corollary}{Corollary}
 \newtheorem{definition}{Definition}
@@ -14,454 +15,351 @@
 \maketitle
 
 \begin{theorem}[The First Fundamental Theorem of Calculus]
-  Let $f$ be integrable on $[a, b]$, and define $F$ on $[a, b]$ by
-  \begin{equation*}
+  Let $f$ be integrable on $[a, b]$, and define $F$ on $[a, b]$ by \[
     F(x) = \int_a^x f.
-  \end{equation*} If $f$ is continuous at $c$ in $[a, b]$, then $F$ is
-  differentiable at $c$, and \begin{equation*}
+  \] If $f$ is continuous at $c$ in $[a, b]$, then $F$ is differentiable at
+  $c$, and \[
     F'(c) = f(c).
-  \end{equation*} (If $c = a$ or $b$, then $F'(c)$ is understood to mean the
-  right- or left-hand derivative of $F$.)
+  \] (If $c = a$ or $b$, then $F'(c)$ is understood to mean the right- or
+  left-hand derivative of $F$.)
 \end{theorem}
-
 \begin{proof}
   We will assume that $c$ is in $(a, b)$; the easy modifications for $c = a$ or
-  $b$ may be supplied by the reader. By definition, \begin{equation*}
-    F'(c) = \lim_{h \rightarrow 0}\frac{F(c + h) - F(c)}{h}.
-  \end{equation*} Suppose first that $h > 0$. Then \begin{equation*}
+  $b$ may be supplied by the reader. By definition, \[
+    F'(c) = \lim_{h \to 0}\frac{F(c + h) - F(c)}{h}.
+  \] Suppose first that $h > 0$. Then \[
     F(c + h) - F(c) = \int_c^{c + h} f.
-  \end{equation*} Define $m_h$ and $M_h$ as follows: \begin{align*}
+  \] Define $m_h$ and $M_h$ as follows:
+  \begin{align*}
     m_h &= \inf\{f(x): c \leq x \leq c + h\}, \\
     M_h &= \sup\{f(x): c \leq x \leq c + h\}.
-  \end{align*} It follows from Theorem 13-7 that \begin{equation*}
+  \end{align*}
+  It follows from Theorem 13-7 that \[
     m_h \cdot h \leq \int_c^{c + h} f \leq M_h \cdot h.
-  \end{equation*} Therefore \begin{equation*}
+  \] Therefore \[
     m_h \leq \frac{F(c + h) - F(c)}{h} \leq M_h.
-  \end{equation*} If $h < 0$, only a few details of the argument have to be
-  changed. Let \begin{align*}
+  \] If $h < 0$, only a few details of the argument have to be changed. Let
+  \begin{align*}
     m_h &= \inf\{f(x): c + h \leq x \leq c\},
     M_h &= \sup\{f(x): c + h \leq x \leq c\}.
-  \end{align*} Then \begin{equation*}
+  \end{align*}
+  Then \[
     m_h \cdot (-h) \leq \int_{c + h}^c f \leq M_h \cdot (-h).
-  \end{equation*} Since \begin{equation*}
+  \] Since \[
     F(c + h) - F(c) = \int_c^{c + h} f = -\int_{c + h}^c f
-  \end{equation*} this yields \begin{equation*}
+  \] this yields \[
     m_h \cdot h \geq \int_c^{c + h} f \geq M_h \cdot h.
-  \end{equation*} Since $h < 0$, dividing by $h$ reverses the inequality again,
-  yielding the same result as before: \begin{equation*}
+  \] Since $h < 0$, dividing by $h$ reverses the inequality again, yielding the
+  same result as before: \[
     m_h \leq \frac{F(c + h) - F(c)}{h} \leq M_h.
-  \end{equation*} This inequality is true for any integrable function,
-  continuous or not. Since $f$ is continuous at $c$, however, \begin{equation*}
-    \lim_{h \rightarrow 0}m_h = \lim_{h \rightarrow 0}M_h = f(c),
-  \end{equation*} and this proves that \begin{equation*}
-    F'(c) = \lim_{h \rightarrow 0}\frac{F(c + h) - F(c)}{h} = f(c).
-  \end{equation*}
+  \] This inequality is true for any integrable function, continuous or not.
+  Since $f$ is continuous at $c$, however, \[
+    \lim_{h \to 0} m_h = \lim_{h \to 0} M_h = f(c),
+  \] and this proves that \[
+    F'(c) = \lim_{h \to 0} \frac{F(c + h) - F(c)}{h} = f(c).
+  \]
 \end{proof}
 
 Theoerm 1 has a simple corollary which frequently reduces computation of
 integrals to a trivality.
 
 \begin{corollary}
-  If $f$ is continuous on $[a, b]$ and $f = g'$ for some function $g$, then
-  \begin{equation*}
+  If $f$ is continuous on $[a, b]$ and $f = g'$ for some function $g$, then \[
     \int_a^b f = g(b) - g(a).
-  \end{equation*}
+  \]
 \end{corollary}
-
-\begin{proof}
-  Let \begin{equation*}
-    F(x) = \int_a^x f.
-  \end{equation*} Then $F' = f = g'$ on $[a, b]$. Consequently, there is a
-  number $c$ such that \begin{equation*}
-    F = g + c.
-  \end{equation*} The number $c$ can be evauated easily; note that
-  \begin{equation*}
-    0 = F(a) = g(a) + c,
-  \end{equation*} so $c = -g(a)$; thus \begin{equation*}
-    F(x) = g(x) - g(a).
-  \end{equation*} This is true, in particular, for $x = b$. Thus
-  \begin{equation*}
-    \int_a^b f = F(b) = g(b) - g(a).
-  \end{equation*}
-\end{proof}
 
 Theorem 2 is a somewhat strong result than the corollary to Theorem 1, but
 proven in an entirely different manner.
 
 \begin{theorem}[The Second Fundamental Theorem of Calculus]
-  If $f$ is integrable on $[a, b]$ and $f = g'$ for some function $g$, then
-  \begin{equation*}
+  If $f$ is integrable on $[a, b]$ and $f = g'$ for some function $g$, then \[
     \int_a^b f = g(b) - g(a).
-  \end{equation*}
+  \]
 \end{theorem}
-
 \begin{proof}
   Let $P = \{t_0, \ldots, t_n\}$ be any partition of $[a, b]$. By the Mean
-  Value Theorem there is a point $x_i$ in $[t_{i - 1}, t_i]$ such that
+  Value Theorem there is a point $x_i$ in $[t_{i-1}, t_i]$ such that
   \begin{align*}
-    g(t_i) - g(t_{i - 1}) &= g'(x_i)(t_i - t_{i - 1}) \\
-      &= f(x_i)(t_i - t_{i - 1}).
-  \end{align*} If \begin{align*}
-    m_i &= \inf\{f(x): t_{i - 1} \leq x \leq t_i\}, \\
-    M_i &= \sup\{f(x): t_{i - 1} \leq x \leq t_i\},
-  \end{align*} then clearly \begin{equation*}
-    m_i(t_i - t_{i - 1}) \leq f(x_i)(t_i - t_{i - 1}) \leq M_i(t_i -
-      t_{i - 1}),
-  \end{equation*} that is, \begin{equation*}
-    m_i(t_i - t_{i - 1}) \leq g(t_i) - g(t_{i - 1}) \leq M_i(t_i - t_{i - 1}).
-  \end{equation*} Adding these equations for $i = 1, \ldots, n$ we obtain
-  \begin{equation*}
-    \sum_{i = 1}^n m_i(t_i - t_{i - 1}) \leq g(b) - g(a) \leq
-      \sum_{i = 1}^n M_i(t_i - t_{i - 1})
-  \end{equation*} so that \begin{equation*}
+    g(t_i) - g(t_{i-1})
+    &= g'(x_i)(t_i - t_{i-1}) \\
+    &= f(x_i)(t_i - t_{i-1}).
+  \end{align*}
+  If
+  \begin{align*}
+    m_i &= \inf\{f(x): t_{i-1} \leq x \leq t_i\}, \\
+    M_i &= \sup\{f(x): t_{i-1} \leq x \leq t_i\},
+  \end{align*}
+  then clearly \[
+    m_i(t_i - t_{i-1}) \leq f(x_i)(t_i - t_{i-1}) \leq M_i(t_i - t_{i-1}),
+  \] that is, \[
+    m_i(t_i - t_{i-1}) \leq g(t_i) - g(t_{i-1}) \leq M_i(t_i - t_{i-1}).
+  \] Adding these equations for $i = 1, \ldots, n$ we obtain \[
+    \sum_{i=1}^n m_i(t_i - t_{i-1})
+    \leq g(b) - g(a)
+    \leq \sum_{i=1}^n M_i(t_i - t_{i-1})
+  \] so that \[
     L(f, P) \leq g(b) - g(a) \leq U(f, P)
-  \end{equation*} for every partition $P$. But this means that
-  \begin{equation*}
+  \] for every partition $P$. But this means that \[
     g(b) - g(a) = \int_a^b f.
-  \end{equation*}
+  \]
 \end{proof}
 
-If $f$ is any bounded function on $[a, b]$, then \begin{equation*}
+If $f$ is any bounded function on $[a, b]$, then \[
   \sup\{L(f, P)\} \text{ and } \inf\{U(f, P)\}
-\end{equation*} will both exist, even if $f$ is not integrable. These numbers
+\] will both exist, even if $f$ is not integrable. These numbers
 are called the \emph{lowest integral} and the \emph{upper integral} of $f$ on
-$[a, b]$ respectively, and will be denoted by \begin{equation*}
+$[a, b]$ respectively, and will be denoted by \[
   \textbf{L}\int_a^b f \text{ and } \textbf{U}\int_a^b f.
-\end{equation*}
+\]
 
 \begin{theorem*}[cf. Theorem 13-3]
   If $f$ is continuous on $[a, b]$, then $f$ is integrable on $[a, b]$.
 \end{theorem*}
 
 \begin{proof}
-  Define functions $L$ and $U$ on $[a, b]$ by \begin{equation*}
+  Define functions $L$ and $U$ on $[a, b]$ by \[
     L(x) = \textbf{L}\int_a^x f \text{ and } U(x) = \textbf{U}\int_a^x f.
-  \end{equation*} Let $x$ be in $(a, b)$. If $h > 0$ and \begin{align*}
+  \] Let $x$ be in $(a, b)$. If $h > 0$ and
+  \begin{align*}
     m_h &= \inf\{f(t): x \leq t \leq x + h\}, \\
     M_h &= \sup\{f(t): x \leq t \leq x + h\},
-  \end{align*} then \begin{equation*}
+  \end{align*}
+  then \[
     m_h \cdot h \leq \textbf{L}\int_x^{x + h} f \leq \textbf{U}\int_x^{x + h} f
-      \leq M_h \cdot h,
-  \end{equation*} so \begin{equation*}
+    \leq M_h \cdot h,
+  \] so \[
     m_h \cdot h \leq L(x + h) - L(x) \leq U(x + h) - U(x) \leq M_h \cdot h
-  \end{equation*} so \begin{equation*}
+  \] so \[
     m_h \leq \frac{L(x + h) - L(x)}{h} \leq \frac{U(x + h) - U(x)}{h} \leq M_h.
-  \end{equation*} If $h < 0$ and \begin{align*}
+  \] If $h < 0$ and
+  \begin{align*}
     m_h &= \inf\{f(t): x + h \leq t \leq x\}, \\
     M_h &= \sup\{f(t): x + h \leq t \leq x\},
-  \end{align*} one obtains the same inequality, precisely as in the proof of
+  \end{align*}
+  one obtains the same inequality, precisely as in the proof of
   Theorem 1.
 
-  Since $f$ is continuous at $x$, we have \begin{equation*}
-    \lim_{h \rightarrow 0} m_h = \lim_{h \rightarrow 0} M_h = f(x),
-  \end{equation*} and this proves that \begin{equation*}
+  Since $f$ is continuous at $x$, we have \[
+    \lim_{h \to 0} m_h = \lim_{h \to 0} M_h = f(x),
+  \] and this proves that \[
     L'(x) = U'(x) = f(x) \text{ for } x \text{ in } (a, b).
-  \end{equation*} This means that there is a number $c$ such that
-  \begin{equation*}
+  \] This means that there is a number $c$ such that \[
     U(x) = L(x) + c \text{ for all } x \text{ in } [a, b].
-  \end{equation*} Since \begin{equation*}
+  \] Since \[
     U(a) = L(a) = 0,
-  \end{equation*} the number $c$ must equal 0, so \begin{equation*}
+  \] the number $c$ must equal 0, so \[
     U(x) = L(x) \text{ for all } x \text{ in } [a, b].
-  \end{equation*} In particular, \begin{equation*}
+  \] In particular, \[
     \textbf{U}\int_a^b f = U(b) = L(b) = \textbf{L}\int_a^b f,
-  \end{equation*} and this means that $f$ is integrable on $[a, b]$.
+  \] and this means that $f$ is integrable on $[a, b]$.
 \end{proof}
 
 \section*{Exercises}
 
-\paragraph{Problem 14-8.} Suppose that $f$ is a differentiable function with
-$f(0) = 0$ and $0 < f' \leq 1$. Prove that for all $x \geq 0$ we have
-\begin{equation*}
-  \int_0^x f^3 \leq \left(\int_0^x f\right)^2.
-\end{equation*}
-
-\paragraph{Solution:} Since the two sides of the desired inequality are equal
+\paragraph{Problem 8} Since the two sides of the desired inequality are equal
 for $x = 0$, we just need to prove the same inequality for their derivatives,
-i.e., \begin{equation*}
+i.e., \[
   f(x)^3 \leq 2f(x)\int_0^x f.
-\end{equation*} We have $f(x) > 0$ for $x > 0$, since $f(0) = 0$ and $0 < f'$,
-so this inequality is equivalent to \begin{equation*}
+\] We have $f(x) > 0$ for $x > 0$, since $f(0) = 0$ and $0 < f'$, so this
+inequality is equivalent to \[
   f(x)^2 \leq 2\int_0^x f.
-\end{equation*} But both sides of this inequality are true for $x = 0$, so we
-just need to prove the inequality for their derivatives: \begin{equation*}
+\] But both sides of this inequality are true for $x = 0$, so we just need to
+prove the inequality for their derivatives: \[
   2f(x)f'(x) \leq 2f(x).
-\end{equation*} This is true since $f(x) > 0$ and $0 < f'(x) \leq 1$.
+\] This is true since $f(x) > 0$ and $0 < f'(x) \leq 1$.
 
-\paragraph{Problem 14-9 (abridged).} Let \begin{equation*}
-  f(x) = \begin{cases}
-    \cos\frac{1}{x}, &x \neq 0 \\
-    0, &x = 0.
-  \end{cases}
-\end{equation*} Is the function $F(x) = \int_0^x f$ differentiable at 0?
-
-\paragraph{Solution:} If \begin{equation*}
-  g(x) = \begin{cases}
-    x^2\sin\frac{1}{x}, &x \neq 0 \\
+\paragraph{Problem 9} If \[
+  g(x) =
+  \begin{cases}
+    x^2 \sin \frac{1}{x}, &x \neq 0 \\
     0, &x = 0
   \end{cases}
-\end{equation*} then \begin{equation*}
-  g'(x) = \begin{cases}
-    2x\sin\frac{1}{x} - \cos\frac{1}{x}, &x \neq 0 \\
+\] then \[
+  g'(x) =
+  \begin{cases}
+    2x \sin \frac{1}{x} - \cos \frac{1}{x}, &x \neq 0 \\
     0, &x = 0.
   \end{cases}
-\end{equation*} So if we define \begin{equation*}
-  h(x) = \begin{cases}
-    2x\sin\frac{1}{x}, &x \neq 0 \\
+\] So if we define \[
+  h(x) =
+  \begin{cases}
+    2x \sin \frac{1}{x}, &x \neq 0 \\
     0, &x = 0
   \end{cases}
-\end{equation*} we have \begin{equation*}
+\] we have \[
   f(x) = h(x) - g'(x) \text{ for all } x.
-\end{equation*} Hence \begin{equation*}
+\] Hence \[
   F(x) = \int_0^x (h - g') = \left(\int_0^x h\right) - g,
-\end{equation*} using the Second Fundamental Theorem of Calculus. Since $h$ is
-continuous we can then apply the First Fundamental Theorem to conclude that
-\begin{equation*}
+\] using the Second Fundamental Theorem of Calculus. Since $h$ is continuous we
+can then apply the First Fundamental Theorem to conclude that \[
   F'(0) = h(0) - g'(0) = 0.
-\end{equation*}
+\]
 
-\paragraph{Problem 14-12 (abridged).} Prove that if $f$ is continuous, then
-\begin{equation*}
-  \int_0^x f(u)(x - u) \,\mathrm{d}u
-  = \int_0^x \left(\int_0^u f(t) \,\mathrm{d}t\right) \,\mathrm{d}u.
-\end{equation*}
-
-\paragraph{Solution:} Since \begin{equation*}
-  F(x) = \int_0^x f(u)(x - u) \,\mathrm{d}u
-  = \int_0^x xf(u) \,\mathrm{d}u - \int_0^x uf(u) \,\mathrm{d}u,
-\end{equation*} then \begin{align*}
-  F'(x) &= \left[xf(x) + \int_0^x f(u) \,\mathrm{d}u\right] - xf(x) \\
-    &= \int_0^x f(u) \,\mathrm{d}u.
-\end{align*} Consequently, there is a number $c$ such that \begin{equation*}
-\int_0^x f(u)(x - u) \,\mathrm{d}u
-= \int_0^x \left(\int_0^u f(t) \,\mathrm{d}t\right) \,\mathrm{d}u + c
-\end{equation*} for all $x$, but clearly $c = 0$, since both sides are equal to
-0 for $x = 0$.
-
-\paragraph{Problem 14-13 (abridged).} Prove that \begin{equation*}
-  \int_0^x f(u)(x - u)^2 \,\mathrm{d}u
-  = 2\int_0^x \left(\int_0^{u_2} \left(\int_0^{u_1} f(t) \,\mathrm{d}t\right)
-    \,\mathrm{d}u_1\right) \,\mathrm{d}u_2.
-\end{equation*}
-
-\paragraph{Solution:} Applying Problem 12 to $g(u) = f(u)(x - u)$, we obtain
+\paragraph{Problem 12} Since \[
+  F(x) = \int_0^x f(u)(x - u) \,du = \int_0^x xf(u) \,du - \int_0^x uf(u) \,du,
+\] then
 \begin{align*}
-  \int_0^x f(u)(x - u)^2 \,\mathrm{d}u
-  &= \int_0^x [f(u)(x - u)](x - u) \,\mathrm{d}u \\
-  &= \int_0^x \left(\int_0^u f(t)(x - t) \,\mathrm{d}t\right) \,\mathrm{d}u.
-\end{align*} It suffices to prove that \begin{equation*}
-  \int_0^x \left(\int_0^u f(t)(x - t) \,\mathrm{d}t\right) \,\mathrm{d}u
-  = 2\int_0^x \left(\int_0^u \left(\int_0^{u_1} f(t) \,\mathrm{d}t\right)
-    \,\mathrm{d}u_1\right) \,\mathrm{d}u.
-\end{equation*} Observing that $x - t = (u - t) + (x - u)$, \begin{equation*}
-  \int_0^u f(t)(x - t) \,\mathrm{d}t
-  = \int_0^u f(t)(u - t) \,\mathrm{d}t + \int_0^u f(t)(x - u) \,\mathrm{d}t
-\end{equation*} The first integral on the right can be rewritten as
-\begin{equation*}
-  \int_0^u f(t)(u - t) \,\mathrm{d}t
-  = \int_0^u \left(\int_0^{u_1} f(t) \,\mathrm{d}t\right) \,\mathrm{d}u_1,
-\end{equation*} while the second can be rewritten as \begin{equation*}
-  \int_0^u f(t)(x - u) \,\mathrm{d}t
-  = (x - u)\int_0^u f(t) \,\mathrm{d}t.
-\end{equation*} Combining these two integrals, \begin{multline*}
-  \int_0^x \left(\int_0^u f(t)(x - t) \,\mathrm{d}t\right) \,\mathrm{du}
-  = \int_0^x \left(
-      \int_0^u \left(\int_0^{u_1} f(t) \,\mathrm{d}t\right) \,\mathrm{d}u_1
-    \right) \\
-  + \int_0^x \left(
-      (x - u)\int_0^u f(t) \,\mathrm{d}t
-    \right) \,\mathrm{d}u.
-\end{multline*} Once again, applying Problem 12 to $h(x) = \int_0^u f(t)
-\,\mathrm{d}t$, \begin{equation*}
-  \int_0^x \left((x - u)\int_0^u f(t) \,\mathrm{d}t\right) \,\mathrm{d}u
-  = \int_0^x \left(
-    \int_0^u \left(\int_0^{u_1} f(t) \,\mathrm{d}t\right) \,\mathrm{d}u_1
-  \right) \,\mathrm{d}u
-\end{equation*} which leads to the desired result.
-
-\paragraph{Problem 14-15.} A function $f$ is \emph{periodic}, with
-\emph{period} $a$, if $f(x + a) = f(x)$ for all $x$.
-
-\paragraph{(b)} Find a function $f$ such that $f$ is not periodic, but $f'$ is.
-Hint: Choose a periodic $g$ for which it can be guaranteed that $f(x) =
-\int_0^x g$ is not periodic.
-
-\paragraph{Solution:} Let $g$ be periodic and continuous with $g \geq 0$ (e.g.
-$g(x) = sin^2 x$). If $f(x) = \int_0^x g$, then $f' = g$ is periodic, but $f$
-is increasing and is not periodic.
-
-\paragraph{(c)} Suppose that $f'$ is periodic with period $a$. Prove that $f$
-is periodic if and only if $f(a) = f(0)$.
-
-\paragraph{Solution:} Let $g(x) = f(x + a)$. Then $g'(x) = f'(x + a) = f'(x)$.
-If $f(a) = f(0)$, then we also have $g(0) = f(a) = f(0)$. Consequently $g = f$,
-i.e., $f(x + a) = f(x)$ for all $x$.
-
-Conversely, suppose that $f$ is periodic (with some period not necessarily
-$a$). Let $g(x) = f(x + a) - f(x)$. Then $g'(x) = f'(x + a) - f'(x) = 0$, so
-$g$ has the constant value $g(0) = f(a) - f(0)$, which implies that
-\begin{equation*}
-  f(x + a) = f(x) + g(x) = f(x) + f(a) - f(0).
-\end{equation*} It follows that \begin{align*}
-  f(na) &= nf(a) - (n - 1)f(0) \\
-        &= n[f(a) - f(0)] + f(0);
-\end{align*} if $f(a) \neq f(0)$, then this would be unbounded, so for $f$ to
-be periodic, $f(a) = f(0)$.
-
-\paragraph{Problem 14-25 (abridged).} The limit $\lim_{N \rightarrow \infty}
-\int_a^N f$, if it exists, is denoted by $\int_a^{\infty} f$, and called an
-"improper integral".
-
-\paragraph{(a)} Determine $\int_1^{\infty} x^r \,\mathrm{d}x$, if $r < -1$.
-
-\paragraph{Solution:} \begin{equation*}
-  \int_1^N x^r \,\mathrm{d}x = \frac{1}{r + 1}(N^{r + 1} - 1^{r + 1}),
-\end{equation*} but $\lim_{N \rightarrow \infty} N^{r + 1} = 0$ since $r + 1 <
-0$, so $\int_1^{\infty} x^r \,\mathrm{d}x = -\frac{1}{r + 1}$.
-
-\paragraph{(b)} Use Problem 13-15 to show that $\int_1^{\infty} 1/x
-\,\mathrm{d}x$ does not exist.
-
-\paragraph{Solution:} Summing up $N$ terms of $\int_1^2 1/x \,\mathrm{d}x$,
-Problem 13-15 leads to the following result: \begin{equation*}
-  N\int_1^2 1/x \,\mathrm{d}x = \int_1^{2^N} 1/x \,\mathrm{d}x
-\end{equation*} But $\int_1^2 1/x \,\mathrm{d}x = \ln 2 > 0$, so $\int_1^{2^N}
-1/x \,\mathrm{d}x$ is unbounded as N increases and $\int_1^{\infty} 1/x
-\,\mathrm{d}x$ cannot exist.
-
-\paragraph{(c)} Suppose that $f(x) \geq 0$ for $x \geq 0$ and that
-$\int_0^{\infty} f$ exists. Prove that if $0 \leq g(x) \leq f(x)$ for all $x
-\geq 0$, and $g$ is integrable on each interval $[0, N]$, then $\int_0^{\infty}
-g$ also exists.
-
-\paragraph{Solution:} The function $I(N) = \int_0^N g$ is clearly increasing,
-and it is bounded above by $\int_0^{\infty} f$. Consequently,
-$\lim_{N \rightarrow \infty} I(N)$ exists (as the least upper bound of $\{I(N):
-N \geq 0\}$.
-
-\paragraph{(d)} Explain why $\int_0^{\infty} 1/(1 + x^2) \,\mathrm{d}x$ exists.
-
-\paragraph{Solution:} Clearly $\int_0^{\infty} 1/(1 + x^2) \,\mathrm{d}x$
-exists if $\int_1^{\infty} 1/(1 + x^2) \,\mathrm{d}x$ exists. The latter exists
-because $1/(1 + x^2) \leq x^{-2}$ for all $x \geq 1$, and so $\int_1^{\infty}
-1/(1 + x^2) \,\mathrm{d}x \leq \int_1^{\infty} x^{-2} \,\mathrm{d}x = 1$ by
-(a).
-
-\paragraph{Problem 14-27.} The improper integral $\int_{-\infty}^a f$ is
-defined in the obvious way, as $\lim_{N \rightarrow -\infty} \int_N^a f$. But
-But another kind of improper integral $\int_{-\infty}^{\infty} f$ is defined in
-a nonobvious way: it is $\int_0^{\infty} f + \int_{-\infty}^0 f$, provided
-these improper integrals both exist.
-
-\paragraph{(a)} Explain why $\int_{-\infty}^{\infty} 1/(1 + x^2) \,\mathrm{d}x$
-exists.
-
-\paragraph{Solution:} From Problem 14-25, $\int_0^{\infty} 1/(1 + x^2)
-\,\mathrm{d}x$ exists. Clearly, since $1/(1 + x^2)$ is odd, $\int_{-\infty}^0
-1/(1 + x^2) \,\mathrm{d}x = \int_0^{\infty} 1/(1 + x^2) \,\mathrm{d}x$, and
-hence $\int_{-\infty}^{\infty} 1/(1 + x^2) \,\mathrm{d}x$ exists.
-
-\paragraph{(b)} Explain why $\int_{-\infty}^{\infty} x \,\mathrm{d}x$ does not
-exist. (But notice that $\lim_{N \rightarrow \infty} \int_{-N}^N x
-\,\mathrm{d}x$ does exist.)
-
-\paragraph{Solution:} Clearly $\int_{-\infty}^0 x \,\mathrm{d}x$ and
-$\int_0^{\infty} x \,\mathrm{d}x$ both do not exist.
-
-\paragraph{(c)} Prove that if $\int_{-\infty}^{\infty} f$ exists, then
-$\lim_{N \rightarrow \infty}  \int_{-N}^N f$ exists and equals
-$\int_{-\infty}^{\infty} f$. Show moreover, that $\lim_{N \rightarrow \infty}
-\int_{-N}^{N + 1} f$ and $\lim_{N \rightarrow \infty} \int_{-N^2}^N f$ both
-exist and equal $\int_{-\infty}^{\infty} f$. Can you state a reasonable
-generalisation of these facts?
-
-\paragraph{Solution:} We attempt to prove the following generalisation: If
-$\lim_{N \rightarrow \infty} g(N) = -\infty$ and
-$\lim_{N \rightarrow \infty} h(N) = \infty$, then \begin{equation*}
-  \lim_{N \rightarrow \infty} \int_{g(N)}^{h(N)} f = \int_{-\infty}^{\infty} f.
-\end{equation*}
-
-Given $\epsilon > 0$, choose $M_0$ such that \begin{equation*}
-  \left|\int_{-\infty}^0 f - \int_{-M}^0 f\right| < \frac{\epsilon}{2}
-  \text{ and } \left|\int_0^{\infty} f - \int_0^M f\right| < \frac{\epsilon}{2}
-\end{equation*} for all $M > M_0$. Now choose $N$ such that $h(N) > M$ and
-$g(N) < -M$ for all $N > N_0$. Then for $N > N_0$ we have \begin{equation*}
-  \left|\int_{-\infty}^{\infty} f - \int_{g(N)}^{h(N)} f\right|
-  \leq \left|\int_{-\infty}^0 f - \int_{g(N)}^0 f\right|
-  + \left|\int_0^{\infty} f - \int_0^{h(N)} f\right|
-  < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon.
-\end{equation*}
-
-\paragraph{Problem 14-28 (abridged).} There is another kind of "improper
-integral" in which the interval is bounded, but the \emph{function} is
-unbounded:
-
-\paragraph{(a)} If $a > 0$, find $\lim_{\epsilon \rightarrow 0^+}
-\int_{\epsilon}^a 1/\sqrt{x} \,\mathrm{d}x$. This limit is denoted by $\int_0^a
-1/\sqrt{x} \,\mathrm{d}x$, even though the function $f(x) = 1/\sqrt{x}$ is not
-bounded on $[0, a]$, no matter how we define $f(0)$.
-
-\paragraph{Solution:} \begin{equation*}
-  \int_{\epsilon}^a 1/\sqrt{x} \,\mathrm{d}x = 2(\sqrt{a} - \sqrt{\epsilon}),
-\end{equation*} which shows that $\lim_{\epsilon \rightarrow 0^+}
-\int_{\epsilon}^a 1/\sqrt{x} \,\mathrm{d}x = 2\sqrt{a}$.
-
-\paragraph{(b)} Find $\int_0^a x^r \,\mathrm{d}x$ if $-1 < r < 0$.
-
-\paragraph{Solution:} Since $x^r$ for $-1 < r < 0$ is unbounded in the interval
-$[0, a]$, we consider the limit $\lim_{\epsilon \rightarrow 0^+}
-\int_{\epsilon}^a x^r \,\mathrm{d}x$ instead. Since \begin{equation*}
-  \int_{\epsilon}^a x^r \,\mathrm{d}x = \frac{1}{r + 1}(a^{r + 1} -
-  \epsilon^{r + 1})
-\end{equation*} and $r + 1 > 0$, $\lim_{\epsilon \rightarrow 0^+}
-\epsilon^{r + 1} = 0$, so $\int_0^a x^r \,\mathrm{d}x =
-\frac{a^{r + 1}}{r + 1}$ for $-1 < r < 0$.
-
-\paragraph{(c)} Use Problem 13-15 to show that $\int_0^a x^{-1} \,\mathrm{d}x$
-does not make sense, even as a limit.
-
-\paragraph{Solution:} Problem 13-15 implies that \begin{equation*}
-  N\int_{1/2}^1 x^{-1} \,\mathrm{d}x = \int_{1/2^N}^1 x^{-1} \,\mathrm{d}x
-\end{equation*} so $\lim_{\epsilon \rightarrow 0^+} \int_{\epsilon}^1 1/x
-\,\mathrm{d}x$ does not exist, which implies that
-$\lim_{\epsilon \rightarrow 0^+} \int_{\epsilon}^a x^{-1} \,\mathrm{d}x =
-\lim_{\epsilon \rightarrow 0^+} \int_{\epsilon}^1 x^{-1} \,\mathrm{d}x +
-\int_1^a x^{-1} \,\mathrm{d}x$ does not exist either.
-
-\paragraph{(d)} Invent a reasonable definition of $\int_a^0 |x|^r
-\,\mathrm{d}x$ for $a < 0$ and compute it for $-1 < r < 0$.
-
-\paragraph{Solution:} We first define $\int_a^0 |x|^r \,\mathrm{d}x =
-\lim_{\epsilon \rightarrow 0^-} \int_a^{\epsilon} |x|^r \,\mathrm{d}x$ for $a <
-0$, such that \begin{align*}
-  \int_a^0 |x|^r \,\mathrm{d}x
-  &= \lim_{\epsilon \rightarrow 0^-} \int_a^{\epsilon} |x|^r \,\mathrm{d}x \\
-  &= -\lim_{\epsilon \rightarrow 0^+} \int_{\epsilon}^a x^r \,\mathrm{d}x \\
-  &= -\frac{a^{r + 1}}{r + 1}
+  F'(x)
+  &= \left[xf(x) + \int_0^x f(u) \,du\right] - xf(x) \\
+  &= \int_0^x f(u) \,du.
 \end{align*}
+Consequently, there is a number $c$ such that \[
+  \int_0^x f(u)(x - u) \,du
+  = \int_0^x \left( \int_0^u f(t) \,dt \right) \,du + c
+\] for all $x$, but clearly $c = 0$, since both sides are equal to 0 for $x =
+0$.
 
-\paragraph{(e)} Invent a reasonable definition of $\int_{-1}^1 (1 - x^2)^{-1/2}
-\,\mathrm{d}x$, as a sum of two limits, and show that the limits exist.
+\paragraph{Problem 13} Applying Problem 12 to $g(u) = f(u)(x - u)$, we obtain
+\begin{align*}
+  \int_0^x f(u)(x - u)^2 \,du
+  &= \int_0^x [f(u)(x - u)](x - u) \,du \\
+  &= \int_0^x \left(\int_0^u f(t)(x - t) \,dt\right) \,du.
+\end{align*}
+It suffices to prove that \[
+  \int_0^x \left( \int_0^u f(t)(x - t) \,dt \right) \,du
+  = 2\int_0^x \left(
+    \int_0^u \left( \int_0^{u_1} f(t) \,dt \right)
+  \,du_1 \right) \,du.
+\] Observing that $x - t = (u - t) + (x - u)$, \[
+  \int_0^u f(t)(x - t) \,dt
+  = \int_0^u f(t)(u - t) \,dt + \int_0^u f(t)(x - u) \,dt
+\] The first integral on the right can be rewritten as \[
+  \int_0^u f(t)(u - t) \,dt
+  = \int_0^u \left( \int_0^{u_1} f(t) \,dt \right) \,du_1,
+\] while the second can be rewritten as \[
+  \int_0^u f(t)(x - u) \,dt = (x - u)\int_0^u f(t) \,dt.
+\] Combining these two integrals,
+\begin{multline*}
+  \int_0^x \left(\int_0^u f(t)(x - t) \,dt\right) \,du
+  = \int_0^x \left(
+    \int_0^u \left(\int_0^{u_1} f(t) \,dt\right) \,du_1
+  \right) \\
+  + \int_0^x \left(
+    (x - u) \int_0^u f(t) \,dt
+  \right) \,du.
+\end{multline*}
+Once again, applying Problem 12 to $h(x) = \int_0^u f(t) \,dt$, \[
+  \int_0^x \left((x - u)\int_0^u f(t) \,dt\right) \,du
+  = \int_0^x \left(
+    \int_0^u \left( \int_0^{u_1} f(t) \,dt \right) \,du_1
+  \right) \,du
+\] which leads to the desired result.
 
-\paragraph{Solution:} Since $\lim_{x \rightarrow -1} (1 - x^2)^{-1/2} =
-\lim_{x \rightarrow 1} (1 - x^2)^{-1/2} = \infty$, we define \begin{align*}
-  \int_{-1}^1 (1 - x^2)^{-1/2}
-  &= \int_{-1}^0 (1 - x^2)^{-1/2} + \int_0^1 (1 - x^2)^{-1/2} \\
-  &= \lim_{\epsilon \rightarrow -1^+} \int_{\epsilon}^0 (1 - x^2)^{-1/2}
-    \,\mathrm{d}x
-    + \lim_{\epsilon \rightarrow 1^-} \int_0^{\epsilon} (1 - x^2)^{-1/2}
-    \,\mathrm{d}x \\
-  &= 2\lim_{\epsilon \rightarrow -1^+} \int_{\epsilon}^0 (1 - x^2)^{-1/2}
-    \,\mathrm{d}x
-\end{align*} Now, the limit \begin{equation*}
-  \lim_{\epsilon \rightarrow -1^+} \int_{\epsilon}^0 (1 + x)^{-1/2}
-  \,\mathrm{d}x = \lim_{\epsilon \rightarrow 0^+} \int_{\epsilon}^1 x^{-1/2}
-  \,\mathrm{d}x
-\end{equation*} exists by part (a). For $-1 < x < 0$, we have $(1 + x)^{-1/2} >
-(1 - x^2)^{-1/2}$. It follows that \begin{equation*}
-  \lim_{\epsilon \rightarrow -1^+} \int_{\epsilon}^0 (1 - x^2)^{-1/2}
-    \,\mathrm{d}x
-\end{equation*} also exists.
+\paragraph{Problem 15}
+\begin{enumerate}[(b)]
+  \item Let $g$ be periodic and continuous with $g \geq 0$ (e.g. $g(x) =
+    \sin^2 x$). If $f(x) = \int_0^x g$, then $f' = g$ is periodic, but $f$ is
+    increasing and is not periodic.
+  \item Let $g(x) = f(x + a)$. Then $g'(x) = f'(x + a) = f'(x)$. If $f(a) =
+    f(0)$, then we also have $g(0) = f(a) = f(0)$. Consequently $g = f$, i.e.,
+    $f(x + a) = f(x)$ for all $x$.
+
+    Conversely, suppose that $f$ is periodic (with some period not necessarily
+    $a$). Let $g(x) = f(x + a) - f(x)$. Then $g'(x) = f'(x + a) - f'(x) = 0$,
+    so $g$ has the constant value $g(0) = f(a) - f(0)$, which implies that \[
+      f(x + a) = f(x) + g(x) = f(x) + f(a) - f(0).
+    \] It follows that
+    \begin{align*}
+      f(na) &= nf(a) - (n - 1)f(0) \\
+            &= n[f(a) - f(0)] + f(0);
+    \end{align*}
+    if $f(a) \neq f(0)$, then this would be unbounded, so for $f$ to be
+    periodic, $f(a) = f(0)$.
+\end{enumerate}
+
+\paragraph{Problem 25}
+\begin{enumerate}[(a)]
+  \item \[
+      \int_1^N x^r \,dx = \frac{1}{r + 1}(N^{r + 1} - 1^{r + 1}),
+    \] but $\lim_{N \to \infty} N^{r + 1} = 0$ since $r + 1 < 0$, so
+    $\int_1^{\infty} x^r \,dx = -\frac{1}{r + 1}$.
+  \item Summing up $N$ terms of $\int_1^2 1/x \,dx$, Problem 13-15 leads to the
+    following result: \[
+      N\int_1^2 1/x \,dx = \int_1^{2^N} 1/x \,dx
+    \] But $\int_1^2 1/x \,dx = \ln 2 > 0$, so $\int_1^{2^N} 1/x \,dx$ is
+    unbounded as N increases and $\int_1^{\infty} 1/x \,dx$ cannot exist.
+  \item The function $I(N) = \int_0^N g$ is clearly increasing, and it is
+    bounded above by $\int_0^{\infty} f$. Consequently, $\lim_{N \to \infty}
+    I(N)$ exists (as the least upper bound of $\{I(N): N \geq 0\}$.
+  \item Clearly $\int_0^{\infty} 1/(1 + x^2) \,dx$ exists if $\int_1^{\infty}
+    1/(1 + x^2) \,dx$ exists. The latter exists because $1/(1 + x^2)
+    \leq x^{-2}$ for all $x \geq 1$, and so $\int_1^{\infty} 1/(1 + x^2) \,dx
+    \leq \int_1^{\infty} x^{-2} \,dx = 1$ by (a).
+\end{enumerate}
+
+\paragraph{Problem 27.}
+\begin{enumerate}[(a)]
+  \item From Problem 14-25, $\int_0^{\infty} 1/(1 + x^2) \,dx$ exists. Clearly,
+    since $1/(1 + x^2)$ is odd, $\int_{-\infty}^0 1/(1 + x^2) \,dx =
+    \int_0^{\infty} 1/(1 + x^2) \,dx$, and hence $\int_{-\infty}^{\infty}
+    1/(1 + x^2) \,dx$ exists.
+  \item Clearly $\int_{-\infty}^0 x \,dx$ and $\int_0^{\infty} x \,dx$ both do
+    not exist.
+  \item We attempt to prove the following generalisation: If
+    $\lim_{N \to \infty} g(N) = -\infty$ and $\lim_{N \to \infty} h(N) =
+    \infty$, then \[
+      \lim_{N \to \infty} \int_{g(N)}^{h(N)} f = \int_{-\infty}^{\infty} f.
+    \]
+
+    Given $\epsilon > 0$, choose $M_0$ such that \[
+      \left| \int_{-\infty}^0 f - \int_{-M}^0 f \right| < \frac{\epsilon}{2}
+      \text{ and } \left| \int_0^{\infty} f - \int_0^M f \right|
+      < \frac{\epsilon}{2}
+    \] for all $M > M_0$. Now choose $N$ such that $h(N) > M$ and $g(N) < -M$
+    for all $N > N_0$. Then for $N > N_0$ we have \[
+      \left| \int_{-\infty}^{\infty} f - \int_{g(N)}^{h(N)} f \right|
+      \leq \left| \int_{-\infty}^0 f - \int_{g(N)}^0 f \right|
+      + \left| \int_0^{\infty} f - \int_0^{h(N)} f \right|
+      < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon.
+    \]
+\end{enumerate}
+
+\paragraph{Problem 28}
+\begin{enumerate}[(a)]
+  \item \[
+      \int_{\epsilon}^a 1/\sqrt{x} \,dx = 2(\sqrt{a} - \sqrt{\epsilon}),
+    \] which shows that $\lim_{\epsilon \to 0^+} \int_{\epsilon}^a 1/\sqrt{x}
+    \,dx = 2\sqrt{a}$.
+  \item Since $x^r$ for $-1 < r < 0$ is unbounded in the interval $[0, a]$, we
+    consider the limit $\lim_{\epsilon \to 0^+} \int_{\epsilon}^a x^r \,dx$
+    instead. Since \[
+      \int_{\epsilon}^a x^r \,dx = \frac{1}{r + 1}(a^{r + 1} -
+      \epsilon^{r + 1})
+    \] and $r + 1 > 0$, $\lim_{\epsilon \to 0^+} \epsilon^{r + 1} = 0$, so
+    $\int_0^a x^r \,dx = \frac{a^{r + 1}}{r + 1}$ for $-1 < r < 0$.
+  \item Problem 13-15 implies that \[
+      N\int_{1/2}^1 x^{-1} \,dx = \int_{1/2^N}^1 x^{-1} \,dx
+    \] so $\lim_{\epsilon \to 0^+} \int_{\epsilon}^1 1/x \,dx$ does not exist,
+    which implies that $\lim_{\epsilon \to 0^+} \int_{\epsilon}^a x^{-1} \,dx =
+    \lim_{\epsilon \to 0^+} \int_{\epsilon}^1 x^{-1} \,dx + \int_1^a x^{-1}
+    \,dx$ does not exist either.
+  \item We first define $\int_a^0 |x|^r \,dx =
+    \lim_{\epsilon \to 0^-} \int_a^{\epsilon} |x|^r \,dx$ for $a < 0$, such
+    that
+    \begin{align*}
+      \int_a^0 |x|^r \,dx
+      &= \lim_{\epsilon \to 0^-} \int_a^{\epsilon} |x|^r \,dx \\
+      &= -\lim_{\epsilon \to 0^+} \int_{\epsilon}^a x^r \,dx \\
+      &= -\frac{a^{r + 1}}{r + 1}
+    \end{align*}
+  \item Since $\lim_{x \to -1} (1 - x^2)^{-1/2} = \lim_{x \to 1}
+    (1 - x^2)^{-1/2} = \infty$, we define
+    \begin{align*}
+      \int_{-1}^1 (1 - x^2)^{-1/2} \,dx
+      &= \int_{-1}^0 (1 - x^2)^{-1/2} \,dx + \int_0^1 (1 - x^2)^{-1/2} \,dx \\
+      &= \lim_{\epsilon \to -1^+} \int_{\epsilon}^0 (1 - x^2)^{-1/2} \,dx
+      + \lim_{\epsilon \to 1^-} \int_0^{\epsilon} (1 - x^2)^{-1/2} \,dx \\
+      &= 2\lim_{\epsilon \to -1^+} \int_{\epsilon}^0 (1 - x^2)^{-1/2} \,dx
+    \end{align*}
+    Now, the limit \[
+      \lim_{\epsilon \to -1^+} \int_{\epsilon}^0 (1 + x)^{-1/2} \,dx
+      = \lim_{\epsilon \to 0^+} \int_{\epsilon}^1 x^{-1/2} \,dx
+    \] exists by part (a). For $-1 < x < 0$, we have $(1 + x)^{-1/2} >
+    (1 - x^2)^{-1/2}$. It follows that \[
+      \lim_{\epsilon \to -1^+} \int_{\epsilon}^0 (1 - x^2)^{-1/2} \,dx
+    \] also exists.
+\end{enumerate}
 
 \end{document}
 

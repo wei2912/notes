@@ -1,6 +1,7 @@
 \documentclass{article}
 
 \usepackage{amsmath,amssymb,amsthm}
+\usepackage[shortlabels]{enumitem}
 
 \newtheorem{definition}{Definition}
 \newtheorem{theorem}{Theorem}
@@ -16,10 +17,10 @@
   $\epsilon > 0$ there is some $\delta > 0$ such that, for all $x$, if $0 < |x
   - a| < \delta$, then $|f(x) - l| < \epsilon$.
 \end{definition}
-This is denoted later on by $\lim_{x \rightarrow a} f(x) = l$. One-sided limits
-can be defined similarly, and use the notation $\lim_{x \rightarrow a^+} f(x) =
-l$ or $\lim_{x \downarrow a} f(x) = l$ for limits from above, and $\lim_{x
-\rightarrow a^-} f(x) = l$ or $\lim_{x \uparrow a} f(x) = l$.
+This is denoted later on by $\lim_{x \to a} f(x) = l$. One-sided limits can be
+defined similarly, and use the notation $\lim_{x \to a^+} f(x) = l$ or $\lim_{x
+\downarrow a} f(x) = l$ for limits from above, and $\lim_{x \to a^-} f(x) = l$
+or $\lim_{x \uparrow a} f(x) = l$.
 
 \begin{theorem}
   A function cannot approach two different limits near $a$. In other words, if
@@ -27,255 +28,170 @@ l$ or $\lim_{x \downarrow a} f(x) = l$ for limits from above, and $\lim_{x
 \end{theorem}
 \begin{proof}
   Since $f$ approaches $l$ near $a$, we know that for any $\epsilon > 0$ there
-  is some number $\delta_1 > 0$ such that, for all $x$, \begin{equation*}
+  is some number $\delta_1 > 0$ such that, for all $x$, \[
     \text{if } 0 < |x - a| < \delta_1, \text{ then } |f(x) - l| < \epsilon.
-  \end{equation*} 
-  We also know, since $f$ approaches $m$ near $a$, that there is some $\delta_2
-  > 0$ such that, for all $x$, \begin{equation*}
+  \] We also know, since $f$ approaches $m$ near $a$, that there is some
+  $\delta_2 > 0$ such that, for all $x$, \[
     \text{if } 0 < |x - a| < \delta_2, \text{ then } |f(x) - m| < \epsilon.
-  \end{equation*}
-  We have had to use two numbers, $\delta_1$ and $\delta_2$, since there is no
-  guarantee that the $\delta$ which works in one definition will work in the
+  \] We have had to use two numbers, $\delta_1$ and $\delta_2$, since there is
+  no guarantee that the $\delta$ which works in one definition will work in the
   other. But, in fact, it is now easy to conclude that for any $\epsilon > 0$
-  there is some $\delta > 0$ such that, for all $x$, \begin{equation*}
+  there is some $\delta > 0$ such that, for all $x$, \[
     \text{if } 0 < |x - a| < \delta, \text{ then } |f(x) - l| < \epsilon
-      \text{ and } |f(x) - m| < \epsilon;
-  \end{equation*} we simply choose $\delta = \mathrm{min}(\delta_1, \delta_2)$.
+    \text{ and } |f(x) - m| < \epsilon;
+  \] we simply choose $\delta = \min(\delta_1, \delta_2)$.
 
   To complete the proof we just have to pick a particular $\epsilon > 0$ for
-  which the two conditions \begin{equation*}
-    |f(x) - l| < \epsilon\text{ and }|f(x) - m| < \epsilon
-  \end{equation*} cannot both hold, if $l \neq m$. If $l \neq m$, so that $|l -
-  m| > 0$, we can choose $|l - m|/2$ as our $\epsilon$. It follows that there
-  is a $\delta > 0$ such that, for all $x$, \begin{align*}
+  which the two conditions \[
+    |f(x) - l| < \epsilon \text{ and } |f(x) - m| < \epsilon
+  \] cannot both hold, if $l \neq m$. If $l \neq m$, so that $|l - m| > 0$, we
+  can choose $|l - m|/2$ as our $\epsilon$. It follows that there is a $\delta
+  > 0$ such that, for all $x$,
+  \begin{align*}
     \text{if } 0 < |x - a| < \epsilon,
-      \text{ then } &|f(x) - l| < \frac{|l - m|}{2} \\
-      \text{ and } &|f(x) - m| < \frac{|l - m|}{2}.
+    \text{ then } &|f(x) - l| < \frac{|l - m|}{2} \\
+    \text{ and } &|f(x) - m| < \frac{|l - m|}{2}.
   \end{align*}
-  This implies that for $0 < |x - a| < \delta$ we have \begin{align*}
-    |l - m| = |l - f(x) + f(x) - m| &\leq |l - f(x)| + |f(x) - m| \\
-      &< \frac{|l - m|}{2} + \frac{|l - m|}{2} \\
-      &= |l - m|,
-  \end{align*} a contradiction.
+  This implies that for $0 < |x - a| < \delta$ we have
+  \begin{align*}
+    |l - m| = |l - f(x) + f(x) - m|
+    &\leq |l - f(x)| + |f(x) - m| \\
+    &< \frac{|l - m|}{2} + \frac{|l - m|}{2} \\
+    &= |l - m|,
+  \end{align*}
+  a contradiction.
 \end{proof}
 
 \begin{lemma}
   \begin{enumerate}
-    \item If \begin{equation*}
+    \item If \[
         |x - x_0| < \frac{\epsilon}{2} \text{ and } |y - y_0| <
           \frac{\epsilon}{2},
-      \end{equation*} then \begin{equation*}
+      \] then \[
         |(x + y) - (x_0 + y_0)| < \epsilon.
-      \end{equation*}
-    \item If \begin{equation*}
-        |x - x_0| < \mathrm{min}\left(1, \frac{\epsilon}{2(|y_0| + 1)}\right)
-          \text{ and } |y - y_0| < \frac{\epsilon}{2(|x_0| + 1)},
-      \end{equation*} then \begin{equation*}
+      \]
+    \item If \[
+        |x - x_0| < \min\left( 1, \frac{\epsilon}{2(|y_0| + 1)} \right)
+        \text{ and } |y - y_0| < \frac{\epsilon}{2(|x_0| + 1)},
+      \] then \[
         |xy - x_0y_0| < \epsilon.
-      \end{equation*}
-    \item If $y_0 \neq 0$ and \begin{equation*}
-        |y - y_0| < \mathrm{min}\left(\frac{|y_0|}{2},
-          \frac{\epsilon|y_0|^2}{2}\right),
-      \end{equation*} then $y \neq 0$ and \begin{equation*}
-        \left|\frac{1}{y} - \frac{1}{y_0}\right| < \epsilon.
-      \end{equation*}
+      \]
+    \item If $y_0 \neq 0$ and \[
+        |y - y_0| < \min\left(
+          \frac{|y_0|}{2},
+          \frac{\epsilon|y_0|^2}{2}
+        \right),
+      \] then $y \neq 0$ and \[
+        \left| \frac{1}{y} - \frac{1}{y_0} \right| < \epsilon.
+      \]
   \end{enumerate}
 \end{lemma}
 
-\begin{proof}
-  The proof has been omitted as the statements were proven in Problem 1-20,
-  1-21, and 1-22.
-\end{proof}
-
 \begin{theorem}
-  If $\lim_{x \rightarrow a}f(x) = l$ and $\lim_{x \rightarrow a}g(x) = m$,
-  then \begin{enumerate}
-    \item $\lim_{x \rightarrow a}(f + g)(x) = l + m;$
-    \item $\lim_{x \rightarrow a}(f \cdot g)(x) = l \cdot m.$
-  \end{enumerate} Moreover, if $m \neq 0$, then \begin{enumerate}
+  If $\lim_{x \to a}f(x) = l$ and $\lim_{x \to a}g(x) = m$, then
+  \begin{enumerate}
+    \item $\lim_{x \to a}(f + g)(x) = l + m;$
+    \item $\lim_{x \to a}(f \cdot g)(x) = l \cdot m.$
+  \end{enumerate}
+  Moreover, if $m \neq 0$, then
+  \begin{enumerate}
     \setcounter{enumi}{2}
-    \item $\lim_{x \rightarrow a}\left(\frac{1}{g}\right)(x) = \frac{1}{m}.$
+    \item $\lim_{x \to a}\left(\frac{1}{g}\right)(x) = \frac{1}{m}.$
   \end{enumerate}
 \end{theorem}
 
-\begin{proof}
-  The hypothesis means that for every $\epsilon/2 > 0$ there are $\delta_1,
-  \delta_2 > 0$ such that, for all $x$, \begin{align*}
-    &\text{if } 0 < |x - a| < \delta_1, \text{ then } |f(x) - l| <
-      \frac{\epsilon}{2}, \\
-    \text{and } &\text{if } 0 < |x - a| < \delta_2, \text{ then } |g(x) - m| <
-      \frac{\epsilon}{2}.
-  \end{align*} Now let $\delta = \mathrm{min}(\delta_1, \delta_2)$. If $0 < |x
-  - a| < \delta$, then $0 < |x - a| < \delta_1$ and $0 < |x - a| < \delta_2$
-  are both true, so both \begin{equation*}
-    |f(x) - l| < \frac{\epsilon}{2} \text{ and } |g(x) - m| <
-      \frac{\epsilon}{2}
-  \end{equation*} are true. But by part (1) of the lemma this implies that $|(f
-  + g)(x) - (l + m)| < \epsilon$. This proves (1).
-
-  To prove (2) we proceed similarly, after consulting part (2) of the lemma. If
-  $\epsilon > 0$ there are $\delta_1, \delta_2 > 0$ such that, for all $x$,
-  \begin{align*}
-    &\text{if } 0 < |x - a| < \delta_1, \text{ then } |f(x) - l| < 
-      \mathrm{min}\left(1, \frac{\epsilon}{2(|m| + 1)}\right), \\
-    \text{and } &\text{if } 0 < |x - a| < \delta_2, \text{ then } |g(x) - m| <
-      \frac{\epsilon}{2(|l| + 1)}.
-  \end{align*} Again let $\delta = \mathrm{min}(\delta_1, \delta_2)$. If $0 <
-  |x - a| < \delta$, then \begin{equation*}
-    |f(x) - l| < \mathrm{min}\left(1, \frac{\epsilon}{2(|m| + 1)}\right)
-      \text{ and } |g(x) - m| < \frac{\epsilon}{2(|l| + 1)}.
-  \end{equation*} So, by the lemma, $|(f \cdot g)(x) - l \cdot m| < \epsilon$,
-  and this proves (2).
-
-  Finally, if $\epsilon > 0$ there is a $\delta > 0$ such that, for all $x$,
-  \begin{equation*}
-    \text{if } 0 < |x - a| < \delta, \text{ then } |g(x) - m| <
-      \mathrm{min}\left(\frac{|m|}{2}, \frac{\epsilon|m|^2}{2}\right).
-  \end{equation*} But according to part (3) of the lemma this means, first,
-  that $g(x) \neq 0$, so $(1/g)(x)$ makes sense, and second that
-  \begin{equation*}
-    \left|\left(\frac{1}{g}\right)(x) - \frac{1}{m}\right| < \epsilon.
-  \end{equation*} This proves (3).
-\end{proof}
-
 \section*{Exercises}
 
-\paragraph{Problem 5-14. (a)} Prove that if $\lim_{x \rightarrow 0} f(x)/x = l$
-and $b \neq 0$, then $\lim_{x \rightarrow 0}f(bx)/x = bl$.
+\paragraph{Problem 14}
+\begin{enumerate}[(a)]
+  \item By bringing out the constant $b$, \[
+      \lim_{x \to 0} \frac{f(bx)}{x}
+      = \lim_{x \to 0} \frac{bf(bx)}{bx}
+      = b \lim_{x \to 0} \frac{f(bx)}{bx}
+      = b \lim_{y \to 0} \frac{f(y)}{y}
+      = bl
+    \] with $y = bx$. The next to last equality can be justified as follows: If
+    $\epsilon > 0$ there is a $\delta > 0$ such that if $0 < |y| < \delta$,
+    then $\left| \frac{f(y)}{y} - l \right| < \epsilon$. Then if $0 < |x| <
+    \frac{\delta}{b}$, we have $0 < |bx| < \delta$, so $\left| \frac{f(bx)}{bx}
+    - l \right| < \epsilon$.
+  \item In this case, $\lim_{x \to 0} f(bx)/x = \lim_{x \to 0} f(0)/x$ does not
+    exist unless $f(0) = 0$.
+  \item One could make use of $\sin{2x} = 2\sin{x}\cos{x}$ in order to derive
+    the limit: \[
+      \lim_{x \to 0} \frac{\sin 2x}{x}
+      = \lim_{x \to 0} \frac{2 \sin x \cos x}{x}
+      = 2\lim_{x \to 0} \cos x \lim_{x \to 0} \frac{\sin x}{x}
+      = 2\lim_{x \to 0} \frac{\sin x}{x}.
+    \]
+\end{enumerate}
 
-\paragraph{Solution:} By bringing out the constant $b$, \begin{equation*}
-  \lim_{x \rightarrow 0}\frac{f(bx)}{x} = \lim_{x \rightarrow 0}
-    \frac{bf(bx)}{bx} = b\lim_{x \rightarrow 0}\frac{f(bx)}{bx} =
-    b\lim_{y \rightarrow 0}\frac{f(y)}{y} = bl
-\end{equation*} with $y = bx$.
-The next to last equality can be justified as follows: If $\epsilon > 0$ there
-is a $\delta > 0$ such that if $0 < |y| < \delta$, then $\left|\frac{f(y)}{y} -
-l\right| < \epsilon$. Then if $0 < |x| < \frac{\delta}{b}$, we have $0 < |bx| <
-\delta$, so $\left|\frac{f(bx)}{bx} - l\right| < \epsilon$.
-
-\paragraph{(b)} What happens if $b = 0$?
-
-\paragraph{Solution:} In this case, $\lim_{x \rightarrow 0} f(bx)/x = \lim_{x
-\rightarrow 0} f(0)/x$ does not exist unless $f(0) = 0$.
-
-\paragraph{(c)} Part (a) enables us to find $\lim_{x \rightarrow 0}
-(\sin{x})/x$. Find this limit in another way.
-
-\paragraph{Solution:} One could make use of $\sin{2x} = 2\sin{x}\cos{x}$ in
-order to derive the limit: \begin{equation*}
-  \lim_{x \rightarrow 0}\frac{\sin{2x}}{x} = \lim_{x \rightarrow 0}\frac{2
-    \sin{x}\cos{x}}{x} = 2\lim_{x \rightarrow 0}\cos{x}\lim_{x \rightarrow 0}
-    \frac{\sin{x}}{x} = 2\lim_{x \rightarrow 0}\frac{\sin{x}}{x}.
-\end{equation*}
-
-\paragraph{Problem 5-20.} Prove that if $f(x) = x$ for rational $x$, and $f(x)
-= -x$ for irrational $x$, then $\lim_{x \rightarrow a}f(x)$ does not exist if
-$a \neq 0$.
-
-\paragraph{Solution.} Consider, for simplicity, the case $a > 0$. Then, for any
-choice of $\delta > 0$, there are $x$ with $0 < |x - a| < \delta$ and $f(x) >
-a/2$, as well as $x$ with $0 < |x - a| < \delta$ and $f(x) < -a/2$. Since the
+\paragraph{Problem 20} Consider, for simplicity, the case $a > 0$. Then, for
+any choice of $\delta > 0$, there are $x$ with $0 < |x - a| < \delta$ and $f(x)
+> a/2$, as well as $x$ with $0 < |x - a| < \delta$ and $f(x) < -a/2$. Since the
 distance between $a/2$ and $-a/2$ is $a$, this means that we cannot have $|f(x)
 - l| < a$ for all such $x$ with $0 < |x - a| < \delta$, no matter what $l$ is.
 
-\paragraph{Problem 5-23. (a)} Suppose that $\lim_{x \rightarrow 0}f(x)$ exists
-and is $\neq 0$. Prove that if $\lim_{x \rightarrow 0}g(x)$ does not exist,
-then $\lim_{x \rightarrow 0}f(x)g(x)$ also does not exist.
+\paragraph{Problem 23}
+\begin{enumerate}[(a)]
+  \item Should $\lim_{x \to 0}f(x)g(x)$ exist, then $\lim_{x \to 0} g(x) =
+    \lim_{x \to 0} f(x)g(x)/f(x)$ must also exist.
+  \item Clearly, if $\lim_{x \to 0} f(x)g(x)$ exists, then $\lim_{x \to 0} g(x)
+    = 0$.
+  \item For case (1), it is clear that we cannot have $\lim_{x \to 0} f(x) =
+    0$, so by the assumption in (a) the limit $\lim_{x \to 0} f(x)$ cannot
+    exist. Let $g = 1/f$. Since it is not true that $\lim_{x \to 0} |f(x)| =
+    \infty$, it follows that if $\lim_{x \to 0} g(x)$ does exist, then
+    $\lim_{x \to 0} g(x) \neq 0$. But by (a) this would imply that
+    $\lim_{x \to 0}f(x)$ exists, so $\lim_{x \to 0} g(x)$ does not exist. On
+    the other hand, it is clear that $\lim_{x \to 0} f(x)g(x) = 1$.
 
-\paragraph{Solution:} Should $\lim_{x \rightarrow 0}f(x)g(x)$ exist, then
-$\lim_{x \rightarrow 0}g(x) = \lim_{x \rightarrow 0}f(x)g(x)/f(x)$ must also
-exist.
+    For case (2), choose $x_n$ as in the hint. Define $g(x) = 0$ for $x \neq
+    x_n$, and $g(x) = 1$ for $x = x_n$. Then $\lim_{x \to 0} g(x)$ does not
+    exist, but $\lim_{x \to 0} f(x)g(x) = 0$.
+\end{enumerate}
 
-\paragraph{(b)} Prove the same result if $\lim_{x \rightarrow 0}|f(x)|
-= \infty$.
-
-\paragraph{Solution:} Clearly, if $\lim_{x \rightarrow 0}f(x)g(x)$ exists,
-then $\lim_{x \rightarrow 0}g(x) = 0$.
-
-\paragraph{(c)} Prove that if neither of these two conditions holds, then there
-is a function $g$ such that
-$\lim_{x \rightarrow 0}g(x)$ does not exist, but $\lim_{x \rightarrow 0}f(x)
-g(x)$ does exist.
-
-Hint: Consider separately the following two cases: (1) for some $\epsilon > 0$
-we have $|f(x)| > \epsilon$ for all sufficiently small $x$. (2) For every
-$\epsilon > 0$, there are arbitrarily small $x$ with $|f(x)| < \epsilon$. In
-the second case, begin by choosing points $x_n$ with $|x_n| < 1/n$ and
-$|f(x_n)| < 1/n$.
-
-\paragraph{Solution:} For case (1), it is clear that we cannot have
-$\lim_{x \rightarrow 0}f(x) = 0$, so by the assumption in (a) the limit
-$\lim_{x \rightarrow 0}f(x)$ cannot exist. Let $g = 1/f$. Since it is not true
-that $\lim_{x \rightarrow 0}|f(x)| = \infty$, it follows that if $\lim_{x
-\rightarrow 0}g(x)$ does exist, then $\lim_{x \rightarrow 0}g(x) \neq 0$. But
-by (a) this would imply that $\lim_{x \rightarrow 0}f(x)$ exists, so $\lim_{x
-\rightarrow 0}g(x)$ does not exist. On the other hand, it is clear that
-$\lim_{x \rightarrow 0}f(x)g(x) = 1$.
-
-For case (2), choose $x_n$ as in the hint. Define $g(x) = 0$ for $x \neq x_n$,
-and $g(x) = 1$ for $x = x_n$. Then $\lim_{x \rightarrow 0}g(x)$ does not exist,
-but $\lim_{x \rightarrow 0}f(x)g(x) = 0$.
-
-\paragraph{Problem 5-24.} Suppose that $A_n$ is, for each natural number $n$,
-some \emph{finite} set of numbers in $[0, 1]$, and that $A_n$ and $A_m$ have no
-members in common if $m \neq n$. Define $f$ as follows: \begin{equation*}
-  f(x) = \begin{cases}
-    1/n, &x \text{ in } A_n \\
-    0, &x \text{ not in } A_n \text{ for any } n.
-  \end{cases}
-\end{equation*}
-Prove that $\lim_{x \rightarrow a}f(x) = 0$ for all $a$ in $[0, 1]$.
-
-\paragraph{Solution:} Given $\epsilon > 0$, pick $n$ with $1/n < \epsilon$ and
+\paragraph{Problem 24} Given $\epsilon > 0$, pick $n$ with $1/n < \epsilon$ and
 let $\delta$ be the minimum distance from $a$ to all points in $A_1, \ldots,
 A_n$ (except $a$ itself if $a$ is one of these points). Then, $0 < |x - a| <
 \delta$ implies that $x$ is not in $A_1, \ldots, A_n$, so $f(x) = 0$ or $1/m$
 for $m > n$, so $|f(x)| < \epsilon$.
 
-\paragraph{Problem 5-31 (abridged).} Suppose that $\lim_{x \rightarrow a^-}f(x)
-< \lim_{x \rightarrow a^+}f(x)$. Prove that there is some $\delta > 0$ such
-that $f(x) < f(y)$ whenever $x < a < y$ and $|x - a| < \delta$ and $|y - a| <
-\delta$. Is the converse true?
-
-\paragraph{Solution:} Let $l = \lim_{x \rightarrow a^-}f(x)$ and $m = \lim_{x
-\rightarrow a^+}f(x)$. Since $m - l > 0$, there is a $\delta > 0$ such that
+\paragraph{Problem 31} Let $l = \lim_{x \to a^-}f(x)$ and $m = \lim_{x \to a^+}
+f(x)$. Since $m - l > 0$, there is a $\delta > 0$ such that
 \begin{align*}
   |f(x) - l| < \frac{m - l}{2} &\text{ when } a - \delta < x < a, \\
   |f(y) - m| < \frac{m - l}{2} &\text{ when } a < y < a + \delta.
 \end{align*}
-\begin{equation*}
+\[
   f(x) < l + \frac{m - l}{2} = \frac{m + l}{2} = m - \frac{m - l}{2} < f(y)
-\end{equation*}
+\]
 
 The converse is false, as shown by $f(t) = t$ and any $a$. It is only possible
-to conclude that $\lim_{x \rightarrow a^-}f(x) \leq \lim_{x \rightarrow a^+}
-f(x)$.
+to conclude that $\lim_{x \to a^-} f(x) \leq \lim_{x \to a^+} f(x)$.
 
-\paragraph{Problem 5-32.} Prove that $\lim_{x \rightarrow \infty}(a_nx^n +
-\cdots + a_0)/(b_mx^m + \cdots + b_0)$ exists if and only if $m \geq n$. What
-is the limit when $m = n$? When $m > n$? Hint: the one easy limit is $\lim_{x
-\rightarrow \infty}1/x^k = 0$; do some algebra so that this is the only
-information you need.
+\paragraph{Problem 32} Naturally, we assume that $a_n, b_m \neq 0$. If $x \neq
+0$ and $m < n$, we write \[
+  \lim_{x \to \infty} \frac{a_nx^n + \cdots + a_0}{b_mx^m + \cdots + b_0}
+  = \lim_{x \to \infty}
+  \frac{a_n + \cdots + \frac{a_0}{x^n}}{\frac{b_m}{x^{n-m}} + \cdots +
+  \frac{b_0}{x^n}}
+  = \frac{f(x)}{g(x)}
+\] for $f(x) = a_n + \cdots + \frac{a_0}{x^n}$ and $g(x) = \frac{b_m}{x^{n-m}}
++ \cdots + \frac{b_0}{x^n}$. With $m < n$, it is clear that
+$\lim_{x \to \infty} f(x) = a_n$ while $\lim_{x \to \infty} g(x) = 0$, which
+implies that $\lim_{x \to \infty} f(x)/g(x)$ cannot exist.
 
-\paragraph{Solution:} Naturally, we assume that $a_n, b_m \neq 0$. If $x \neq
-0$ and $m < n$, we write \begin{equation*}
-  \lim_{x \rightarrow \infty}\frac{a_nx^n + \cdots + a_0}{b_mx^m + \cdots + b_0
-    } = \lim_{x \rightarrow \infty}\frac{a_n + \cdots + \frac{a_0}{x^n}}{\frac{
-    b_m}{x^{n - m}} + \cdots + \frac{b_0}{x^n}} = \frac{f(x)}{g(x)}
-\end{equation*} for $f(x) = a_n + \cdots + \frac{a_0}{x^n}$ and $g(x) = \frac{
-b_m}{x^{n - m}} + \cdots + \frac{b_0}{x^n}$. With $m < n$, it is clear that
-$\lim_{x \rightarrow \infty}f(x) = a_n$ while $\lim_{x \rightarrow \infty}g(x)
-= 0$, which implies that $\lim_{x \rightarrow \infty}f(x)/g(x)$ cannot exist.
-
-If $x \neq 0$ and $m \geq n$, we write \begin{equation*}
-  \lim_{x \rightarrow \infty}\frac{a_nx^n + \cdots + a_0}{b_mx^m + \cdots + b_0
-    } = \lim_{x \rightarrow \infty}\frac{\frac{a_n}{x^{m - n}} + \cdots +
-    \frac{a_0}{x^m}}{b_m + \cdots + \frac{b_0}{x^m}} = \frac{f(x)}{g(x)}
-\end{equation*} for $f(x) = \frac{a_n}{x^{m - n}} + \cdots + \frac{a_0}{x^m}$
-and $g(x) = b_m + \cdots + \frac{b_0}{x^m}$. Then $\lim_{x \rightarrow \infty}
-f(x) = a_n$ if $m = n$ and 0 if $m > n$, while $\lim_{x \rightarrow \infty}g(x)
-= b_m$ for $m \geq n$. This leads to $\lim_{x \rightarrow \infty}\frac{f(x)}{
-g(x)} = \frac{a_n}{b_m}$ if $m = n$ and 0 if $m > n$.
+If $x \neq 0$ and $m \geq n$, we write \[
+  \lim_{x \to \infty} \frac{a_nx^n + \cdots + a_0}{b_mx^m + \cdots + b_0}
+  = \lim_{x \to \infty} \frac{\frac{a_n}{x^{m - n}} + \cdots +
+  \frac{a_0}{x^m}}{b_m + \cdots + \frac{b_0}{x^m}}
+  = \frac{f(x)}{g(x)}
+\] for $f(x) = \frac{a_n}{x^{m - n}} + \cdots + \frac{a_0}{x^m}$ and $g(x) =
+b_m + \cdots + \frac{b_0}{x^m}$. Then $\lim_{x \to \infty} f(x) = a_n$ if $m =
+n$ and 0 if $m > n$, while $\lim_{x \to \infty} g(x) = b_m$ for $m \geq n$.
+This leads to $\lim_{x \to \infty} f(x)/g(x) = a_n/b_m$ if $m = n$ and 0 if $m
+> n$.
 
 \end{document}
 

@@ -1,6 +1,7 @@
 \documentclass{article}
 
 \usepackage{amsmath,amssymb,amsthm}
+\usepackage[shortlabels]{enumitem}
 
 \newtheorem{corollary}{Corollary}
 \newtheorem{definition}{Definition}
@@ -24,49 +25,39 @@
   $f^{-1}$ is a function if and only if $f$ is one-one.
 \end{theorem}
 
-\begin{proof}
-  Suppose first that $f$ is one-one. Let $(a, b)$ and $(a, c)$ be two pairs in
-  $f^{-1}$. Then $(b, a)$ and $(c, a)$ are in $f$, so $a = f(b)$ and $a =
-  f(c)$; since $f$ is one-one, this implies that $b = c$. Thus $f^{-1}$ is a
-  function.
-
-  Conversely, suppose that $f^{-1}$ is a function. If $f(b) = f(c)$, then $f$
-  contains the pairs $(b, f(b))$ and $(c, f(c)) = (c, f(b))$, so $(f(b), b)$
-  and $(f(b), c)$ are in $f^{-1}$. Since $f^{-1}$ is a function this implies
-  that $b = c$. Thus $f$ is one-one.
-\end{proof}
-
 \begin{theorem}
   If $f$ is continuous and one-one of an interval, then $f$ is either
   increasing or decreasing on that interval.
 \end{theorem}
-
 \begin{proof}
   Let $a_0 < b_0$ be two numbers in the interval. Since $f$ is one-one, we know
-  that \begin{align*}
+  that
+  \begin{align*}
     \text{either} &&\text{ (i) } &f(b_0) - f(a_0) > 0 \\
     \text{or} &&\text{ (ii) } &f(b_0) - f(a_0) < 0.
-  \end{align*} We will assume that (i) is true, and show that the same
-  inequality holds for any $a_1 < b_1$ in the interval, so that $f$ is
-  increasing. (A similar argument shows that if (ii) is true, then $f$ is
-  decreasing.)
+  \end{align*}
+  We will assume that (i) is true, and show that the same inequality holds for
+  any $a_1 < b_1$ in the interval, so that $f$ is increasing. (A similar
+  argument shows that if (ii) is true, then $f$ is decreasing.)
 
-  Let \begin{align*}
+  Let
+  \begin{align*}
     x_t &= (1 - t)a_0 + ta_1 \\
     y_t &= (1 - t)b_0 + tb_1
-  \end{align*} for $0 \leq t \leq 1$. Then $x_0 = a_0$ and $x_1 = a_1$ and the
-  points $x_t$ all lie between $a_0$ and $a_1$. An analogous statement holds
-  for $y_t$. So $x_t$ and $y_t$ are all in the domain of $f$. Moreover, since
-  $a_0 < b_0$ and $a_1 < b_1$, we also have \begin{equation*}
+  \end{align*}
+  for $0 \leq t \leq 1$. Then $x_0 = a_0$ and $x_1 = a_1$ and the points $x_t$
+  all lie between $a_0$ and $a_1$. An analogous statement holds for $y_t$. So
+  $x_t$ and $y_t$ are all in the domain of $f$. Moreover, since $a_0 < b_0$ and
+  $a_1 < b_1$, we also have \[
     x_t < y_t \text{ for } 0 \leq t \leq 1.
-  \end{equation*} Now consider the function \begin{equation*}
+  \] Now consider the function \[
     g(t) = f(y_t) - f(x_t) \text{ for } 0 \leq t \leq 1.
-  \end{equation*} Using Theorem 6-2, it is easy to see that $g$ is continuous
-  on $[0, 1]$. Moreover, $g(t)$ is never 0, since $x_t < y_t$ and $f$ is
-  one-one. Consequently, $g(t)$ is either positive for all $t$ in $[0, 1]$ or
-  negative for all $t$ in $[0, 1]$ (otherwise, by the Intermediate Value
-  Theorem it would also be 0 somewhere in $[0, 1]$). But $g(0) > 0$ by (i). So
-  also $g(1) > 0$, which means that (i) also holds for $a_1, b_1$.
+  \] Using Theorem 6-2, it is easy to see that $g$ is continuous on $[0, 1]$.
+  Moreover, $g(t)$ is never 0, since $x_t < y_t$ and $f$ is one-one.
+  Consequently, $g(t)$ is either positive for all $t$ in $[0, 1]$ or negative
+  for all $t$ in $[0, 1]$ (otherwise, by the Intermediate Value Theorem it
+  would also be 0 somewhere in $[0, 1]$). But $g(0) > 0$ by (i). So also $g(1)
+  > 0$, which means that (i) also holds for $a_1, b_1$.
 \end{proof}
 
 Moving on, we now consider which important properties of a one-one function are
@@ -76,156 +67,117 @@ inherited by its inverse.
   If $f$ is continuous and one-one on an interval, then $f^{-1}$ is also
   continuous.
 \end{theorem}
-
 \begin{proof}
   We know by Theorem 2 that $f$ is either increasing or decreasing. We might as
   well assume that $f$ is increasing, since we can then take care of the other
   case by applying the usual trick of considering $-f$.
 
-  We must show that \begin{equation*}
-    \lim_{x \rightarrow b}f^{-1}(x) = f^{-1}(b)
-  \end{equation*} for each $b$ in the domain of $f^{-1}$. Such a number $b$ is
-  of the form $f(a)$ for some $a$ in the domain of $f$. For any $\epsilon > 0$,
-  we want to find a $\delta > 0$ such that, for all $x$, \begin{equation*}
-    \text{if } f(a) - \delta < x < f(a) + \delta, \text{ then } a - \epsilon <
-      f^{-1}(x) < a + \epsilon.
-  \end{equation*} Since $a - \epsilon < a < a + \epsilon$, it follows that
-  $f(a - \epsilon) < f(a) < f(a + \epsilon)$; we let $\delta$ be the smaller of
-  $f(a + \epsilon) - f(a)$ and $f(a) - f(a - \epsilon)$.
+  We must show that \[
+    \lim_{x \to b} f^{-1}(x) = f^{-1}(b)
+  \] for each $b$ in the domain of $f^{-1}$. Such a number $b$ is of the form
+  $f(a)$ for some $a$ in the domain of $f$. For any $\epsilon > 0$, we want to
+  find a $\delta > 0$ such that, for all $x$, \[
+    \text{if } f(a) - \delta < x < f(a) + \delta,
+    \text{ then } a - \epsilon < f^{-1}(x) < a + \epsilon.
+  \] Since $a - \epsilon < a < a + \epsilon$, it follows that $f(a - \epsilon)
+  < f(a) < f(a + \epsilon)$; we let $\delta$ be the smaller of $f(a + \epsilon)
+  - f(a)$ and $f(a) - f(a - \epsilon)$.
 
-  Our choice of $\delta$ ensures that \begin{equation*}
-    f(a - \epsilon) \leq f(a) - \delta \text{ and } f(a) + \delta \leq f(a +
-      \epsilon).
-  \end{equation*} Consequently, if \begin{equation*}
+  Our choice of $\delta$ ensures that \[
+    f(a - \epsilon)
+    \leq f(a) - \delta \text{ and } f(a) + \delta \leq f(a + \epsilon).
+  \] Consequently, if \[
     f(a) - \delta < x < f(a) + \delta.
-  \end{equation*} then \begin{equation*}
+  \] then \[
     f(a - \epsilon) < x < f(a + \epsilon).
-  \end{equation*} Since $f$ is increasing, $f^{-1}$ is also increasing, and we
-  obtain \begin{equation*}
+    \] Since $f$ is increasing, $f^{-1}$ is also increasing, and we obtain \[
     f^{-1}(f(a - \epsilon)) < f^{-1}(x) < f^{-1}(f(a + \epsilon)),
-  \end{equation*} i.e., \begin{equation*}
+  \] i.e., \[
     a - \epsilon < f^{-1}(x) < a + \epsilon,
-  \end{equation*} which is precisely what we want.
+  \] which is precisely what we want.
 \end{proof}
 
 The proof of differentiability is more involved.
 
 \begin{theorem}
-  If $f$ is a continuous one-one function defined on an interval and $f'(f^{-1}
-  (a)) = 0$, then $f^{-1}$ is \emph{not} differentiable at $a$.
+  If $f$ is a continuous one-one function defined on an interval and
+  $f'(f^{-1}(a)) = 0$, then $f^{-1}$ is \emph{not} differentiable at $a$.
 \end{theorem}
-
-\begin{proof}
-  We have \begin{equation*}
-    f(f^{-1}(x)) = x.
-  \end{equation*} If $f^{-1}$ were differentiable at $a$, the Chain Rule would
-  imply that \begin{equation*}
-    f'(f^{-1}(a)) \cdot (f^{-1})'(a) = 1,
-  \end{equation*} hence \begin{equation*}
-    0 \cdot (f^{-1})'(a) = 1,
-  \end{equation*} which is absurd.
-\end{proof}
 
 \begin{theorem}
   Let $f$ be a continuous one-one function defined on an interval, and suppose
   that $f$ is differentiable at $f^{-1}(b)$, with derivative $f'(f^{-1}(b))
-  \neq 0$. Then $f^{-1}$ is differentiable at $b$, and \begin{equation*}
+  \neq 0$. Then $f^{-1}$ is differentiable at $b$, and \[
     (f^{-1})'(b) = \frac{1}{f'(f^{-1}(b))}.
-  \end{equation*}
+  \]
 \end{theorem}
-
 \begin{proof}
-  Let $b = f(a)$. Then \begin{equation*}
-    \lim_{h \rightarrow 0}\frac{f^{-1}(b + h) - f^{-1}(b)}{h} = \lim_{h
-    \rightarrow 0}\frac{f^{-1}(b + h) - a}{h}.
-  \end{equation*} Now every number $b + h$ in the domain of $f^{-1}$ can be
-  written in the form \begin{equation*}
+  Let $b = f(a)$. Then \[
+    \lim_{h \to 0} \frac{f^{-1}(b + h) - f^{-1}(b)}{h}
+    = \lim_{h \to 0} \frac{f^{-1}(b + h) - a}{h}.
+  \] Now every number $b + h$ in the domain of $f^{-1}$ can be written in the
+  form \[
     b + h = f(a + k)
-  \end{equation*} for an unique $k$. Then \begin{equation*}
-    \lim_{h \rightarrow 0}\frac{f^{-1}(b + h) - a}{h} = \lim_{h \rightarrow 0}
-      \frac{f^{-1}(f(a + k)) - a}{f(a + k) - b} = \lim_{h \rightarrow 0}
-      \frac{k}{f(a + k) - f(a)}.
-  \end{equation*} It is not hard to get an explicit expression for k; since
-  \begin{equation*}
+  \] for an unique $k$. Then \[
+    \lim_{h \to 0} \frac{f^{-1}(b + h) - a}{h}
+    = \lim_{h \to 0} \frac{f^{-1}(f(a + k)) - a}{f(a + k) - b}
+    = \lim_{h \to 0} \frac{k}{f(a + k) - f(a)}.
+  \] It is not hard to get an explicit expression for k; since \[
     b + h = f(a + k)
-  \end{equation*} we have \begin{equation*}
+  \] we have \[
     f^{-1}(b + h) = a + k
-  \end{equation*} or \begin{equation*}
+  \] or \[
     k = f^{-1}(b + h) - f^{-1}(b).
-  \end{equation*} Now by Theorem 3, the function $f^{-1}$ is continuous at $b$.
-  This means that $k$ approaches 0 as $h$ approaches 0. Since \begin{equation*}
-    \lim_{k \rightarrow 0}\frac{f(a + k) - f(a)}{k} = f'(a) = f'(f^{-1}(b))
-      \neq 0,
-  \end{equation*} this implies that \begin{equation*}
+  \] Now by Theorem 3, the function $f^{-1}$ is continuous at $b$. This means
+  that $k$ approaches 0 as $h$ approaches 0. Since \[
+    \lim_{k \to 0} \frac{f(a + k) - f(a)}{k} = f'(a) = f'(f^{-1}(b)) \neq 0,
+  \] this implies that \[
     (f^{-1})'(b) = \frac{1}{f'(f^{-1}(b))}.
-  \end{equation*}
+  \]
 \end{proof}
 
 \section*{Exercises}
 
-\paragraph{Problem 12-11 (abridged). (a)} Prove that there is a differentiable
-function $f$ such that $[f(x)]^5 + f(x) + x = 0$ for all $x$.
+\paragraph{Problem 11}
+\begin{enumerate}[(a)]
+  \item Let $f = g^{-1}$ where $g(x) = -x^5 - x$. Notice that $g$ is one-one,
+    since $g'(x) = -5x^4 - 1 < 0$ for all $x$, and that $g$ takes on all
+    values. So $f$ is defined on $\mathbb{R}$, and for all $x$ we have \[
+      x = g(f(x)) = -[f(x)]^5 - f(x).
+    \] Moreover, $f$ is differentiable, since $g'(x) \neq 0$ for all $x$.
+  \item By Theorem 5, as $g$ is a differentiable one-one function defined on an
+    interval, with derivative $g'(x) \neq 0$ for all $x$, Then for all $b$, $f
+    = g^{-1}$ is differentiable and \[
+      (g^{-1})'(b) = \frac{1}{g'(g^{-1}(b))}
+    \] or \[
+      f'(b) = \frac{1}{g'(f(b))} = \frac{1}{-5[f(b)]^4 - 1}.
+    \]
+  \item Differentiating the equation defining $f$, \[
+      5[f(x)]^4f'(x) + f'(x) + 1 = 0
+    \] or \[
+      f'(x) = -\frac{1}{5[f(x)]^4 + 1}
+    \] which is equivalent to the function found in (b).
+\end{enumerate}
 
-\paragraph{Solution:} Let $f = g^{-1}$ where $g(x) = -x^5 - x$. Notice that $g$
-is one-one, since $g'(x) = -5x^4 - 1 < 0$ for all $x$, and that $g$ takes on
-all values. So $f$ is defined on $\mathbb{R}$, and for all $x$ we have
-\begin{equation*}
-  x = g(f(x)) = -[f(x)]^5 - f(x).
-\end{equation*} Moreover, $f$ is differentiable, since $g'(x) \neq 0$ for all
-$x$.
+\paragraph{Problem 23}
+\begin{enumerate}[(a)]
+  \item Suppose that $f(a) > a$ for some $a$ (such an $a$ must exist given the
+    symmetry of $y = f(x)$ about $y = x$); then, $f(f(a)) = a < f(a)$. Since
+    $f(a) > a$, and $f(b) < b$ for some $b$ (namely, $f(a)$), it follows that
+    $f(x) = x$ for some $x$ in $[a, b]$.
+  \item Let $f$ be any decreasing function on $(-\infty, a]$ which takes on all
+    values $\geq a$, and define \[
+      g(x) =
+      \begin{cases}
+        f(x), &x \leq a \\
+        f^{-1}(x), &x > a.
+      \end{cases}
+    \]
+  \item If $f(x) < x$ for any $x$, then $x = f^{-1}(f(x)) < f^{-1}(x) = f(x)$,
+    a contradiction; similarly, we cannot have $f(x) > x$.
+\end{enumerate}
 
-\paragraph{(b)} Find $f'$ in terms of $f$, using an appropriate theorem of this
-chapter.
-
-\paragraph{Solution:} By Theorem 5, as $g$ is a differentiable one-one function
-defined on an interval, with derivative $g'(x) \neq 0$ for all $x$, Then for
-all $b$, $f = g^{-1}$ is differentiable and \begin{equation*}
-  (g^{-1})'(b) = \frac{1}{g'(g^{-1}(b))}
-\end{equation*} or \begin{equation*}
-  f'(b) = \frac{1}{g'(f(b))} = \frac{1}{-5[f(b)]^4 - 1}.
-\end{equation*}
-
-\paragraph{(c)} Find $f'$ in another way, by simply differentiating the
-equation defining $f$.
-
-\paragraph{Solution:} Differentiating the equation defining $f$,
-\begin{equation*}
-  5[f(x)]^4f'(x) + f'(x) + 1 = 0
-\end{equation*} or \begin{equation*}
-  f'(x) = -\frac{1}{5[f(x)]^4 + 1}
-\end{equation*} which is equivalent to the function found in (b).
-
-\paragraph{Problem 12-23 (abridged). (a)} If $f$ is a continuous function on
-$\mathbb{R}$ and $f = f^{-1}$, prove that there is at least one $x$ such that
-$f(x) = x$.
-
-\paragraph{Solution:} Suppose that $f(a) > a$ for some $a$ (such an $a$ must
-exist given the symmetry of $y = f(x)$ about $y = x$); then, $f(f(a)) = a <
-f(a)$. Since $f(a) > a$, and $f(b) < b$ for some $b$ (namely, $f(a)$), it
-follows that $f(x) = x$ for some $x$ in $[a, b]$.
-
-\paragraph{(b)} Give several examples of continuous $f$ such that $f = f^{-1}$
-and $f(x) = x$ for exactly one $x$.
-
-\paragraph{Solution:} Let $f$ be any decreasing function on $(-\infty, a]$
-which takes on all values $\geq a$, and define \begin{equation*}
-  g(x) = \begin{cases}
-    f(x), &x \leq a \\
-    f^{-1}(x), &x > a.
-  \end{cases}
-\end{equation*}
-
-\paragraph{(c)} Prove that if $f$ is an increasing function such that $f =
-f^{-1}$, then $f(x) = x$ for all $x$.
-
-\paragraph{Solution:} If $f(x) < x$ for any $x$, then $x = f^{-1}(f(x)) <
-f^{-1}(x) = f(x)$, a contradiction; similarly, we cannot have $f(x) > x$.
-
-\paragraph{Problem 12-24.} Which functions have the property that the graph is
-still the graph of a function when reflected through the graph of $-I$ (the
-"antidiagonal")?
-
-\paragraph{Solution:} Reflecting through the antidiagonal is the same as
+\paragraph{Problem 24} Reflecting through the antidiagonal is the same as
 reflecting through the vertical axis, reflecting through the diagonal, and then
 reflecting through the vertical axis again. Clearly, the functions with this
 property are precisely the one-one functions.

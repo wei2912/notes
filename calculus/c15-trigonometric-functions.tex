@@ -1,6 +1,7 @@
 \documentclass{article}
 
 \usepackage{amsmath,amssymb,amsthm}
+\usepackage[shortlabels]{enumitem}
 
 \newtheorem{corollary}{Corollary}
 \newtheorem{definition}{Definition}
@@ -16,33 +17,36 @@
 
 \begin{definition}
   $\pi$ is the area of the unit circle, or more precisely, twice the area of a
-  semicircle: \begin{equation*}
-    \pi = 2 \cdot \int_{-1}^1 \sqrt{1 - x^2} \,\mathrm{d}x.
-  \end{equation*}
+  semicircle: \[
+    \pi = 2 \cdot \int_{-1}^1 \sqrt{1 - x^2} \,dx.
+  \]
 \end{definition}
 
 \begin{definition}
   For $-1 \leq x \leq 1$, the area $A(x)$ of the sector bounded by the unit
   circle, the horizontal axis, and the half-line through $(x, \sqrt{1 - x^2})$
-  is \begin{equation*}
-    A(x) = \frac{x\sqrt{1 - x^2}}{2} + \int_x^1 \sqrt{1 - t^2} \,\mathrm{d}t.
-  \end{equation*}
+  is \[
+    A(x) = \frac{x\sqrt{1 - x^2}}{2} + \int_x^1 \sqrt{1 - t^2} \,dt.
+  \]
 \end{definition}
 
 Notice that if $-1 < x < 1$, then $A$ is differentiable at $x$ and (using the
-Fundamental Theorem of Calculus), \begin{align*}
+Fundamental Theorem of Calculus),
+\begin{align*}
   A'(x)
-    &= \frac{1}{2}\left[x \cdot \frac{-2x}{2\sqrt{1 - x^2}}
-    + \sqrt{1 - x^2}\right] - \sqrt{1 - x^2} \\
-    &= \frac{1}{2}\left[\frac{-x^2 + (1 - x^2)}{\sqrt{1 - x^2}}\right] -
-    \sqrt{1 - x^2} \\
-    &= \frac{1 - 2x^2}{2\sqrt{1 - x^2}} - \sqrt{1 - x^2} \\
-    &= \frac{1 - 2x^2 - 2(1 - x^2)}{2\sqrt{1 - x^2}} \\
-    &= \frac{-1}{2\sqrt{1 - x^2}}.
+  &= \frac{1}{2}\left[
+    x \cdot \frac{-2x}{2\sqrt{1 - x^2}}
+    + \sqrt{1 - x^2}
+  \right] - \sqrt{1 - x^2} \\
+  &= \frac{1}{2}\left[ \frac{-x^2 + (1 - x^2)}{\sqrt{1 - x^2}} \right] -
+  \sqrt{1 - x^2} \\
+  &= \frac{1 - 2x^2}{2\sqrt{1 - x^2}} - \sqrt{1 - x^2} \\
+  &= \frac{1 - 2x^2 - 2(1 - x^2)}{2\sqrt{1 - x^2}} \\
+  &= \frac{-1}{2\sqrt{1 - x^2}}.
 \end{align*} Notice also that on the interval $[-1, 1]$ the function $A$
-decreases from \begin{equation*}
-  A(-1) = 0 + \int_{-1}^1 \sqrt{1 - t^2} \,\mathrm{d}t = \frac{\pi}{2}
-\end{equation*} to $A(1) = 0$.
+decreases from \[
+  A(-1) = 0 + \int_{-1}^1 \sqrt{1 - t^2} \,dt = \frac{\pi}{2}
+\] to $A(1) = 0$.
 
 \begin{definition}
   For $0 \leq x \leq \pi$ we wish to define $\cos x$ and $\sin x$ as the
@@ -50,76 +54,61 @@ decreases from \begin{equation*}
   determines a sector whose area is $x/2$.
 
   In other words, $\cos x$ is the unique number in $[-1, 1]$ such that
-  \begin{equation*}
+  \[
     A(\cos x) = \frac{x}{2};
-  \end{equation*} and \begin{equation*}
+  \] and \[
     \sin x = \sqrt{1 - \cos^2 x}.
-  \end{equation*}
+  \]
 \end{definition}
 
 \begin{theorem}
-  If $0 < x < \pi$, then \begin{align*}
+  If $0 < x < \pi$, then
+  \begin{align*}
     \cos'(x) &= -\sin x, \\
     \sin'(x) &= \cos x.
   \end{align*}
 \end{theorem}
 
-\begin{proof}
-  If $B = 2A$, then the definition $A(\cos x) = x/2$ can be written
-  \begin{equation*}
-    B(\cos x) = x;
-  \end{equation*} in other words, $\cos$ is just the inverse of $B$. We have
-  already computed that \begin{equation*}
-    A'(x) = -\frac{1}{2\sqrt{1 - x^2}},
-  \end{equation*} from which we can conclude that \begin{equation*}
-    B'(x) = -\frac{1}{\sqrt{1 - x^2}}.
-  \end{equation*} Consequently, \begin{align*}
-    \cos'(x)
-      &= (B^{-1})'(x) \\
-      &= \frac{1}{B'(B^{-1}(x))} \\
-      &= \frac{1}{-\frac{1}{\sqrt{1 - [B^{-1}(x)]^2}}} \\
-      &= -\sqrt{1 - \cos^2 x} \\
-      &= -\sin x.
-  \end{align*} Since \begin{equation*}
-    \sin x = \sqrt{1 - \cos^2 x},
-  \end{equation*} we also obtain \begin{align*}
-    \sin'(x)
-      &= \frac{1}{2} \cdot \frac{-2\cos x \cdot \cos'(x)}{\sqrt{1 - \cos^2 x}}
-      \\
-      &= \frac{\cos x \sin x}{\sin x} \\
-      &= \cos x.
-  \end{align*}
-\end{proof}
-
 The values of $\sin x$ and $\cos x$ for $x$ not in $[0, \pi]$ are defined by a
-two-step piecing together process: \begin{enumerate}
-  \item If $\pi \leq x \leq 2\pi$, then \begin{align*}
+two-step piecing together process:
+\begin{enumerate}
+  \item If $\pi \leq x \leq 2\pi$, then
+    \begin{align*}
       \sin x &= -\sin(2\pi - x), \\
       \cos x &= \cos(2\pi - x).
     \end{align*}
   \item If $x = 2\pi k + x'$ for some integer $k$, and some $x'$ in $[0,
-    2\pi]$, then \begin{align*}
+    2\pi]$, then
+    \begin{align*}
       \sin x &= \sin x', \\
       \cos x &= \cos x'.
     \end{align*}
 \end{enumerate}
 
-The other standard trigonometric functions are defined by \begin{align*}
-  &\left.\begin{array}{c}
-    \sec x = \frac{1}{\cos x} \\
-    \tan x = \frac{\sin x}{\cos x} \\
-  \end{array}\right\} x \neq k\pi + \pi/2, \\
-  &\left.\begin{array}{c}
-    \csc x = \frac{1}{\sin x} \\
-    \cot x = \frac{\cos x}{\sin x}
-  \end{array}\right\} x \neq k\pi.
+The other standard trigonometric functions are defined by
+\begin{align*}
+  &\left.
+    \begin{array}{c}
+      \sec x = \frac{1}{\cos x} \\
+      \tan x = \frac{\sin x}{\cos x} \\
+    \end{array}
+  \right\} x \neq k\pi + \pi/2, \\
+  &\left.
+    \begin{array}{c}
+      \csc x = \frac{1}{\sin x} \\
+      \cot x = \frac{\cos x}{\sin x}
+    \end{array}
+  \right\} x \neq k\pi.
 \end{align*}
 
 \begin{theorem}
-  If $x \neq k\pi + \pi/2$, then \begin{align*}
+  If $x \neq k\pi + \pi/2$, then
+  \begin{align*}
     \sec'(x) &= \sec x \tan x, \\
     \tan'(x) &= \sec^2 x.
-  \end{align*} If $x \neq k\pi$, then \begin{align*}
+  \end{align*}
+  If $x \neq k\pi$, then
+  \begin{align*}
     \csc'(x) &= -\csc x \cot x, \\
     \cot'(x) &= -\csc^2 x. \\
   \end{align*}
@@ -127,105 +116,35 @@ The other standard trigonometric functions are defined by \begin{align*}
 
 The trigonometric functions are not one-one, so it is first necessary to
 restrict them to suitable intervals in order to work with their inverses. The
-intervals usually chosen are \begin{align*}
+intervals usually chosen are
+\begin{align*}
   [-\pi/2, \pi/2] &\text{ for } \sin, \\
   [0, \pi]        &\text{ for } \cos, \\
   (-\pi/2, \pi/2) &\text{ for } \tan.
 \end{align*}
 
 \begin{theorem}
-  If $-1 < x < 1$, then \begin{align*}
+  If $-1 < x < 1$, then
+  \begin{align*}
     \arcsin'(x) &= \frac{1}{\sqrt{1 - x^2}}, \\
     \arccos'(x) &= \frac{-1}{\sqrt{1 - x^2}}.
-  \end{align*} Moreover, for all $x$ we have \begin{equation*}
+  \end{align*}
+  Moreover, for all $x$ we have \[
     \arctan'(x) = \frac{1}{1 + x^2}.
-  \end{equation*}
+  \]
 \end{theorem}
-
-\begin{proof}
-  Consider $f(x) = \sin x$ for $-\pi/2 \leq x \leq \pi/2$: \begin{align*}
-    \arcsin'(x)
-      &= (f^{-1})'(x) \\
-      &= \frac{1}{f'(f^{-1}(x))} \\
-      &= \frac{1}{\sin'(\arcsin x)} \\
-      &= \frac{1}{\cos(\arcsin x)}.
-  \end{align*} Now \begin{equation*}
-    [\sin(\arcsin x)]^2 + [\cos(\arcsin x)]^2 = 1,
-  \end{equation*} that is, \begin{equation*}
-    x^2 + [\cos(\arcsin x)]^2 = 1;
-  \end{equation*} therefore, \begin{equation*}
-    \cos(\arcsin x) = \sqrt{1 - x^2}.
-  \end{equation*} (The positive square root is to be taken because $\arcsin x$
-  is in $(-\pi/2, \pi/2)$, so $\cos(\arcsin x) > 0$.) This proves the first
-  formula.
-
-  The second formula has already been established (in the proof of Theorem 1).
-  The third formula is proved as follows. Consider $h(x) = \tan x$ for $-\pi/2
-  < x < \pi/2$: \begin{align*}
-    \arctan'(x)
-      &= (h^{-1})'(x) \\
-      &= \frac{1}{h'(h^{-1}(x))} \\
-      &= \frac{1}{\tan'(\arctan x)} \\
-      &= \frac{1}{\sec^2(\arctan x)}.
-  \end{align*} Dividing both sides of the identity \begin{equation*}
-    \sin^2 a + \cos^2 a = 1
-  \end{equation*} by $\cos^2 a$ yields \begin{equation*}
-    \tan^2 a + 1 = \sec^2 a.
-  \end{equation*} It follows that \begin{equation*}
-    [\tan(\arctan x)]^2 + 1 = \sec^2(\arctan x),
-  \end{equation*} or \begin{equation*}
-    x^2 + 1 = \sec^2(\arctan x),
-  \end{equation*} which proves the third formula.
-\end{proof}
 
 To derive the addition formulas, we require a lemma.
 
 \begin{lemma*}
-  Suppose $f$ has a second derivative everywhere and that \begin{align*}
+  Suppose $f$ has a second derivative everywhere and that
+  \begin{align*}
     f'' + f &= 0, \\
     f(0) &= 0, \\
     f'(0) &= 0.
-  \end{align*} Then $f = 0$.
+  \end{align*}
+  Then $f = 0$.
 \end{lemma*}
-
-\begin{proof}
-  Multiplying both sides of the first equation by $f'$ yields \begin{equation*}
-    f'f'' + ff' = 0.
-  \end{equation*} Thus \begin{equation*}
-    [(f')^2 + f^2]' = 2(f'f'' + ff') = 0,
-  \end{equation*} so $(f')^2 + f^2$ is a constant function. From $f(0) = 0$ and
-  $f'(0) = 0$ it follows that the constant is 0; thus \begin{equation*}
-    [f'(x)]^2 + [f(x)]^2 = 0 \text{ for all } x.
-  \end{equation*} This implies that \begin{equation*}
-    f(x) = 0 \text{ for all } x.
-  \end{equation*}
-\end{proof}
-
-\begin{theorem}
-  If $f$ has a second derivative everywhere and \begin{align*}
-    f'' + f &= 0, \\
-    f(0) &= a, \\
-    f'(0) &= b,
-  \end{align*} then \begin{equation*}
-    f = b \cdot \sin{} + a \cdot \cos{}.
-  \end{equation*} (In particular, if $f(0) = 0$ and $f'(0) = 1$, then $f =
-  \sin$; if $f(0) = 1$ and $f'(0) = 0$, then $f = \cos$.)
-\end{theorem}
-
-\begin{proof}
-  Let \begin{equation*}
-    g(x) = f(x) - b\sin x - a\cos x.
-  \end{equation*} Then \begin{align*}
-    g'(x) &= f'(x) - b\cos x + a\sin x, \\
-    g''(x) &= f''(x) + b\sin x + a\cos x.
-  \end{align*} Consequently, \begin{align*}
-    g'' + g &= 0, \\
-    g(0) &= 0, \\
-    g'(0) &= 0,
-  \end{align*} which shows that \begin{equation*}
-    0 = g(x) = f(x) - b\sin x - a\cos x \text{ for all } x.
-  \end{equation*}
-\end{proof}
 
 \begin{theorem}
   If $x$ and $y$ are any two numbers, then \begin{align*}
@@ -235,248 +154,173 @@ To derive the addition formulas, we require a lemma.
 \end{theorem}
 
 \begin{proof}
-  For any particular number $y$ we can define a function $f$ by
-  \begin{equation*}
+  For any particular number $y$ we can define a function $f$ by \[
     f(x) = \sin(x + y).
-  \end{equation*} Then \begin{align*}
+  \] Then
+  \begin{align*}
     f'(x) &= \cos(x + y) \\
     f''(x) &= -\sin(x + y).
-  \end{align*} Consequently, \begin{align*}
+  \end{align*}
+  Consequently,
+  \begin{align*}
     f'' + f &= 0, \\
-    f(0) &= \sin y, \\
-    f'(0) &= \cos y.
-  \end{align*} It follows from Theorem 4 that \begin{equation*}
+    f(0)    &= \sin y, \\
+    f'(0)   &= \cos y.
+  \end{align*}
+  It follows from Theorem 4 that \[
     f = (\cos y ) \cdot \sin{} + (\sin y) \cdot \cos{};
-  \end{equation*} that is, \begin{equation*}
+  \] that is, \[
     \sin(x + y) = \cos y \sin x + \sin y \cos x, \text{ for all } x.
-  \end{equation*} Since any number $y$ could have been chosen to begin with,
-  this proves the first formula for all $x$ and $y$.
+  \] Since any number $y$ could have been chosen to begin with, this proves the
+  first formula for all $x$ and $y$.
 
   The second formula is proven similarly.
 \end{proof}
 
 \section*{Exercises}
 
-\paragraph{Problem 15-26 (abridged). (a)} Show that
-$\lim_{\lambda \rightarrow \infty} \int_c^d \sin \lambda x \,\mathrm{d}x = 0$,
-by computing the integral explicitly.
+\paragraph{Problem 26}
+\begin{enumerate}[(a)]
+  \item \[
+      \lim_{\lambda \to \infty} \int_c^d \sin \lambda x \,dx
+      = \lim_{\lambda \to \infty} \frac{-1}{\lambda}
+      (\cos \lambda d - \cos \lambda c)
+      = 0
+    \]
+  \item Consider a partition $P = \{t_0, \ldots, t_n\}$ of $[a, b]$ such that
+    $s$ is a constant on each $(t_{i - 1}, t_i)$. Then each term in the sum \[
+      \sum_{i=1}^n \lim_{\lambda \to \infty} \int_{t_{i-1}}^{t_i} s(x)
+        \sin \lambda x
+      \,dx = \lim_{\lambda \to \infty} \int_a^b
+        s(x) \sin \lambda x
+      \,dx
+    \] is equal to 0 by part (a), so the limit must be 0.
+  \item From Problem 13-26, for any $\epsilon > 0$ there is a step function $s
+    \leq f$ with $\int_a^b (f - s) < \epsilon$. Now
+    \begin{align*}
+      \left|
+        \int_a^b f(x) \sin \lambda x \,dx - \int_a^b s(x) \sin \lambda x \,dx
+      \right|
+      &= \left|
+        \int_a^b [f(x) - s(x)] \sin \lambda x \,dx
+      \right| \\
+      &\leq \int_a^b [f(x) - s(x)] \cdot |\sin \lambda x| \,dx \\
+      &\leq \int_a^b [f(x) - s(x)] \,dx < \epsilon.
+    \end{align*}
+    With part (b), we have shown that \[
+      \lim_{\lambda \to \infty} \left| \int_a^b f(x)\sin \lambda x \,dx \right|
+      < \epsilon \text{ for any } \epsilon > 0,
+    \] and so the limit $\lim_{\lambda \to \infty} \int_a^b f(x)\sin \lambda x
+    \,dx = 0$.
+\end{enumerate}
 
-\paragraph{Solution:} \begin{equation*}
-\lim_{\lambda \rightarrow \infty} \int_c^d \sin \lambda x \,\mathrm{d}x
-= \lim_{\lambda \rightarrow \infty} \frac{-1}{\lambda}(\cos \lambda d -
-\cos \lambda c) = 0
-\end{equation*}
+\paragraph{Problem 28}
+\begin{enumerate}[(a)]
+  \item From Problem 13-25,
+    \begin{align*}
+      \mathcal{L}(x)
+      &= \int_x^1 \sqrt{1 + f'(t)^2} \,dt \\
+      &= \int_x^1 \sqrt{1 +
+      \left( \frac{-2t}{2\sqrt{1 - t^2}} \right)^2} \,dt \\
+      &= \int_x^1 \sqrt{1 + \frac{t^2}{1 - t^2}} \,dt \\
+      &= \int_x^1 \frac{1}{\sqrt{1 - t^2}} \,dt.
+    \end{align*}
+    (A more detailed proof to deal with the indefinite integral should be
+    outlined.)
+  \item Rewriting \[
+      \mathcal{L}(x) = \int_1^x \frac{-1}{\sqrt{1 - t^2}} \,dt
+    \] it is clear by the Fundamental Theorem of Calculus that \[
+      \mathcal{L'}(x) = -\frac{1}{\sqrt{1 - x^2}} \text{ for } -1 < x < 1.
+    \]
+  \item By the definition, $\cos = \mathcal{L}^{-1}$, so
+    \begin{align*}
+      \cos'(x)
+      &= (\mathcal{L}^{-1})'(x)
+      = \frac{1}{\mathcal{L}'(\mathcal{L}^{-1}(x))} \\
+      &= -\frac{1}{\frac{1}{\sqrt{1 - \cos^2 x}}}
+      = -\sin x.
+    \end{align*}
+    The proof for $\sin' x$ is the same as in the text.
+\end{enumerate}
 
-\paragraph{(b)} Show that if $s$ is a step function on $[a, b]$ (terminology
-from Problem 13-26), then $\lim_{\lambda \rightarrow \infty} \int_a^b s(x)
-\sin \lambda x \,\mathrm{d}x = 0$.
+\paragraph{Problem 30}
+\begin{enumerate}[(a)]
+  \item \[
+      (y_0^2 + (y_0')^2)' = 2y_0y_0' + 2y_0'y_0'' = 2y_0'(y_0'' + y_0) = 0,
+    \] so $y_0^2 + (y_0')^2$ must be equal to some constant $c$. But $y_0$ is
+    not always 0, and so $y_0(x)^2 + y_0'(x)^2 = c \neq 0$ for all $x$. It
+    follows that either $y_0(0) \neq 0$ or $y_0'(0) \neq 0$.
+  \item Any function $s = ay_0 + by_0'$ satisfies $s'' + s = 0$. Hence, it
+    suffices to choose $a$ and $b$ such that:
+    \begin{align*}
+      ay_0(0) + by_0'(0) &= 0, \\
+      ay_0'(0) - by_0(0) &= 1.
+    \end{align*}
+    This is always possible, since from part (a), either $y_0(0) \neq 0$ or
+    $y_0'(0) \neq 0$.
+  \item Suppose that $\cos x > 0$ for all $x \geq 0$. Then, as $\cos'(0) =
+    -\sin 0 = 0$, by Problem 7 of the Appendix to Chapter 11, $\cos''(x) = 0$
+    for some $x > 0$. But $\cos'' = -\cos$, implying that $\cos x = 0$ for some
+    $x > 0$ which is a contradiction.
+  \item Suppose $\cos x > 0$ for $0 < x < x_0 = \pi/2$, the function $\sin$ is
+    increasing on $[0, \pi/2]$ (as $\sin' = \cos$). Since $\sin 0 = 0$, it
+    follows that $\sin \pi/2 > 0$, so $\sin \pi/2 = 1$.
+  \item A straightforward substitution.
+  \item \begin{align*}
+      \cos(x + 2\pi) &= \cos x \cos 2\pi - \sin x \sin 2\pi = \cos x, \\
+      \sin(x + 2\pi) &= \sin x \cos 2\pi + \cos x \sin 2\pi = \sin x.
+    \end{align*}
+\end{enumerate}
 
-\paragraph{Solution:} Consider a partition $P = \{t_0, \ldots, t_n\}$ of $[a,
-b]$ such that $s$ is a constant on each $(t_{i - 1}, t_i)$. Then each term in
-the sum \begin{equation*}
-  \sum_{i = 1}^n \lim_{\lambda \rightarrow \infty} \int_{t_{i - 1}}^{t_i}
-  s(x) \sin \lambda x \,\mathrm{d}x
-    = \lim_{\lambda \rightarrow \infty} \int_a^b s(x) \sin \lambda x
-    \,\mathrm{d}x
-\end{equation*} is equal to 0 by part (a), so the limit must be 0.
+\paragraph{Problem 32}
+\begin{enumerate}[(a)]
+  \item
+    \begin{align*}
+      \phi_1''\phi_2 - \phi_2''\phi_1 - (g_2 - g_1)\phi_1\phi_2
+      &= (-g_1\phi_1)\phi_2 - (-g_2\phi_2)\phi_1
+        - (g_2\phi_2)\phi_1 + (g_1\phi_1)\phi_2 \\
+      &= g_1(-\phi_1\phi_2 + \phi_1\phi_2) + g_2(\phi_2\phi_1 - \phi_2\phi_1) \\
+      &= 0.
+    \end{align*}
+  \item From part (a), \[
+      \int_a^b [\phi_1''\phi_2 - \phi_2''\phi_1]
+      = \int_a^b (g_2 - g_1)\phi_1\phi_2.
+    \] Since $\phi_1(x) > 0$, $\phi_2(x) > 0$ for all $x$ in $(a, b)$, $(g_2 -
+    g_1)\phi_1\phi_2 > 0$ for all $x$ and the integral must be positive for $a
+    < b$. Note too that
+    \begin{align*}
+      (\phi_1'\phi_2)' &= \phi_1''\phi_2 + \phi_1'\phi_2', \\
+      (\phi_1\phi_2')' &= \phi_2''\phi_1 + \phi_1'\phi_2',
+    \end{align*}
+    which suggests that
+    \begin{align*}
+      \int_a^b [\phi_1''\phi_2 - \phi_2''\phi_1]
+      &= \int_a^b [\phi_1''\phi_2 + \phi_1'\phi_2']
+      - \int_a^b [\phi_2''\phi_1 + \phi_1'\phi_2'] \\
+      &= [\phi_1'(b)\phi_2(b) - \phi_1'(a)\phi_2(a)]
+      + [\phi_1(b)\phi_2'(b) - \phi_1(a)\phi_2'(a)]
+    \end{align*}
+    is positive.
+  \item From part (b), with $\phi_1(a) = \phi_1(b) = 0$, we have \[
+      \phi_1'(b)\phi_2(b) - \phi_1'(a)\phi_2(a) > 0.
+    \] But clearly
+    \begin{align*}
+      \phi_2(a) \geq 0,  \: &\phi_2(b) \geq 0, \\
+      \phi_1'(a) \geq 0, \: &\phi_1'(b) \leq 0,
+    \end{align*}
+    which leads to a contradiction.
+  \item This follows from part (c) by replacing $\phi_1$ with $-\phi_1$ or
+    $\phi_2$ with $-\phi_2$ where necessary.
+\end{enumerate}
 
-\paragraph{(c)} Finally, use Problem 13-26 to show that
-$\lim_{\lambda \rightarrow \infty} \int_a^b f(x)\sin \lambda x \,\mathrm{d}x =
-0$ for any function $f$ which is integrable on $[a, b]$. This result, like
-Problem 12, plays an important role in the theory of Fourier series; it is
-known as the Riemann-Lebesgue Lemma.
-
-\paragraph{Solution:} From Problem 13-26, for any $\epsilon > 0$ there is a
-step function $s \leq f$ with $\int_a^b (f - s) < \epsilon$. Now
-\begin{align*}
-  \left|\int_a^b f(x)\sin \lambda x \,\mathrm{d}x - \int_a^b s(x)\sin \lambda x
-  \,\mathrm{d}x\right|
-    &= \left|\int_a^b [f(x) - s(x)]\sin \lambda x \,\mathrm{d}x\right| \\
-    &\leq \int_a^b [f(x) - s(x)] \cdot |\sin \lambda x| \,\mathrm{d}x \\
-    &\leq \int_a^b [f(x) - s(x)] \,\mathrm{d}x < \epsilon.
-\end{align*} With part (b), we have shown that \begin{equation*}
-  \lim_{\lambda \rightarrow \infty} \left|\int_a^b f(x)\sin \lambda x
-  \,\mathrm{d}x\right| < \epsilon \text{ for any } \epsilon > 0,
-\end{equation*} and so the limit $\lim_{\lambda \rightarrow \infty} \int_a^b
-f(x)\sin \lambda x \,\mathrm{d}x = 0$.
-
-\paragraph{Problem 15-28 (abridged).} This problem gives a treatment of the
-trigonometric functions in terms of length, and uses Problem 13-25. Let $f(x) =
-\sqrt{1 - x^2}$ for $-1 \leq x \leq 1$. Define $\mathcal{L}(x)$ to be the
-length of $f$ on $[x, 1]$.
-
-\paragraph{(a)} Show that \begin{equation*}
-  \mathcal{L}(x) = \int_x^1 \frac{1}{\sqrt{1 - t^2}} \,\mathrm{d}t.
-\end{equation*} (This is actually an improper integral, as defined in Problem
-14-28.)
-
-\paragraph{Solution:} From Problem 13-25, \begin{align*}
-  \mathcal{L}(x)
-    &= \int_x^1 \sqrt{1 + f'(t)^2} \,\mathrm{d}t \\
-    &= \int_x^1 \sqrt{1 +
-  \left(\frac{-2t}{2\sqrt{1 - t^2}}\right)^2} \,\mathrm{d}t \\
-    &= \int_x^1 \sqrt{1 + \frac{t^2}{1 - t^2}} \,\mathrm{d}t \\
-    &= \int_x^1 \frac{1}{\sqrt{1 - t^2}} \,\mathrm{d}t.
-\end{align*} (A more detailed proof to deal with the indefinite integral should
-be outlined.)
-
-\paragraph{(b)} Show that \begin{equation*}
-  \mathcal{L'}(x) = -\frac{1}{\sqrt{1 - x^2}} \text{ for } -1 < x < 1.
-\end{equation*}
-
-\paragraph{Solution:} Rewriting \begin{equation*}
-  \mathcal{L}(x) = \int_1^x \frac{-1}{\sqrt{1 - t^2}} \,\mathrm{d}t
-\end{equation*} it is clear by the Fundamental Theorem of Calculus that
-\begin{equation*}
-  \mathcal{L'}(x) = -\frac{1}{\sqrt{1 - x^2}} \text{ for } -1 < x < 1.
-\end{equation*}
-
-\paragraph{(c)} Define $\pi$ as $\mathcal{L}(-1)$. For $0 \leq x \leq \pi$,
-define $\cos x$ by $\mathcal{L}(\cos x) = x$, and define $\sin x = \sqrt{1 -
-\cos^2 x}$. Prove that $\cos'(x) = -\sin x$ and $\sin'(x) = \cos x$ for $0 < x
-< \pi$.
-
-\paragraph{Solution:} By the definition, $\cos = \mathcal{L}^{-1}$, so
-\begin{align*}
-  \cos'(x)
-  &= (\mathcal{L}^{-1})'(x) = \frac{1}{\mathcal{L}'(\mathcal{L}^{-1}(x))} \\
-  &= -\frac{1}{\frac{1}{\sqrt{1 - \cos^2 x}}} = -\sin x.
-\end{align*} The proof for $\sin' x$ is the same as in the text.
-
-\paragraph{Problem 15-30 (abridged).} If we are willing to assume that certain
-differential equations have solutions, another approach to the trigonometric
-functions is possible. Suppose, in particular, that there is some function
-$y_0$ which is not always 0 and which satisfies $y_0'' + y_0 = 0$.
-
-\paragraph{(a)} Prove that $y_0^2 + (y_0')^2$ is constant, and conclude that
-either $y_0(0) \neq 0$ or $y_0'(0) \neq 0$.
-
-\paragraph{Solution:} \begin{equation*}
-  (y_0^2 + (y_0')^2)' = 2y_0y_0' + 2y_0'y_0'' = 2y_0'(y_0'' + y_0) = 0,
-\end{equation*} so $y_0^2 + (y_0')^2$ must be equal to some constant $c$. But
-$y_0$ is not always 0, and so $y_0(x)^2 + y_0'(x)^2 = c \neq 0$ for all $x$.
-It follows that either $y_0(0) \neq 0$ or $y_0'(0) \neq 0$.
-
-\paragraph{(b)} Prove that there is a function $s$ satisfying $s'' + s = 0$ and
-$s(0) = 0$ and $s'(0) = 1$. Hint: Try $s$ of the form $ay_0 + by_0'$.
-
-\paragraph{Solution:} Any function $s = ay_0 + by_0'$ satisfies $s'' + s = 0$.
-Hence, it suffices to choose $a$ and $b$ such that:
-\begin{align*}
-  ay_0(0) + by_0'(0) &= 0, \\
-  ay_0'(0) - by_0(0) &= 1.
-\end{align*} This is always possible, since from part (a), either $y_0(0) \neq
-0$ or $y_0'(0) \neq 0$.
-
-If we define $\sin = s$ and $\cos = s'$, then almost all facts about
-trigonometric functions become trivial. There is one point which requires work,
-however --- producing the number $\pi$. This is most easily done using an
-exercise from the Appendix to Chapter 11:
-
-\paragraph{(c)} Use Problem 7 of the Appendix to Chapter 11 to prove that $\cos
-x$ cannot be positive for all $x > 0$. It follows that there is a smallest $x_0
-> 0$ with $\cos x_0 = 0$, and we can define $\pi = 2x_0$.
-
-\paragraph{Solution:} Suppose that $\cos x > 0$ for all $x \geq 0$. Then, as
-$\cos'(0) = -\sin 0 = 0$, by Problem 7 of the Appendix to Chapter 11,
-$\cos''(x) = 0$ for some $x > 0$. But $\cos'' = -\cos$, implying that $\cos
-x = 0$ for some $x > 0$ which is a contradiction.
-
-\paragraph{(d)} Prove that $\sin \pi/2 = 1$. (Since $\sin^2 + \cos^2 = 1$, we
-have $\sin \pi/2 = \pm 1$; the problem is to decide why $\sin \pi/2$ is
-positive.)
-
-\paragraph{Solution:} Suppose $\cos x > 0$ for $0 < x < x_0 = \pi/2$, the
-function $\sin$ is increasing on $[0, \pi/2]$ (as $\sin' = \cos$). Since
-$\sin 0 = 0$, it follows that $\sin \pi/2 > 0$, so $\sin \pi/2 = 1$.
-
-\paragraph{(e)} Find $\cos \pi$, $\sin \pi$, $\cos 2\pi$, and $\sin 2\pi$.
-(Naturally you may use any addition formulas, since these can be derived once
-we know that $\sin' = \cos$ and $\cos' = -\sin$.)
-
-\paragraph{Solution:} \begin{align*}
-  \cos \pi &= \cos(\pi/2 + \pi/2) = \cos^2 \pi/2 - \sin^2 \pi/2 = 0 - 1 = -1,
-  \\
-  \sin \pi &= \sin(\pi/2 + \pi/2) = 2\sin \pi/2 \cos \pi/2 = 0, \\
-  \cos 2\pi &= \cos(\pi + \pi) = \cos^2 \pi - \sin^2 \pi = 1 - 0 = 1, \\
-  \sin 2\pi &= \sin(\pi + \pi) = 2\sin \pi \cos \pi = 0. \\
-\end{align*}
-
-\paragraph{(f)} Prove that $\cos$ and $\sin$ are periodic with period $2\pi$.
-
-\paragraph{Solution:} \begin{align*}
-  \cos(x + 2\pi) &= \cos x \cos 2\pi - \sin x \sin 2\pi = \cos x, \\
-  \sin(x + 2\pi) &= \sin x \cos 2\pi + \cos x \sin 2\pi = \sin x.
-\end{align*}
-
-\paragraph{Problem 16-32 (abridged).} Suppose that $\phi_1$ and $\phi_2$
-satisfy \begin{align*}
-  \phi_1'' + g_1\phi_1 &= 0, \\
-  \phi_2'' + g_2\phi_2 &= 0,
-\end{align*} and that $g_2 > g_1$.
-
-\paragraph{(a)} Show that \begin{equation*}
-  \phi_1''\phi_2 - \phi_2''\phi_1 - (g_2 - g_1)\phi_1\phi_2 = 0.
-\end{equation*}
-
-\paragraph{Solution:} \begin{align*}
-  \phi_1''\phi_2 - \phi_2''\phi_1 - (g_2 - g_1)\phi_1\phi_2
-  &= (-g_1\phi_1)\phi_2 - (-g_2\phi_2)\phi_1
-    - (g_2\phi_2)\phi_1 + (g_1\phi_1)\phi_2 \\
-  &= g_1(-\phi_1\phi_2 + \phi_1\phi_2) + g_2(\phi_2\phi_1 - \phi_2\phi_1) \\
-  &= 0.
-\end{align*}
-
-\paragraph{(b)} Show that if $\phi_1(x) > 0$ and $\phi_2(x) > 0$ for all $x$ in
-$(a, b)$, then \begin{equation*}
-  \int_a^b [\phi_1''\phi_2 - \phi_2''\phi_1] > 0,
-\end{equation*} and conclude that \begin{equation*}
-  [\phi_1'(b)\phi_2(b) - \phi_1'(a)\phi_2(a)]
-  + [\phi_1(b)\phi_2'(b) - \phi_1(a)\phi_2'(a)] > 0.
-\end{equation*}
-
-\paragraph{Solution:} From part (a), \begin{equation*}
-  \int_a^b [\phi_1''\phi_2 - \phi_2''\phi_1]
-  = \int_a^b (g_2 - g_1)\phi_1\phi_2.
-\end{equation*} Since $\phi_1(x) > 0$, $\phi_2(x) > 0$ for all $x$ in $(a, b)$,
-$(g_2 - g_1)\phi_1\phi_2 > 0$ for all $x$ and the integral must be positive for
-$a < b$. Note too that \begin{align*}
-  (\phi_1'\phi_2)' &= \phi_1''\phi_2 + \phi_1'\phi_2', \\
-  (\phi_1\phi_2')' &= \phi_2''\phi_1 + \phi_1'\phi_2',
-\end{align*} which suggests that \begin{align*}
-  \int_a^b [\phi_1''\phi_2 - \phi_2''\phi_1]
-  &= \int_a^b [\phi_1''\phi_2 + \phi_1'\phi_2']
-    - \int_a^b [\phi_2''\phi_1 + \phi_1'\phi_2'] \\
-  &= [\phi_1'(b)\phi_2(b) - \phi_1'(a)\phi_2(a)]
-    + [\phi_1(b)\phi_2'(b) - \phi_1(a)\phi_2'(a)]
-\end{align*} is positive.
-
-\paragraph{(c)} Show that in this case we cannot have $\phi_1(a) = \phi_1(b) =
-0$.
-
-\paragraph{Solution:} From part (b), with $\phi_1(a) = \phi_1(b) = 0$, we have
-\begin{equation*}
-  \phi_1'(b)\phi_2(b) - \phi_1'(a)\phi_2(a) > 0.
-\end{equation*} But clearly \begin{align*}
-  \phi_2(a) \geq 0,  \: &\phi_2(b) \geq 0, \\
-  \phi_1'(a) \geq 0, \: &\phi_1'(b) \leq 0,
-\end{align*} which leads to a contradiction.
-
-\paragraph{(d)} Show that the equations $\phi_1(a) = \phi_1(b) = 0$ are also
-imposible if $\phi_1 > 0$, $\phi_2 > 0$, or $\phi_1 < 0$, $\phi_2 > 0$ or
-$\phi_1 < 0$, $\phi_2 < 0$ on $(a, b)$.
-
-\paragraph{Solution:} This follows from part (c) by replacing $\phi_1$ with
-$-\phi_1$ or $\phi_2$ with $-\phi_2$ where necessary.
-
-\paragraph{} The net result of this problem may be stated as follows: if $a$
-and $b$ are consecutive zeros of $\phi_1$, then $\phi_2$ must have a zero
-somewhere between $a$ and $b$. This result, in a slightly more general form, is
-known as the Sturm Comparison Theorem. As a particular example, any solution of
-the differential equation \begin{equation*}
+The net result of this problem may be stated as follows: if $a$ and $b$ are
+consecutive zeros of $\phi_1$, then $\phi_2$ must have a zero somewhere between
+$a$ and $b$. This result, in a slightly more general form, is known as the
+Sturm Comparison Theorem. As a particular example, any solution of the
+differential equation \[
   y'' + (x + 1)y = 0
-\end{equation*} must have zeros on the positive horizontal axis which are
-within $\pi$ of each other.
+\] must have zeros on the positive horizontal axis which are within $\pi$ of
+each other.
 
 \end{document}
 

@@ -23,7 +23,8 @@ which can be obtained by solving \emph{Schr\"{o}dinger's equation}:
 
 Born's \emph{statistical interpretation} of the wave function states the
 probability of finding the particle between $a$ and $b$ at time $t$ is \[
-\int_a^b |\Psi(x, t)|^2 \,dx. \] It follows that the integral of $|\Psi|^2$
+  \int_a^b |\Psi(x, t)|^2 \,dx.
+\] It follows that the integral of $|\Psi|^2$
 must be 1, i.e. the particle must be somewhere:
 \begin{equation} \label{eq:sch-prob}
   \int_{-\infty}^{+\infty} |\Psi(x, t)|^2 \,dx = 1.
@@ -100,8 +101,9 @@ to normalise the wave function.
 
 \paragraph{Problem 1.5}
 \begin{enumerate}[(a)]
-  \item Since \[ |\Psi(x, t)|^2 = |A|^2 e^{-2 \lambda |x|}, \] the integral
-    evaluates to
+  \item Since \[
+      |\Psi(x, t)|^2 = |A|^2 e^{-2 \lambda |x|},
+    \] the integral evaluates to
     \begin{align*}
       \int_{-\infty}^{+\infty} |\Psi(x, t)|^2 \,dx
       &= |A|^2 \left[
@@ -247,8 +249,9 @@ respectively.
 
 \paragraph{Problem 1.9}
 \begin{enumerate}[(a)]
-  \item Since \[ \Psi(x, t) = A e^{-a(mx^2/\hbar)} e^{-iat}, \] the integral
-    evaluates to
+  \item Since \[
+      \Psi(x, t) = A e^{-a(mx^2/\hbar)} e^{-iat},
+    \] the integral evaluates to
     \begin{align*}
       \int_{-\infty}^{+\infty} |\Psi(x, t)|^2 \,dx
       &= |A|^2 \int_{-\infty}^{+\infty} e^{-2a(mx^2/\hbar)} \,dx \\
@@ -273,7 +276,9 @@ respectively.
       i\hbar(-ia\Psi) = \frac{-\hbar^2}{2m} \cdot \left[
         -\frac{2ma}{\hbar} \Psi \left( 1 - \frac{2ma}{\hbar} x^2 \right)
       \right] + V\Psi
-    \] and finally resolves to \[ V = 2ma^2x^2. \]
+    \] and finally resolves to \[
+      V = 2ma^2x^2.
+    \]
   \item
     \begin{gather*}
       \langle x \rangle = \int_{-\infty}^{+\infty} |\Psi|^2x \,dx = 0. \\
@@ -290,8 +295,10 @@ respectively.
       \sigma_x &= \frac{1}{2}\sqrt{\frac{\hbar}{ma}}, \\
       \sigma_p &= \sqrt{ma\hbar},
     \end{align*}
-    so \[ \sigma_x \sigma_p = \frac{\hbar}{2} \] which is consistent with the
-    uncertainty principle, and in fact takes on the minimum possible value.
+    so \[
+      \sigma_x \sigma_p = \frac{\hbar}{2}
+    \] which is consistent with the uncertainty principle, and in fact takes on
+    the minimum possible value.
 \end{enumerate}
 
 \end{document}
