@@ -1,0 +1,119 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+
+\title{Week 8: Strings and Tries}
+\maketitle
+
+\section{Bitstrings}
+
+\subsection{Bitstrings without long runs of 0s}
+
+We define the combinatorial class $B_p$, the class of bitstrings with no $0^p$,
+as: \[
+  B_p = Z_{< p}(E + Z_1 B_p),
+\] which has a corresponding OGF \[
+  B_p(z) = (1 + z + \cdots + z^{p - 1})(1 + zB_p(z))
+  = \frac{1 - z^p}{1 - 2z + z^{p + 1}}.
+\] leading to the coefficients $[z^N]B_k(z) \sim c_k \beta_k^N$ where $\beta_k$
+is the dominant root of $1 - 2z + z^k$. It can be shown that the expected
+position of the end of the first $0^p$ sequence is $B_p(1/2) = 2^{p + 1} - 2$.
+
+\subsection{Autocorrelation}
+
+Given a binary pattern $p$ and two combinatorial classes $S_p$ and $T_p$, the
+former the class of bitstrings that do not contain $p$, and the latter the
+class of bitstrings that end in $p$ and have no other occurence of $p$, \[
+  S_p + T_p = E + S_p \times \{Z_0 + Z_1\}
+\] Every pattern has an autocorrelation polynomial, constructed by sliding the
+pattern to the left over itself, and including a term $z^{|p| - i}$ for each
+match of $i$ trailing bits (e.g. the pattern $101001010$ has an autocorrelation
+polynomial $C_{101001010}(z) = 1 + z^5 + z^7$).
+
+For every 1-bit in the autocorrelation of any string in $T_p$, adding a "tail"
+forms a string in $S_p$ followed by the pattern $p$. Hence, \[
+  S_p \times \{p\} = T_p \times \sum_{c_i \neq 0} \{t_i\}.
+\]
+
+From the two constructions of $S_p$ and $T_p$, we obtain the two OGFs
+\begin{gather*}
+  S_p(z) + T_p(z) = 1 + 2zS_p(z), \\
+  S_p(z)z^{|p|} = T_p(z)c_p(z),
+\end{gather*} which leads to \[
+  S_p(z) = \frac{c_p(z)}{z^p + (1 - 2z)c_p(z)}.
+\] leading to the coefficients $[z^N]S_p(z) \sim c_p \beta_p^N$ where $\beta_p$
+is the dominant root of $z^p + (1 - 2z)c_p(z)$.
+
+\section{Regular Expressions}
+
+Let $A$ and $B$ be unambiguous REs with OGFs $A(z)$ and $B(z)$. If $A + B$,
+$AB$ and $A^*$ are also unambiguous, then
+\begin{gather*}
+  A(z) + B(z) \text{ enumerates } A + B \\
+  A(z)B(z) \text{ enumerates } AB \\
+  \frac{1}{1 - A(z)} \text{ enumerates } A^*.
+\end{gather*}
+
+\begin{corollary}
+  OGFs that enumerate regular languages are rational.
+\end{corollary}
+\begin{proof}
+  \begin{enumerate}
+    \item There exists a FSA for the language.
+    \item \emph{Kleene's theorem} gives an unambiguous RE for the language
+      defined by any FSA.
+  \end{enumerate}
+\end{proof}
+
+\section{Context-free Languages}
+
+Let $\langle A \rangle$ and $\langle B \rangle$ be nonterminals in an
+unambiguous CFG with OGFs $A(z)$ and $B(z)$. If $\langle A \rangle | \langle B
+\rangle$ and $\langle A \rangle \langle B \rangle$ are also unambiguous, then
+\begin{gather*}
+  A(z) + B(z) \text{ enumerates } \langle A \rangle | \langle B \rangle \\
+  A(z)B(z) \text{ enumerates } \langle A \rangle \langle B \rangle \\
+\end{gather*}
+
+\begin{corollary}
+  OGFs that enumerate unambiguous CF languages are algebraic.
+\end{corollary}
+\begin{proof}
+  "Gr\"{o}bner basis" elimination -- see text.
+\end{proof}
+
+\section{Tries}
+
+The probability that, with $N$ random strings, $k$ of them would start with a
+zero bit is \[
+  \frac{1}{2^N}\binom{N}{k};
+\] this leads to the recurrence relation for the total path length of the $N$
+external nodes of a trie, \[
+  C_N = N + \frac{1}{2^N}\sum_k \binom{N}{k}(C_k + C_{N - k})
+\] for $N > 1$ with $C_0 = C_1 = 0$. The corresponding EGF is
+\begin{align*}
+  C(z)
+  &= ze^z - z + 2e^{z/2}C(z/2)
+  &&\left(C(z) = \sum_{N \geq 0} C_N\frac{z^N}{N!}\right)
+\end{align*} which iterates to give \[
+  C(z) = z \sum_{j \geq 0} \left(e^z - e^{(1 - 2^{-j})z}\right)
+\] Hence,
+\begin{align*}
+  C_N
+  &= N![z^N]C(z) \\
+  &= N\sum_{j \geq 0} \left(
+    1 - \left(1 - \frac{1}{2^j}\right)^{N - 1}
+  \right) \\
+  &\sim N\sum_{j \geq 0} \left(1 - e^{-N/2}\right) \sim N \lg N
+\end{align*}
+(The proof of the last line is omitted. It relies on the isolation of the
+periodic term in the sum.)
+
+\end{document}
+
