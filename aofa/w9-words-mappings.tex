@@ -1,0 +1,113 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+
+\title{Week 9: Words and Mappings}
+\maketitle
+
+\section{Words}
+
+A \textbf{word} is a sequence of $M$ urns holding $N$ objects in total. Let
+$W_M$ be the class of $M$-sequences of words. Then,
+\begin{gather*}
+  W_M = \mathrm{SEQ}_M(\mathrm{SET}(Z)) \\
+  W_M(z) = (e^z)^M = e^{Mz} \\
+  N![z^N]W_M(z) = M^N
+\end{gather*}
+
+There is a natural correspondence between a \textbf{string}, a sequence of $N$
+characters (from an $M$-char alphabet), and a \textbf{word}, a sequence of $M$
+labelled sets (having $N$ objects in total). The former studies the sequence
+of characters, while the latter studies the sets of indices.
+
+\subsection{Birthday Problem}
+
+A birthday sequence is a word where no set has more than one element. Let $B_M$
+be the class of birthday sequences of length $M$.
+\begin{gather*}
+  B_M = \mathrm{SEQ}_M(E + Z) \\
+  B_M(z) = (1 + z)^M \\
+  \begin{aligned}
+    N![z^N]B_M(z)
+    &= N!\binom{M}{N} = \frac{M!}{(M - N)!} \\
+    &= M(M - 1)(M - 2)\ldots(M - N + 1)
+  \end{aligned}
+\end{gather*}
+
+The probability that no character is repeated in a random $M$-word of length
+$N$ is \[
+  \frac{M!}{M^N(M - N)!},
+\] and the expected position of the first repeat is \[
+  \sum_{0 \leq N \leq M} \frac{M!}{M^N(M - N)!} = 1 + Q(M) \sim \sqrt{\pi M/2}
+\] where $Q(M)$ is the Ramanujan Q-function.
+
+\subsection{Coupon Collector Problem}
+
+A coupon collector sequence is an $M$-word with no empty set. Let $R_M$ be the
+class of coupon collector sequences of length $M$.
+\begin{gather*}
+  R_M = \mathrm{SEQ}_M(\mathrm{SET}_{> 0}(Z)) \\
+  R_M(z) = (e^z - 1)^M \\
+  \begin{aligned}
+    N![z^N]R_M(z)
+    &= N![z^N] \sum_j \binom{M}{j} (-1)^j e^{(M - j)z} \\
+    &= \sum_j \binom{M}{j} (-1)^j (M - j)^N \sim M^N.
+  \end{aligned}
+\end{gather*}
+
+The probability that a random $M$-word of length $N$ is a coupon collector
+sequence is \[
+  \frac{1}{M^N} \sum_j \binom{M}{j} (-1)^j (M - j)^N
+  = \sum_j \binom{M}{j} (-1)^j \left(1 - \frac{j}{M}\right)^N.
+\] Hence, the probability that a collection in a random $M$-word completes in
+$> N$ chars is \[
+  1 - \sum_j \binom{M}{j} (-1)^j \left(1 - \frac{j}{M}\right)^N
+\] and the average number of chars to complete a collection in a random
+$M$-word is \[
+  \sum_{N \geq 0} \left(
+    1 - \sum_j \binom{M}{j} (-1)^j \left(1 - \frac{j}{M}\right)^N
+  \right)
+  = -M\sum_{j \geq 1} \binom{M}{j} \frac{(-1)^j}{j}
+  = MH_M
+\]
+
+An alternative analysis considers $W_{Mk}$, the class of $M$-words with $k$
+different letters and the last letter appearing only once. From the OGF \[
+  W_{Mk}(z) = \sum_{N \geq 0} W_{MNk}z^N
+\] a PGF can be constructed: \[
+  W_{Mk}(z/M) = \sum_{N \geq 0} W_{MNk}\frac{z^N}{M^N}.
+\] The mean wait time for $k$ coupons is \[
+  w_{Mk} \equiv \left.W_{Mk}'(z/M)\right|_{z = 1}
+  = \sum_{N \geq 0} N\frac{W_{MNk}}{M^N}z^N.
+\] With the construction \[
+  W_{Mk} = (k - 1)Z \times W_{Mk} + (M - k + 1)Z \times W_{M(k - 1)}
+\] and some tedious algebra, it can be shown that $w_{Mk} = M(H_M - H_{M - k})$
+with $W_{MM} = MH_M$.
+
+\subsection{Surjection}
+
+An $M$-surjection is an $M$-word with no empty set. Let $R_M$ be the class of
+$M$-surjections.
+
+\begin{gather*}
+  R_M = \mathrm{SEQ}_M(\mathrm{SET}_{> 0}(M)) \\
+  R_M(z) = (e^z - 1)^M \\
+  R_{MN} \sim M^N
+\end{gather*}
+
+A surjection is a word that is an $M$-surjection for some $M$.
+
+\begin{gather*}
+  R = \mathrm{SEQ}(\mathrm{SET}_{> 0}(M)) \\
+  R(z) = \frac{1}{1 - (e^z - 1)} = \frac{1}{2 - e^z} \\
+  N![z^N]R(z) \sim \frac{N!}{2(\ln 2)^{N + 1}}
+\end{gather*}
+
+\end{document}
+
