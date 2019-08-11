@@ -6,8 +6,13 @@ This repository is meant to be a collection of various notes and solutions to ar
 # Books
 
 * `calculus`: Calculus, 3rd edition by Michael Spivak.
+
+Notes for Chapter 4, "Graphs" have been omitted.
+
 * `intro-to-qm`: Introduction to Quantum Mechanics, 2nd edition by David
 Jeffrey Griffiths.
+* `ireland-rosen`: A Classical Introduction to Modern Number Theory, 2nd
+edition by Kenneth Ireland and Michael Rosen.
 
 # Courses
 
