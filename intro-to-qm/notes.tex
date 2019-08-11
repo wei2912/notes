@@ -4,7 +4,6 @@
 \usepackage[shortlabels]{enumitem}
 
 \newtheorem{theorem}{Theorem}
-\newtheorem{lemma}{Lemma}
 \newtheorem*{lemma*}{Lemma}
 
 \title{Notes to ``Introduction to Quantum Mechanics'', 2nd edition (Griffiths)}
@@ -163,6 +162,668 @@ which leads to
 \end{equation}
 where $\sigma_x$ and $\sigma_p$ are the standard deviation in $x$ and $p$
 respectively.
+
+\section{Time-independent Schr\"{o}dinger Equation}
+
+\subsection{Stationary States}
+
+Consider solutions to the wave function $\Psi(x, t)$ which are simple products,
+\begin{equation} \label{eq:sch-time-ind-1}
+  \Psi(x, t) = \psi(x)\phi(t),
+\end{equation} where $\psi$ is a function of $x$ alone, and $\phi$ is a
+function of $t$ alone. For separable solutions we have \[
+  \frac{\partial \Psi}{\partial t} = \psi \frac{d\phi}{dt}, \quad
+  \frac{\partial^2 \Psi}{\partial x^2} = \frac{d^2\psi}{dx^2} \phi;
+\] and the Schr\"{o}dinger equation reads \[
+  i\hbar\psi \frac{d\phi}{dt} = -\frac{\hbar^2}{2m} \frac{d^2\psi}{dt^2} \phi
+  + V\psi\phi.
+\] Dividing through by $\psi\phi$,
+\begin{equation}
+  i\hbar \frac{1}{\phi} \frac{d\phi}{dt}
+  = -\frac{h^2}{2m} \frac{1}{\psi} \frac{d^2\psi}{dx^2} + V.
+\end{equation}
+Since the left side is a function of $t$ alone, while the right side is a
+function of $x$ alone, both sides must be constant. With \[
+  E = i\hbar \frac{1}{\phi} \frac{d\phi}{dt}, \quad
+  E = -\frac{h^2}{2m} \frac{1}{\psi} \frac{d^2\psi}{dx^2} + V,
+\] we get
+\begin{equation} \label{eq:sch-time-ind-2}
+  \frac{d\phi}{dt} = \frac{-iE}{\hbar} \phi
+\end{equation}
+and
+\begin{equation} \label{eq:sch-time-ind}
+  \boxed{
+    -\frac{\hbar^2}{2m} \frac{d^2\psi}{dx^2} + V\psi = E\psi.
+  }
+\end{equation}
+The solution to equation \eqref{eq:sch-time-ind-2} is
+\begin{equation} \label{eq:sch-time-ind-psi}
+  \phi(t) = e^{-iEt/\hbar}.
+\end{equation}
+Equation \eqref{eq:sch-time-ind} is called the \textbf{time-independent
+Schr\"{o}dinger equation}.
+
+\begin{lemma*}
+  Separable solutions to the Schr\"{o}dinger equation are \emph{stationary
+  states}.
+\end{lemma*}
+\begin{proof}
+  While the wave function \[
+    \Psi(x, t) = \phi(x)e^{-iEt/\hbar}
+  \] depends on $t$, the \emph{probability density}, \[
+    |\Psi(x, t)|^2
+    = \Psi^* \Psi
+    = \psi^* e^{+iEt/\hbar} \psi e^{-iEt/\hbar}
+    = \psi^* \psi
+    = |\psi(x)|^2,
+  \] does not. The equation for any quantity expressed in terms of position and
+  momentum reduces to
+  \begin{equation} \label{eq:sch-time-ind-qty}
+    \langle Q(x, p) \rangle = \int^{+\infty}_{-\infty}
+      \psi^* Q\left(x, \frac{\hbar}{i}\frac{d}{dx}\right) \psi
+    \,dx
+  \end{equation}
+  In particular, $\langle x \rangle$ is a constant and $\langle p \rangle = 0$.
+\end{proof}
+
+\begin{lemma*}
+  Separable solutions to the Schr\"{o}dinger equation are states of
+  \emph{definite total energy}.
+\end{lemma*}
+\begin{proof}
+  In classical mechanics, the total energy (kinetic plus potential) is called
+  the \textbf{Hamiltonian}: \[
+    H(x, p) = \frac{p^2}{2m} + V(x).
+  \] The corresponding Hamiltonian operator $\hat{H}$, obtained by the
+  canonical substitution $p \rightarrow (\hbar/i)(\partial/\partial x)$, is
+  therefore
+  \begin{equation} \label{eq:ham-op}
+    \hat{H} = -\frac{\hbar^2}{2m} \frac{\partial^2}{\partial x^2} + V(x).
+  \end{equation}
+  Thus, the time-independent Schr\"{o}dinger equation \eqref{eq:sch-time-ind}
+  can be written
+  \begin{equation} \label{eq:sch-time-ind-ham-1}
+    \hat{H}\psi = E\psi
+  \end{equation}
+  and the expectation value of the total energy is
+  \begin{equation} \label{eq:sch-time-ind-ham}
+    \langle H \rangle
+    = \int_{-\infty}^{+\infty} \psi^* \hat{H} \psi \,dx
+    = E\int_{-\infty}^{+\infty} |\psi|^2 \,dx
+    = E\int_{-\infty}^{+\infty} |\Psi|^2 \,dx
+    = E.
+  \end{equation}
+  Moreover, \[
+    \langle H^2 \rangle
+    = \int_{-\infty}^{+\infty} \psi^* \hat{H}^2 \psi \,dx
+    = E^2,
+  \] and hence
+  \begin{equation} \label{eq:sch-time-ind-ham-var}
+    \sigma_H^2 = \langle H^2 \rangle - \langle H \rangle^2 = E^2 - E^2 = 0.
+  \end{equation}
+  So, a separable solution has the property that \emph{every measurement of the
+  total energy is certain to return the value $E$}.
+\end{proof}
+
+\begin{lemma*}
+  The general solution to the Schr\"{o}dinger equation is a \emph{linear
+  combination} of separable solutions.
+\end{lemma*}
+\begin{proof}
+  (Omitted from this section; further sections will elaborate on concepts
+  required to prove this lemma.)
+\end{proof}
+
+There are a few other useful lemmas for solutions to the time-independent
+Schr\"{o}dinger equation.
+
+\begin{lemma*}[cf. Problem 2.1(a)]
+  For normalizable solutions, the separation constant $E$ must be real.
+\end{lemma*}
+\begin{proof}
+  Let $E = E_0 + i\Gamma$ for real $E_0$, $\Gamma$. Then \[
+    \Psi(x, t)
+    = \psi(x)e^{-iEt/\hbar}
+    = e^{\Gamma t/\hbar} \psi(x) e^{-iE_0t/\hbar},
+  \] so \[
+    \int_{-\infty}^{+\infty} |\Psi(x, t)|^2 \,dx = e^{2\Gamma t/\hbar}
+  \] and $\Gamma = 0$ for the wave function to be normalizable, i.e.
+  $e^{2\Gamma t/\hbar} = 1$. Hence, $E$ must be real.
+\end{proof}
+
+\begin{lemma*}[cf. Problem 2.1(b)]
+  The time-independent wave function $\psi(x)$ can always be taken to be real
+  (unlike $\Psi(x, t)$, which is necessarily complex).
+\end{lemma*}
+\begin{proof}
+  For a given $E$, if $\psi(x)$ satisfies the time-independent Schr\"{o}dinger
+  equation then so does $\psi^*(x)$. Similarly, $\psi + \psi^*$ and
+  $i(\psi - \psi^*)$ are also solutions. As both solutions are real, $\psi$ can
+  be taken to be real.
+\end{proof}
+
+\begin{lemma*}[cf. Problem 2.1(c)]
+  If $V(x)$ is an even function then $\psi(x)$ can always be taken to be either
+  even or odd.
+\end{lemma*}
+\begin{proof}
+  If $V$ is even, then replacing $x$ with $-x$ in the time-independent
+  Schr\"{o}dinger equation would yield \[
+    -\frac{\hbar^2}{2m} \frac{d^2\psi(-x)}{dx^2} + V(x)\psi(-x) = E\psi(-x)
+  \] which proves that $\psi(-x)$ satisfies the same equation as $\psi(x)$.
+  Hence \[ \psi(x) \pm \psi(-x) \] forms an even/odd solution to the equation,
+  and $\psi$ can be taken to be even or odd.
+\end{proof}
+
+\begin{lemma*}[cf. Problem 2.2]
+  Show that $E$ must exceed the minimum value of $V(x)$, for every normalizable
+  solution to the time-independent Schr\"{o}dinger equation.
+\end{lemma*}
+\begin{proof}
+  From \eqref{eq:sch-time-ind}, \[
+    \frac{d^2\psi}{dx^2} = \frac{2m}{\hbar^2}[V(x) - E]\psi,
+  \] and if $E < V_\text{min}$ then $\psi$ and $\frac{d^2\psi}{dx^2}$ will
+  always have the same sign. From elementary calculus, $\psi$ cannot tend
+  towards 0 as $x \to \pm\infty$, and so $\psi$ is not normalizable.
+
+  The classical analog is that a particle at rest at the bottom of a potential
+  well has the lowest possible energy.
+\end{proof}
+
+\subsection{Infinite Square Well}
+
+Suppose
+\begin{equation} \label{eq:inf-sq-well}
+  V(x) =
+  \begin{cases}
+    0, &\text{ if } 0 \leq x \leq a, \\
+    \infty, &\text{ otherwise}.
+  \end{cases}
+\end{equation}
+Outside the well, $\psi(x) = 0$; inside the well, where $V = 0$, the
+time-independent Schr\"{o}dinger equation can be rewritten into
+\begin{equation} \label{eq:sim-har-osc}
+  \frac{d^2\psi}{dx^2} = -k^2\psi,
+  \text{ where } k \equiv \frac{\sqrt{2mE}}{\hbar}
+\end{equation}
+(with the assumption that $E \geq 0$, since by Problem 2.2 $E < 0$ would not
+work). \eqref{eq:sim-har-osc} is the classical \textbf{simple harmonic
+oscillator equation}; the general solution is
+\begin{equation} \label{eq:sim-har-osc-1}
+  \psi(x) = A \sin kx + B \cos kx,
+\end{equation}
+where $A$ and $B$ are arbitrary constants, fixed by the \emph{boundary
+conditions}. Ordinarily, we assume both $\psi$ and $d\psi/dx$ are continuous,
+so \[
+  \psi(0) = \psi(a) = 0,
+\] to join onto the solution outside the wall, leading to the distinct
+solutions
+\begin{equation} \label{eq:sim-har-osc-2}
+  k_n = \frac{n\pi}{a}, \text{ with } n = 1, 2, 3, \ldots
+\end{equation}
+and these possible values of $E$:
+\begin{equation} \label{eq:sim-har-osc-ene}
+  \boxed{
+    E_n = \frac{\hbar^2k_n^2}{2m} = \frac{n^2\pi^2\hbar^2}{2ma^2}.
+  }
+\end{equation}
+Normalizing, we obtain the solutions
+\begin{equation} \label{eq:sim-har-osc-psi}
+  \boxed{
+    \psi_n(x) = \sqrt{\frac{2}{a}} \sin\left(\frac{n\pi}{a}x\right)
+  }
+\end{equation}
+$\psi_1$, which contains the lowest energy, is called the \textbf{ground
+state}; the other states, whose energies increase in proportion to $n^2$, are
+called \textbf{excited states}.
+
+\begin{lemma*}
+  The states are alternately \emph{even} and \emph{odd} with respect to the
+  center of the well: $\psi_1$ is even, $\psi_2$ is odd, $\psi_3$ is even, and
+  so on.
+\end{lemma*}
+
+\begin{lemma*}
+  As you go up in energy, each successive state has one more \textbf{node}
+  (zero-crossing): $\psi_1$ has none (the end-points don't count), $\psi_2$ has
+  one, $\psi_3$ has two, and so on.
+\end{lemma*}
+
+\begin{lemma*}
+  The states are mutually \textbf{orthogonal}, in the sense that
+  \begin{equation} \label{eq:sim-har-osc-ort}
+    \int_{-\infty}^{+\infty} \psi_m(x)^* \psi_n(x) \,dx = \delta_{mn},
+  \end{equation}
+  where $\delta_{mn}$ is the \textbf{Kronecker delta} defined usually by
+  \begin{equation} \label{eq:kro-del}
+    \delta_{mn} =
+    \begin{cases}
+      0, &\text{ if } m \neq n; \\
+      1, &\text{ if } m = n.
+    \end{cases}
+  \end{equation}
+\end{lemma*}
+
+\begin{lemma*}
+  The states are \textbf{complete}, in the sense that any \emph{other} function
+  $f(x)$ can be expressed as a linear combination of them:
+  \begin{equation} \label{eq:sim-har-osc-comp}
+    f(x)
+    = \sum_{n = 1}^{\infty} c_n\psi_n(x)
+    = \sqrt{\frac{2}{a}} \sum_{n = 1}^{\infty}
+      c_n\sin\left(\frac{n\pi}{a}x\right).
+  \end{equation}
+\end{lemma*}
+\begin{proof}
+  Equation \eqref{eq:sim-har-osc-comp} is the \textbf{Fourier series} of
+  $f(x)$, and the theorem that proves the completeness is called
+  \textbf{Dirichlet's theorem}.
+\end{proof}
+
+The coefficients $c_n$ can be evaluated with \textbf{Fourier's trick}, which
+exploits the orthogonality of $\{\psi_n\}$. Multiplying
+\eqref{eq:sim-har-osc-comp} by $\psi_m(x)^*$ and integrating,
+\begin{equation} \label{eq:sim-har-osc-psi-coeff-1}
+  \int_{-\infty}^{+\infty} \psi_m(x)^* f(x) \,dx
+  = \sum_{n = 1}^{\infty} c_n \int_{-\infty}^{\infty}
+    \psi_m(x)^* \psi_n(x)
+  \,dx
+  = \sum_{n = 1}^{\infty} c_n\delta_{mn}
+  = c_m.
+\end{equation}
+Thus the $n$th coefficient in the expansion of $f(x)$ is
+\begin{equation} \label{eq:sim-har-osc-psi-coeff}
+  \boxed{
+    c_n = \int_{-\infty}^{+\infty} \psi_n(x)^* f(x) \,dx.
+  }
+\end{equation}
+
+Hence, with the general solution to the (time-dependent) Schr\"{o}dinger
+equation as a linear combination of stationary states,
+\begin{equation} \label{eq:sch-eqn-psi}
+  \Psi(x, t) = \sum_{n = 1}^{\infty}
+    c_n\sqrt{\frac{2}{a}} \sin\left(\frac{n\pi}{a}x\right)
+    e^{-i(n^2\pi^2\hbar/2ma^2)t}
+\end{equation}
+Since \[
+  \Psi(x, 0) = \sum_{n = 1}^{\infty} c_n\psi_n(x)
+\] it follows that the coefficients can be derived by Fourier's trick,
+\begin{equation} \label{eq:sch-eqn-psi-coeff}
+  c_n = \sqrt{\frac{2}{a}} \int_0^a
+    \sin\left(\frac{n\pi}{a}x\right) \Psi(x, 0)
+  \,dx
+\end{equation}
+The same process can be used for \emph{any} potential, albeit with different
+forms of $\psi$ and equations for allowed energies.
+
+\subsection{Harmonic Oscillator}
+
+Practically any potential is \emph{approximately} parabolic, in the
+neighbourhood of a local minimum. Formally, if we expand $V(x)$ in a
+\textbf{Taylor series} about the minimum: \[
+  V(x) = V(x_0) + V'(x_0)(x - x_0) + \frac{1}{2}V''(x_0)(x - x_0)^2 + \ldots,
+\] subtract $V(x_0)$ (since a constant can be added to $V(x)$ without changing
+the force), recognise that $V'(x_0) = 0$ (since $x_0$ is a minimum), and drop
+the higher-order terms (which are negligible so long as $(x - x_0)$ stays
+small), we get \[
+  V(x) \approx \frac{1}{2}V''(x_0)(x - x_0)^2
+\] which describes simple harmonic oscillation (about the point $x_0$), with an
+effective spring constant $k = V''(x_0)$.
+
+The quantum problem is to solve the Schr\"{o}dinger equation for the potential
+\begin{equation} \label{eq:har-osc-1}
+  V(x) = \frac{1}{2} m \omega^2 x^2
+\end{equation}
+(eliminating the spring constant by $\omega = \sqrt{k/m}$). It suffices to
+solve the time-independent Schr\"{o}dinger equation:
+\begin{equation} \label{eq:har-osc-2}
+  -\frac{\hbar^2}{2m} \frac{d^2\psi}{dx^2} + \frac{1}{2}m\omega^2x^2\psi
+  = E\psi
+\end{equation}
+
+\subsubsection{Algebraic Method}
+
+First, we rewrite \eqref{eq:har-osc-2} as
+\begin{equation} \label{eq:har-osc-alg-1}
+  \frac{1}{2m}[p^2 + (m \omega x)^2]\psi = E\psi
+\end{equation}
+where $p \equiv (\hbar/i)d/dx$ is the momentum operator. Let
+\begin{equation} \label{eq:har-osc-alg-a}
+  \boxed{
+    a_{\pm} \equiv \frac{1}{\sqrt{2 \hbar m \omega}}(\mp ip + m \omega x)
+  }
+\end{equation}
+
+Consider the product
+\begin{align*}
+  a_{\pm}a_{\mp}
+  &= \frac{1}{2 \hbar m \omega}(\mp ip + m \omega x)(\pm ip + m \omega x) \\
+  &= \frac{1}{2 \hbar m \omega}[p^2 + (m \omega x)^2 \pm im\omega(xp - px)].
+\end{align*}
+The \textbf{commutator} of operators $A$ and $B$ is \[
+  [A, B] \equiv AB - BA.
+\] In this notation, \[
+  a_{\pm}a_{\mp}
+  = \frac{1}{2 \hbar m \omega}[p^2 + (m \omega x)^2]
+  \pm \frac{i}{2\hbar}[x, p].
+\] Rewriting this equation with the \textbf{canonical commutation relation},
+$[x, p] = i\hbar$ (which can be shown easily by evaluating $[x, p]f(x)$ for
+some function $f$), we are able to rewrite \[
+  a_{\pm}a_{\mp} = \frac{1}{\hbar\omega}H \mp \frac{1}{2},
+\] which leads to the Schr\"{o}dinger equation for the harmonic oscillator
+\begin{equation} \label{eq:har-osc-alg}
+  \hbar\omega\left(a_{\pm}a_{\mp} \pm \frac{1}{2}\right)\psi = E\psi
+\end{equation}
+We can now prove that $H(a_{\pm}\psi) = (E \pm \hbar\omega)(a_{\pm}\psi)$.
+Hence, $a_{\pm}$ are called \textbf{ladder operators}, with $a_+$ the
+\textbf{raising operator} and $a_-$ the \textbf{lowering operator}. The ground
+state $\psi_0$ is such that applying the lowering operator to it causes the
+solution to be zero and non-normalizable, i.e. $a_-\psi_0 = 0$. Applying the
+operator and solving for the differential equation, upon normalization we
+obtain the solution
+\begin{equation} \label{eq:har-osc-alg-grd-st}
+  \boxed{
+    \psi_0(x) = \left(\frac{m\omega}{\pi\hbar}\right)^{1/4}
+    e^{-\frac{m\omega}{2\hbar}x^2}
+  }
+\end{equation}
+with corresponding energy level $E_0 = \frac{1}{2}\hbar\omega$. Applying the
+raising operator repeatedly, we obtain
+\begin{equation} \label{eq:har-osc-alg-sta-st-1}
+  \psi_n(x) = A_n(a_+)^n\psi_0(x), \quad
+  \text{with } E_n = \left(n + \frac{1}{2}\right)\hbar\omega
+\end{equation}
+
+We know that $a_{\pm}\psi_n$ is proportional to $\psi_{n \pm 1}$, so let
+\begin{equation} \label{eq:har-osc-alg-sta-st-2}
+  a_+\psi_n = c_n\psi_{n + 1}, \quad a_-\psi_n = d_n\psi_{n - 1}.
+\end{equation}
+First note that one can prove
+\begin{equation} \label{eq:har-osc-alg-sta-st-3}
+  \int_{-\infty}^{\infty} f^*(a_{\pm}g) \,dx
+  = \int_{-\infty}^{\infty} (a_{\mp}f)^*g \,dx
+\end{equation}
+for any functions $f$ and $g$. In particular, \[
+  \int_{-\infty}^{\infty} (a_{\pm}\psi_n)^*(a_{\pm}\psi_n) \,dx
+  = \int_{-\infty}^{\infty} (a_{\mp}a_{\pm}\psi_n)^*\psi_n \,dx
+\] But $a_+a_-\psi_n = n\psi_n$ and $a_-a_+\psi_n = (n + 1)\psi_n$, so $|c_n|^2
+= n + 1$ and $|d_n|^2 = n$. Hence,
+\begin{equation} \label{eq:har-osc-alg-op}
+  \boxed{
+    a_+\psi_n = \sqrt{n + 1}\psi_{n + 1}, \quad
+    a_-\psi_n = \sqrt{n}\psi_{n - 1}
+  }
+\end{equation}
+and so
+\begin{equation} \label{eq:har-osc-alg-sta-st}
+  \boxed{
+    \psi_n = \frac{1}{\sqrt{n!}}(a_+)^n\psi_0, \quad
+    \text{with } E_n = \left(n + \frac{1}{2}\right)\hbar\omega
+  }
+\end{equation}
+As in the case of the stationary square well, the stationary states of the
+harmonic oscillator are \emph{orthogonal}.
+
+\subsubsection{Analytic Method}
+
+Introducing $\xi \equiv \sqrt{m\omega/\hbar}x$ into \eqref{eq:har-osc-2}, we
+can rewrite the equation as
+\begin{equation} \label{eq:har-osc-ana-1}
+  \frac{d^2\psi}{d\xi^2} = (\xi^2 - K)\psi,
+\end{equation} where $K$ is the energy, in units of $(1/2)\hbar\omega$:
+\begin{equation} \label{eq:har-osc-ana-k}
+  K \equiv \frac{2E}{\hbar\omega}.
+\end{equation}
+At very large $\xi$, $\xi^2$ completely dominates over the constant $K$, so in
+this regime
+\begin{equation} \label{eq:har-osc-ana-2}
+  \frac{d^2\psi}{d\xi^2} \approx \xi^2\psi,
+\end{equation}
+which has the approximate solution
+\begin{equation} \label{eq:har-osc-ana-psi-1}
+  \psi(\xi) \approx Ae^{-\xi^2/2} + Be^{\xi^2/2}.
+\end{equation}
+The $B$ term is clearly not normalizable; the physically acceptable solutions,
+then, have the asymptotic form
+\begin{equation} \label{eq:har-osc-ana-psi-2}
+  \psi(\xi) = h(\xi)e^{-\xi^2/2}
+\end{equation}
+Differentiating \eqref{eq:har-osc-ana-psi-2}, the Schr\"{o}dinger equation from
+\eqref{eq:har-osc-ana-1} becomes
+\begin{equation} \label{eq:har-osc-ana-3}
+  \frac{d^2h}{d\xi^2} - 2\xi\frac{dh}{d\xi} + (K - 1)h = 0.
+\end{equation}
+
+We propose to look for solutions to $h$ in the form of power series in $\xi$:
+\begin{align*} \label{eq:har-osc-ana-h-1}
+  h(\xi) &= \sum_{j=0}^{\infty} a_j\xi^j, \\
+  \frac{dh}{d\xi} &= \sum_{j=0}^{\infty} ja_j\xi^{j-1}, \\
+  \frac{d^2h}{d\xi^2} &= \sum_{j=0}^{\infty} (j+1)(j+2)a_{j+2}\xi^j.
+\end{align*}
+Putting these into equation \eqref{eq:har-osc-ana-1},
+\begin{equation} \label{eq:har-osc-ana-4}
+  \sum_{j=0}^{\infty} [(j+1)(j+2)a_{j+2} - 2ja_j + (K - 1)a_j]\xi^j = 0,
+\end{equation}
+and hence that
+\begin{equation} \label{eq:har-osc-ana-a}
+  a_{j+2} = \frac{2j + 1 - K}{(j+1)(j+2)}a_j.
+\end{equation}
+Starting with $a_0$, this formula generates all the even-numbered coefficients:
+\[
+  a_2 = \frac{1 - K}{2}a_0, \quad
+  a_4 = \frac{5 - K}{12}a_2 = \frac{(5 - K)(1 - K)}{24}a_0, \quad
+  \ldots,
+\] and starting with $a_1$, it generates the odd coefficients: \[
+  a_3 = \frac{3 - K}{6}a_1, \quad
+  a_5 = \frac{7 - K}{20}a_3 = \frac{(7 - K)(3 - K)}{120}a_1, \quad
+  \ldots.
+\] We view the complete solution as
+\begin{equation} \label{eq:har-osc-ana-h-2}
+  h(\xi) = h_{\mathrm{even}}(\xi) + h_{\mathrm{odd}}(\xi),
+\end{equation} where \[
+  h_{\mathrm{even}}(\xi) \equiv a_0 + a_2\xi^2 + a_4\xi^4 + \ldots
+\] is an even function of $\xi$, built on $a_0$, and \[
+h_{\mathrm{odd}}(\xi) \equiv a_1\xi + a_3\xi^3 + a_5\xi^5 + \ldots
+\] is an odd function, built on $a_1$. Thus \eqref{eq:har-osc-ana-a} determines
+$h(\xi)$ in terms of two arbitrary constants ($a_0$ and $a_1$). However, not
+all the solutions are normalizable. At very large $j$, the recursion formula
+becomes approximately \[
+  a_{j+2} \approx \frac{2}{j}a_j,
+\] with the approximate solution \[
+  a_j \approx \frac{C}{(j/2)!},
+\] for some constant $C$, and this yields (at large $\xi$) \[
+  h(\xi)
+  \approx C\sum_{j=0}^{\infty} \frac{1}{(j/2)!}\xi^j
+  \approx C\sum_{j=0}^{\infty} \frac{1}{j!}\xi^{2j}
+  \approx Ce^{\xi^2},
+\] leading to $\psi(\xi) \approx Ce^{\xi^2/2}$ which cannot be normalized. For
+normalizable solutions, it is therefore crucial that the power series
+terminate, with some highest $j$ (called $n$) such that the formula yields
+$a_{n+2} = 0$ (truncating either $h_{\mathrm{odd}}$ or $h_{\mathrm{even}}$; the
+other one must be 0 from the start). Hence, \eqref{eq:har-osc-ana-a} requires
+that \[
+  K = 2n + 1
+\] for some non-negative integer $n$, which is to say that the energy must be
+\begin{equation} \label{eq:har-osc-ana-ene}
+  E_n = \left(n + \frac{1}{2}\right)\hbar\omega, \quad
+  \text{for } n = 0, 1, 2, \ldots.
+\end{equation}
+We have returned to the fundamental quantization condition we found
+algebraically previously. For the allowed values of $K$, the recursion formula
+reads
+\begin{equation} \label{eq:har-osc-ana-a-2}
+  a_{j+2} = \frac{-2(n - j)}{(j+1)(j+2)}a_j.
+\end{equation}
+Define $h_n(\xi)$ as the polynomial corresponding to a specific value of $n$;
+apart from the overall factor ($a_0$ or $a_1$) they are called \textbf{Hermite
+polynomials}, $H_n(\xi)$. By tradition, the arbitrary multiplication factor is
+chosen so that the coefficient of the highest power of $\xi$ is $2^n$. With
+this convention, the normalized stationary states for the harmonic oscillator
+are
+\begin{equation} \label{eq:har-osc-ana-sta-st}
+  \boxed{
+    \psi_n(x) = \left(\frac{m\omega}{\pi\hbar}\right)^{1/4}
+    \frac{1}{\sqrt{2^nn!}}H_n(\xi)e^{-\xi^2/2},
+  }
+\end{equation}
+identical to the ones we obtained in \eqref{eq:har-osc-alg-sta-st}.
+
+\subsection{The Free Particle}
+
+The free particle has $V(x) = 0$ everywhere, which leads to the
+time-independent Schr\"{o}dinger equation rewritten as
+\begin{equation} \label{eq:free-par}
+  \frac{d^2\psi}{dx^2} = -k^2\psi,
+  \text{ where } k \equiv \frac{\sqrt{2mE}}{\hbar}.
+\end{equation}
+
+This is similar to the infinite square well in \eqref{eq:sim-har-osc}; however,
+we will write the general solution in exponential form,
+\begin{equation} \label{eq:free-par-1}
+  \psi(x) = Ae^{ikx} + Be^{-ikx}.
+\end{equation}
+Unlike the infinite square well, there are no boundary conditions to restrict
+the possible values of $k$ (and hence of $E$); the free particle can carry
+\emph{any} (positive) energy. Tacking on the standard time dependence,
+$\exp(-iEt/\hbar)$,
+\begin{equation} \label{eq:free-par-2}
+  \Psi(x, t)
+  = Ae^{ik(x - \frac{\hbar k}{2m}t)} + Be^{-ik(x - \frac{\hbar k}{2m}t)}
+\end{equation}
+
+Any function of $(x \pm vt)$ (for some constant $v$) represents a wave of fixed
+profile, travelling in the $\mp x$-direction, at speed $v$. The first term in
+\eqref{eq:free-par-2} represents a wave travelling to the \emph{right}, and the
+second term represents a wave (of the same energy) travelling to the
+\emph{left}. Since they only differ by the \emph{sign} in front of $k$, we
+might as well write
+\begin{equation} \label{eq:free-par-3}
+  \Psi_k(x, t) = Ae^{i(kx - \frac{\hbar k^2}{2m}t)}
+\end{equation}
+and let $k$ run negative to cover the case of waves travelling to the left:
+\begin{equation} \label{eq:free-par-k}
+  k \equiv \pm\frac{\sqrt{2mE}}{\hbar},
+  \text{ with}
+  \begin{cases}
+    k > 0 \implies &\text{travelling to the right}, \\
+    k < 0 \implies &\text{travelling to the left}.
+  \end{cases}
+\end{equation}
+Evidently the "stationary states" of the free particle are propagating waves;
+their wavelength is $\lambda = 2\pi/|k|$, and, according to the de Broghlie
+formula \eqref{eq:de-brog}, they carry momentum $p = \hbar k$.
+
+While the wave function \emph{is not normalizable}, and the separable solutions
+do not represent physically realizable states, they play a mathematical role
+that is entirely independent of their physical interpretation. The general
+solution to the time-independent Schr\"{o}dinger equation is still a linear
+combination of separable solutions (but in the form of an integral over the
+continuous variable $k$, instead of a sum over the discrete index $n$):
+\begin{equation} \label{eq:free-par-psi}
+  \boxed{
+    \Psi(x, t)
+    = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}
+      \phi(k)e^{i(kx - \frac{\hbar k^2}{2m}t)}
+    \,dk.
+  }
+\end{equation}
+This wave function can be normalized (for appropriate $\phi(k)$), but it
+necessarily carries a range of $k$'s, and hence a range of energies and speeds.
+We call it a \textbf{wave packet}.\footnote{Sinusoidal waves extend out to
+infinity, and they are not normalizable. But superpositions of such waves lead
+to interference, which allows for localization and normalizability.}
+
+In the generic quantum problem, we are given $\Psi(x, 0)$, and we are asked to
+find $\Psi(x, t)$. For a free particle the solution takes the form of
+\eqref{eq:free-par-psi}; the only question is how to determine $\phi(k)$ so as
+to match the initial wave function \[
+  \Psi(x, 0)
+  = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty} \phi(k)e^{ikx} \,dk.
+\] The answer is provided by \textbf{Plancherel's theorem}:
+\begin{equation} \label{eq:plan-thm}
+  f(x) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty} F(k)e^{ikx} \,dk.
+  \iff
+  F(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty} f(x)e^{-ikx} \,dx.
+\end{equation}
+$F(k)$ is called the \textbf{Fourier transform} of $f(x)$; $f(x)$ is the
+\textbf{inverse Fourier transform} of $F(k)$.\footnote{The necessary and
+sufficient condition on $f(x)$ is that $\int_{-\infty}^{\infty} |f(x)|^2 \,dx$
+be \emph{finite}. (In that case $\int_{-\infty}^{\infty} |F(k)|^2 \,dk$ is also
+finite, and in fact the two integrals are equal.) For our purposes, the
+integrals are guaranteed to exist by the physical requirement that $\Psi(x, 0)$
+itself is normalized.} So the solution to the generic quantum problem, for the free
+particle, is \eqref{eq:free-par-psi} with
+\begin{equation} \label{eq:free-par-phi}
+  \boxed{
+    \phi(k)
+    = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}
+      \Psi(x, 0)e^{-ikx}
+    \,dx.
+  }
+\end{equation}
+
+\subsubsection{Wave Packet}
+
+A wave packet is a superposition of sinusoidal functions whose amplitude is
+modulated by $\phi$. What corresponds to the particle velocity is not the
+speed of the individual ripples (the \textbf{phase velocity}), but rather the
+speed of the envelope (the \textbf{group velocity}).\footnote{Depending on the
+nature of the waves, the group velocity can be greater than, less than, or
+equal to the phase velocity.}
+
+Take a wave packet with the general form \[
+  \Psi(x, t) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}
+    \phi(k)e^{i(kx - \omega t)}
+  \,dk
+\] with the \textbf{dispersion relation} determining the formula for $\omega$
+as a function of $k$. Let us assume that $\phi(k)$ is normally peaked about
+some particular value $k_0$.\footnote{Wave packets with a broad spread in $k$
+change speed rapidly as different components travel at different speeds, so the
+whole notion of a "group", with a well-defined velocity, loses its meaning.}
+Taylor-expanding the function $\omega(k)$ about $k_0$, and keeping only the
+leading terms, \[ \omega(k) \approx \omega_0 + \omega'_0(k - k_0), \] where
+$\omega'_0$ is the derivative of $\omega$ with respect to $k$, at the point
+$k_0$.
+
+Changing variables from $k$ to $s \equiv k - k_0$ (to center the integral at
+$k_0$), we have \[
+  \Psi(x, t) \approx \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}
+    \phi(k_0 + s)e^{i[(k_0 + s)x - (\omega_0 + \omega'_0s)t]}
+  \,ds.
+\] At $t = 0$, we have \[
+  \Psi(x, 0) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}
+    \phi(k_0 + s)e^{i(k_0 + s)x}
+  \,ds,
+\] and at later times, we rewrite the previous equation for $\Psi(x, t)$ to get
+\[
+  \Psi(x, t)
+  \approx \frac{1}{\sqrt{2\pi}}e^{i(-\omega_0 + k_0\omega'_0)t}
+  \int_{-\infty}^{+\infty}
+    \phi(k_0 + s)e^{i(k_0 + s)(x - \omega'_0t)}
+  \,ds.
+\] Except for the shift from $x$ to $(x - \omega'_0t)$, the integral is the
+same as the one in $\psi(x, 0)$. Thus
+\begin{equation} \label{eq:wave-pac-psi}
+  \Psi(x, t) \approx e^{-i(\omega_0 - k_0\omega'_0)t}\Psi(x - \omega'_0, t).
+\end{equation}
+Apart from the phase factor in front (which won't affect $|\Psi|^2$ in any
+event) the wave packet evidently moves along at a speed $\omega'_0$:
+\begin{equation} \label{eq:wave-pac-vel-grp}
+  v_{\text{group}} = \frac{d\omega}{dk}
+  \text{ (evaluated at $k = k_0$)}.
+\end{equation}
+This is to be contrasted with the ordinary phase velocity
+\begin{equation} \label{eq:wave-pac-vel-pha}
+  v_{\text{phase}} = \frac{\omega}{k}
+\end{equation}
+
+In our case, $\omega = (\hbar k^2/2m)$, so $\omega/k = (\hbar k/2m)$, whereas
+$d\omega/dk = (\hbar k/m)$, which is twice as great. This confirms that it is
+the group velocity of the wave packet, not the phase velocity of the stationary
+states, that matches the classical particle velocity:
+\begin{equation} \label{eq:wave-pac-vel}
+  v_{\text{classical}} = v_{\text{group}} = 2v_{\text{phase}}.
+\end{equation}
 
 \end{document}
 
