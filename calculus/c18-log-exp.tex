@@ -1,0 +1,397 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[shortlabels]{enumitem}
+
+\newtheorem{corollary}{Corollary}
+\newtheorem*{definition*}{Definition}
+\newtheorem{definition}{Definition}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{lemma}{Lemma}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}
+
+\DeclareMathOperator{\Nap}{Nap}
+
+\begin{document}
+
+\title{Chapter 18: The Logarithm and Exponential Functions}
+\maketitle
+
+\begin{definition*}
+  If $x > 0$, then \[ \pmb{\log x} = \int_1^x \frac{1}{t} \,dt. \]
+\end{definition*}
+
+\begin{theorem}
+  If $x, y > 0$, then \[ \log(xy) = \log x + \log y. \]
+\end{theorem}
+\begin{proof}
+  Notice first that $\log'(x) = 1/x$, by the Fundamental Theorem of Calculus.
+  Now choose a number $y > 0$ and let \[ f(x) = \log(xy). \] Then \[ f'(x) =
+  \log'(xy) \cdot y = \frac{1}{xy} \cdot y = \frac{1}{x}. \] Thus $f' = \log'$.
+  This means that there is a number $c$ such that \[
+    f(x) = \log x + c
+    \text{ for all } x > 0,
+  \] that is, \[
+    \log(xy) = \log x + c
+    \text{ for all } x > 0.
+  \] The number $c$ can be evaluated by noting that when $x = 1$ we obtain \[
+    \log(1 \cdot y) = \log 1 + c = c.
+  \] Thus \[
+    \log(xy) = \log x + \log y
+    \text{ for all } x.
+  \] Since this is true for all $y > 0$, the theorem is proved.
+\end{proof}
+
+\begin{corollary}
+  If $n$ is a natural number and $x > 0$, then \[ \log(x^n) = n\log x. \]
+\end{corollary}
+
+\begin{corollary}
+  If $x, y > 0$, then \[ \log\left(\frac{x}{y}\right) = \log x - \log y. \]
+\end{corollary}
+
+\begin{definition}
+  The "exponential function", $\pmb{\exp}$, is defined as $\log^{-1}$.
+\end{definition}
+
+\begin{theorem}
+  For all numbers $x$, $\exp'(x) = \exp(x)$.
+\end{theorem}
+
+\begin{theorem}
+  If $x$ and $y$ are any two numbers, then \[ \exp(x + y) = \exp(x) \cdot
+  \exp(y). \]
+\end{theorem}
+
+\begin{definition}
+  $\pmb{e} = \exp(1)$, or \[ 1 = \log e = \int_1^e \frac{1}{t} \,dt. \] For any
+  number $x$, \[ \pmb{e^x} = \exp(x). \]
+\end{definition}
+
+The $\exp$ function allows us to define $e^x$ for an arbitrary (even
+irrational) exponent $x$, and by extension $a^x$ for $a > 0$.
+
+\begin{definition}
+  If $a > 0$, then, for any real number $x$, \[ \pmb{a^x} = e^{x\log a}. \]
+\end{definition}
+
+\begin{theorem}
+  If $a > 0$, then
+  \begin{enumerate}
+    \item $(a^b)^c = a^{bc}$ for all $b, c$.
+
+      (Notice that $a^b$ will automatically be positive, so $(a^b)^c$ will be
+      defined);
+    \item $a^1 = a$ and $a^{x + y} = a^x \cdot a^y$ for all $x, y$.
+
+      (Notice that (2) implies that this definition of $a^x$ agrees with the
+      old one for all rational $x$.)
+  \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+  If $f$ is differentiable and \[ f'(x) = f(x) \text{ for all } x, \] then
+  there is a number $c$ such that \[ f(x) = ce^x \text{ for all } x. \]
+\end{theorem}
+\begin{proof}
+  Let \[ g(x) = \frac{f(x)}{e^x}. \] (This is permissible, since $e^x \neq 0$
+  for all $x$.) Then \[
+    g'(x) = \frac{e^xf'(x) - f(x)e^x}{(e^x)^2} = 0.
+  \] Therefore there is a number $c$ such that \[
+    g(x) = \frac{f(x)}{e^x} = c \text{ for all } x.
+  \]
+\end{proof}
+
+Contrary to the basic property stated in Theorem 2, there are infinitely many
+other functions which satisfy the property $f(x + y) = f(x) + f(y)$ stated in
+Theorem 3. However, any \emph{continuous} function $f$ satisfying this property
+must be of the form $f(x) = a^x$ or $f(x) = 0$.
+
+In addition to the two basic properties stated in Theorems 2 and 3, the
+function $\exp$ "grows faster than any other polynomial". In other words,
+
+\begin{theorem}
+  For any natural number $n$, \[ \lim_{x \to \infty} \frac{e^x}{x^n} = \infty.
+  \]
+\end{theorem}
+\begin{proof}
+  The proof consists of several steps.
+
+  \paragraph{Step 1.} $e^x > x$ for all $x$, and consequently
+  $\lim_{x \to \infty} e^x = \infty$ (this may be considered to be the case $n
+  = 0$).
+
+  To prove this statement (which is clear for $x \leq 0$) it suffices to show
+  that \[ x > \log x \text{ for all } x > 0. \] If $x < 1$ this is clearly
+  true, since $\log x < 0$. If $x > 1$, then $x - 1$ is an upper sum for $f(t)
+  = 1/t$ on $[1, x]$, so $\log x < x - 1 < x$.
+
+  \paragraph{Step 2.} $\lim_{x \to \infty} \frac{e^x}{x} = \infty$.
+
+  To prove this, note that \[
+    \frac{e^x}{x}
+    = \frac{e^{x/2} \cdot e^{x/2}}{\frac{x}{2} \cdot 2}
+    = \frac{1}{2}\left(\frac{e^{x/2}}{\frac{x}{2}}\right) \cdot e^{x/2}
+  \] By Step 1, the expression in parentheses is greater than 1, and
+  $\lim_{x \to \infty} e^{x/2} = \infty$; this shows that $\lim_{x \to \infty}
+  d^x/x = \infty$.
+
+  \paragraph{Step 3.} $\lim_{x \to \infty} \frac{e^x}{x^n} = \infty$.
+
+  Note that \[
+    \frac{e^x}{x^n}
+    = \frac{(e^{x/n})^n}{\left(\frac{x}{n}\right)^n \cdot n^n}
+    = \frac{1}{n^n} \cdot \left(\frac{e^{x/n}}{\frac{x}{n}}\right)^n.
+  \] The expression in parentheses becomes arbitrarily large, by Step 2, so the
+  $n$th power certainly becomes arbitrarily large.
+\end{proof}
+
+\section*{Exercises}
+
+\paragraph{Problem 16}
+\begin{enumerate}[(e)]
+  \item If $f(x) = e^{bx}$, then $f'(0) = b$, so \[
+      \lim_{y \to 0} \frac{e^{by} - 1}{y} = b.
+    \] Thus \[
+      \lim_{x \to \infty} x(e^{b/x} - 1) = b,
+    \] and so \[
+      \log b = \lim_{x \to \infty} x(e^{\log b/x} - 1)
+      = \lim_{x \to \infty} x(b^{1/x} - 1).
+    \]
+\end{enumerate}
+
+\paragraph{Problem 21}
+\begin{enumerate}[(a)]
+  \item $A(t)$ takes on similar properties to $\exp$, albeit with the
+    additional factor $c$ in $A'(t) = cA(t)$. This implies that $A(t) =
+    d\exp(ct)$ for some number $d$. But $A(0) = d\exp(0) = d = A_0$, so the
+    final solution is \[ A(t) = A_0e^{ct}. \]
+  \item \[
+      A(t + \tau) = A_0e^{c(t + \tau)} = e^{c\tau}(A_0e^{ct}) = e^{c\tau}A(t).
+    \] Set $\tau$ such that $e^{c\tau} = 1/2$; then, $A(t + \tau) = A(t)/2$.
+    This is possible as the range of the function $\exp$ comprises all positive
+    real numbers.
+\end{enumerate}
+
+\paragraph{Problem 22} Suppose that \[ T' = -c(T - M) \] for some positive
+number $c$. Since $M$ is a constant, $T' = (T - M)'$, and so \[ (T - M)' =
+-c(T - m), \] suggesting that $(T - M)(t) = d\exp(-ct)$ for some number $d$.
+But $T(0) = d\exp(0) = d = T_0$, so $(T - M)(t) = T_0\exp(-ct)$ and $T(t) = M +
+T_0e^{-ct}$.
+
+\paragraph{Problem 23} Notice that by Theorem 13-8 $f$ is continuous on $[0,
+x]$. We therefore have $f'(x) = f(x)$, so there is a number $c$ such that $f(x)
+= ce^x$. But $f(0) = 0$, so $c = 0$.
+
+\paragraph{Problem 26} Differentiating both sides and noting that $\int_0^1
+f(t) \,dt$ is a constant, $f''(t) = f'(t)$. Let $g = f'$; then $g' = g$, which
+implies that $g(t) = ce^t$ for some number $c$, so $f(t) = a + ce^t$ for some
+$a$. So
+\begin{align*}
+  ce^t &= (a + ce^t) + \int_0^1 (a + ce^t) \,dt \\
+       &= (a + ce^t) + [(a - 0) + (ce - c)] \\
+       &= 2a + c(e^t + e - 1),
+\end{align*}
+and $a = c(1 - e)/2$.
+
+\paragraph{Problem 33} First observe that $(10^7 - P(t))' = -P'(t) = -(10^7 -
+P(t))$; it is clear that $10^7 - P(t) = ce^{-t}$ for some number $c$. But
+$P(0) = 0$, so $10^7 - 0 = ce^0$ and $c = 10^7$. So \[
+  10^7t = \Nap\log[10^7 - P(t)] = \Nap\log(10^7e^{-t}),
+\] and with $10^7e^{-t} = x$, $t = \log\frac{10^7}{x}$ which leads to our
+desired result \[
+  \Nap\log x = 10^7\log\frac{10^7}{x}.
+\]
+
+\paragraph{Problem 34}
+\begin{enumerate}[(b)]
+  \item From the graph it is clear that $f(\pi) < f(e)$ and so
+    $\frac{\log\pi}{\pi} < \frac{\log e}{e} = \frac{1}{e}$, and $e\log\pi <
+    \pi$ or $\pi^e < e^{\pi}$.
+  \item The equation $x^y = y^x$ can be rewritten into $\frac{\log x}{x} =
+    \frac{\log y}{y}$ or $f(x) = f(y)$. Evidently, the graph can be interpreted
+    to produce these statements.
+  \item Firstly it is clear that $x = y$ is a solution for any natural number
+    (if we do not consider 0 a natural number). We now only need to consider
+    the solutions where $y \neq x$. Without loss of generality, take $x < y$;
+    now, $1 < x < e$, and the only natural number in this interval is $x = 2$.
+    It is evident that $y = 4$, and likewise $x = 4, y = 2$ forms a solution.
+  \item The set of all pairs $(x, y)$ with $x^y = y^x$ must consist of the
+    straight line $y = x$. Otherwise, let us define $g$ as in (f): $g =
+    f_2^{-1} \circ f_1$, so the curve is the graph of $g$ on $(1, e)$ and
+    "intersects" with the straight line at $(e, e)$ (more precisely,
+    $\lim_{x \to e}g(x) = e$).
+
+    Moreover, $g$ is differentiable since $f_1$ and $f_2$ are differentiable
+    and $f_2'(x) \neq 0$ for all $x$ in the domain of $f_2$. We have
+    \begin{align*}
+      g'(x) &= (f_2^{-1} \circ f_1)'(x) = (f_2^{-1})'(f_1(x)) \cdot f_1'(x) \\
+            &= \frac{1}{f_2'(f_2^{-1}(f_1(x)))} \cdot f_1'(x) \\
+            &= \frac{[g(x)]^2}{1 - \log g(x)} \cdot \frac{1 - \log x}{x^2}.
+    \end{align*}
+\end{enumerate}
+
+\paragraph{Problem 35}
+\begin{enumerate}[(a)]
+  \item $\exp$ is convex as $\exp''(x) = \exp(x) > 0$ for all $x$. Similarly,
+    $\log$ is concave, as $\log''(x) = -1/x^2 < 0$ for all $x > 0$.
+  \item Applying \emph{Jensen's inequality} with $f = \exp$ and $x_i = \log
+    z_i$, \[
+      \exp\left(\sum_{i=1}^n p_i\log z_i\right)
+      \leq \sum_{i=1}^n p_i\exp(\log z_i),
+    \] or \[
+      \prod_{i=1}^n z_i^{p_i} \leq \sum_{i=1}^n p_iz_i.
+    \]
+  \item Choosing $p_i = 1/n$, \[
+      \sqrt[n]{\prod_{i=1}^n z_i} = \frac{1}{n}\sum_{i=1}^n z_i.
+    \]
+\end{enumerate}
+
+\paragraph{Problem 38} Suppose that $f \neq 0$. From $f(x + 0) = f(x)f(0)$ it
+follows that $f(0) = 1$. Then from \[
+  1 = f(0) = f(x + (-x)) = f(x) \cdot f(-x)
+\] it follows that $f(x) \neq 0$ for all $x$. Moreover $f(x) > 0$ for all $x$,
+since \[
+  f(x) = f(x/2 + x/2) = f(x/2)^2.
+\] If $n$ is a natural number, then $f(1) = f(1/n)^n$, so $f(1/n) =
+f(1)^{1/n}$; moreover, $f(-1/n) = 1/f(1/n) = f(1)^{-1/n}$. Now, consider
+rational $x = p/q$ for integers $p > 0$ and $q \neq 0$. Then, $f(p/q) =
+[f(1/q)]^p = f(1)^{p/q}$; likewise, $f(-p/q) = [f(-1/q)]^p = f(1)^{-p/q}$. This
+proves that $f(x) = f(1)^x$ for all $x \neq 0$.
+
+Let $g(x) = f(1)^x$. By Problem 8-6, if $f$ and $g$ are continuous and $f(x) =
+g(x)$ for all $x$ in a dense set (namely, the set of rational numbers here),
+then $f(x) = g(x)$ for all $x$.
+
+\paragraph{Problem 39} If $g(x) = g(e^x)$ then \[
+  g(x + y) = f(e^{x + y}) = f(e^xe^y) = f(e^x) + f(e^y) = g(x) + g(y).
+\] It follows from Problem 8-7 that $g(x) = cx$ for some $c$. If $c = 0$, then
+$f = 0$; otherwise, $f(e) = f(e^1) = g(1) = c$, so \[
+  f(e^x) = f(e)x
+\] or \[
+  f(x) = f(e)\log x\quad \text{ for } x > 0.
+\]
+
+\paragraph{Problem 40} First we look at the following for $x \neq 0$:
+\begin{align*}
+  f'(x) &= \frac{2}{x^3}e^{-1/x^2} = \frac{2}{x^3}f(x); \\
+  f''(x) &= \frac{-6}{x^4}f(x) + \frac{2}{x^3}f'(x)
+  = \left(\frac{-6}{x^4} + \frac{4}{x^6}\right)f(x);
+\end{align*}
+from there we can conjecture that \[
+  f^{(k)}(x) = e^{-1/x^2}\sum_{i=1}^{3k}\frac{a_i}{x^i},
+\] for some numbers $a_1, \ldots, a_{3k}$. Now consider \[
+  \lim_{x \to 0}e^{-1/x^2}\sum_{i=1}^{3k}\frac{a_i}{x^i}
+  = \lim_{h \to \infty}e^{-h^2}\sum_{i=1}^{3k}a_ih^i
+  = \sum_{i=1}^{3k}a_i\lim_{h \to \infty}\frac{h^i}{e^{h^2}};
+\] the limit in each term of the sum is 0, so it is clear that $f^{(k)}(0) =
+0$.
+
+\paragraph{Problem 41} Similar to Problem 40 we conjecture that \[
+  f^{(k)}(x) = e^{-1/x^2}\left[
+    \sum_{i=1}^{3k}\frac{a_i}{x^i}\sin\frac{1}{x}
+    + \sum_{i=1}^{3k}\frac{b_i}{x^i}\cos\frac{1}{x}
+  \right]
+\] for some numbers $a_1, \ldots, a_{3k}$ and $b_1, \ldots, b_{3k}$. Since
+$|\sin 1/x| \leq 1$ and $|\cos 1/x| \leq 1$ for all $x \neq 0$, it is clear
+that the limit must be 0 as in Problem 40.
+
+\paragraph{Problem 42}
+\begin{enumerate}[(a)]
+  \item If $y(x) = e^{\alpha x}$, then
+    \begin{align*}
+      &a_ny^{(n)}(x) + a_{n-1}y^{(n-1)}(x) + \cdots + a_1y'(x) + a_0y(x) \\
+      &= a_n\alpha^ne^{\alpha x} + a_{n-1}\alpha^{n-1}e^{\alpha x} + \ldots +
+      a_1\alpha e^{\alpha x} + a_0e^{\alpha x} \\
+      &= e^{\alpha x}(a_n\alpha^n + a_{n-1}\alpha^{n-1} + \ldots + a_1\alpha +
+      a_0) = 0.
+    \end{align*}
+  \item If $y(x) = xe^{\alpha x}$, then \[
+      y^{(l)}(x) = \alpha^lxe^{\alpha x} + l\alpha^{l-1}e^{\alpha x}
+    \] (which can be easily proved by induction). So
+    \begin{align*}
+      &a_ny^{(n)}(x) + a_{n-1}y^{(n-1)}(x) + \cdots + a_1y'(x) + a_0y(x) \\
+      &= xe^{\alpha x}[a_n\alpha^n + a_{n-1}\alpha^{n-1} + \cdots + a_1\alpha +
+      a_0] \\
+      &+ e^{\alpha x}[na_n\alpha^{n-1} + (n-1)a_{n-1}\alpha^{n-2} + \cdots +
+      2\alpha + 1] = 0
+    \end{align*}
+    since $\alpha$ is a double root of (*).
+  \item If $y(x) = x^ke^{ax}$ for $0 \leq k \leq r - 1$, then by Leibniz's
+    formula (Problem 10-18), \[
+      y^{(l)}(x) = \left[
+        \sum_{s=0}^k \binom{l}{s}\frac{k!}{(k-s)!}x^{k-s}\alpha^{l-s}
+      \right]e^{\alpha x}.
+    \] So \[
+      \sum_{l=0}^n a_ly^{(l)}(x) = \sum_{s=0}^k\left[
+        \frac{1}{s!}\sum_{l=s}^n\frac{l!}{(l-s)!}a_l\alpha^{l-s}
+      \right]\frac{k!}{(k-s)!}x^{k-s}e^{\alpha x} = 0;
+    \] the terms in brackets are 0 because $\alpha$ is a root of (*) of order
+    $s$ for every $0 \leq s \leq k \leq r - 1$.
+  \item If $y_1, \ldots, y_n$ satisfies (**), then \[
+      \sum_{l=0}^na_l(c_1y_1 + \cdots + c_ny_n)^{(l)}
+      = \sum_{j=1}^n\left(c_j\sum_{l=0}^na_ly_j^{(l)}\right)
+      = 0.
+    \]
+\end{enumerate}
+
+\paragraph{Problem 43}
+\begin{enumerate}[(a)]
+  \item From \[
+      0 = f'(f'' - f) = f'f'' - ff',
+    \] we can show that \[
+      \frac{1}{2}[(f')^2 - f^2]' = f'f'' - ff' = 0.
+    \] It follows that $(f')^2 - f^2$ is constant. The constant must be 0 since
+    $f(0) = f'(0) = 0$.
+  \item Since $f(x) \neq 0$ for $x$ in $(a, b)$, it follows from (a) that
+    $f(x) = \pm f'(x)$ for $x$ in $(a, b)$. Hence $f(x) = ce^{\pm x}$ for $x$
+    in $(a, b)$, for some constant $c \neq 0$.
+  \item Let $a$ be the largest number in $[0, x_0)$ with $f(a) = 0$. Then $f(x)
+    \neq 0$ for $x$ in $(a, x_0)$. But then $f(x) = ce^{\pm x}$ for $x$ in
+    $(a, x_0)$, where $c \neq 0$. This contradicts $f(a) = 0$, since $f$ is
+    continuous and $\lim_{x \to a} ce^{\pm x} = ce^{\pm a} \neq 0$.
+\end{enumerate}
+
+\paragraph{Problem 44}
+\begin{enumerate}[(a)]
+  \item Let \[
+      a = \frac{f(0) + f'(0)}{2},\quad b = \frac{f(0) - f'(0)}{2}.
+    \] If $g(x) = ae^x + be^{-x} - f(x)$, then $g'' - g = 0$, so $f(x) = ae^x +
+    be^{-x}$.
+  \item Note that
+    \begin{align*}
+      ae^x + be^{-x}
+      &= (a + b)\frac{e^x + e^{-x}}{2} + (a - b)\frac{e^x - e^{-x}}{2} \\
+      &= (a + b)\cosh x + (a - b)\sinh x,
+    \end{align*}
+    so $f = c\sinh + d\cosh$ for $c = a - b$, $d = a + b$.
+\end{enumerate}
+
+\paragraph{Problem 46}
+\begin{enumerate}[(a)]
+  \item From the function $g(x) = f(x_0 + x)f(x_0 - x)$, where $f(x_0) \neq 0$,
+    \begin{align*}
+      g'(x) &= f'(x_0 + x)f(x_0 - x) - f(x_0 + x)f'(x_0 - x) \\
+            &= f(x_0 + x)f(x_0 - x) - f(x_0 + x)f(x_0 - x) = 0,
+    \end{align*}
+    the function $g$ is constant. Moreover, $g(0) = f(x_0)^2 \neq 0$, so \[
+      f(x_0 + x)f(x_0 - x) \neq 0\quad \text{ for all } x,
+    \] which implies that $f(x) \neq 0$ for each $x$.
+  \item Let $f = f_1/f_1(0)$ for some $f_1 \neq 0$ with $f'_1 = f_1$.
+  \item Since
+    \begin{align*}
+      g'(x) &= \frac{f(x)f'(x + y) - f'(x)f(x + y)}{f(x)^2} \\
+           &= \frac{f(x)f(x + y) - f(x)f(x + y)}{f(x)^2} = 0,
+    \end{align*} $g$ is a constant, and clearly $g(0) = f(y)/f(0) = f(y)$, so
+    $f(x + y)/f(x) = f(y)$ for all $x$ and $y$.
+  \item $f$ is increasing, since $f'(x) = f(x) = f(x/2 + x/2) = [f(x/2)]^2 >
+    0$. Moreover,
+    \begin{align*}
+      (f^{-1})'(x) &= \frac{1}{f'(f^{-1}(x))} \\
+                   &= \frac{1}{f(f^{-1}(x))} = \frac{1}{x}.
+    \end{align*}
+\end{enumerate}
+
+\end{document}
+
