@@ -4,7 +4,7 @@
 \usepackage[shortlabels]{enumitem}
 
 \newtheorem{theorem}{Theorem}
-\newtheorem*{lemma*}{Lemma}
+\newtheorem{lemma}{Lemma}
 
 \title{Notes to ``Introduction to Quantum Mechanics'', 2nd edition (Griffiths)}
 \author{Ng Wei En}
@@ -43,10 +43,10 @@ If $\Psi(x, t)$ is a solution, then $A \Psi(x, t)$ for any complex constant $A$
 must also be a solution, so any appropriate multiplicative factor can be chosen
 to normalise the wave function.
 
-\begin{lemma*}
+\begin{lemma}
   The Schr\"{o}dinger equation preserves the normalization of the wave function
   as time goes on and $\Psi$ evolves.
-\end{lemma*}
+\end{lemma}
 
 \begin{proof}
   To begin, \[
@@ -88,21 +88,16 @@ to normalise the wave function.
 
 \subsection{Velocity and Momentum}
 
-From equation \eqref{eq:sch-norm-1}, the expectation value of \emph{velocity}
-can be calculated through integration by parts to obtain \[
-  \frac{d\langle x \rangle}{dt}
-  = \int_{-\infty}^{+\infty} x \frac{\partial}{\partial t} |\Psi|^2 \,dx
-  = -\frac{i\hbar}{m} \int_{-\infty}^{+\infty} \Psi^*
-  \frac{\partial \Psi}{\partial x} \,dx.
-\] Working with \emph{momentum} instead, rather than velocity, \[
+From equation \eqref{eq:sch-norm-1}, the time derivative of the expectation
+value of \emph{velocity} can be calculated through integration by parts to
+obtain \[
   \langle p \rangle
-  = m \frac{d \langle x \rangle}{dt}
-  = -i\hbar \int_{-\infty}^{+\infty}
-    \Psi^*\frac{\partial \Psi}{\partial x}
-  \,dx.
-\]
-Finally, writing the equations for $\langle x \rangle$ and $\langle p \rangle$
-in a more suggestive way:
+  = m\frac{d\langle x \rangle}{dt}
+  = m\int_{-\infty}^{+\infty} x \frac{\partial}{\partial t} |\Psi|^2 \,dx
+  = -i\hbar\int_{-\infty}^{+\infty} \Psi^*
+  \frac{\partial \Psi}{\partial x} \,dx.
+\] Writing the equations for $\langle x \rangle$ and $\langle p \rangle$ in a
+more suggestive way:
 \begin{gather}
   \label{eq:sch-vel}
   \langle x \rangle = \int_{-\infty}^{+\infty} \Psi^* (x) \Psi \,dx, \\
@@ -144,17 +139,18 @@ respectively.
 
 Consider separable solutions to the wave function $\Psi(x, t)$,
 \begin{equation} \label{eq:sch-time-ind-1}
-  \Psi(x, t) = \psi(x)\phi(t),
-\end{equation} where $\psi$ is a function of $x$ alone, and $\phi$ is a
-function of $t$ alone. With some manipulation the Schr\"{o}dinger equation
-resolves to \[
+  \Psi(x, t) = \psi(x)\phi(t).
+\end{equation}
+With some manipulation the Schr\"{o}dinger equation resolves to \[
   i\hbar \frac{1}{\phi} \frac{d\phi}{dt}
   = -\frac{h^2}{2m} \frac{1}{\psi} \frac{d^2\psi}{dx^2} + V.
 \] Since the left side is a function of $t$ alone, while the right side is a
 function of $x$ alone, both sides must be \emph{constant}. With $E$ as the
 constant value of both sides, we get
-\begin{equation} \label{eq:sch-time-ind-2}
-  \frac{d\phi}{dt} = \frac{-iE}{\hbar} \phi
+\begin{equation} \label{eq:sch-time-ind-psi}
+  \boxed{
+    \phi = e^{-iEt/\hbar}
+  }
 \end{equation}
 and
 \begin{equation} \label{eq:sch-time-ind}
@@ -162,24 +158,29 @@ and
     -\frac{\hbar^2}{2m} \frac{d^2\psi}{dx^2} + V\psi = E\psi.
   }
 \end{equation}
-The solution to equation \eqref{eq:sch-time-ind-2} is
-\begin{equation} \label{eq:sch-time-ind-psi}
-  \boxed{
-    \phi(t) = e^{-iEt/\hbar}.
-  }
-\end{equation}
-Equation \eqref{eq:sch-time-ind} is called the \textbf{time-independent
-Schr\"{o}dinger equation}.
+which is called the \textbf{time-independent Schr\"{o}dinger equation}.
 
-\begin{lemma*}
+\begin{lemma}
   Separable solutions to the Schr\"{o}dinger equation are \emph{stationary
   states}.
-\end{lemma*}
+\end{lemma}
+\begin{proof}
+  The probability density of the wave function \[
+    |\Psi(x, t)|^2 = \Psi^*\Psi = \psi^* e^{+iEt/\hbar} \psi e^{-iEt/\hbar} =
+    |\psi(x)|^2
+  \] is independent of time. Similarly in the calculation of the expectation
+  value of any dynamical variable, \eqref{eq:sch-time-ind} reduces to \[
+    \langle Q(x, p) \rangle
+    = \int_{-\infty}^{+\infty} \psi^*
+      Q\left(x, \frac{\hbar}{i}\frac{\partial}{\partial x}\right)
+    \psi dx,
+  \] and so every expectation value is \emph{constant in time}.
+\end{proof}
 
-\begin{lemma*}
+\begin{lemma}
   Separable solutions to the Schr\"{o}dinger equation are states of
   \emph{definite total energy}.
-\end{lemma*}
+\end{lemma}
 \begin{proof}
   In classical mechanics, the total energy (kinetic plus potential) is called
   the \textbf{Hamiltonian}: \[
@@ -201,46 +202,42 @@ Schr\"{o}dinger equation}.
     = E\int_{-\infty}^{+\infty} |\psi|^2 \,dx
     = E\int_{-\infty}^{+\infty} |\Psi|^2 \,dx
     = E.
-    \] Moreover, \[
-  \langle H^2 \rangle
-    = \int_{-\infty}^{+\infty} \psi^* \hat{H}^2 \psi \,dx
-    = E^2,
-  \] and hence \[
-    \sigma_H^2 = \langle H^2 \rangle - \langle H \rangle^2 = E^2 - E^2 = 0.
-  \] So, a separable solution has the property that every measurement of the
-  total energy is certain to return the value $E$.
+    \] Moreover, $\langle H^2 \rangle = \int_{-\infty}^{+\infty} \psi^* 
+    \hat{H}^2 \psi \,dx = E^2$, and hence $\sigma_H^2 = \langle H^2 \rangle -
+    \langle H \rangle^2 = E^2 - E^2 = 0$. So, a separable solution has the
+    property that every measurement of the total energy is certain to return
+    the value $E$.
 \end{proof}
 
-\begin{lemma*}
+\begin{lemma}
   The general solution to the Schr\"{o}dinger equation is a \emph{linear
   combination} of separable solutions.
-\end{lemma*}
+\end{lemma}
 
 There are a few other useful lemmas for solutions to the time-independent
-Schr\"{o}dinger equation.
+Schr\"{o}dinger equation:
 
-\begin{lemma*}[cf. Problem 2.1(a)]
+\begin{lemma}[cf. Problem 2.1(a)]
   For normalizable solutions, the separation constant $E$ must be real.
-\end{lemma*}
+\end{lemma}
 
-\begin{lemma*}[cf. Problem 2.1(b)]
+\begin{lemma}[cf. Problem 2.1(b)]
   The time-independent wave function $\psi(x)$ can always be taken to be real
   (unlike $\Psi(x, t)$, which is necessarily complex).
-\end{lemma*}
+\end{lemma}
 
-\begin{lemma*}[cf. Problem 2.1(c)]
+\begin{lemma}[cf. Problem 2.1(c)]
   If $V(x)$ is an even function then $\psi(x)$ can always be taken to be either
   even or odd.
-\end{lemma*}
+\end{lemma}
 
-\begin{lemma*}[cf. Problem 2.2]
-  Show that $E$ must exceed the minimum value of $V(x)$, for every normalizable
-  solution to the time-independent Schr\"{o}dinger equation.
-\end{lemma*}
+\begin{lemma}[cf. Problem 2.2]
+  $E$ must exceed the minimum value of $V(x)$, for every normalizable solution
+  to the time-independent Schr\"{o}dinger equation.
+\end{lemma}
 
 \subsection{Infinite Square Well}
 
-Suppose
 \begin{equation} \label{eq:inf-sq-well}
   V(x) =
   \begin{cases}
@@ -248,85 +245,79 @@ Suppose
     \infty, &\text{ otherwise}.
   \end{cases}
 \end{equation}
+
 Outside the well, $\psi(x) = 0$; inside the well, where $V = 0$, the
 time-independent Schr\"{o}dinger equation can be rewritten into
-\begin{equation} \label{eq:sim-har-osc}
+\begin{equation} \label{eq:inf-sq-well-1}
   \frac{d^2\psi}{dx^2} = -k^2\psi,
   \text{ where } k \equiv \frac{\sqrt{2mE}}{\hbar}
 \end{equation}
-(with the assumption that $E \geq 0$, since by Problem 2.2 $E < 0$ would not
-work). \eqref{eq:sim-har-osc} is the classical \textbf{simple harmonic
-  oscillator equation}; the general solution is \[
+(with the assumption that $E \geq 0$, since by Problem 2.2 $E < 0$ would lead
+to a non-normalizable solution). \eqref{eq:inf-sq-well-1} is the classical
+\textbf{simple harmonic oscillator equation}; the general solution is \[
   \psi(x) = A \sin kx + B \cos kx,
-  \] where $A$ and $B$ are arbitrary constants, fixed by the \emph{boundary
-conditions}. Ordinarily, we assume both $\psi$ and $d\psi/dx$ are continuous,
-so $\psi(0) = \psi(a) = 0$ to join onto the solution outside the wall, leading
-to the distinct solutions
-\begin{equation} \label{eq:sim-har-osc-kn}
+\] where $A$ and $B$ are arbitrary constants, fixed by the \emph{boundary
+conditions} for $\psi$:
+\begin{enumerate}
+  \item $\psi$ is always continuous;
+  \item $d\psi/dx$ is continuous except at points where the potential is
+    infinite.
+\end{enumerate}
+Ordinarily, we assume both $\psi$ and $d\psi/dx$ are continuous, so we set
+$\psi(0) = \psi(a) = 0$ to join onto the solution outside the wall, leading to
+the distinct solutions
+\begin{equation} \label{eq:inf-sq-well-2}
   k_n = \frac{n\pi}{a}, \text{ with } n = 1, 2, 3, \ldots
 \end{equation}
-and these possible values of $E$:
-\begin{equation} \label{eq:sim-har-osc-ene}
+and the following stationary states:
+\begin{equation} \label{eq:inf-sq-well-psi}
   \boxed{
-    E_n = \frac{\hbar^2k_n^2}{2m} = \frac{n^2\pi^2\hbar^2}{2ma^2}.
-  }
-\end{equation}
-Normalizing, we obtain the solutions
-\begin{equation} \label{eq:sim-har-osc-psi}
-  \boxed{
-    \psi_n(x) = \sqrt{\frac{2}{a}} \sin\left(\frac{n\pi}{a}x\right).
+    \psi_n(x) = \sqrt{\frac{2}{a}} \sin\left(\frac{n\pi}{a}x\right),
+    \quad E_n = \frac{\hbar^2k_n^2}{2m} = \frac{n^2\pi^2\hbar^2}{2ma^2}.
   }
 \end{equation}
 $\psi_1$, which contains the lowest energy, is called the \textbf{ground
 state}; the other states, whose energies increase in proportion to $n^2$, are
 called \textbf{excited states}.
 
-\begin{lemma*}
+\begin{lemma}
   The states are alternately \emph{even} and \emph{odd} with respect to the
   center of the well: $\psi_1$ is even, $\psi_2$ is odd, $\psi_3$ is even, and
   so on.
-\end{lemma*}
+\end{lemma}
 
-\begin{lemma*}
+\begin{lemma}
   As you go up in energy, each successive state has one more \textbf{node}
   (zero-crossing): $\psi_1$ has none (the end-points don't count), $\psi_2$ has
   one, $\psi_3$ has two, and so on.
-\end{lemma*}
+\end{lemma}
 
-\begin{lemma*}
-  The states are mutually \textbf{orthogonal}, in the sense that
-  \begin{equation} \label{eq:sim-har-osc-ort}
+\begin{lemma}
+  The states are mutually \textbf{orthogonal}, in the sense that \[
     \int_{-\infty}^{+\infty} \psi_m(x)^* \psi_n(x) \,dx = \delta_{mn},
-  \end{equation}
-  where $\delta_{mn}$ is the \textbf{Kronecker delta} defined usually by
-  \begin{equation} \label{eq:kro-del}
+  \] where $\delta_{mn}$ is the \textbf{Kronecker delta} defined usually by \[
     \delta_{mn} =
     \begin{cases}
       0, &\text{ if } m \neq n; \\
       1, &\text{ if } m = n.
     \end{cases}
-  \end{equation}
-\end{lemma*}
+  \]
+\end{lemma}
 
-\begin{lemma*}
+\begin{lemma}
   The states are \textbf{complete}, in the sense that any \emph{other} function
-  $f(x)$ can be expressed as a linear combination of them:
-  \begin{equation} \label{eq:sim-har-osc-comp}
+  $f(x)$ can be expressed as a linear combination of them: \[
     f(x)
     = \sum_{n = 1}^{\infty} c_n\psi_n(x)
     = \sqrt{\frac{2}{a}} \sum_{n = 1}^{\infty}
       c_n\sin\left(\frac{n\pi}{a}x\right).
-  \end{equation}
-\end{lemma*}
-\begin{proof}
-  Omitted due to difficulty of proof. Equation \eqref{eq:sim-har-osc-comp} is
-  the \textbf{Fourier series} of $f(x)$, and \textbf{Dirichlet's theorem} can
-  be used to prove completeness.
-\end{proof}
-
-The coefficients $c_n$ can be evaluated with \textbf{Fourier's trick}, which
-exploits the orthogonality of $\{\psi_n\}$. Multiplying
-\eqref{eq:sim-har-osc-comp} by $\psi_m(x)^*$ and integrating, \[
+  \]
+\end{lemma}
+This expression is the \textbf{Fourier series} of $f(x)$, and
+\textbf{Dirichlet's theorem} can be used to prove completeness. The
+coefficients $c_n$ can be evaluated with \textbf{Fourier's trick}, which
+exploits the orthogonality of $\{\psi_n\}$. Multiplying by $\psi_m(x)^*$ and
+integrating, \[
   \int_{-\infty}^{+\infty} \psi_m(x)^* f(x) \,dx
   = \sum_{n = 1}^{\infty} c_n \int_{-\infty}^{\infty}
     \psi_m(x)^* \psi_n(x)
@@ -334,54 +325,40 @@ exploits the orthogonality of $\{\psi_n\}$. Multiplying
   = \sum_{n = 1}^{\infty} c_n\delta_{mn}
   = c_m.
 \] Thus the $n$th coefficient in the expansion of $f(x)$ is
-\begin{equation} \label{eq:sim-har-osc-psi-coeff}
+\begin{equation} \label{eq:sim-har-osc-Psi-coeff}
   \boxed{
     c_n = \int_{-\infty}^{+\infty} \psi_n(x)^* f(x) \,dx.
   }
 \end{equation}
 
-Hence, with the general solution to the (time-dependent) Schr\"{o}dinger
-equation as a linear combination of stationary states, \[
-  \Psi(x, t) = \sum_{n = 1}^{\infty}
-    c_n\sqrt{\frac{2}{a}} \sin\left(\frac{n\pi}{a}x\right)
-    e^{-i(n^2\pi^2\hbar/2ma^2)t}.
-\] Since \[
-  \Psi(x, 0) = \sum_{n = 1}^{\infty} c_n\psi_n(x)
-  \] it follows that the coefficients can be derived by Fourier's trick, \[
-  c_n = \sqrt{\frac{2}{a}} \int_0^a
-    \sin\left(\frac{n\pi}{a}x\right) \Psi(x, 0)
-  \,dx
-\] The same process can be used for \emph{any} potential, albeit with different
-forms of $\psi$ and equations for allowed energies.
+Hence, we can derive the general solution to the (time-dependent)
+Schr\"{o}dinger equation as a linear combination of stationary states:
+\begin{equation} \label{eq:sim-har-osc-Psi}
+  \boxed{
+    \begin{gathered}
+      \Psi(x, t) = \sum_{n = 1}^{\infty}
+        c_n\sqrt{\frac{2}{a}} \sin\left(\frac{n\pi}{a}x\right)
+        e^{-i(n^2\pi^2\hbar/2ma^2)t}, \\
+      c_n = \sqrt{\frac{2}{a}} \int_0^a
+        \sin\left(\frac{n\pi}{a}x\right) \Psi(x, 0)
+      \,dx.
+    \end{gathered}
+  }
+\end{equation}
 
 \subsection{Harmonic Oscillator}
 
-Practically any potential is \emph{approximately} parabolic, in the
-neighbourhood of a local minimum. Formally, if we expand $V(x)$ in a
-\textbf{Taylor series} about the minimum: \[
-  V(x) = V(x_0) + V'(x_0)(x - x_0) + \frac{1}{2}V''(x_0)(x - x_0)^2 + \ldots,
-\] subtract $V(x_0)$ (since a constant can be added to $V(x)$ without changing
-the force), recognise that $V'(x_0) = 0$ (since $x_0$ is a minimum), and drop
-the higher-order terms (which are negligible so long as $(x - x_0)$ stays
-small), we get \[
-  V(x) \approx \frac{1}{2}V''(x_0)(x - x_0)^2
-\] which describes simple harmonic oscillation (about the point $x_0$), with an
-effective spring constant $k = V''(x_0)$.
-
-The quantum problem is to solve the Schr\"{o}dinger equation for the potential
+Practically any potential is \emph{approximately} parabolic with the use of the
+\textbf{Taylor series}, in the neighbourhood of a local minimum. We consider
+the following potential in the rest of this section,
 \begin{equation} \label{eq:har-osc}
-  V(x) = \frac{1}{2} m \omega^2 x^2
+  V(x) = \frac{1}{2} m \omega^2 x^2,
 \end{equation}
-(eliminating the spring constant by $\omega = \sqrt{k/m}$). It suffices to
-solve the time-independent Schr\"{o}dinger equation:
-\begin{equation} \label{eq:har-osc-1}
-  -\frac{\hbar^2}{2m} \frac{d^2\psi}{dx^2} + \frac{1}{2}m\omega^2x^2\psi
-  = E\psi
-\end{equation}
+which can be solved with the time-independent Schr\"{o}dinger equation.
 
 \subsubsection{Algebraic Method}
 
-First, we rewrite \eqref{eq:har-osc-1} as \[
+First, we rewrite the Schr\"{o}dinger equation as \[
   \frac{1}{2m}[p^2 + (m \omega x)^2]\psi = E\psi
 \] where $p \equiv (\hbar/i)d/dx$ is the momentum operator. Let
 \begin{equation} \label{eq:har-osc-alg-a}
@@ -403,8 +380,7 @@ The \textbf{commutator} of operators $A$ and $B$ is \[
   \pm \frac{i}{2\hbar}[x, p].
 \] Rewriting this equation with the \textbf{canonical commutation relation},
 $[x, p] = i\hbar$ (which can be shown easily by evaluating $[x, p]f(x)$ for
-some function $f$), and \eqref{eq:ham-op} we obtain the Schr\"{o}dinger
-equation for the harmonic oscillator
+some function $f$), and \eqref{eq:ham-op} we obtain the following equation:
 \begin{equation} \label{eq:har-osc-alg}
   \hbar\omega\left(a_{\pm}a_{\mp} \pm \frac{1}{2}\right)\psi = E\psi.
 \end{equation}
@@ -415,18 +391,16 @@ Hence, $a_{\pm}$ are called \textbf{ladder operators}, with $a_+$ the
 The ground state $\psi_0$ is such that applying the lowering operator to it
 causes the solution to be zero and non-normalizable, i.e. $a_-\psi_0 = 0$.
 Applying the operator and solving for the differential equation, upon
-normalization we obtain the solution
-\begin{equation} \label{eq:har-osc-alg-grd-st}
+normalization we obtain the solution \[
   \psi_0(x) = \left(\frac{m\omega}{\pi\hbar}\right)^{1/4}
   e^{-\frac{m\omega}{2\hbar}x^2},\quad
   \text{with } E_0 = \frac{1}{2}\hbar\omega.
-\end{equation}
-Also, by applying the raising operator repeatedly we obtain \[
+\] Also, by applying the raising operator repeatedly we obtain \[
   \psi_n(x) = A_n(a_+)^n\psi_0(x), \quad
   \text{with } E_n = \left(n + \frac{1}{2}\right)\hbar\omega.
 \] We know that $a_{\pm}\psi_n$ is proportional to $\psi_{n \pm 1}$, so let \[
   a_+\psi_n = c_n\psi_{n + 1}, \quad a_-\psi_n = d_n\psi_{n - 1}.
-  \] First note that one can prove \[
+\] First note that one can prove \[
   \int_{-\infty}^{\infty} f^*(a_{\pm}g) \,dx
   = \int_{-\infty}^{\infty} (a_{\mp}f)^*g \,dx
 \] for any functions $f$ and $g$. In particular, \[
@@ -452,18 +426,17 @@ harmonic oscillator are \emph{orthogonal}.
 
 \subsubsection{Analytic Method}
 
-Introducing $\xi \equiv \sqrt{m\omega/\hbar}x$ into \eqref{eq:har-osc-1}, we
-can rewrite the Schr\"{o}dinger equation as
+Introducing $\xi \equiv \sqrt{m\omega/\hbar}x$, we can rewrite the
+Schr\"{o}dinger equation as
 \begin{equation} \label{eq:har-osc-ana-1}
   \frac{d^2\psi}{d\xi^2} = (\xi^2 - K)\psi,\quad
   \text{with } K \equiv \frac{2E}{\hbar\omega}.
 \end{equation}
-At very large $\xi$, $\xi^2$ dominates over the constant $K$, so in this regime
-\[
-  \frac{d^2\psi}{d\xi^2} \approx \xi^2\psi,
-\] which has the approximate solution $\psi(\xi) \approx Ae^{-\xi^2/2} +
-Be^{\xi^2/2}$. The $B$ term is clearly not normalizable; the physically
-acceptable solutions, then, have the asymptotic form
+At very large $\xi$, $\xi^2$ dominates over the constant $K$, so in this regime 
+$\frac{d^2\psi}{d\xi^2} \approx \xi^2\psi$, which has the approximate solution
+$\psi(\xi) \approx Ae^{-\xi^2/2} + Be^{\xi^2/2}$. The $B$ term is clearly not
+normalizable; the physically acceptable solutions, then, have the asymptotic
+form
 \begin{equation} \label{eq:har-osc-ana-psi}
   \psi(\xi) = h(\xi)e^{-\xi^2/2}.
 \end{equation}
@@ -472,16 +445,13 @@ becomes
 \begin{equation} \label{eq:har-osc-ana-2}
   \frac{d^2h}{d\xi^2} - 2\xi\frac{dh}{d\xi} + (K - 1)h = 0.
 \end{equation}
-
 We propose to look for solutions to $h$ in the form of power series in $\xi$:
 \begin{align*}
   h(\xi) &= \sum_{j=0}^{\infty} a_j\xi^j, \\
   \frac{dh}{d\xi} &= \sum_{j=0}^{\infty} ja_j\xi^{j-1}, \\
   \frac{d^2h}{d\xi^2} &= \sum_{j=0}^{\infty} (j+1)(j+2)a_{j+2}\xi^j.
 \end{align*}
-Putting these into equation \eqref{eq:har-osc-ana-1}, \[
-  \sum_{j=0}^{\infty} [(j+1)(j+2)a_{j+2} - 2ja_j + (K - 1)a_j]\xi^j = 0,
-\] which reduces to
+Putting these into equation \eqref{eq:har-osc-ana-1}, the summations reduce to
 \begin{equation} \label{eq:har-osc-ana-a}
   a_{j+2} = \frac{2j + 1 - K}{(j+1)(j+2)}a_j.
 \end{equation}
@@ -551,11 +521,12 @@ time-independent Schr\"{o}dinger equation rewritten as
   \text{ where } k \equiv \frac{\sqrt{2mE}}{\hbar}.
 \end{equation}
 
-This is similar to the infinite square well in \eqref{eq:sim-har-osc}; however,
-we will write the general solution as $\psi(x) = Ae^{ikx} + Be^{-ikx}$. Unlike
-the infinite square well, there are no boundary conditions to restrict the
-possible values of $k$ (and hence of $E$); the free particle can carry any
-(positive) energy. Tacking on the standard time dependence, $\exp(-iEt/\hbar)$,
+This is similar to the infinite square well in \eqref{eq:inf-sq-well-1};
+however, we will write the general solution as $\psi(x) = Ae^{ikx} +
+Be^{-ikx}$. Unlike the infinite square well, there are no boundary conditions
+to restrict the possible values of $k$ (and hence of $E$); the free particle
+can carry any (positive) energy. Tacking on the standard time dependence,
+$\exp(-iEt/\hbar)$,
 \begin{equation} \label{eq:free-par-1}
   \Psi(x, t)
   = Ae^{ik(x - \frac{\hbar k}{2m}t)} + Be^{-ik(x - \frac{\hbar k}{2m}t)}
@@ -690,6 +661,203 @@ group velocity of the wave packet, not the phase velocity of the stationary
 states, that matches the classical particle velocity:
 \begin{equation} \label{eq:wave-pac-vel}
   v_{\text{classical}} = v_{\text{group}} = 2v_{\text{phase}}.
+\end{equation}
+
+\subsection{The Delta-Function Potential}
+
+\subsubsection{Bound States and Scattering States}
+
+In \emph{classical} mechanics, if $V(x)$ rises higher than a particle's total
+energy ($E$) on either side, it cannot escape the potential well unless it is
+provided with a source of extra energy and is in a \emph{bound state}. If, on
+the other hand, $E$ exceeds $V(x)$ on one side (or both), then the particle
+cannot be trapped in the potential unless there is some mechanism to dissipate
+energy and is a \emph{scattering state}.
+
+In the quantum domain, \emph{tunneling} allows the particle to "leak" through
+any finite potential barrier, so the only thing that matters is the potential
+at infinity:
+\begin{equation} \label{eq:qtm-stat}
+  \begin{cases}
+    E < [V(-\infty) \text{ and } V(+\infty)] &\implies \text{bound state}, \\
+    E > [V(-\infty) \text{ or } V(+\infty)] &\implies \text{scattering state}.
+  \end{cases}
+\end{equation}
+
+\subsubsection{The Delta-Function Well}
+
+The \textbf{Dirac delta function} is an infinitely high, infinitesimally
+narrow spike at the origin, \emph{whose area is 1}:
+\begin{equation}
+  \delta(x) = \left.
+  \begin{cases}
+    0, &\text{ if } x \neq 0 \\
+    \infty, &\text{ if } x = 0
+  \end{cases}
+\right\}, \text{ with } \int_{-\infty}^{+\infty} \delta(x) \,dx = 1.
+\end{equation}
+
+Multiplying $\delta(x - a)$ by an ordinary function $f(x)$ is the same as
+multiplying by $f(a)$, \[
+  f(x)\delta(x - a) = f(a)\delta(x - a),
+\] because the product is \emph{zero} anyway except at the point $a$. In
+particular, \[
+  \int_{-\infty}^{+\infty} f(x)\delta(x - a) \,dx
+  = f(a) \int_{-\infty}^{+\infty} \delta(x - a) \,dx
+  = f(a).
+\]
+
+Let us consider a potential of the form
+\begin{equation} \label{eq:dir-del}
+  V(x) = -\alpha\delta(x),
+\end{equation}
+where $\alpha$ is some positive constant. The Schr\"{o}dinger equation for the
+delta-function well reads
+\begin{equation} \label{eq:dir-del-1}
+  -\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2} - \alpha\delta(x)\psi = E\psi;
+\end{equation}
+and yields both bound states ($E < 0$) and scattering states ($E > 0$).
+
+We first examine the bound states for $E < 0$. In the region $x < 0$, $V(x) =
+0$, so
+\begin{equation} \label{eq:dir-del-bou-1}
+  \frac{d^2\psi}{dx^2} = -\frac{2mE}{\hbar^2}\psi = \kappa^2\psi,
+\end{equation}
+where $\kappa \equiv \sqrt{-2mE}/\hbar$ is real and positive. The general
+solution to \eqref{eq:dir-del-1} is $\psi(x) = Ae^{-\kappa x} + Be^{\kappa x}$,
+but the first term blows up as $x \to -\infty$, so we must choose $A = 0$.
+Similarly, the general solution in the region $x > 0$ is of the form
+$F\exp(-\kappa x) + G\exp(\kappa x)$, but the second term blows up as $x \to
+\infty$. Stitching the two functions together using the first boundary
+condition at $x = 0$ ($\psi$ is always continuous), $B = F$, so
+\begin{equation} \label{eq:dir-del-bou-2}
+  \psi(x) =
+  \begin{cases}
+    Be^{\kappa x}, &\text{ if } x \leq 0, \\
+    Be^{-\kappa x}, &\text{ if } x \geq 0.
+  \end{cases}
+\end{equation}
+The delta function must determine the continuity in $d\psi/dx$ at $x = 0$ for
+the second boundary condition to be satisfied ($d\psi/dx$ is always continuous
+except at points where the potential is infinite). The idea is to integrate the
+Schr\"{o}dinger equation, from $-\epsilon$ to $\epsilon$, and then take the
+limit as $\epsilon \to 0$. In the equation
+\begin{equation} \label{eq:dir-del-bou-3}
+  -\frac{\hbar^2}{2m}\int_{-\epsilon}^{+\epsilon} \frac{d^2\psi}{dx^2} \,dx
+  + \int_{-\epsilon}^{+\epsilon} V(x)\psi(x) \,dx
+  = E\int_{-\epsilon}^{+\epsilon} \psi(x) \,dx,
+\end{equation}
+the first integral is $d\psi/dx$ evaluated at the two end points and the last
+integral is \emph{zero} in the limit $\epsilon \to 0$. Thus
+\begin{equation} \label{eq:dir-del-bou-4}
+  \Delta\left(\frac{d\psi}{dx}\right)
+  \equiv \lim_{\epsilon \to 0}\left(
+    \left.\frac{d\psi}{dx}\right|_{+\epsilon}
+    - \left.\frac{d\psi}{dx}\right|_{-\epsilon}
+  \right)
+  = \frac{2m}{\hbar^2}\lim_{\epsilon \to 0}
+    \int_{-\epsilon}^{+\epsilon} V(x)\psi(x) \,dx.
+\end{equation}
+For $V(x) = -\alpha\delta(x)$, this simplifies to
+\begin{equation} \label{eq:dir-del-bou-5}
+  \Delta\left(\frac{d\psi}{dx}\right)
+  = -\frac{2ma}{\hbar^2}\psi(0).
+\end{equation}
+With some algebra we prove that $\kappa = m\alpha/\hbar^2$ and the allowed
+energy is $E = -\hbar\kappa^2/2m = -m\alpha^2/2h^2$. Normalizing $\psi$, we
+have $B = \sqrt{\kappa} = \sqrt{ma}/\hbar$ (choosing the positive square root
+for convenience). Evidently the delta-function well, regardless of its
+"strength" $\alpha$, has \emph{exactly one bound state}:
+\begin{equation} \label{eq:dir-del-bou}
+  \boxed{
+    \psi(x) = \frac{\sqrt{ma}}{\hbar}e^{-m\alpha|x|/\hbar^2};
+    \quad E = -\frac{m\alpha^2}{2\hbar^2}.
+  }
+\end{equation}
+
+For scattering states with $E > 0$, the Schr\"{o}dinger equation reads
+\begin{equation} \label{eq:dir-del-sca-1}
+  \frac{d^2\psi}{dx^2} = -\frac{2mE}{\hbar^2}\psi = -k^2\psi,
+\end{equation}
+where $k \equiv \sqrt{2mE}{\hbar}$ is real and positive. The general solution
+is
+\begin{equation} \label{eq:dir-del-sca-2}
+  \psi(x) =
+  \begin{cases}
+    Ae^{ikx} + Be^{-ikx}, &\text{if } x < 0, \\
+    Fe^{ikx} + Ge^{-ikx}, &\text{if } x > 0,
+  \end{cases}
+\end{equation}
+but this time we cannot rule out any of the terms since none of them blow up.
+The continuity of $\psi(x)$ at $x = 0$ requires that
+\begin{equation} \label{eq:dir-del-sca-3a}
+  F + G = A + B.
+\end{equation}
+From the derivatives, $\Delta(d\psi/dx) = ik(F - G - A + B)$. Meanwhile,
+$\psi(0) = A + B$, so the second boundary condition says \[
+  ik(F - G - A + B) = -\frac{2m\alpha}{\hbar^2}(A + B)
+\] or more compactly
+\begin{equation} \label{eq:dir-del-sca-3b}
+  F - G = A(1 + 2i\beta) - B(1 - 2i\beta),
+  \quad \text{ where } \beta \equiv \frac{m\alpha}{\hbar^2k}.
+\end{equation}
+
+With equations \eqref{eq:dir-del-sca-3a} and \eqref{eq:dir-del-sca-3b}, we now
+consider a typical scattering experiment where particles are fired in from the
+left. In that case the amplitude of the wave coming in from the \emph{right}
+will be \emph{zero} ($G = 0$); $A$ is the amplitude of the \emph{incident
+wave}, $B$ is the amplitude of the \emph{reflected wave}, and $F$ is the
+amplitude of the \emph{transmitted wave}. Solving the two equations for $B$ and
+$F$, we find
+\begin{equation} \label{eq:dir-del-sca-4}
+  B = \frac{i\beta}{1 - i\beta}A, \quad
+  F = \frac{1}{1 - i\beta}A.
+\end{equation}
+Calculating the \emph{reflection coefficient} $R \equiv |B|^2/|A|^2$ and
+\emph{transmission coefficient} $T \equiv |F|^2/|A|^2$ (which sum up to 1),
+we express them in terms of $E$:
+\begin{equation} \label{eq:dir-del-sca-coeff}
+  \boxed{
+    R = \frac{1}{1 + (2\hbar^2E/m\alpha^2)}, \quad
+    T = \frac{1}{1 + (m\alpha^2/2\hbar^2E)}.
+  }
+\end{equation}
+This suggests that the higher the energy, the greater the probability of
+transmission. However, these scattering wave functions are not normalizable, so
+we must form normalizable linear combinations of the stationary states, just as
+we did for the free particle. Though straightforward in principle, this turns
+out to be messy and best done with a computer. Meanwhile, since it is
+impossible to create a normalizable free-particle wave function without
+involving a range of energies, $R$ and $T$ should be interpreted as approximate
+reflection and transmission probabilities for particles in the vicinity of $E$.
+
+Interestingly, by flipping the sign of $\alpha$ we obtain a delta-function
+barrier instead of a delta-function well, which kills the bound state but does
+not affect the reflection and transmission coefficients (which only rely on
+$\alpha^2$). The particle is just as likely to pass through the barrier as to
+cross over the well. We call this phenomenon \textbf{tunneling}.
+
+\subsubsection{The Finite Square Well}
+
+Consider the potential
+\begin{equation} \label{eq:fin-sq-well}
+  V(x) =
+  \begin{cases}
+    -V_0, &\text{for } -a \leq x \leq a, \\
+    0, &\text{for } |x| > a,
+  \end{cases}
+\end{equation}
+where $V_0$ is a positive constant.
+
+We first examine the bound states ($E < 0$). In the region $x < -a$ the
+potential is zero, so the Sch\"{o}rdinger equation reads
+\begin{equation} \label{eq:fin-sq-well-1}
+  \frac{d^2\psi}{dx^2} = \kappa^2\psi,
+\end{equation}
+where $\kappa \equiv \sqrt{-2mE}/\hbar$ is real and positive. The physically
+admissible solution is
+\begin{equation} \label{eq:fin-sq-well-2}
+  \psi(x) = Be^{\kappa x}, \text{ for } x < -a.
 \end{equation}
 
 \end{document}
