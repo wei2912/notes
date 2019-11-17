@@ -1,0 +1,597 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[shortlabels]{enumitem}
+
+\newtheorem{definition}{Definition}
+\numberwithin{definition}{subsection}
+\newtheorem*{definition*}{Definition}
+\newtheorem{lemma}{Lemma}
+\numberwithin{lemma}{subsection}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{theorem}{Theorem}
+\numberwithin{theorem}{subsection}
+\newtheorem*{theorem*}{Theorem}
+
+\title{Notes to ``Calculus'', 3rd edition (Spivak)}
+\author{Ng Wei En}
+
+\begin{document}
+
+\maketitle
+
+\section{Basic Properties of Numbers}
+
+\paragraph{Numbers.} Of the first twelve properties in this chapter, the first
+nine are concerned with the fundamental operations of addition and
+multiplication.
+
+\begin{tabular}{l p{1.6in}}
+  (P1: Associative law for addition) & $a + (b + c) = (a + b) + c$. \\
+  (P2: Existence of an additive identity) & $a + 0 = 0 + a = a$. \\
+  (P3: Existence of additive inverses) & $a + (-a) = (-a) + a = 0$. \\
+  (P4: Commutative law for addition) & $a + b = b + a$. \\
+  (P5: Associative law for multiplication) & $a \cdot (b \cdot c) = (a \cdot
+    b) \cdot c$. \\
+  (P6: Existence of a multiplicative identity) & $a \cdot 1 = 1 \cdot a = a; 1
+    \neq 0$. \\
+  (P7: Existence of a multiplicative inverse) & $a \cdot a^{-1} = a^{-1} \cdot
+    a = 1, \text{ for } a \neq 0$. \\
+  (P8: Commutative law for multiplication) & $a \cdot b = b \cdot a$. \\
+  (P9: Distributive law) & $a \cdot (b + c) = a \cdot b + a \cdot c$.
+\end{tabular}
+
+The last three are concerned with inequalities. Considering the collection of
+all positive numbers, $P$,
+
+\begin{tabular}{l p{2in}}
+  (P10: Trichotomy law) & For every number $a$, one and only one of the
+    following holds:
+    \begin{enumerate}
+      \itemsep0em
+      \item $a = 0$,
+      \item $a$ is in the collection $P$,
+      \item $-a$ is in the collection $P$.
+    \end{enumerate} \\
+  (P11: Closure under addition) & If $a$ and $b$ are in $P$, then $a + b$ is
+    in $P$. \\
+  (P12: Closure under multiplication) & If $a$ and $b$ are in $P$, then $a
+    \cdot b$ is in $P$.
+\end{tabular}
+
+\setcounter{section}{2}
+\section{Functions}
+
+\begin{definition*}
+  A \emph{function} is a collection of pairs of numbers with the following
+  properties: if $(a, b)$ and $(a, c)$ are both in the collection, then $b =
+  c$; in other words, the collection must not contain two different pairs with
+  the same first element.
+\end{definition*}
+
+If $f$ is a function, the \emph{domain} of $f$ is the set of all $a$ for which
+there is some $b$ such that $(a, b)$ is in $f$. If $a$ is in the domain of $f$,
+it follows from the definition of a function that there is, in fact, a
+\emph{unique} number $b$ such that $(a, b)$ is in $f$. This unique $b$ is
+denoted by $f(a)$.
+
+\subsection{Ordered Pairs}
+
+\begin{definition*}
+  $(a, b) = \{\{a\}, \{a, b\}\}$.
+\end{definition*}
+
+\begin{theorem}
+  If $(a, b) = (c, d)$, then $a = c$ and $b = d$.
+\end{theorem}
+
+\setcounter{section}{4}
+\section{Limits}
+
+\begin{theorem}
+  A function cannot approach two different limits near $a$. In other words, if
+  $f$ approaches $l$ near $a$, and $f$ approaches $m$ near $a$, then $l = m$.
+\end{theorem}
+\begin{proof}
+  Since $f$ approaches $l$ near $a$, we know that for any $\epsilon > 0$ there
+  is some number $\delta_1 > 0$ such that, for all $x$, \[
+    \text{if } 0 < |x - a| < \delta_1, \text{ then } |f(x) - l| < \epsilon.
+  \] We also know, since $f$ approaches $m$ near $a$, that there is some
+  $\delta_2 > 0$ such that, for all $x$, \[
+    \text{if } 0 < |x - a| < \delta_2, \text{ then } |f(x) - m| < \epsilon.
+  \] We have had to use two numbers, $\delta_1$ and $\delta_2$, since there is
+  no guarantee that the $\delta$ which works in one definition will work in the
+  other. But, in fact, it is now easy to conclude that for any $\epsilon > 0$
+  there is some $\delta > 0$ such that, for all $x$, \[
+    \text{if } 0 < |x - a| < \delta, \text{ then } |f(x) - l| < \epsilon
+    \text{ and } |f(x) - m| < \epsilon;
+  \] we simply choose $\delta = \min(\delta_1, \delta_2)$.
+
+  To complete the proof we just have to pick a particular $\epsilon > 0$ for
+  which the two conditions \[
+    |f(x) - l| < \epsilon \text{ and } |f(x) - m| < \epsilon
+  \] cannot both hold, if $l \neq m$. If $l \neq m$, so that $|l - m| > 0$, we
+  can choose $|l - m|/2$ as our $\epsilon$. It follows that there is a $\delta
+  > 0$ such that, for all $x$,
+  \begin{align*}
+    \text{if } 0 < |x - a| < \epsilon,
+    \text{ then } &|f(x) - l| < \frac{|l - m|}{2} \\
+    \text{ and } &|f(x) - m| < \frac{|l - m|}{2}.
+  \end{align*}
+  This implies that for $0 < |x - a| < \delta$ we have
+  \begin{align*}
+    |l - m| = |l - f(x) + f(x) - m|
+    &\leq |l - f(x)| + |f(x) - m| \\
+    &< \frac{|l - m|}{2} + \frac{|l - m|}{2} \\
+    &= |l - m|,
+  \end{align*}
+  a contradiction.
+\end{proof}
+
+\begin{theorem}
+  If $\lim_{x \to a}f(x) = l$ and $\lim_{x \to a}g(x) = m$, then
+  \begin{enumerate}
+    \item $\lim_{x \to a}(f + g)(x) = l + m;$
+    \item $\lim_{x \to a}(f \cdot g)(x) = l \cdot m.$
+  \end{enumerate}
+  Moreover, if $m \neq 0$, then
+  \begin{enumerate}
+    \setcounter{enumi}{2}
+    \item $\lim_{x \to a}\left(\frac{1}{g}\right)(x) = \frac{1}{m}.$
+  \end{enumerate}
+\end{theorem}
+
+\section{Continuous Functions}
+
+\begin{definition*}
+  The function $f$ is \emph{continuous at $a$} if $\lim_{x \to a} f(x) = f(a)$.
+
+  If $f$ is continuous at $x$ for all $x$ in $(a, b)$, then $f$ is called
+  \emph{continuous on $(a, b)$}. A function $f$ is called \emph{continuous on
+  $[a, b]$} if
+  \begin{enumerate}
+    \item $f$ is continuous at $x$ for all $x$ in $(a, b)$,
+    \item $\lim_{x \to a^+} f(x) = f(a)$ and $\lim_{x \to b^-} f(x) = f(b)$.
+  \end{enumerate}
+\end{definition*}
+
+\begin{theorem}
+  If $f$ and $g$ are continuous at $a$, then
+  \begin{enumerate}
+    \item $f + g$ is continuous at $a$,
+    \item $f \cdot g$ is continuous at $a$.
+  \end{enumerate}
+  Moreover, if $g(a) \neq 0$, then
+  \begin{enumerate}
+    \setcounter{enumi}{2}
+    \item $1/g$ is continuous at $a$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+  If $g$ is continuous at $a$, and $f$ is continuous at $g(a)$, then $f \circ
+  g$ is continuous at $a$.
+\end{theorem}
+\begin{proof}
+  Let $\epsilon > 0$. We wish to find a $\delta > 0$ such that for all $x$,
+  \begin{align*}
+    \text{if } |x - a| < \delta, &\text{ then } |(f \circ g)(x) -
+    (f \circ g)(a)| < \epsilon, \\
+    &\text{i.e., } |f(g(x)) - f(g(a))| < \epsilon.
+  \end{align*}
+  Since $f$ is continuous at $g(a)$, there is a $\delta' > 0$ such that for all
+  $x$, \[
+    \text{if } |g(x) - g(a)| < \delta', \text{ then } |f(g(x)) - f(g(a))| <
+      \epsilon.
+  \] We also conclude, by the continuity of $g$ at $a$, that there is a $\delta
+  > 0$ such that for all $x$, \[
+    \text{if } |x - a| < \delta, \text{ then } |g(x) - g(a)| < \delta'.
+  \] Combining these two statements, we see that for all $x$, \[
+    \text{if } |x - a| < \delta, \text{ then } |f(g(x)) - f(g(a))| < \epsilon.
+  \]
+\end{proof}
+
+\begin{theorem}
+  Suppose $f$ is continuous at $a$, and $f(a) > 0$. Then there is a number
+  $\delta > 0$ such that $f(x) > 0$ for all $x$ satisfying $|x - a| < \delta$.
+  Similarly, if $f(a) < 0$, then there is a number $\delta > 0$ such that $f(x)
+  < 0$ for all $x$ satisfying $|x - a| < \delta$.
+\end{theorem}
+\begin{proof}
+  Consider the case $f(a) > 0$. Since $f$ is continuous at $a$, if $\epsilon >
+  0$ there is a $\delta > 0$ such that, for all $x$, \[
+    \text{if } |x - a| < \delta, \text{ then } |f(x) - f(a)| < \epsilon.
+  \] Since $f(a) > 0$ we can take $f(a)$ as the $\epsilon$. Thus there is a
+  $\delta > 0$ so that for all $x$, \[
+    \text{if } |x - a| < \delta, \text{ then } |f(x) - f(a)| < f(a),
+  \] and this last inequality implies $f(x) > 0$. A similar proof can be given
+  in the case $f(a) < 0$.
+\end{proof}
+
+\section{Three Hard Theorems}
+
+\begin{theorem}[Intermediate Value Theorem cf. Theorems 1, 4, 5]
+  If $f$ is continuous on $[a, b]$ and $f(a) < c < f(b)$, then there is some
+  $x$ in $[a, b]$ such that $f(x) = c$. Similarly, if $f(a) > c > f(b)$, then
+  there is some $x$ in $[b, a]$ such that $f(x) = c$.
+\end{theorem}
+
+\begin{theorem}[Bounding Theorem cf. Theorems 2, 6]
+  If $f$ is continuous on $[a, b]$, then $f$ is bounded on $[a, b]$, that
+  is, there are some numbers $N_1$ and $N_2$ such that $f(x) \leq N_1$ and
+  $f(x) \geq N_2$ for all $x$ in $[a, b]$.
+\end{theorem}
+
+\begin{theorem}[Extreme Value Theorem cf. Theorems 3, 7]
+  If $f$ is continuous on $[a, b]$, then there is some $y_1$ in $[a, b]$ such
+  that $f(y_1) \leq f(x)$ for all $x$ in $[a, b]$. Similarly, there is some
+  $y_2$ in $[a, b]$ such that $f(y_2) \geq f(x)$ for all $x$ in $[a, b]$.
+\end{theorem}
+
+Following on from Theorem 1 to 3, we proceed to prove a few interesting
+results.
+
+\setcounter{theorem}{7}
+\begin{theorem}
+  Every positive number has a square root. In other words, if $a > 0$, then
+  there is some number $x$ such that $x^2 = a$.
+\end{theorem}
+\begin{proof}
+  Consider the function $f(x) = x^2$, which is certainly continuous. Notice
+  that the statement of the theorem can be expressed in terms of $f$: "the
+  number $\alpha$ has a square root" means that $f$ takes on the value
+  $\alpha$. The proof of this fact about $f$ will be an easy consequence of
+  Theorem 4.
+
+  There is obviously a number $b > 0$ such that $f(b) > \alpha$; in fact, if
+  $\alpha > 1$ we can take $b = \alpha$, while if $\alpha < 1$ we can take $b =
+  1$. Since $f(0) < \alpha < f(b)$, Theorem 4 applied to $[0, b]$ implies that
+  for some $x$ (in $[0, b]$), we have $f(x) = \alpha$, i.e., $x^2 = \alpha$.
+\end{proof}
+
+\begin{theorem}
+  If $n$ is odd, then any equation \[
+    x^n + a_{n-1}x^{n-1} + \cdots + a_0 = 0
+  \] has a root.
+\end{theorem}
+\begin{proof}
+  We obviously want to consider the function \[
+    f(x) = x^n + a_{n-1}x^{n-1} + \cdots + a_0;
+  \] we would like to prove that $f$ is sometimes positive and sometimes
+  negative. The intuitive idea is that for large $|x|$, the function is very
+  much like $g(x) = x^n$ and, since $n$ is odd, this function is positive for
+  large positive $x$ and negative for large negative $x$. A little algebra is
+  all we need to make this intuitive idea work.
+
+  The proper analysis of the function $f$ depends on writing \[
+    f(x) = x^n + a_{n-1}x^{n-1} + \cdots + a_0
+    = x^n \left( 1 + \frac{a_{n-1}}{x} + \cdots + \frac{a_0}{x^n} \right).
+  \] Note that \[
+    \left| \frac{a_{n-1}}{x} + \frac{a_{n-2}}{x^2} + \cdots + \frac{a_0}{x^n}
+      \right| \leq \frac{|a_{n-1}|}{|x|} + \cdots + \frac{|a_0|}{|x^n|}.
+  \] Consequently, if we choose $x$ satisfying \[
+    \label{eq:thm9-cond} \tag{*}
+    |x| \geq 1, 2n|a_{n-1}|, \ldots, 2n|a_0|,
+  \] then $|x^k| \geq |x|$ and \[
+    \frac{|a_{n-k}|}{|x^k|} \leq \frac{|a_{n-k}|}{|x|}
+    \leq \frac{|a_{n-k}|}{2n |a_{n-k}|}
+    = \frac{1}{2n},
+  \] so \[
+    \left| \frac{a_{n-1}}{x} + \frac{a_{n-2}}{x^2} + \cdots + \frac{a_0}{x^n}
+      \right| \leq \frac{1}{2n} + \cdots + \frac{1}{2n} = \frac{1}{2}.
+  \] In other words, \[
+    -\frac{1}{2} \leq \frac{a_{n-1}}{x} + \cdots + \frac{a_0}{x^n} \leq
+      \frac{1}{2}
+  \] which implies that \[
+    \frac{1}{2} \leq 1 + \frac{a_{n-1}}{x} + \cdots + \frac{a_0}{x^n}.
+  \] Therefore, if we choose an $x_1 > 0$ which satisfies \eqref{eq:thm9-cond},
+  then \[
+    \frac{(x_1)^n}{2}
+    \leq (x_1)^n \left( 1 + \frac{a_{n-1}}{x_1} + \cdots + \frac{a_0}{(x_1)^n}
+    \right)
+    = f(x_1),
+  \] so that $f(x_1) > 0$. On the other hand, if $x_2 < 0$ satisfies
+  \eqref{eq:thm9-cond}, then $(x_2)^n < 0$ and \[
+    \frac{(x_2)^n}{2}
+    \geq (x_2)^n \left( 1 + \frac{a_{n-1}}{x_2} + \cdots + \frac{a_0}{(x_2)^n}
+    \right)
+    = f(x_2),
+  \] so that $f(x_2) < 0$.
+
+  Now applying Theorem 1 to the interval $[x_2, x_1]$ we conclude that there is
+  an $x$ in $[x_2, x_1]$ such that $f(x) = 0$.
+\end{proof}
+
+\begin{theorem}
+  If $n$ is even and $f(x) = x^n + a_{n-1}x^{n-1} + \cdots + a_0$, then there
+  is a number $y$ such that $f(y) \leq f(x)$ for all $x$.
+\end{theorem}
+\begin{proof}
+  As in the proof of Theorem 9, if \[
+    M = \max(1, 2n|a_{n-1}|, \ldots, 2n|a_0|),
+  \] then for all $x$ with $|x| \geq M$, we have \[
+    \frac{1}{2} \leq 1 + \frac{a_{n-1}}{x} + \cdots + \frac{a_0}{x^n}.
+    \] Since $n$ is even, $x^n \geq 0$ for all $x$, so \[
+    \frac{x^n}{2}
+    \leq x^n \left( 1 + \frac{a_{n-1}}{x} + \cdots + \frac{a_0}{x^n} \right)
+    = f(x),
+  \] provided that $|x| \geq M$. Now consider the number $f(0)$. Let $b > 0$ be
+  a number such that $b^n/2 \geq f(0)$ and also $b \geq M$. Then, if $x \geq
+  b$, we have \[
+    f(x) \geq \frac{x^n}{2} \geq \frac{b^n}{2} \geq f(0).
+  \] Similarly, if $x \leq -b$, then \[
+    f(x) \geq \frac{x^n}{2} \geq \frac{(-b)^n}{2} = \frac{b^n}{2} \geq f(0).
+  \] Summarizing: \[
+    \text{if } x \geq b \text{ or } x \leq -b, \text{then } f(x) \geq f(0).
+  \]
+
+  Now apply Theorem 7 to the function $f$ on the interval $[-b, b]$. We
+  conclude that there is a number $y$ such that \begin{align*}
+    \text{if } &-b \leq x \leq b, &\text{ then } &f(y) \leq f(x); \\
+    \text{if } &x \leq -b \text{ or } x \geq b, &\text{ then } &f(x) \geq f(0)
+      \geq f(y).
+  \end{align*}
+  Hence, we see that $f(y) \leq f(x)$ for all $x$.
+\end{proof}
+
+\begin{theorem}
+  Consider the equation \[
+    \label{eq:thm11-eq} \tag{*}
+    x^n + a_{n-1}x^{n-1} + \cdots + a_0 = c, 
+  \] and suppose $n$ is even. Then there is a number $m$ such that
+  \eqref{eq:thm11-eq} has a solution for $c \geq m$ and has no solution for $c
+  < m$.
+\end{theorem}
+\begin{proof}
+  Let $f(x) = x^n + a_{n-1}x^{n-1} + \cdots + a_0$.
+
+  According to Theorem 10 there is a number $y$ such that $f(y) \leq f(x)$ for
+  all $x$. Let $m = f(y)$. If $c < m$, then the equation \eqref{eq:thm11-eq}
+  obviously has no solution, since the left side always has a value $\geq m$.
+  If $c = m$, then \eqref{eq:thm11-eq} has $y$ as a solution. Finally,
+  suppose $c > m$. Let $b$ be a number such that $b > y$ and $f(b) > c$. Then
+  $f(y) = m < c < f(b)$. Consequently, by Theorem 4, there is some number $x$
+  in $[y, b]$ such that $f(x) = c$, so $x$ is a solution of
+  \eqref{eq:thm11-eq}.
+\end{proof}
+
+On the basis of our present knowledge about the real numbers (namely, P1-P12)
+a proof of Theorems 1, 2 and 3 is impossible and will be left to later
+sections.
+
+\section{Least Upper Bounds}
+
+\begin{definition*}
+  A set $A$ of real numbers is \emph{bounded above} if there is a number $x$
+  such that \[
+    x \geq a \text{ for every } a \text{ in } A.
+  \] Such a number $x$ is called an \emph{upper bound} for $A$.
+\end{definition*}
+
+\begin{definition*}
+  A number $x$ is the \emph{least upper bound} of $A$ if
+  \begin{itemize}
+    \item $x$ is an upper bound of $A$, and
+    \item if $y$ is an upper bound of $A$, then $x \leq y$.
+  \end{itemize}
+
+  The term \emph{supremum} of $A$ is synonymous with "least upper bound" and
+  abbreviates to $\sup A$.
+\end{definition*}
+
+\begin{definition*}
+  A set $A$ of real number is \emph{bounded below} if there is a number $x$
+  such that
+  \[
+    x \leq a \text{ for every } a \text{ in } A.
+  \]
+\end{definition*}
+
+\begin{definition*}
+  A number $x$ is the \emph{greatest lower bound} of $A$ if
+  \begin{itemize}
+    \item $x$ is an upper bound of $A$, and
+    \item if $y$ is an upper bound of $A$, then $x \geq y$.
+  \end{itemize}
+
+  The term \emph{infimum} of $A$ is synonymous with "least upper bound" and
+  abbreviates to $\inf A$.
+\end{definition*}
+
+The last property of the real numbers can be stated:
+
+\begin{tabular}{l p{1.8in}}
+  (P13: The least upper bound property) & If $A$ is a set of real numbers, $A
+  \neq \varnothing$, and $A$ is bounded above, then $A$ has a least upper
+  bound.
+\end{tabular}
+
+We shall apply P13 to the proofs that were omitted in Chapter 7.
+
+\begin{theorem*}[cf. Theorem 7-1]
+  If $f$ is continuous on $[a, b]$ and $f(a) < 0 < f(b)$, then there is some
+  number $x$ in $[a, b]$ such that $f(x) = 0$.
+\end{theorem*}
+\begin{proof}
+  Define the set $A$ as follows: \[
+    A = \{x : a \leq x \leq b, \text{ and } f \text{ is negative on the interval
+      } [a, x]\}.
+  \] Clearly $A \neq \varnothing$, since $a$ is in $A$; in fact, there is some
+  $\delta > 0$ such that $A$ contains all points $x$ satisfying $a \leq x < a +
+  \delta$; this follows from Problem 6-15, since $f$ is continuous on $[a, b]$
+  and $f(a) < 0$. Similarly, $b$ is an upper bound for $A$ and, in fact, there
+  is a $\delta > 0$ such that all points $x$ satisfying $b - \delta < x \leq b$
+  are upper bounds for $A$; this also follows from Problem 6-15, since $f(b) >
+  0$.
+
+  From these remarks it follows that $A$ has a least upper bound $\alpha$ and
+  that $a < \alpha < b$. We now wish to show that $f(\alpha) = 0$, by
+  eliminating the possibilities $f(\alpha) < 0$ and $f(\alpha) > 0$.
+
+  Suppose first that $f(\alpha) < 0$. By Theorem 6-3, there is a $\delta > 0$
+  such that $f(x) < 0$ for $\alpha - \delta < x < \alpha + \delta$. Now there is
+  some number $x_0$ in $A$ which satisfies $\alpha - \delta < x_0 < \alpha$
+  (because otherwise $\alpha$ would not be the \emph{least} upper bound of $A$).
+  This means that $f$ is negative on the whole interval $[a, x_0]$. But if $x_1$
+  is a number between $\alpha$ and $\alpha + \delta$, then $f$ is also negative
+  on the whole interval $[x_0, x_1]$. Therefore $f$ is negative on the interval
+  $[a, x_1]$, so $x_1$ is in $A$. But this contradicts the fact that $\alpha$ is
+  an upper bound for $A$; our original assumption that $f(\alpha) < 0$ must be
+  false.
+
+  Suppose, on the other hand, that $f(\alpha) > 0$. Then there is a number
+  $\delta > 0$ such that $f(x) > 0$ for $\alpha - \delta < x < \alpha + \delta$.
+  Once again we know that there is an $x_0$ in $A$ satisfying $\alpha - \delta <
+  x_0 < \alpha$; but this means that $f$ is negative on $[a, x_0]$, which is
+  impossible, since $f(x_0) > 0$. Thus the assumption $f(\alpha) > 0$ also leads
+  to a contradiction, leaving $f(\alpha) = 0$ as the only possible alternative.
+\end{proof}
+
+The proofs of Theorems 7-2 and 7-3 require a simple preliminary
+result, which will play much the same role as Theorem 6-3 played in the
+previous proof.
+
+\begin{theorem}
+  If $f$ is continuous at $a$, then there is a number $\delta > 0$ such that
+  $f$ is bounded above on the interval $(a - \delta, a + \delta)$.
+\end{theorem}
+
+Observe that if $\lim_{x \to a^+} f(x) = f(a)$, then there is a $\delta > 0$
+such that $f$ is bounded on the set $\{x: a \leq x < a + \delta\}$, and a
+similar observation holds if $\lim_{x \to b^-} f(x) = f(b)$. Having made these
+observations, we tackle our second major theorem.
+
+\begin{theorem*}[cf. Theorem 7-2]
+  If $f$ is continuous on $[a, b]$, then $f$ is bounded above on $[a, b]$.
+\end{theorem*}
+\begin{proof}
+  Let \[
+    A = \{x: a \leq x \leq b \text{ and } f \text{ is bounded above on } [a,
+      x]\}.
+  \] Clearly $A \neq \varnothing$ (since $a$ is in $A$), and $A$ is bounded
+  above (by $b$), so $A$ has a least upper bound $\alpha$. Notice that we are
+  here applying the term "bounded above" both to the set $A$, which can be
+  visualized as lying on the horizontal axis, and to $f$, i.e., to the sets
+  $\{f(y): a \leq y \leq x\}$, which can be visualized as lying on the vertical
+  axis.
+
+  Our first step is to prove that we actually have $\alpha = b$. Suppose,
+  instead, that $\alpha < b$. By Theorem 1 there is $\delta > 0$ such that $f$
+  is bounded on $(\alpha - \delta, \alpha + \delta)$. Since $\alpha$ is the
+  least upper bound of $A$ there is some $x_0$ in $A$ satisfying $\alpha -
+  \delta < x_0 < \alpha$. This means that $f$ is bounded on $[a, x_0]$. But if
+  $x_1$ is any number with $\alpha < x_1 < \alpha + \delta$, then $f$ is also
+  bounded on $[x_0, x_1]$. Therefore $f$ is bounded on $[a, x_1]$, so $x_1$ is
+  in $A$, contradicting the fact that $\alpha$ is an upper bound for $A$. This
+  contradiction shows that $\alpha = b$. One detail should be mentioned: this
+  demonstration implicitly assumed that $a < \alpha$ [so that $f$ would be
+  defined on some interval $(\alpha - \delta, \alpha + \delta)$]; the
+  possibility $a = \alpha$ can be ruled out similarly, using the existence of a
+  $\delta > 0$ such that $f$ is bounded on $\{x: a \leq x < a + \delta\}$.
+
+  The proof is not quite complete - we only know that $f$ is bounded on $[a,
+  x]$ for every $x < b$, not necessarily that $f$ is bounded on $[a, b]$.
+  However, only one small argument needs to be added.
+
+  There is a $\delta > 0$ such that $f$ is bounded on $\{x: b - \delta < x \leq
+  b\}$. There is $x_0$ in $A$ such that $b - \delta < x_0 < b$. Thus $f$ is
+  bounded on $[a, x_0]$ and also $[x_0, b]$, so $f$ is bounded on $[a, b]$.
+\end{proof}
+
+To prove the third important theorem we resort to a trick.
+
+\begin{theorem*}[cf. Theorem 7-3]
+  If $f$ is continuous on $[a, b]$, then there is a number $y$ in $[a, b]$ such
+  that $f(y) \geq f(x)$ for all $x$ in $[a, b]$.
+\end{theorem*}
+\begin{proof}
+  We already know that $f$ is bounded on $[a, b]$, which means that the set \[
+    \{f(x): x \in [a, b]\}
+  \] is bounded. This set is obviously not $\varnothing$, so it has a least
+  upper bound $\alpha$. Since $\alpha \geq f(x)$ for $x$ in $[a, b]$ it
+  suffices to show that $\alpha = f(y)$ for some $y$ in $[a, b]$.
+
+  Suppose instead that $\alpha \neq f(y)$ for all $y$ in $[a, b]$. Then the
+  function $g$ defined by \[
+    g(x) = \frac{1}{\alpha - f(x)}, x \in [a, b]
+  \] is continuous on $[a, b]$, since the denominator of the right side is
+  never 0. On the other hand, $\alpha$ is the least upper bound of $\{f(x): x
+  \in [a, b]\}$; this means that \[
+    \text{for every } \epsilon > 0 \text{ there is } x \in [a, b] \text{ with }
+    \alpha - f(x) < \epsilon.
+  \] This, in turn, means that \[
+    \text{for every } \epsilon > 0 \text{ there is } x \in [a, b] \text{ with }
+    g(x) > \frac{1}{\epsilon}.
+  \] But \emph{this} means that $g$ is not bounded on $[a, b]$, contradicting
+  the previous theorem.
+\end{proof}
+
+\begin{theorem}
+  $\mathbb{N}$ is not bounded above.
+\end{theorem}
+
+\begin{theorem}
+  For any $\epsilon > 0$ there is a natural number $n$ with $1/n < \epsilon$.
+\end{theorem}
+
+\subsection{Uniform Continuity}
+
+\begin{definition*}
+  The function $f$ is \emph{uniformly continuous on an interval $A$} if for
+  every $\epsilon > 0$ there is some $\delta > 0$ such that, for all $x$ and
+  $y$ in $A$, \[
+    \text{if } |x - y| < \delta, \text{ then } |f(x) - f(y)| < \epsilon.
+  \]
+\end{definition*}
+
+\begin{lemma*}
+  Let $a < b < c$ and let $f$ be continuous on the interval $[a, c]$. Let
+  $\epsilon > 0$, and suppose that statements (i) and (ii) hold:
+  \begin{enumerate}[(i)]
+    \item if $x$ and $y$ are in $[a, b]$ and $|x - y| < \delta_1$, then
+      $|f(x) - f(y)| < \epsilon$,
+    \item if $x$ and $y$ are in $[b, c]$ and $|x - y| < \delta_2$, then
+      $|f(x) - f(y)| < \epsilon$.
+  \end{enumerate}
+  Then there is a $\delta > 0$ such that, \[
+    \text{if } x \text{ and } y \text{ are in } [a, c] \text{ and } |x - y| <
+    \delta, \text{ then } |f(x) - f(y)| < \epsilon.
+  \]
+\end{lemma*}
+
+\begin{theorem}
+  If $f$ is continuous on $[a, b]$, then $f$ is uniformly continuous on $[a,
+  b]$.
+\end{theorem}
+\begin{proof}
+  For $\epsilon > 0$ let's say that $f$ is \emph{$\epsilon$-good} on $[a, b]$
+  if there is some $\delta > 0$ such that, for all $y$ and $z$ in $[a, b]$, \[
+    \text{if } |y - z| < \delta, \text{ then } |f(y) - f(z)| < \epsilon.
+  \] Then we're trying to prove that $f$ is $\epsilon$-good on $[a, b]$ for all
+  $\epsilon > 0$.
+
+  Consider any particular $\epsilon > 0$. Let \[
+    A = \{x: a \leq x \leq b \text{ and } f \text{ is }
+    \epsilon\text{-good on } [a, x]\}.
+  \] Then $A \neq \emptyset$ (since $a$ is in $A$), and $A$ is bounded above
+  (by $b$), so $A$ has a least upper bound $\alpha$.
+
+  Suppose that we had $\alpha < b$. Since $f$ is continuous at $\alpha$, there
+  is some $\delta_0 > 0$ such that, if $|y - a| < \delta_0$, then $|f(y) -
+  f(\alpha)| < \epsilon/2$. Consequently, if $|y - \alpha| < \delta_0$ and $|z
+  - a| < \delta_0$, then $|f(y) - f(z)| < \epsilon$. So $f$ is surely
+  $\epsilon$-good on the interval $[\alpha - \delta_0, \alpha + \delta_0]$. On
+  the other hand, since $\alpha$ is the least upper bound of $A$, it is also
+  clear that $f$ is $\epsilon$-good on $[a, \alpha - \delta_0]$. Then the Lemma
+  implies that $f$ is $\epsilon$-good on $[a, a + \delta_0]$, so $a + \delta_0$
+  is in $A$, contradicting the fact that $\alpha$ is an upper bound.
+
+  For $\alpha = b$, since $f$ is continuous at $b$, there is some $\delta_0 >
+  0$ such that, if $|b - y| < \delta_0$, then $|f(y) - f(b)| < \epsilon/2$. So
+  $f$ is $\epsilon$-good on $[b - \delta_0, b]$. But $f$ is also
+  $\epsilon$-good on $[a, b - \delta_0]$, so the Lemma implies that $f$ is
+  $\epsilon$-good on $[a, b]$.
+\end{proof}
+
+\end{document}
+
