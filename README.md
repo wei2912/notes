@@ -6,9 +6,6 @@ This repository is meant to be a collection of various notes and solutions to ar
 # Books
 
 * `calculus`: Calculus, 3rd edition by Michael Spivak.
-
-Notes for Chapter 4, "Graphs" have been omitted.
-
 * `intro-to-qm`: Introduction to Quantum Mechanics, 2nd edition by David
 Jeffrey Griffiths.
 * `ireland-rosen`: A Classical Introduction to Modern Number Theory, 2nd
@@ -22,4 +19,3 @@ by Robert Sedgewick on Coursera.
 Boneh on Coursera.
 * `mit-putnam`: [Mathematical Problem Solving (Putnam Seminar](https://ocw.mit.edu/courses/mathematics/18-a34-mathematical-problem-solving-putnam-seminar-fall-2018/index.htm)
 by Yufei Zhao on MIT OpenCourseWare.
-
