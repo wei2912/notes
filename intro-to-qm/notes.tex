@@ -849,16 +849,95 @@ Consider the potential
 \end{equation}
 where $V_0$ is a positive constant.
 
-We first examine the bound states ($E < 0$). In the region $x < -a$ the
-potential is zero, so the Sch\"{o}rdinger equation reads
-\begin{equation} \label{eq:fin-sq-well-1}
+We first examine the bound states ($E < 0$). Note that the potential is an
+even function, so we can assume with no loss of generality that the solutions
+are either odd or even (Problem 2.1(c)). In the region $x < -a$ the potential
+is zero, so the Sch\"{o}rdinger equation reads
+\begin{equation} \label{eq:fin-sq-well-bou-1}
   \frac{d^2\psi}{dx^2} = \kappa^2\psi,
 \end{equation}
 where $\kappa \equiv \sqrt{-2mE}/\hbar$ is real and positive. The physically
 admissible solution is
-\begin{equation} \label{eq:fin-sq-well-2}
+\begin{equation} \label{eq:fin-sq-well-bou-2}
   \psi(x) = Be^{\kappa x}, \text{ for } x < -a.
 \end{equation}
+In the region $-a < x < a$, $V(x) = -V_0$, and the Schr\"{o}dinger equation
+reads
+\begin{equation} \label{eq:fin-sq-well-bou-3}
+  \frac{d^2\psi}{dx^2} = -l^2\psi,
+\end{equation}
+where $l \equiv \sqrt{2m(E + V_0)}/\hbar$. Although $E$ is negative, for bound
+states, it must be greater than $-V_0$, by the old theorem $E > V_{\min}$
+(Problem 2.2); so $l$ is also real and positive. The general solution is
+\begin{equation} \label{eq:fin-sq-well-bou-4}
+  \psi(x) = C\sin(lx) + D\cos(lx), \text{ for } -a < x < a,
+\end{equation}
+where $C$ and $D$ are arbitrary constants. Finally for the region $x > a$, we
+are left with
+\begin{equation} \label{eq:fin-sq-well-bou-5}
+  \psi(x) = Fe^{-\kappa x}, \text{ for } x > a.
+\end{equation}
+We know that as $\psi(-x) = \pm\psi(x)$, we need only impose the boundary
+conditions on one side. We work out the even solutions here; as the cosine is
+even (and the sine is odd), we are looking for solutions of the form
+\begin{equation} \label{eq:fin-sq-well-bou-6}
+  \psi(x) =
+  \begin{cases}
+    Fe^{-\kappa x}, &\text{for } x > a, \\
+    D\cos(lx), &\text{for } 0 < x < a, \\
+    \psi(-x), &\text{for } x < 0.
+  \end{cases}
+\end{equation}
+The continuity of $\psi(x)$ and $d\psi/dx$ at $x = a$ says that $\kappa =
+l\tan(la)$. To solve for $E$, we adopt some nicer notation; let \[
+  z \equiv la, \quad \text{ and } \quad z_0 \equiv \frac{a}{\hbar}\sqrt{2mV_0}.
+\] $\kappa^2 + l^2 = 2mV_0/\hbar^2$, so $\kappa a = \sqrt{z_0^2 - z^2}$, and
+therefore \[
+  \tan z = \sqrt{(z_0/z)^2 - 1}.
+\] Two limiting cases are of special interest:
+\begin{enumerate}
+  \item \textbf{Wide, deep well.} If $z_0$ is very large, the intersections
+    between $\tan z$ and $\sqrt{(z_0/z)^2 - 1}$ occur just slightly below $z_n
+    = n\pi/2$, with $n$ odd; it follows that \[
+      E_n + V_0 \approx \frac{n^2\pi^2\hbar^2}{2m(2a)^2}.
+    \] On the right side we have half of the infinite square well energies,
+    for a well of width $2a$, as $n$ is odd. So the finite square well goes
+    over to the infinite square well, as $V_0 \to \infty$; however, for any
+    finite $V_0$ there are only a finite number of bound states.
+  \item \textbf{Shallow, narrow well.} As $z_0$ decreases, there are fewer and
+    fewer bound states, until finally one state is left. Note, however, that
+    there is always one bound state no matter how "weak" the well becomes.
+\end{enumerate}
+
+For the scattering states ($E > 0$), to the left, where $V(x) = 0$, we have \[
+  \psi(x) = Ae^{ikx} + Be^{-ikx}, \text{ for } x < -a,
+\] where $k \equiv \sqrt{2mE}/\hbar$. Inside the well, where $V(x) = -V_0$, \[
+  \psi(x) = C\sin(lx) + D\cos(lx), \text{ for } -a < x < a,
+\] where $l \equiv \sqrt{2m(E + V_0)}/\hbar$. To the right, assuming there is
+no incoming wave in this region, we have \[
+  \psi(x) = Fe^{ikx}.
+\] Here $A$ is the incident amplitude, $B$ is the reflected amplitude, and $F$
+is the transmitted amplitude. Applying the boundary conditions, we obtain the
+following:
+\begin{equation} \label{eq:fin-sq-well-sca-1}
+  \begin{gathered}
+    B = i\frac{\sin(2la)}{2kl}(l^2 - k^2)F, \\
+    F = \frac{e^{-2ika}A}{\cos(2la) - i\frac{(k^2 + l^2)}{2kl}\sin(2la)}.
+  \end{gathered}
+\end{equation}
+The transmission coefficient is given by
+\begin{equation} \label{eq:fin-sq-well-sca-tran}
+  T^{-1} = 1 + \frac{V_0^2}{4E(E + V_0)}\sin^2\left(
+    \frac{2a}{\hbar}\sqrt{2m(E + V_0)}
+  \right).
+\end{equation}
+Notice that $T = 1$ whenever the sine is zero, which is when \[
+  \frac{2a}{\hbar}\sqrt{2m(E_n + V_0)} = n\pi,
+\] where $n$ is any integer. The energies for perfect transmission, then, are
+given by \[
+  E_n + V_0 = \frac{n^2\pi^2\hbar^2}{2m(2a)^2},
+\] which happen to be precisely the allowed energies for the infinite square
+well.
 
 \end{document}
 
