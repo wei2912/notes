@@ -1,7 +1,7 @@
 Notes
 ======
 
-This repository is meant to be a collection of various notes and solutions to
+This repository is meant to be a personal collection of various notes for
 articles, books and courses.
 
 # Books
@@ -24,5 +24,5 @@ using lectures by Andrew Ng at
 https://www.youtube.com/watch?v=UzxYlbK2c7E&list=PLA89DCFA6ADACE599&index=1 and
 notes on http://cs229.stanford.edu/syllabus.html
 * `mit-putnam`:
-[Mathematical Problem Solving (Putnam Seminar](https://ocw.mit.edu/courses/mathematics/18-a34-mathematical-problem-solving-putnam-seminar-fall-2018/index.htm)
+[Mathematical Problem Solving (Putnam Seminar)](https://ocw.mit.edu/courses/mathematics/18-a34-mathematical-problem-solving-putnam-seminar-fall-2018/index.htm)
 by Yufei Zhao on MIT OpenCourseWare.
