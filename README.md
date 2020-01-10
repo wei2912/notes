@@ -11,8 +11,8 @@ Spivak.
 * `intro-to-qm` (Notes only, Chapter 1 to 2): Introduction to Quantum
 Mechanics, 2nd edition by David Jeffrey Griffiths.
 Theory, 2nd edition by Kenneth Ireland and Michael Rosen.
-* `qc-and-qi` (Notes only): Quantum Computation and Quantum Information,
-10th anniversary edition by Michael Nielsen and Isaac Chung
+* `qc-and-qi` (Notes only, Chapter 1 to 2.1): Quantum Computation and Quantum
+Information, 10th anniversary edition by Michael Nielsen and Isaac Chung.
 
 # Courses
 
