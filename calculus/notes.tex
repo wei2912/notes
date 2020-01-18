@@ -257,11 +257,10 @@ results.
     \left|\frac{a_{n-1}}{x} + \frac{a_{n-2}}{x^2} + \cdots +
     \frac{a_0}{x^n}\right|
     \leq \frac{|a_{n-1}|}{|x|} + \cdots + \frac{|a_0|}{|x^n|}.
-  \] Consequently, if we choose $x$ satisfying
-  \begin{equation} \label{eq:thm9-cond} \tag{*}
+  \] Consequently, if we choose $x$ satisfying \[
+    \label{eq:thm7-9-cond} \tag{*}
     |x| \geq 1, 2n|a_{n-1}|, \ldots, 2n|a_0|,
-  \end{equation}
-  then \[
+  \] then \[
     \frac{|a_{n-k}|}{|x^k|}
     \leq \frac{|a_{n-k}|}{|x|}
     \leq \frac{|a_{n-k}|}{2n |a_{n-k}|}
@@ -273,14 +272,14 @@ results.
     = \frac{1}{2}
   \] which implies that \[
     \frac{1}{2} \leq 1 + \frac{a_{n-1}}{x} + \cdots + \frac{a_0}{x^n}.
-  \] Therefore, if we choose an $x_1 > 0$ which satisfies \eqref{eq:thm9-cond},
-  then \[
+  \] Therefore, if we choose an $x_1 > 0$ which satisfies
+  \eqref{eq:thm7-9-cond}, then \[
     \frac{(x_1)^n}{2}
     \leq (x_1)^n\left(1 + \frac{a_{n-1}}{x_1} + \cdots +
     \frac{a_0}{(x_1)^n}\right)
     = f(x_1),
   \] so that $f(x_1) > 0$. On the other hand, if $x_2 < 0$ satisfies
-  \eqref{eq:thm9-cond}, then \[
+  \eqref{eq:thm7-9-cond}, then \[
     \frac{(x_2)^n}{2}
     \geq (x_2)^n\left(1 + \frac{a_{n-1}}{x_2} + \cdots +
     \frac{a_0}{(x_2)^n}\right)
@@ -320,24 +319,23 @@ results.
 \end{proof}
 
 \begin{theorem}
-  Consider the equation
-  \begin{equation} \label{eq:thm11-eq} \tag{*}
+  Consider the equation \[
+    \label{eq:thm7-11-eq} \tag{*}
     x^n + a_{n-1}x^{n-1} + \cdots + a_0 = c, 
-  \end{equation}
-  and suppose $n$ is even. Then there is a number $m$ such that
-  \eqref{eq:thm11-eq} has a solution for $c \geq m$ and has no solution for $c
+  \] and suppose $n$ is even. Then there is a number $m$ such that
+  \eqref{eq:thm7-11-eq} has a solution for $c \geq m$ and has no solution for $c
   < m$.
 \end{theorem}
 \begin{proof}
   Let $f(x) = x^n + a_{n-1}x^{n-1} + \cdots + a_0$.
 
   According to Theorem 10 there is a number $y$ such that $f(y) \leq f(x)$ for
-  all $x$. Let $m = f(y)$. If $c < m$, then the equation \eqref{eq:thm11-eq}
-  has no solution, since the left side always has a value $\geq m$. If $c \geq
-  m$, let $b$ be a number such that $b > y$ and $f(b) > c$. Then $f(y) = m \leq
-  c < f(b)$. Consequently, by the Intermediate Value Theorem, there is some
-  number $x$ in $[y, b]$ such that $f(x) = c$, so $x$ is a solution of
-  \eqref{eq:thm11-eq}.
+  all $x$. Let $m = f(y)$. If $c < m$, then the equation
+  \eqref{eq:thm7-11-eq} has no solution, since the left side always has a
+  value $\geq m$. If $c \geq m$, let $b$ be a number such that $b > y$ and
+  $f(b) > c$. Then $f(y) = m \leq c < f(b)$. Consequently, by the Intermediate
+  Value Theorem, there is some number $x$ in $[y, b]$ such that $f(x) = c$, so
+  $x$ is a solution of \eqref{eq:thm7-11-eq}.
 \end{proof}
 
 On the basis of our present knowledge about the real numbers (namely, P1-P12)
@@ -904,7 +902,94 @@ mainly because of its applications.
   \]
 \end{definition}
 
-TODO: Add notes for the rest of the chapter.
+\begin{theorem}
+  Let $f$ be convex. If $f$ is differentiable at $a$, then the graph of $f$
+  lies above the tangent line through $(a, f(a))$, except at $(a, f(a))$
+  itself. If $a < b$ and $f$ is differentiable at $a$ and $b$, then $f'(a) <
+  f'(b)$.
+\end{theorem}
+\begin{proof}
+  If $0 < h_1 < h_2$, then by definition of a convex function \[
+    \frac{f(a + h_1) - f(a)}{h_1} < \frac{f(a + h_2) - f(a)}{h_2}.
+  \] This shows that the values of \[
+    \frac{f(a + h) - f(a)}{h}
+  \] decreases as $h \to 0^+$. Consequently, \[
+    f'(a) < \frac{f(a + h) - f(a)}{h} \text{ for } h > 0.
+  \] But this means that for $h > 0$ the secant line through $(a, f(a))$ and
+  $(a + h, f(a + h))$ has larger slope than the tangent line through $(a,
+  f(a))$, which implies that $(a + h, f(a + h))$ lies above the tangent line.
+  A similar argument can be made for negative $h$.
+
+  Now suppose that $a < b$. Then it is clear that
+  \begin{align*}
+    f'(a) &< \frac{f(a + (b - a)) - f(a)}{b - a} \text{ since } b - a > 0 \\
+          &= \frac{f(b) - f(a)}{b - a}
+  \end{align*}
+  and similarly it can be shown that $f'(b) > \frac{f(b) - f(a)}{b - a}$.
+  Combining these inequalities, we obtain $f'(a) < f'(b)$.
+\end{proof}
+
+Theorem 1 has two converses. We begin with a lemma stating that if $f'$ is
+increasing, then the graph of $f$ lies below any secant line which happens to
+be horizontal.
+
+\begin{lemma*}
+  Suppose $f$ is differentiable and $f'$ is increasing. If $a < b$ and $f(a) =
+  f(b)$, then $f(x) < f(a) = f(b)$ for $a < x < b$.
+\end{lemma*}
+\begin{proof}
+  Suppose first that $f(x) > f(a) = f(b)$ for some $x$ in $(a, b)$. Then the
+  maximum of $f$ on $[a, b]$ occurs at some point $x_0$ in $(a, b)$ with
+  $f(x_0) > f(a)$ and $f'(x_0) = 0$. On the other hand, applying the Mean Value
+  Theorem to the interval $[a, x_0]$, we find that there is $x_1$ with $a < x_1
+  < x_0$ and \[
+    f'(x_1) = \frac{f(x_0) - f(a)}{x_0 - a} > 0,
+  \] contradicting the fact that $f'$ is increasing. This proves that $f(x)
+  \leq f(a) = f(b)$ for $a < x < b$.
+
+  Suppose now that $f(x) = f(a)$ for some $x$ in $(a, b)$. We know that $f$ is
+  not constant on $[a, x]$, so there is some $x_1$ with $a < x_1 < x$ and
+  $f(x_1) < f(a)$. Applying the Mean Value Theorem to $[x_1, x]$ we conclude
+  that there is $x_2$ with $x_1 < x_2 < x$ and \[
+    f'(x_2) = \frac{f(x) - f(x_1)}{x - x_1} > 0.
+  \] On the other hand, $f'(x) = 0$, since a local maximum occurs at $x$. Again
+  this contradicts the hypothesis that $f'$ is increasing.
+\end{proof}
+
+\begin{theorem}
+  If $f$ is differentiable and $f'$ is increasing, then $f$ is convex.
+\end{theorem}
+\begin{proof}
+  Let $a < b$. Define $g$ by \[
+    g(x) = f(x) - \frac{f(b) - f(a)}{b - a}(x - a).
+  \] It is easy to see that $g'$ is also increasing; moreover, $g(a) = g(b) =
+  f(a)$. Applying the lemma to $g$ we conclude that \[
+    g(x) < f(a) \text{ if } a < x < b.
+  \] In other words, if $a < x < b$, then \[
+    f(x) - \frac{f(b) - f(a)}{b - a}(x - a) < f(a)
+  \] or \[
+    \frac{f(x) - f(a)}{x - a} < \frac{f(b) - f(a)}{b - a}.
+  \] Hence $f$ is convex.
+\end{proof}
+
+\begin{theorem}
+  If $f$ is differentiable and the graph of $f$ lies above each tangent line
+  except at the point of contact, then $f$ is convex.
+\end{theorem}
+\begin{proof}
+  Let $a < b$. Since the tangent line at $(a, f(a))$ is the graph of the
+  function $g(x) = f'(a)(x - a) + f(a)$, and since $(b, f(b))$ lies above the
+  tangent line, we have \[
+    \label{thm11-3-ine1} \tag{1}
+    f(b) > f'(a)(b - a) + f(a).
+  \] Similarly, since the tangent line at $(b, f(b))$ is the graph of the
+  function $h(x) = f'(b)(x - b) + f(b)$, and $(a, f(a))$ lies above the tangent
+  line at $(b, f(b))$, we have \[
+    \label{thm11-3-ine2} \tag{2}
+    f(a) > f'(b)(a - b) + f(b).
+  \] It follows from \eqref{thm11-3-ine1} and \eqref{thm11-3-ine2} that $f'(a)
+  < f'(b)$. Following from Theorem 2, it is proven that $f$ is convex.
+\end{proof}
 
 \section{Inverse Functions}
 
@@ -2014,6 +2099,8 @@ function $\exp$ "grows faster than any other polynomial". In other words,
   \] The expression in parentheses becomes arbitrarily large, by Step 2, so the
   $n$th power certainly becomes arbitrarily large.
 \end{proof}
+
+
 
 \end{document}
 
