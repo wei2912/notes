@@ -991,6 +991,47 @@ be horizontal.
   < f'(b)$. Following from Theorem 2, it is proven that $f$ is convex.
 \end{proof}
 
+\begin{theorem}
+  If $f$ is differentiable on an interval and intersects each of its tangent
+  lines just once, then $f$ is either convex or concave on that interval.
+\end{theorem}
+\begin{proof}
+  First we claim that no straight line can intersect the graph of $f$ in three
+  different points. Suppose, on the contrary, that some straight line did
+  intersect the graph of $f$ at $(a, f(a))$, $(b, f(b))$ and $(c, f(c))$, with
+  $a < b < c$. Then we would have \[ \label{thm11-4-eq1} \tag{1}
+    \frac{f(b) - f(a)}{b - a} = \frac{f(c) - f(a)}{c - a}.
+  \] Consider the function \[
+    g(x) = \frac{f(x) - f(a)}{x - a} \text{ for } x \text{ in } [b, c].
+  \] \eqref{thm11-4-eq1} says that $g(b) = g(c)$, so by Rolle's Theorem, there
+  is some number $x$ in $(b, c)$ where $g'(x) = 0$, and thus \[
+    \frac{(x - a)f'(x) - [f(x) - f(a)]}{(x - a)^2} = 0
+  \] or \[
+    f'(x) = \frac{f(x) - f(a)}{x - a}.
+  \] But this suggests that the tangent line at $(x, f(x))$ passes through
+  $(a, f(a))$, contradicting the hypotheses.
+
+  Now, suppose that $a_0 < b_0 < c_0$ and $a_1 < b_1 < c_1$ are points in the
+  interval. Let \[
+    \left.
+    \begin{aligned}
+      x_t &= (1 - t)a_0 + ta_1 \\
+      y_t &= (1 - t)b_0 + tb_1 \\
+      z_t &= (1 - t)c_0 + tc_1
+    \end{aligned}
+    \right\} 0 \leq t \leq 1.
+  \] Then $x_0 = a_0$ and $x_1 = a_1$ and the points $x_t$ all lie between
+  $a_0$ and $a_1$, and similarly for $y_t$ and $z_t$. Moreover, \[
+    x_t < y_t < z_t \text{ for } 0 \leq t \leq 1.
+  \] Now consider the function \[
+    g(t) = \frac{f(y_t) - f(x_t)}{y_t - x_t} -
+    \frac{f(z_t) - f(x_t)}{z_t - x_t} \text{ for } 0 \leq t \leq 1.
+  \] By the first part of the proof, $g(t) \neq 0$ for all $t$ in $[0, 1]$. As
+  $g$ is continuous on $(0, 1)$, either $g(t) > 0$ for all $t$ in $[0, 1]$ or
+  $g(t) < 0$ for all $t$ in $[0, 1]$. Thus, either $f$ is convex or $f$ is
+  concave.
+\end{proof}
+
 \section{Inverse Functions}
 
 \begin{definition}
