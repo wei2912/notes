@@ -1090,9 +1090,9 @@ inherited by its inverse.
   continuous.
 \end{theorem}
 \begin{proof}
-  We know by Theorem 2 that $f$ is either increasing or decreasing. We might as
-  well assume that $f$ is increasing, since we can then take care of the other
-  case by applying the usual trick of considering $-f$.
+  We know by Theorem 2 that $f$ is either increasing or decreasing. We assume
+  that $f$ is increasing, since we can then take care of the other case by
+  considering $-f$.
 
   We must show that \[
     \lim_{x \to b} f^{-1}(x) = f^{-1}(b)
@@ -1125,6 +1125,15 @@ The proof of differentiability is more involved.
   If $f$ is a continuous one-one function defined on an interval and
   $f'(f^{-1}(a)) = 0$, then $f^{-1}$ is \emph{not} differentiable at $a$.
 \end{theorem}
+\begin{proof}
+  We have \[
+    f(f^{-1}(x)) = x.
+  \] If $f^{-1}$ were differentiable at $a$, the Chain Rule would imply that \[
+    f'(f^{-1}(a)) \cdot (f^{-1})'(a) = 1,
+  \] hence \[
+    0 \cdot (f^{-1})'(a) = 1,
+  \] which is absurd.
+\end{proof}
 
 \begin{theorem}
   Let $f$ be a continuous one-one function defined on an interval, and suppose
@@ -1135,23 +1144,18 @@ The proof of differentiability is more involved.
 \end{theorem}
 \begin{proof}
   Let $b = f(a)$. Then \[
-    \lim_{h \to 0} \frac{f^{-1}(b + h) - f^{-1}(b)}{h}
+    (f^{-1})'(b)
+    = \lim_{h \to 0} \frac{f^{-1}(b + h) - f^{-1}(b)}{h}
     = \lim_{h \to 0} \frac{f^{-1}(b + h) - a}{h}.
   \] Now every number $b + h$ in the domain of $f^{-1}$ can be written in the
-  form \[
-    b + h = f(a + k)
-  \] for an unique $k$. Then \[
+  form $b + h = f(a + k)$ for an unique $k$. Then \[
     \lim_{h \to 0} \frac{f^{-1}(b + h) - a}{h}
     = \lim_{h \to 0} \frac{f^{-1}(f(a + k)) - a}{f(a + k) - b}
     = \lim_{h \to 0} \frac{k}{f(a + k) - f(a)}.
-  \] It is not hard to get an explicit expression for k; since \[
-    b + h = f(a + k)
-  \] we have \[
-    f^{-1}(b + h) = a + k
-  \] or \[
-    k = f^{-1}(b + h) - f^{-1}(b).
-  \] Now by Theorem 3, the function $f^{-1}$ is continuous at $b$. This means
-  that $k$ approaches 0 as $h$ approaches 0. Since \[
+  \] It is not hard to get an explicit expression for k; since $b + h =
+  f(a + k)$ we have $f^{-1}(b + h) = a + k$ or $k = f^{-1}(b + h) - f^{-1}(b)$.
+  Now by Theorem 3, the function $f^{-1}$ is continuous at $b$. This means that
+  $k$ approaches 0 as $h$ approaches 0. Since \[
     \lim_{k \to 0} \frac{f(a + k) - f(a)}{k} = f'(a) = f'(f^{-1}(b)) \neq 0,
   \] this implies that \[
     (f^{-1})'(b) = \frac{1}{f'(f^{-1}(b))}.
@@ -2140,8 +2144,6 @@ function $\exp$ "grows faster than any other polynomial". In other words,
   \] The expression in parentheses becomes arbitrarily large, by Step 2, so the
   $n$th power certainly becomes arbitrarily large.
 \end{proof}
-
-
 
 \end{document}
 
