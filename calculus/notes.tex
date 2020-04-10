@@ -1165,128 +1165,239 @@ The proof of differentiability is more involved.
 \section{Integrals}
 
 \begin{definition}
-  A function $f$ is \emph{one-one} if $f(a) \neq f(b)$ whenever $a \neq b$.
+  Let $a < b$. A \emph{partition} of the interval $[a, b]$ is a finite
+  collection of points in [a, b], one of which is $a$, and one of which is $b$.
 \end{definition}
+
+The points in a partition can be numbered $t_0, \ldots, t_n$ so that \[
+  a = t_0 < t_1 < \cdots < t_{n - 1} < t_n = b;
+\] we shall always assume that such a numbering has been assigned.
 
 \begin{definition}
-  For any function $f$, the \emph{inverse} of $f$, denoted by $f^{-1}$, is the
-  set of all pairs $(a, b)$ for which the pair $(b, a)$ is in $f$.
+  Suppose $f$ is bounded on $[a, b]$ and $P = \{t_0, \ldots, t_n\}$ is a
+  partition of $[a, b]$. Let
+  \begin{align*}
+    m_i &= \inf\{f(x): t_{i - 1} \leq x \leq t_i\}, \\
+    M_i &= \sup\{f(x): t_{i - 1} \leq x \leq t_i\},
+  \end{align*}
+
+  The \emph{lower sum} of $f$ for $P$, denoted by $L(f, P)$, is defined as \[
+    L(f, P) = \sum_{i = 1}^n m_i(t_i - t_{i - 1}).
+  \]
+
+  The \emph{upper sum} of $f$ for $P$, denoted by $U(f, P)$, is defined as \[
+    U(f, P) = \sum_{i = 1}^n M_i(t_i - t_{i - 1}).
+  \]
 \end{definition}
 
-\begin{theorem}
-  $f^{-1}$ is a function if and only if $f$ is one-one.
-\end{theorem}
+We begin by considering two partitions $P$ and $Q$.
 
-\begin{theorem}
-  If $f$ is continuous and one-one of an interval, then $f$ is either
-  increasing or decreasing on that interval.
-\end{theorem}
-\begin{proof}
-  Let $a_0 < b_0$ be two numbers in the interval. Since $f$ is one-one, we know
-  that
+\begin{lemma}
+  If $Q$ contains $P$ then
   \begin{align*}
-    \text{either} &&\text{ (i) } &f(b_0) - f(a_0) > 0 \\
-    \text{or} &&\text{ (ii) } &f(b_0) - f(a_0) < 0.
+    L(f, P) \leq L(f, Q), \\
+    U(f, P) \geq U(f, Q).
   \end{align*}
-  We will assume that (i) is true, and show that the same inequality holds for
-  any $a_1 < b_1$ in the interval, so that $f$ is increasing. (A similar
-  argument shows that if (ii) is true, then $f$ is decreasing.)
+\end{lemma}
+\begin{proof}
+  Consider first the special case in which $Q$ contains just one more point
+  than $P$:
+  \begin{align*}
+    P &= \{t_0, \ldots, t_n\}, \\
+    Q &= \{t_0, \ldots, t_{k - 1}, u, t_{k + 1}, \ldots, t_n\},
+  \end{align*} where \[
+    a = t_0 < t_1 < \cdots < t_{k - 1} < u < t_k < \cdots < t_n = b.
+  \]
 
   Let
   \begin{align*}
-    x_t &= (1 - t)a_0 + ta_1 \\
-    y_t &= (1 - t)b_0 + tb_1
+    m'  &= \inf\{f(x): t_{k - 1} \leq x \leq u\}, \\
+    m'' &= \inf\{f(x): u \leq x \leq t_k\}.
   \end{align*}
-  for $0 \leq t \leq 1$. Then $x_0 = a_0$ and $x_1 = a_1$ and the points $x_t$
-  all lie between $a_0$ and $a_1$. An analogous statement holds for $y_t$. So
-  $x_t$ and $y_t$ are all in the domain of $f$. Moreover, since $a_0 < b_0$ and
-  $a_1 < b_1$, we also have \[
-    x_t < y_t \text{ for } 0 \leq t \leq 1.
-  \] Now consider the function \[
-    g(t) = f(y_t) - f(x_t) \text{ for } 0 \leq t \leq 1.
-  \] Using Theorem 6-2, it is easy to see that $g$ is continuous on $[0, 1]$.
-  Moreover, $g(t)$ is never 0, since $x_t < y_t$ and $f$ is one-one.
-  Consequently, $g(t)$ is either positive for all $t$ in $[0, 1]$ or negative
-  for all $t$ in $[0, 1]$ (otherwise, by the Intermediate Value Theorem it
-  would also be 0 somewhere in $[0, 1]$). But $g(0) > 0$ by (i). So also $g(1)
-  > 0$, which means that (i) also holds for $a_1, b_1$.
+  Then
+  \begin{align*}
+    L(f, P) &= \sum_{i=1}^n m_i(t_i - t_{i-1}), \\
+    L(f, Q) &= \sum_{i=1}^{k-1} m_i(t_i - t_{i-1}) + m'(u - t_{k-1}) +
+    m''(t_k - u) + \sum_{i=k+1}^n m_i(t_i - t_{i-1}).
+  \end{align*} To prove that $L(f, P) \leq L(f, Q)$ it therefore suffices to
+  show that \[
+    m_k(t_k - t_{k-1}) \leq m'(u - t_{k-1}) + m''(t_k - u).
+  \] Now the set $\{f(x): t_{k-1} \leq x \leq t_k\}$ contains all the numbers
+  in $\{f(x): t_{k-1} \leq x \leq u\}$, and possibly some smaller ones, so the
+  greatest lower bound of the first set is \emph{less than or equal to} the
+  greatest lower bound of the second; thus $m_k \leq m'$. Similarly, $m_k \leq
+  m''$. Therefore, \[
+    m_k(t_k - t_{k-1}) = m_k(u - t_{k-1}) + m_k(t_k - u) \leq m'(u - t_{k-1}) +
+    m''(t_k - u).
+  \] This proves, in the special case, that $L(f, P) \leq L(f, Q)$. The proof
+  that $U(f, P) \geq U(f, q)$ is similar. The general case can now be deduced
+  quite easily.
 \end{proof}
 
-Moving on, we now consider which important properties of a one-one function are
-inherited by its inverse.
+The following theorem is a simple consequence of this lemma:
 
 \begin{theorem}
-  If $f$ is continuous and one-one on an interval, then $f^{-1}$ is also
-  continuous.
-\end{theorem}
-\begin{proof}
-  We know by Theorem 2 that $f$ is either increasing or decreasing. We might as
-  well assume that $f$ is increasing, since we can then take care of the other
-  case by applying the usual trick of considering $-f$.
-
-  We must show that \[
-    \lim_{x \to b} f^{-1}(x) = f^{-1}(b)
-  \] for each $b$ in the domain of $f^{-1}$. Such a number $b$ is of the form
-  $f(a)$ for some $a$ in the domain of $f$. For any $\epsilon > 0$, we want to
-  find a $\delta > 0$ such that, for all $x$, \[
-    \text{if } f(a) - \delta < x < f(a) + \delta,
-    \text{ then } a - \epsilon < f^{-1}(x) < a + \epsilon.
-  \] Since $a - \epsilon < a < a + \epsilon$, it follows that $f(a - \epsilon)
-  < f(a) < f(a + \epsilon)$; we let $\delta$ be the smaller of $f(a + \epsilon)
-  - f(a)$ and $f(a) - f(a - \epsilon)$.
-
-  Our choice of $\delta$ ensures that \[
-    f(a - \epsilon)
-    \leq f(a) - \delta \text{ and } f(a) + \delta \leq f(a + \epsilon).
-  \] Consequently, if \[
-    f(a) - \delta < x < f(a) + \delta.
-  \] then \[
-    f(a - \epsilon) < x < f(a + \epsilon).
-    \] Since $f$ is increasing, $f^{-1}$ is also increasing, and we obtain \[
-    f^{-1}(f(a - \epsilon)) < f^{-1}(x) < f^{-1}(f(a + \epsilon)),
-  \] i.e., \[
-    a - \epsilon < f^{-1}(x) < a + \epsilon,
-  \] which is precisely what we want.
-\end{proof}
-
-The proof of differentiability is more involved.
-
-\begin{theorem}
-  If $f$ is a continuous one-one function defined on an interval and
-  $f'(f^{-1}(a)) = 0$, then $f^{-1}$ is \emph{not} differentiable at $a$.
+  Let $P_1$ and $P_2$ be partitions of $[a, b]$, and let $f$ be a function
+  which is bounded on $[a, b]$. Then $L(f, P_1) \leq U(f, P_2)$.
 \end{theorem}
 
+\begin{definition}
+  A function $f$ which is bounded on $[a, b]$ is \emph{integrable} on $[a, b]$
+  if \[
+    \sup\{L(f, P): P \text{ a partition of } [a, b]\}
+    = \inf\{U(f, P): P \text{ a partition of } [a, b]\}.
+  \] In this case, this common number is called the \emph{integral} of $f$ on
+  $[a, b]$ and is denoted by $\int_a^b f$. The integral $\int_a^b f$ is also
+  called the \emph{area} of $R(f, a, b)$ when $f(x) \geq 0$ for all $x$ in
+  $[a, b]$.
+\end{definition}
+
+If $f$ is integrable, then according to this definition, \[
+  L(f, P) \leq \int_a^b f \leq U(f, P)
+  \text{ for all partitions } P \text{ of } [a, b].
+\] Moreover, $\int_a^b f$ is the \emph{unique} number with this property.
+
 \begin{theorem}
-  Let $f$ be a continuous one-one function defined on an interval, and suppose
-  that $f$ is differentiable at $f^{-1}(b)$, with derivative $f'(f^{-1}(b))
-  \neq 0$. Then $f^{-1}$ is differentiable at $b$, and \[
-    (f^{-1})'(b) = \frac{1}{f'(f^{-1}(b))}.
+  If $f$ is bounded on $[a, b]$, then $f$ is integrable on $[a, b]$ if and only
+  if for every $\epsilon > 0$ there is a partition $P$ of $[a, b]$ such that \[
+    U(f, P) - L(f, P) < \epsilon.
   \]
 \end{theorem}
 \begin{proof}
-  Let $b = f(a)$. Then \[
-    \lim_{h \to 0} \frac{f^{-1}(b + h) - f^{-1}(b)}{h}
-    = \lim_{h \to 0} \frac{f^{-1}(b + h) - a}{h}.
-  \] Now every number $b + h$ in the domain of $f^{-1}$ can be written in the
-  form \[
-    b + h = f(a + k)
-  \] for an unique $k$. Then \[
-    \lim_{h \to 0} \frac{f^{-1}(b + h) - a}{h}
-    = \lim_{h \to 0} \frac{f^{-1}(f(a + k)) - a}{f(a + k) - b}
-    = \lim_{h \to 0} \frac{k}{f(a + k) - f(a)}.
-  \] It is not hard to get an explicit expression for k; since \[
-    b + h = f(a + k)
-  \] we have \[
-    f^{-1}(b + h) = a + k
-  \] or \[
-    k = f^{-1}(b + h) - f^{-1}(b).
-  \] Now by Theorem 3, the function $f^{-1}$ is continuous at $b$. This means
-  that $k$ approaches 0 as $h$ approaches 0. Since \[
-    \lim_{k \to 0} \frac{f(a + k) - f(a)}{k} = f'(a) = f'(f^{-1}(b)) \neq 0,
-  \] this implies that \[
-    (f^{-1})'(b) = \frac{1}{f'(f^{-1}(b))}.
+  Suppose first that for every $\epsilon > 0$ there is a partition $P$ with \[
+    U(f, P) - L(f, P) < \epsilon.
+  \] Since
+  \begin{align*}
+    \inf\{U(f, P')\} &\leq U(f, P), \\
+    \sup\{L(f, P')\} &\geq L(f, P),
+  \end{align*}
+  it follows that \[
+    \inf\{U(f, P')\} - \sup\{L(f, P')\} < \epsilon.
+  \] Since this is true for all $\epsilon > 0$, it follows that \[
+    \sup\{L(f, P')\} = \inf\{U(f, P')\};
+  \] by definition, then, $f$ is integrable. The proof of the converse
+  assertion is similar: If $f$ is integrable, then \[
+    \sup\{L(f, P)\} = \inf\{U(f, P)\}.
+  \] This means that for each $\epsilon > 0$ there are partitions $P'$, $P''$
+  with \[
+    U(f, P'') - L(f, P') < \epsilon.
+  \] Let $P$ be a partition which contains both $P'$ and $P''$. Then, according
+  to the lemma,
+  \begin{align*}
+    U(f, P) \leq U(f, P''), \\
+    L(f, P) \geq L(f, P');
+  \end{align*}
+  consequently, \[
+    U(f, P) - L(f, P) \leq U(f, P'') - L(f, P') < \epsilon.
   \]
 \end{proof}
+
+\begin{theorem}
+  If $f$ is continuous on $[a, b]$, then $f$ is integrable on $[a, b]$.
+\end{theorem}
+\begin{proof}
+  Notice, first, that $f$ is bounded on $[a, b]$, because it is continuous on
+  $[a, b]$. Now we know, by Theorem 1 of the Appendix to Chapter 8, that $f$ is
+  uniformly continuous on $[a, b]$. So there is some $\delta > 0$ such that for
+  all $x$ and $y$ in $[a, b]$, \[
+    \text{if } |x - y| < \delta,
+    \text{ then } |f(x) - f(y)| < \frac{\epsilon}{2(b - a)}.
+  \] The trick is simply to choose a partition $P = \{t_0, \ldots, t_n\}$ such
+  that each $|t_i - t_{i - 1}| < \delta$. Then for each $i$ we have \[
+    |f(x) - f(y)|
+    < \frac{\epsilon}{2(b - a)} \text{ for all } x, y \in [t_{i - 1}, t_i],
+    \] and it follows easily that \[
+    M_i - m_i \leq \frac{\epsilon}{2(b - a)} < \frac{\epsilon}{b - a}.
+  \] Since this is true for all $i$, we then have
+  \begin{align*}
+    U(f, P) - L(f, P)
+    &= \sum_{i = 1}^n (M_i - m_i)(t_i - t_{i - 1}) \\
+    &< \frac{\epsilon}{b - a}\sum_{i = 1}^n t_i - t_{i - 1} \\
+    &= \frac{\epsilon}{b - a} \cdot (b - a) = \epsilon.
+  \end{align*}
+\end{proof}
+
+Proofs of integrability could use the criteria of either Theorem 2 or 3.
+
+\begin{theorem}
+  Let $a < c < b$. If $f$ is integrable on $[a, b]$, then $f$ is integrable on
+  $[a, c]$ and on $[c, b]$. Conversely, if $f$ is integrable on $[a, c]$ and on
+  $[c, b]$, then $f$ is integrable on $[a, b]$. Finally, if $f$ is integrable
+  on $[a, b]$, then \[
+    \int_a^b f = \int_a^c f + \int_c^b f.
+  \]
+\end{theorem}
+
+\begin{theorem}
+  If $f$ and $g$ are integrable on $[a, b]$, then $f + g$ is integrable on $[a,
+  b]$ and \[
+    \int_a^b (f + g) = \int_a^b f + \int_a^b g.
+  \]
+\end{theorem}
+
+\begin{theorem}
+  If $f$ is integrable on $[a, b]$, then for any number $c$, the function $cf$
+  is integrable on $[a, b]$ and \[
+    \int_a^b cf = c \cdot \int_a^b f.
+  \]
+\end{theorem}
+
+\begin{theorem}
+  Suppose $f$ is integrable on $[a, b]$ and that \[
+    m \leq f(x) \leq M \text{ for all } x \text{ in } [a, b].
+  \] Then \[
+    m(b - a) \leq \int_a^b f \leq M(b - a).
+  \]
+\end{theorem}
+
+With an integrable function $f$, one can define a function $F(x) = \int_a^x f$.
+
+\begin{theorem}
+  If $f$ is integrable on $[a, b]$ and $F$ is defined on $[a, b]$ by
+  \begin{equation*}
+    F(x) = \int_a^x f,
+  \end{equation*} then $F$ is continuous on $[a, b]$.
+\end{theorem}
+
+\begin{proof}
+  Suppose $c$ is in $[a, b]$. Since $f$ is integrable on $[a, b]$ it is, by
+  definition, bounded on $[a, b]$; let $M$ be a number such that $|f(x)| \leq
+  M$ for all $x$ in $[a, b]$.
+
+  If $h > 0$, then \[
+    F(c + h) - F(c) = \int_a^{c + h} f - \int_a^c f = \int_c^{c + h} f.
+  \] Since $-M \leq f(x) \leq M$ for all $x$, it follows from Theorem 7 that
+  $-Mh \leq \int_c^{c + h} f \leq Mh$; in other words, \[
+    -Mh \leq F(c + h) - F(c) \leq Mh.
+  \] If $h < 0$, a similar inequality can be derived: \[
+    Mh \leq F(c + h) - F(c) \leq -Mh.
+  \] Combining these two cases: \[
+    |F(c + h) - F(c)| \leq M \cdot |h|.
+  \] Therefore, if $\epsilon > 0$, we have \[
+    |F(c + h) - F(c)| < \epsilon,
+  \] provided that $|h| < \epsilon/M$. This proves that $\lim_{h \to 0}
+  F(c + h) = F(c)$; in other words $F$ is continuous at $c$.
+\end{proof}
+
+\subsection{Riemann Sums}
+
+\begin{definition}
+  Suppose that $P = \{t_0, \ldots, t_n\}$ is a partition of $[a, b]$, and that
+  for each $i$ we choose some point $x_i$ in $[t_{i-1}, t_i]$. Then we clearly
+  have \[
+    L(f, P) \leq \sum_{i=1}^n f(x_i)(t_i - t_{i-1}) \leq U(f, P).
+  \] Any sum $\sum_{i=1}^n f(x_i)(t_i - t_{i=1})$ is called a \emph{Riemann
+  sum} of $f$ for $P$.
+\end{definition}
+
+\begin{theorem}
+  Suppose that $f$ is integrable on $[a, b]$. Then for every $\epsilon > 0$
+  there is some $\delta > 0$ such that, if $P = \{t_0, \ldots, t_n\}$ is any
+  partition of $[a, b]$ with all lengths $t_i - t_{i-1} < \delta$, then \[
+    \left|\sum_{i=1}^n f(x_i)(t_i - t_{i-1}) - \int_a^b f(x) \,dx\right| <
+    \epsilon,
+  \] for any Riemann sum formed by choosing $x_i$ in $[t_{i-1}, t_i]$.
+\end{theorem}
 
 \section{The Fundamental Theorem of Calculus}
 
@@ -2146,4 +2257,3 @@ function $\exp$ "grows faster than any other polynomial". In other words,
 \end{proof}
 
 \end{document}
-
