@@ -13,7 +13,7 @@ Mechanics, 2nd edition by David Jeffrey Griffiths.
 Theory, 2nd edition by Kenneth Ireland and Michael Rosen.
 * `linalg` (Notes and Solutions, Chapter 1): Linear Algebra, 2nd edition by
 Kenneth Hoffman and Ray Kunze.
-* `qc-and-qi` (Notes only, Chapter 1 to 2.1): Quantum Computation and Quantum
+* `qc-and-qi` (Notes only, Chapter 1 to 2.5): Quantum Computation and Quantum
 Information, 10th anniversary edition by Michael Nielsen and Isaac Chung.
 
 # Courses

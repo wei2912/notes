@@ -10,6 +10,11 @@
 \newtheorem{corollary}{Corollary}
 \numberwithin{corollary}{section}
 \newtheorem*{corollary*}{Corollary}
+\newtheorem{postulate}{Postulate}
+\numberwithin{postulate}{section}
+\newtheorem*{postulate*}{Postulate}
+
+\DeclareMathOperator{\E}{\mathbb{E}}
 
 \title{Notes to ``Quantum Computation and Quantum Information'', 10th
 anniversary edition (Nielsen, Chung)}
@@ -101,7 +106,7 @@ $\mathbb{C}$ is an \emph{inner product} if it satisfies the requirements that:
 \emph{orthogonal} if $\ip{w}{v} = 0$.
 
 \paragraph{Norm.} We define the \emph{norm} of a vector $\ket{v}$ by \[
-  \|\ket{v}\| \equiv \sqrt{\ip{v}{v}}.
+  \|\ket{v}\| \equiv \sqrt{\ip{v}}.
 \] A unit vector is a vector $\ket{v}$ with norm 1.
 
 \paragraph{Orthonormality.} A set $\ket{i}$ of vectors with index $i$ is
@@ -172,16 +177,16 @@ respect to the input basis $\ket{v_i}$ and output basis $\ket{w_j}$.
 
 \paragraph{Cauchy-Schwarz inequality.} The \emph{Cauchy-Schwarz inequality}
 states that for any two vectors $\ket{v}$ and $\ket{w}$, $|\ip{v}{w}|^2 \leq
-\ip{v}{v}\ip{w}{w}$.
+\ip{v}\ip{w}$.
 
 To see this, use the Gram-Schmidt procedure to construct an orthonormal basis
 $\ket{i}$ for the vector space such that the first member of the basis
-$\ket{i}$ is $\ket{w}/\sqrt{\ip{w}{w}}$. Using the completeness relation
-$\sum_i \ip{i}{i} = I$, and dropping some non-negative terms gives
+$\ket{i}$ is $\ket{w}/\sqrt{\ip{w}}$. Using the completeness relation $\sum_i
+\ip{i} = I$, and dropping some non-negative terms gives
 \begin{align*}
-  \ip{v}{v}\ip{w}{w}
-  &= \sum_i \ip{v}{i}\ip{i}{v}\ip{w}{w} \\
-  &\geq \frac{\ip{v}{w}\ip{w}{v}}{\ip{w}{w}}\ip{w}{w} \\
+  \ip{v}\ip{w}
+  &= \sum_i \ip{v}{i}\ip{i}{v}\ip{w} \\
+  &\geq \frac{\ip{v}{w}\ip{w}{v}}{\ip{w}}\ip{w} \\
   &= \ip{v}{w}\ip{w}{v} = |\ip{v}{w}|^2,
 \end{align*}
 as required. Equality occurs if and only if $\ket{v}$ and $\ket{w}$ are
@@ -427,7 +432,7 @@ We call $A = UJ$ the \emph{left polar decomposition} of $A$, and $A = KU$ the
   $J \equiv \sqrt{A^{\dagger}A}$ is a positive operator, so it can be given a
   spectral decomposition, $J = \sum_i \lambda_i\op{i}{i}$ ($\lambda_i \geq 0$).
   Define $\ket{\psi_i} \equiv A\ket{i}$. From the definition, we see that
-  $\ip{\psi_i}{\psi_i} = \mel{i}{A^{\dagger}A}{i} = \mel{i}{J^2}{i} =
+  $\ip{\psi_i} = \mel{i}{A^{\dagger}A}{i} = \mel{i}{J^2}{i} =
   \lambda_i^2$. Consider for now only those $i$ for which $\lambda_i \neq 0$.
   For those $i$ define $\ket{e_i} \equiv \ket{\psi_i}/\lambda_i$, so the
   $\ket{e_i}$ are normalized and orthogonal.
@@ -462,5 +467,520 @@ We call $A = UJ$ the \emph{left polar decomposition} of $A$, and $A = KU$ the
   completes the proof.
 \end{proof}
 
-\end{document}
+\subsection{The postulates of quantum mechanics}
 
+\subsubsection{State sapce}
+
+\begin{postulate}
+  Associated to any isolated physical system is a complex vector space with
+  inner product (that is, a Hilbert space) known as the \emph{state space} of
+  the system. The system is completely described by its \emph{state vector},
+  which is a unit vector in the system's state space.
+\end{postulate}
+
+\subsubsection{Evolution}
+
+\begin{postulate}
+  The evolution of a \emph{closed} quantum system is described by a
+  \emph{unitary transformation}. That is, the state $\ket{\psi}$ of the system
+  at time $t_1$ is related to the state $\ket{\psi'}$ of the system at time
+  $t_2$ by a unitary operator $U$ which depends only on the times $t_1$ and
+  $t_2$, \[
+    \ket{\psi'} = U\ket{\psi}.
+  \]
+
+  The time evolution of the state of a closed quantum system can also be
+  described by the \emph{Schr\"{o}dinger equation}, \[
+    i\hbar\frac{d\ket{\psi}}{dt} = H\ket{\psi}.
+  \]
+\end{postulate}
+
+Writing down the solution to Schr\"{o}dinger's equation, \[
+  \ket{\psi(t_2)} = \exp\left[\frac{-iH(t_2 - t_1)}{\hbar}\right] =
+  U(t_1, t_2)\ket{\psi(t_1)},
+\] where \[
+  U(t_1, t_2) \equiv \exp\left[\frac{-iH(t_2 - t_1)}{\hbar}\right]
+\] is unitary. Furthermore, any unitary operator $U$ can be realized in the
+form $U = \exp(iK)$ for some Hermitian operator $K$. There is therefore a
+one-to-one correspondence between the discrete-time description of dynamics
+using unitary operators, and the continuous time description using
+Hamiltonians.
+
+\subsubsection{Quantum measurement}
+
+\begin{postulate}
+  Quantum measurements are described by a collection $\{M_m\}$ of
+  \emph{measurement operators}. These are operators acting on the state space
+  of the system being measured. The index $m$ refers to the measurement
+  outcomes that may occur in the experiment. If the state of the quantum system
+  is $\ket{\psi}$ immediately before the measurement then the probability that
+  result $m$ occurs is given by \[
+    p(m) = \ev{M_m^{\dagger}M_m}{\psi},
+  \] and the state of the system after the measurement is \[
+    \frac{M_m\ket{\psi}}{\sqrt{\ev{M_m^{\dagger}M_m}{\psi}}}.
+  \] The measurement operators satisfy the \emph{completeness equation}, \[
+    \sum_m M_m^{\dagger}M_m = I.
+  \]
+\end{postulate}
+
+The completeness equation expresses the fact that probabilities sum to one: \[
+  I = \sum_m p(m) = \sum_m \ev{M_m^{\dagger}M_m}{\psi}.
+\]
+
+\subsubsection{Distinguishing quantum states}
+
+It is possible to reliably distinguish orthonormal states, but non-orthonormal
+states cannot be reliably distinguished.
+
+\begin{proof}[Proof that non-orthogonal states can't be reliably
+distinguished]
+  A proof by contradiction shows that no measurement distinguishing the
+  non-orthogonal states $\ket{\psi_1}$ and $\ket{\psi_2}$ is possible. Suppose
+  such a measurement is possible. If the state $\ket{\psi_1}$ ($\ket{\psi_2}$)
+  is prepared then the probability of measuring $j$ such that $f(j) = 1$ ($f(j)
+  = 2$) must be 1. Defining $E_i \equiv \sum_{j: f(j) = i} M_j^{\dagger}M_j$,
+  these observations may be written as: \[
+    \ev{E}{\psi_1} = 1; \quad
+    \ev{E_2}{\psi_2} = 1.
+  \] Since $\sum_i E_i = I$ it follows that $\sum_i \ev{E_i}{\psi_1} = 1$, and
+  since $\ev{E_1}{\psi_1} = 1$ we must have $\ev{E_2}{\psi_1} = 0$, and thus
+  $\sqrt{E_2}\ket{\psi_1} = 0$. Suppose we decompose $\ket{\psi_2} =
+  \alpha\ket{\psi_1} + \beta\ket{\phi}$, where $\ket{\phi}$ is orthonormal to
+  $\ket{\psi_1}$, $|\alpha|^2 + |\beta|^2 = 1$, and $|\beta| < 1$ since
+  $\ket{\psi_1}$ and $\ket{\psi_2}$ are not orthogonal. Then
+  $\sqrt{E_2}\ket{\psi_2} = \beta\sqrt{E_2}\ket{\phi}$, which implies a
+  contradiction, as \[
+    \ev{E_2}{\psi_2} = |\beta|^2\ev{E_2}{\phi} \leq |\beta|^2 < 1,
+  \] where the second last inequality follows from the observation that \[
+    \ev{E_2}{\phi} \leq \sum_i \ev{E_i}{\phi} = \ip{\phi} = 1.
+  \]
+\end{proof}
+
+\subsubsection{Projective measurements}
+
+\paragraph{Projective measurements.} A projective measurement is described by
+an \emph{observable}, $M$, a Hermitian operator on the state space of the
+system being observed. The observable has a spectral decomposition, \[
+  M = \sum_m mP_m,
+\] where $P_m$ is the projector onto the eigenspace of $M$ with eigenvalue $m$.
+The possible outcomes of the measurement correspond to the eigenvalues, $m$, of
+the observable. Upon measuring the state $\ket{\psi}$, the probabiltiy of
+getting result $m$ is given by \[
+  p(m) = \ev{P_m}{\psi}.
+\] Given that outcome $m$ occurred, the state of the quantum system immediately
+after the measurement is \[
+  \frac{P_m\ket{\psi}}{\sqrt{p(m)}}.
+\]
+
+Suppose the measurement operators in Postulate 3, in addition to satisfying the
+completeness relation $\sum_m M_m^{\dagger}M_m = I$, also satisfy the
+conditions that $M_m$ are orthogonal projectors, that is, the $M_m$ are
+Hermitian, and $M_mM_{m'} = \delta_{m, m'}M_m$. With these additional
+restrictions, Postulate 3 reduces to a projective measurement as just defined.
+
+\paragraph{Expectation and standard deviation.} By definition, the expectation
+value of a measurement operator $M$ is \[
+  \E(M) = \sum_m mp(m) = \sum_m m\ev{P_m}{\psi} =
+  \ev{\left(\sum_m mP_m\right)}{\psi} = \ev{M}{\psi}.
+\] From this formula follows the variance associated to observations of $M$, \[
+  [\Delta(M)]^2 = \langle (M - \langle M \rangle)^2 \rangle =
+  \langle M^2 \rangle - \langle M \rangle^2.
+\] and the standard deviation $\Delta(M)$ is determined by $\Delta(M) =
+\sqrt{\langle M^2 \rangle - \langle M \rangle^2}$.
+
+\begin{proof}[Proof of Heisenberg uncertainty principle.]
+  Suppose $A$ and $B$ are two Hermitian operators, and $\ket{\psi}$ is a
+  quantum state. Suppose $\ev{AB}{\psi} = x + iy$, where $x$ and $y$ are real.
+  Note that $\ev{[A, B]}{\psi} = 2iy$ and $\ev{\{A, B\}}{\psi} = 2x$. This
+  implies that \[
+    |\ev{[A, B]}{\psi}|^2 + |\ev{\{A, B\}}{\psi}|^2 = 4|\ev{AB}{\psi}|^2.
+  \] By the Cauchy-Schwarz inequality \[
+    |\ev{AB}{\psi}|^2 \leq \ev{A^2}{\psi}\ev{B^2}{\psi},
+  \] which combined with the the previous equation and dropping a non-negative
+  term gives \[
+    |\ev{[A, B]}{\psi}|^2 \leq 4\ev{A^2}{\psi}\ev{B^2}{\psi}.
+  \] Suppose $C$ and $D$ are two observables. Substituting $A = C -
+  \langle C \rangle$ and $B = D - \langle D \rangle$ into the last equation, we
+  obtain Heisenberg's uncertainty principle as it is usually stated: \[
+    \Delta(C)\Delta(D) \geq \frac{|\ev{[C, D]}{\psi}|}{2}.
+  \]
+\end{proof}
+
+\subsubsection{POVM measurements}
+
+For some applications where the post-measurement state of the system is of
+little interest, the \emph{POVM formalism} is especially well adapted to the
+analysis of the measurements.
+
+\paragraph{Positive Operator-Valued Measure (POVM).} Suppose a measurement
+described by measurement operators $M_m$ is performed upon a quantum system in
+the state $\ket{\psi}$. Then the probability of outcome $m$ is given by $p(m) =
+\ev{M_m^{\dagger}M_m}{\psi}$. Suppose we define \[
+  E_m \equiv M_m^{\dagger}M_m.
+\] Then from Postulate 3 and elementary linear algebra, $E_m$ is a positive
+operator such that $\sum_m E_m = I$ and $p(m) = \ev{E_m}{\psi}$. Thus the set
+of operators $E_m$ are sufficient to determine the probabilities of the
+different measurement outcomes. The operators $E_m$ are known as the \emph{POVM
+elements} associated with the measurement. The complete set $\{E_m\}$ is known
+as a \emph{POVM}.
+
+\subsubsection{Phase}
+
+\paragraph{Global phase.} Consider the state $e^{i\theta}\ket{\psi}$, where
+$\ket{\psi}$ is a state vector, and $\theta$ is a real number. We say that the
+state $e^{i\theta}\ket{\psi}$ is equal to $\ket{\psi}$, up to the \emph{global
+phase factor} $e^{i\theta}$.
+
+Suppose $M_m$ is a measurement operator associated to some quantum measurement;
+then the respective probabilities for outcome $m$ occurring are
+$\ev{M_m^{\dagger}M_m}{\psi}$ and
+$\ev{e^{-i\theta}M_m^{\dagger}M_me^{i\theta}}{\psi} =
+\ev{M_m^{\dagger}M_m}{\psi}$, so the statistics of measurement predicted for
+these two states are the same.
+
+\paragraph{Relative phase.} We say that two amplitudes $a$ and $b$ \emph{differ
+by a relative phase} if there is a real $\theta$ such that $a =
+\exp(i\theta)b$. More generally, two states are said to \emph{differ by a
+relative phase} in some basis if each of the amplitudes in that basis is
+related by such a phase factor.
+
+\subsubsection{Composite systems}
+
+\begin{postulate}
+  The state space of a composite physical system is the tensor product of the
+  state spaces of the component physical systems. Moreover, if we have systems
+  numbered 1 through $n$, and system number $i$ is prepared in the state
+  $\ket{\psi_i}$, then the joint state of the system is $\ket{\psi_1} \otimes
+  \ket{\psi_2} \otimes \cdots \otimes \ket{\psi_n}$.
+\end{postulate}
+
+Suppose we have a quantum system with state space $Q$, and we want to perform a
+measurement described by measurement operators $M_m$ on the system $Q$. To do
+this, we introduce an \emph{aniclla system}, with state space $M$, having an
+orthonormal basis $\ket{m}$ in one-to-one correspondence with the possible
+outcomes of the measurement we wish to implement.
+
+Letting $\ket{0}$ be any fixed state of $M$, define an operator $U$ on products
+$\ket{\psi}\ket{0}$ of states $\ket{\psi}$ from $Q$ with the state $\ket{0}$ by
+\[
+  U(\ket{\psi}\ket{0}) \equiv \sum_m (M_m\ket{\psi})\ket{m}.
+\] Using the orthonormality of the states $\ket{m}$ and the completeness
+relation $\sum_m M_m^{\dagger}M_m = I$, we can see that $U$ preserves inner
+products between states of the form $\ket{\psi}\ket{0}$,
+\begin{align*}
+  (\bra{\phi}\bra{0})U^{\dagger}U(\ket{\psi}\ket{0})
+  &= \sum_{m, m'} \ev{M_m^{\dagger}M_{m'}}{\psi}\braket{m}{m'} \\
+  &= \sum_m \ev{M_m^{\dagger}M_m}{\psi} \\
+  &= \braket{\phi}{\psi}.
+\end{align*}
+
+By Exercise 2.67 it follows that $U$ can be extended to a unitary operator on
+the space $Q \otimes M$, which we also denote by $U$.
+
+After letting $U$ act on $\ket{\psi}\ket{0}$, suppose we perform a projective
+measurement on the two systems described by projectors $P_m \equiv I_Q \otimes
+\op{m}{m}$. Outcome $m$ occurs with probability
+\begin{align*}
+  p(m)
+  &= \bra{\psi}\bra{0}U^{\dagger}P_mU\ket{\psi}\ket{0} \\
+  &= \sum_{m', m''} \bra{\psi}M_{m'}^{\dagger}\bra{m'} (I_Q \otimes \op{m}{m})
+    M_{m''}\ket{\psi}\ket{m''} \\
+  &= \ev{M_m^{\dagger}M_m}{\psi},
+\end{align*}
+just as given in Postulate 3. The joint state of the system $QM$ after
+measurement, conditional on result $m$ occurring, is given by \[
+  \frac{P_mU\ket{\psi}\ket{0}}{\sqrt{
+    \bra{0}\bra{\psi}U^{\dagger}P_mU\ket{\psi}\ket{0}
+  }} = \frac{M_m\ket{\psi}\ket{m}}{\sqrt{
+    \bra{0}\bra{\psi}M_m^{\dagger}M_m\ket{\psi}\ket{0}
+  }}
+\] It follows that the state of system $M$ after the measurement is $\ket{m}$,
+and the state of system $Q$ is \[
+  \frac{M_m\ket{\psi}}{\sqrt{\ev{M_m^{\dagger}M_m}{\psi}}}
+\] just as prescribed by Postulate 3. Thus unitary dynamics, projective
+measurements, and the ability to introduce ancillary systems, together allow
+any measurement of the form described in Postulate 3 to be realised.
+
+\paragraph{Entanglement.} A state of a composite system which cannot be written
+as a product of states of its component systems is an \emph{entangled} state.
+
+\subsection{Application: superdense coding}
+
+\emph{Superdense coding} involves two parties, conventionally known as 'Alice'
+and 'Bob', who are a long way away from one another. Their goal is to transmit
+some classical information from Alice to Bob. Suppose Alice is in posession of
+two classical bits of information which she wishes to send Bob, but is only
+allowed to send a single qubit to Bob.
+
+Suppose Alice and Bob initially share a pair of qubits in the entangled state
+\[
+  \ket{\psi} = \frac{\ket{00} + \ket{11}}{\sqrt{2}}.
+\] Alice is initially in possession of the first qubit, while Bob has
+possession of the second qubit. Note that $\ket{\psi}$ is a fixed state; there
+is no need for Alice to have sent Bob any qubits in order to prepare this
+state. Instead, some third party may prepare the entangled state ahead of time,
+sending one of the qubits to Alice, and the other to Bob.
+
+Alice performs the following operations based on the bitstring she wishes to
+send to Bob:
+\begin{enumerate}
+  \item 00: $\ket{\psi} \xrightarrow{I} \frac{\ket{00} + \ket{11}}{\sqrt{2}}$;
+  \item 01: $\ket{\psi} \xrightarrow{Z} \frac{\ket{00} - \ket{11}}{\sqrt{2}}$;
+  \item 10: $\ket{\psi} \xrightarrow{X} \frac{\ket{10} + \ket{01}}{\sqrt{2}}$;
+  \item 11: $\ket{\psi} \xrightarrow{iY} \frac{\ket{01} - \ket{10}}{\sqrt{2}}$.
+\end{enumerate}
+These are the Bell states, which form an orthonormal basis, and can therefore
+be distinguished by an appropriate quantum measurment. If Alice sends her qubit
+to Bob, giving Bob possession of both qubits, then by doing a measurement in
+the Bell basis Bob can determine which of the four possible bitstrings Alice
+sent.
+
+\subsection{The density operator}
+
+\subsubsection{Ensembles of quantum states}
+
+Suppose a quantum system is in one of a number of states $\ket{\psi_i}$, where
+$i$ is an index, with respective probabilities $p_i$. We shall call $\{p_i,
+\ket{\psi_i}\}$ an \emph{ensemble of pure states}.
+
+\paragraph{Density operator.} The \emph{density operator} for the system is
+defined by the equation \[
+  \rho \equiv \sum_i p_i\op{\psi_i}.
+\] The density operator is often known as the \emph{density matrix} too. All
+the postulates of quantum mechanics can be reformulated in terms of the density
+operator language.
+
+\paragraph{Pure and mixed states.} A quantum system whose state $\ket{\psi}$ is
+known exactly is said to be in a \emph{pure state}, such that the density
+operator is simply $\rho = \op{\psi}$. Otherwise, $p$ is in a \emph{mixed
+state} and said to be a mixture of the different pure states in the ensemble
+for $\rho$.
+
+A pure state satisfies $\tr(\rho^2) = 1$, while a mixed state satisfies
+$\tr(\rho^2) < 1$.
+
+Suppose that $\rho_i$ arises from some ensemble $\{p_{ij}, \ket{\psi_{ij}}\}$
+of pure states, so the probability for being in the state $\ket{\psi_{ij}}$ is
+$p_ip_{ij}$. The density matrix for the system is thus \[
+  \rho = \sum_{ij} p_ip_{ij}\op{\psi_{ij}} = \sum_i p_i\rho_i
+\] where we have used the definition $\rho_i = \sum_j p_{ij}\op{\psi_{ij}}$. We
+say that $\rho$ is a mixture of the states $\rho_i$ with probabilities $p_i$.
+
+\subsubsection{General properties of the density operator}
+
+\setcounter{theorem}{4}
+\begin{theorem}[Characterization of the density operators]
+  An operator $\rho$ is the density operator associated to some ensemble
+  $\{p_i, \ket{\psi_i}\}$ if and only if it satisfies the conditions:
+  \begin{enumerate}[(1)]
+    \item \textbf{(Trace condition)} $\tr(\rho) = 1$
+    \item \textbf{(Positivity condition)} $\rho$ is a positive operator.
+  \end{enumerate}
+\end{theorem}
+\begin{proof}
+  Suppose $\rho = \sum_i p_i\op{\psi_i}$ is a density operator. Then \[
+    \tr(\rho) = \sum_i p_i\tr(\op{\psi_i}) = \sum_i p_i = 1,
+  \] so that the trace condition $\tr(\rho) = 1$ is satisfied. Suppose
+  $\ket{\phi}$ is an arbitrary vector in state space. Then
+  \begin{align*}
+    \ev{\rho}{\phi}
+    &= \sum_i p_i\ip{\phi}{\psi_i}\ip{\psi_i}{\phi} \\
+    &= \sum_i p_i|\ip{\phi}{\psi_i}|^2 \\
+    &\geq 0,
+  \end{align*}
+  so the positivity condition is satisfied.
+
+  Conversely, suppose $\rho$ is any operator satisfying the trace and
+  positivity conditions. Since $\rho$ is positive, it must have a spectral
+  decomposition \[
+    \rho = \sum_j \lambda_j\op{j},
+  \] where the vectors $\ket{j}$ are orthogonal, and $\lambda_j$ are real,
+  non-negative eigenvalues of $\rho$. From the trace condition we see that
+  $\sum_j \lambda_j = 1$. Therefore, a system in state $\ket{j}$ with
+  probability $\lambda_j$ will have density operator $\rho$. That is, the
+  ensemble $\{\lambda_j, \ket{j}\}$ is an ensemble of states giving rise to the
+  density operator $\rho$.
+\end{proof}
+
+We can now reformulate the postulates of quantum mechanics in the density
+operator picture:
+
+\setcounter{postulate}{0}
+\begin{postulate}
+  Associated to any isolated physical system is a Hilbert space known as the
+  \emph{state space} of the system. The system is completely described by its
+  \emph{density operator}, acting on the state space of the system. If a
+  quantum system is in the state $\rho_i$ with probability $p_i$, then the
+  density operator for the system is $\sum_i p_i\rho_i$.
+\end{postulate}
+
+\begin{postulate}
+  The evolution of a closed quantum system is described by a unitary
+  transformation. That is, the state $\rho$ of the system at time $t_1$ is
+  related to the state $\rho'$ of the sysetm at time $t_2$ by a unitary
+  operator $U$ which depends only on the times $t_1$ and $t_2$, \[
+    \rho' = U \rho U^{\dagger}.
+  \]
+\end{postulate}
+
+\begin{postulate}
+  Quantum measurements are described by a collection $\{M_m\}$ of
+  \emph{measurement operators}. These are operators acting on the state space
+  of the system being measured. The index $m$ refers to the measurement
+  outcomes that may occur in the experiment. If the state of the quantum system
+  is $\rho$ immediately before the measurement then the probability that result
+  $m$ occurs is given by \[
+    p(m) = \tr(M_m^{\dagger}M_m\rho),
+  \] and the state of the system after the measurement is \[
+    \frac{M_m \rho M_m^{\dagger}}{\tr(M_m^{\dagger}M_m\rho)}.
+  \] The measurement operators satisfy the completeness equation, \[
+    \sum_m M_m^{\dagger}M_m = I.
+  \]
+\end{postulate}
+
+\begin{postulate}
+  The state space of a composite physical system is the tensor product of the
+  state spaces of the component physical systems. Moreover, if we have systenms
+  numbered 1 through $n$, and system number $i$ is prepared in the state
+  $\rho_i$, then the joint state of the total system is $\rho_1 \otimes \rho_2
+  \otimes \cdots \otimes \rho_n$.
+\end{postulate}
+
+We say the set $\ket{\tilde{\psi_i}}$ (which denotes vectors that may not be
+normalized to unit length) \emph{generates} the operator $\rho \equiv \sum_i
+\op{\tilde{\psi_i}}$, and thus the connection to the usual ensemble picture
+of density operators is expressed by the equation $\ket{\tilde{\psi_i}} =
+\sqrt{p_i}\ket{\psi_i}$.
+
+\begin{theorem}[Unitary freedom in the ensemble for density matrices]
+  The sets $\ket{\tilde{\psi_i}}$ and $\ket{\tilde{\phi_j}}$ generate
+  the same density matrix if and only if \[
+    \ket{\tilde{\psi_i}} = \sum_j u_{ij}\ket{\tilde{\psi_j}},
+  \] where $u_{ij}$ is a unitary matrix of complex numbers, with indices $i$
+  and $j$, and we 'pad' whichever set of vectors $\ket{\tilde{\psi_i}}$ or
+  $\ket{\tilde{\phi_j}}$ is smaller with additional vectors $0$ so that the
+  two sets have the same number of elements.
+\end{theorem}
+\begin{proof}
+  Suppose $\ket{\tilde{\psi_i}} = \sum_j u_{ij}\ket{\tilde{\phi_j}}$ for some
+  unitary $u_{ij}$. Then
+  \begin{align*}
+    \sum_i \op{\tilde{\psi_i}}
+    &= \sum_{ijk} u_{ij}u_{ik}^*\op{\tilde{\phi_j}}{\tilde{\phi_k}} \\
+    &= \sum_{jk}\left(\sum_i u_{ki}^{\dagger}u_{ij}\right)
+      \op{\tilde{\phi_j}}{\tilde{\phi_k}} \\
+    &= \sum_{jk} \delta_{kj}\op{\tilde{\phi_j}}{\tilde{\phi_k}} \\
+    &= \sum_j \op{\tilde{\phi_j}}{\tilde{\phi_j}},
+  \end{align*}
+  which shows that $\ket{\tilde{\psi_i}}$ and $\ket{\tilde{\phi_j}}$ generate
+  the same operator.
+
+  Conversely, suppose \[
+    A = \sum_i \op{\tilde{\psi_i}} = \sum_j \op{\tilde{\phi_j}}.
+  \] Let $A = \sum_k \lambda_k\op{k}$ be a decomposition for $A$ such that the
+  states $\ket{k}$ are orthonormal, and the $\lambda_k$ are strictly positive.
+  Define $\ket{\tilde{k}} \equiv \sqrt{\lambda_k}\ket{k}$ and let $\ket{\psi}$
+  be any vector orthonormal to the space spanned by the $\ket{\tilde{k}}$, so
+  $\ip{\psi}{\tilde{k}}\ip{\tilde{k}}{\psi} = 0$ for all $k$, and thus we see
+  that \[
+    0 = \ev{A}{\psi}
+    = \sum_i \ip{\psi}{\tilde{\psi_i}}\ip{\tilde{\psi_i}}{\psi}
+    = \sum_i \left|\ip{\psi}{\tilde{\psi_i}}\right|^2.
+  \] Thus $\ip{\psi}{\tilde{\psi_i}} = 0$ for all $i$ and all $\ket{\psi}$
+  orthonormal to the space spanned by the $\ket{\tilde{k}}$. It follows that
+  each $\ket{\tilde{\psi_i}}$ can be expressed as a linear combination of the
+  $\ket{\tilde{k}}$, $\ket{\tilde{\psi_i}} = \sum_k c_{ik}\ket{\tilde{k}}$.
+  Since $A = \sum_k \ip{\tilde{k}} = \sum_i \ip{\tilde{\psi_i}}$ we see that \[
+    \sum_k \ip{\tilde{k}}
+    = \sum_{kl} \left(\sum_i c_{ik}c_{il}^*\right)\op{\tilde{k}}{\tilde{l}}.
+  \] The operators $\op{\tilde{k}}{\tilde{l}}$ are easily seen to be linearly
+  independent, and thus it must be that $\sum_i c_{ik}c_{il}^* = \delta_{kl}$.
+  This ensures that we may append extra columns to $c$ to obtain a unitary
+  matrix $v$ such that $\ket{\tilde{\psi_i}} = \sum_k v_{ik}\ket{\tilde{k}}$,
+  where we have appended zero vectors to the list of $\ket{\tilde{k}}$.
+  Similarly, we can find a unitary matrix $w$ such that $\ket{\tilde{\phi_j}} =
+  \sum_k w_{jk}\ket{\tilde{k}}$. Thus $\ket{\tilde{\psi_i}} = \sum_j
+  u_{ij}\ket{\tilde{\phi_j}}$, where $u = vw^{\dagger}$ is unitary.
+\end{proof}
+
+As a consequence of this theorem, note that $\rho = \sum_i p_i\op{\psi_i} =
+\sum_j q_j\op{\phi_j}$ for normalized states $\ket{\psi_i}$, $\ket{\phi_j}$ and
+probability distributions $p_i$ and $q_j$ if and only if \[
+  \sqrt{p_i}\ket{\psi_i} = \sum_j u_{ij}\sqrt{q_j}\ket{\phi_j},
+\] for some unitary matrix $u_{ij}$, and we may pad the smaller ensemble with
+entries having probability zero in order to make the two ensembles the same
+size.
+
+\subsubsection{The reduced density operator}
+
+\paragraph{Reduced density operator.} Suppose we have physical systems $A$ and
+$B$, whose state is described by a density operator $\rho^{AB}$. The reduced
+density operator for system $A$ is described by \[
+  \rho^A \equiv \tr_B(\rho^{AB}),
+\] where $\tr_B$ is a map of operators konwn as the \emph{partial trace} over
+system $B$.
+
+\paragraph{Patrial trace.} The partial trace is defined by \[
+  \tr_B(\op{a_1}{a_2} \otimes \op{b_1}{b_2}) \equiv
+  \op{a_1}{a_2}\tr(\op{b_1}{b_2})
+\] where $\ket{a_1}$ and $\ket{a_2}$ are any two vectors in the state space of
+$A$, and $\ket{b_1}$ and $\ket{b_2}$ are any two vectors in the state space of
+$B$.
+
+\subsection{The Schmidt decomposition and purifications}
+
+\begin{theorem}[Schmidt decomposition]
+  Suppose $\ket{\psi}$ is a pure state of a composite system, $AB$. Then there
+  exist orthonormal states $\ket{i_A}$ for system $A$, and orthonormal states
+  $\ket{i_B}$ of system $B$ such that \[
+    \ket{\psi} = \sum_i \lambda_i\ket{i_A}\ket{i_B},
+  \] where $\lambda_i$ are non-negative real numbers satisfying $\sum_i
+  \lambda_i^2 = 1$ known as \emph{Schmidt co-efficients}.
+\end{theorem}
+\begin{proof}
+  We give the proof for the case where systems $A$ and $B$ have state spaces of
+  the same dimension.
+
+  Let $\ket{j}$ and $\ket{k}$ be any fixed orthonormal bases for systems $A$ and
+  $B$, respectively. Then $\ket{\psi}$ can be written \[
+    \ket{\psi} = \sum_{jk} a_{jk}\ket{j}\ket{k},
+  \] for some matrix $a$ of complex numbers $a_{jk}$. By the singular value
+  decomposition, $a = udv$, where $d$ is a diagonal matrix with non-negative
+  elements, and $u$ and $v$ are unitary matrices. Thus \[
+    \ket{\psi} = \sum_{ijk} u_{ji}d_{ii}v_{ik}\ket{j}\ket{k}.
+  \] Defining $\ket{i_A} \equiv \sum_j u_{ji}\ket{j}$, $\ket{i_B} \equiv \sum_k
+  v_{ik}\ket{k}$, and $\lambda_i \equiv d_{ii}$, we see that this gives \[
+    \ket{\psi} = \sum_i \lambda_i\ket{i_A}\ket{i_B}.
+  \] It is easy to check that $\ket{i_A}$ forms an orthonormal set, from the
+  unitarity of $u$ and the orthonormality of $\ket{j}$, and similarly that the
+  $\ket{i_B}$ form an orthonormal set.
+\end{proof}
+
+The bases $\ket{i_A}$ and $\ket{i_B}$ are called the \emph{Schmidt bases} for
+$A$ and $B$, respectively, and the number of non-zero values $\lambda_i$ is
+called the \emph{Schmidt number} for the state $\ket{\psi}$.
+
+\begin{theorem}[Schmidt purification]
+  Suppose we are given a state $\rho^A$ of a quantum system $A$. It is possible
+  to introduce another system, which we denote $R$, and define a pure state
+  $\ket{AR}$ for the joint system $AR$ such that $\rho^A = \tr_R(\op{AR})$. That
+  is, the pure state $\ket{AR}$ reduces to $\rho^A$ when we look at system $A$
+  alone.
+\end{theorem}
+\begin{proof}
+  Suppose $\rho^A$ has orthonormal decomposition $\rho^A = \sum_i p_i\op{i^A}$.
+  To purify $\rho^A$ we introduce a system $R$ which has the same state space as
+  system $A$, with orthonormal basis states $\ket{i^R}$, and define a pure state
+  for the combined system \[
+    \ket{AR} \equiv \sum_i \sqrt{p_i}\ket{i^A}\ket{i^R}.
+  \] We now calculate the reduced density operator for system $A$ correspondingto the state $\ket{AR}$:
+  \begin{align*}
+    \tr_R(\op{AR}) &= \sum_{ij} \sqrt{p_ip_j}\op{i^A}{j^A}\tr(\op{i^R}{j^R}) \\
+                   &= \sum_{ij} \sqrt{p_ip_j}\op{i^A}{j^A}\delta_{ij} \\
+                   &= \sum_{i} p_i\op{i^A} \\
+                   &= \rho^A.
+  \end{align*}
+  Thus $\ket{AR}$ is a purification of $\rho^A$.
+\end{proof}
+
+\end{document}
