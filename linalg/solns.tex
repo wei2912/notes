@@ -1,0 +1,117 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{csquotes}
+
+\title{Solutions to ``Linear Algebra'', 2nd edition (Hoffman, Kunze)}
+\author{Ng Wei En}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Linear Equations}
+
+\setcounter{subsection}{1}
+\subsection{Systems of Linear Equations}
+
+\paragraph{1.} Verify that the set of complex numbers described in Example 4 is
+a subfield of $\mathbb{C}$.
+
+\begin{displayquote}
+  \textbf{Example 4.} The set of all complex numbers of the form $x +
+  y\sqrt{2}$, where $x$ and $y$ are rational, is a subfield of $\mathbb{C}$. We
+  leave it to the reader to verify this.
+\end{displayquote}
+
+\begin{proof}
+  Let $F = \{x + y\sqrt{2} \mid x, y \in \mathbb{Q}\}$. Then,
+  \begin{enumerate}
+    \item $0 + 0\sqrt{2} = 0 \in F$.
+    \item $1 + 0\sqrt{2} = 1 \in F$.
+    \item For $x, y \in F$, take $x = a + b\sqrt{2}$ and $y = c + d\sqrt{2}$.
+      Then $x + y = (a + c) + (b + d)\sqrt{2} \in F$.
+    \item For $x \in F$, take $x = a + b\sqrt{2}$. Then $-x = (-a) +
+      (-b)\sqrt{2} \in F$.
+    \item For $x, y \in F$, take $x = a + b\sqrt{2}$ and $y = c + d\sqrt{2}$.
+      Then $xy = (ac + 2bd) + (ad + bc)\sqrt{2} \in F$.
+    \item For $x \in F$, $x \neq 0$, take $x = a + b\sqrt{2}$ where at least one
+      of $a$ and $b$ are not zero. Then for some $y = a + (-b)\sqrt{2}$, $xy = a^2
+      - 2b^2 \neq 0$ and thus $x\left(\frac{y}{a^2 - 2b^2}\right) = 1$. Since
+      $\frac{a}{a^2 - 2b^2}, \frac{-b}{a^2 - 2b^2} \in \mathbb{Q}$, $x^{-1} =
+      \frac{y}{a^2 - 2b^2} \in F$.
+  \end{enumerate}
+  So $F$ is also a field, and since $F \subseteq \mathbb{C}$, $F$ is therefore a
+  subfield of $\mathbb{C}$.
+\end{proof}
+
+\paragraph{6.} Prove that if two homogeneous systems of linear equations in two
+unknowns have the same solutions, then they are equivalent.
+
+\begin{proof}
+  Consider these two systems:
+  \begin{align*}
+    a_1x + b_1y &= 0 & a'_1x + b'_1y &= 0 \\
+    a_2x + b_2y &= 0 & a'_2x + b'_2y &= 0 \\
+    &\vdots & &\vdots \\
+    a_mx + b_my &= 0 & a'_mx + b'_my &= 0
+  \end{align*}
+  Each system consists of a set of lines through $(0, 0)$ in the $x$-$y$ plane.
+  Thus the two systems have the same solutions if and only if they both have
+  either $(0, 0)$ as their only solution, or a single line $ux + vy = 0$ as
+  their common solution.
+
+  In the latter case, all equations are simply multiples of the same line, so
+  clearly the two systems are equivalent.
+
+  In the former case, assume without loss of generality that the first two
+  equations in the first system represent different lines. Then \[
+    \frac{a_1}{a_2} \neq \frac{b_1}{b_2}.
+  \] We need to show that there exists some solution $(u, v)$ to the system
+  \begin{align*}
+    a_1u + a_2v &= a'_i \\
+    b_1u + b_2v &= b'_i
+  \end{align*}
+  for some $i$. Solving for both $u$ and $v$, \[
+    u = \frac{b_2a'_i - b_1b'_i}{a_1b_2 - a_2b_1}, \quad
+    v = \frac{a_1b'_i - a_2a'_i}{a_1b_2 - a_2b_1}.
+  \] Since $a_1b_2 - b_1a_2 \neq 0$, both $u$ and $v$ are
+  well-defined and therefore the two systems are equivalent.
+\end{proof}
+
+\paragraph{7.} Prove that each subfield of the field of complex numbers contains
+every rational number.
+
+\begin{proof}
+  For a subfield $F$ of $\mathbb{C}$, $n \cdot 1 = 0 \in F \implies n \cdot 1 =
+  0 \in \mathbb{C}$. But $\mathbb{C}$ has characteristic zero, so $n \cdot 1 = 0
+  \in \mathbb{C} \implies n = 0$ and thus $1, 2, 3, \cdots$ are all distinct
+  elements of $F$. Each of their additive inverses $-1, -2, -3, \cdots$ are also in
+  $F$, so $\mathbb{Z} \in F$. Similarly, each of the multiplicative inverses
+  $\frac{1}{n}$ for all $n \in \mathbb{Z}, n \neq 0$ are also in $F$.
+
+  For all numbers $\frac{m}{n} \in \mathbb{Q}$, $m, n \in \mathbb{Z}$ which
+  implies $m, \frac{1}{n} \in F$ and so $m \cdot \frac{1}{n} = \frac{m}{n} \in
+  F$. Hence $\mathbb{Q} \subseteq F$.
+\end{proof}
+
+\paragraph{8.} Prove that each field of characteristic zero contains a copy of
+the rational number field.
+
+\begin{proof}
+  For a field $F$ of characteristic zero, we define the additive and
+  multiplicative identities as $0_F$ and $1_F$ respectively. Let $n_F =
+  \underbrace{1_F + 1_F + \cdots + 1_F}_{n\text{ terms}}$, and its additive and
+  multiplicative inverses be $-n_F$ and $n_F^{-1}$ respectively. As $F$ has
+  characteristic zero, if $n \neq m$ then $n_F \neq m_F$.
+
+  For $m, n \in \mathbb{Z}$, let $\left(\frac{m}{n}\right)_F = m_F \cdot
+  n_F^{-1}$. If $\frac{m}{n} \neq \frac{m'}{n'}$ then
+  $\left(\frac{m}{n}\right)_F \neq \left(\frac{m'}{n'}\right)_F$. So, the map
+  $h: \frac{m}{n} \mapsto \left(\frac{m}{n}\right)_F$ is a bijection from a
+  subset of $F$ to $\mathbb{Q}$.
+\end{proof}
+
+\end{document}
