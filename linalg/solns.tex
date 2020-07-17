@@ -2,6 +2,7 @@
 
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{csquotes}
+\usepackage[shortlabels]{enumitem}
 
 \title{Solutions to ``Linear Algebra'', 2nd edition (Hoffman, Kunze)}
 \author{Ng Wei En}
@@ -37,9 +38,9 @@ a subfield of $\mathbb{C}$.
       (-b)\sqrt{2} \in F$.
     \item For $x, y \in F$, take $x = a + b\sqrt{2}$ and $y = c + d\sqrt{2}$.
       Then $xy = (ac + 2bd) + (ad + bc)\sqrt{2} \in F$.
-    \item For $x \in F$, $x \neq 0$, take $x = a + b\sqrt{2}$ where at least one
-      of $a$ and $b$ are not zero. Then for some $y = a + (-b)\sqrt{2}$, $xy = a^2
-      - 2b^2 \neq 0$ and thus $x\left(\frac{y}{a^2 - 2b^2}\right) = 1$. Since
+    \item For $x \in F$, $x \neq 0$, take $x = a + b\sqrt{2}$ where $a, b \neq
+      0$. Then for some $y = a + (-b)\sqrt{2}$, $xy = a^2 - 2b^2 \neq 0$ and
+      thus $x\left(\frac{y}{a^2 - 2b^2}\right) = 1$. Since
       $\frac{a}{a^2 - 2b^2}, \frac{-b}{a^2 - 2b^2} \in \mathbb{Q}$, $x^{-1} =
       \frac{y}{a^2 - 2b^2} \in F$.
   \end{enumerate}
@@ -112,6 +113,92 @@ the rational number field.
   $\left(\frac{m}{n}\right)_F \neq \left(\frac{m'}{n'}\right)_F$. So, the map
   $h: \frac{m}{n} \mapsto \left(\frac{m}{n}\right)_F$ is a bijection from a
   subset of $F$ to $\mathbb{Q}$.
+\end{proof}
+
+\subsection{Matrices and Elementary Row Operations}
+
+\paragraph{6.} Let \[
+  A = \begin{bmatrix}
+    a & b \\
+    c & d
+  \end{bmatrix}
+\] be a $2 \times 2$ matrix with complex entries. Suppose that $A$ is
+row-reduced and also that $a + b + c + d = 0$. Prove that there are exactly
+three such matrices.
+
+\begin{proof}
+  We first consider the trivial case $a = b = c = d = 0$: \[
+    A = \begin{bmatrix}
+      0 & 0 \\
+      0 & 0
+    \end{bmatrix}.
+  \] Now, suppose the first row is a non-zero row, while the second row is
+  a zero row. Then $a$ must be the leading non-zero entry of its row, so $a = 1$
+  and \[
+    A = \begin{bmatrix}
+      1 & -1 \\
+      0 & 0
+    \end{bmatrix}.
+  \] Likewise, we may consider the case where the first row is a zero row while
+  the second row is a non-zero row, such that \[
+    A = \begin{bmatrix}
+      0 & 0 \\
+      1 & -1
+    \end{bmatrix}.
+  \]
+\end{proof}
+
+\paragraph{8.} Consider the system of equations $AX = 0$ where \[
+  A = \begin{bmatrix}
+    a & b \\
+    c & d
+  \end{bmatrix}
+\] is a $2 \times 2$ matrix over the field $F$. Prove the following.
+\begin{enumerate}[(a)]
+  \item If every entry of $A$ is 0, then every pair $(x_1, x_2)$ is a solution
+    of $AX = 0$.
+  \item If $ad - bc \neq 0$, the system $AX = 0$ has only the trivial solution
+    $x_1 = x_2 = 0$.
+  \item If $ad - bc = 0$ and some entry of $A$ is different from 0, then there
+    is a solution $(x_1^0, x_2^0)$ such that $(x_1, x_2)$ is a solution if and
+    only if there is a scalar $y$ such that $x_1 = yx_1^0, x_2 = yx_2^0$.
+\end{enumerate}
+
+\begin{proof}
+  \begin{enumerate}[(a)]
+    \item Clearly, if every entry of $A$ is 0 then \[
+        AX = \begin{bmatrix}
+          0 & 0 \\
+          0 & 0
+        \end{bmatrix}
+        \begin{bmatrix}
+          x_1 \\
+          x_2
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+          0 \\
+          0
+        \end{bmatrix}
+      \] for every pair $(x_1, x_2)$.
+    \item Let $(u, v) \in F^2$. Consider the system
+      \begin{align*}
+        ax_1 + bx_2 &= u \\
+        cx_1 + dx_2 &= v
+      \end{align*}
+      If $ad - bc \neq 0$ then we can solve for $x_1$ and $x_2$ explicitly as \[
+        x_1 = \frac{du - bv}{ad - bc}, \quad
+        x_2 = \frac{av - cu}{ad - bc}.
+      \] Thus, there's an unique solution for all $(u, v)$ and in particular
+      $(u, v) = (0, 0)$.
+    \item Assume without loss of generality that $a \neq 0$. Then $ad - bc = 0
+      \implies d = \frac{cb}{a}$. Multiplying the first equation by
+      $\frac{c}{a}$, we obtain the second equation. Thus, the two equations are
+      equivalent and we need only consider the first equation $ax_1 + bx_2 = 0$.
+      Then it is clear that $(x_1^0, x_2^0) = (-\frac{b}{a}, 1)$ is a solution
+      and so $(x_1, x_2) = y(-\frac{b}{a}, 1)$ is also a solution for any scalar
+      $y$.
+  \end{enumerate}
 \end{proof}
 
 \end{document}
