@@ -10,6 +10,8 @@
 \newtheorem*{definition*}{Definition}
 \newtheorem{corollary}{Corollary}
 \newtheorem*{corollary*}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem*{lemma*}{Lemma}
 
 \title{Notes to ``Linear Algebra'', 2nd edition (Hoffman, Kunze)}
 \author{Ng Wei En}
@@ -231,6 +233,77 @@ columns of $A$ and whose last column is $Y$.
   Let $A$ and $B$ be $m \times n$ matrices over the field $F$. Then $B$ is
   row-equivalent to $A$ if and only if $B = PA$, where $P$ is a product of $m
   \times n$ elementary matrices.
+\end{corollary*}
+
+\subsection{Invertible Matrices}
+
+\begin{definition*}
+  Let $A$ be an $n \times n$ matrix over the field $F$. An $n \times n$ matrix
+  $B$ such that $BA = I$ is called a \textbf{left inverse} of $A$; an $n \times
+  n$ matrix $B$ such that $AB = I$ is called a \textbf{right inverse} of $A$. If
+  $AB = BA = I$, then $B$ is called a \textbf{two-sided inverse} (or simply
+  \textbf{the inverse}) of $A$, denoted as $A^{-1}$, and $A$ is said to be
+  \textbf{invertible}.
+\end{definition*}
+
+\begin{lemma*}
+  If $A$ has a left inverse $B$ and a right inverse $C$, then $B = C$.
+\end{lemma*}
+
+\begin{theorem}
+  Let $A$ and $B$ be $n \times n$ matrices over $F$.
+  \begin{enumerate}[(i)]
+    \item If $A$ is invertible, so is $A^{-1}$ and $(A^{-1})^{-1} = A$.
+    \item If both $A$ and $B$ are invertible, so is $AB$, and $(AB)^{-1} =
+      B^{-1}A^{-1}$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{corollary*}
+  A product of invertible matrices is invertible.
+\end{corollary*}
+
+\begin{theorem}
+  An elementary matrix is invertible.
+\end{theorem}
+
+\begin{theorem}
+  If $A$ is an $n \times n$ matrix, the following are equivalent.
+  \begin{enumerate}[(i)]
+    \item $A$ is invertible.
+    \item $A$ is row-equivalent to the $n \times n$ identity matrix.
+    \item $A$ is a product of elementary matrices.
+  \end{enumerate}
+\end{theorem}
+
+\begin{corollary*}
+  If $A$ is an invertible $n \times n$ matrix and if a sequence of EROs reduces
+  $A$ to the identity, then that same sequence of operations when applied to $I$
+  yields $A^{-1}$.
+\end{corollary*}
+
+\begin{corollary*}
+  Let $A$ and $B$ be $m \times n$ matrices. Then $B$ is row-equivalent to $A$ if
+  and only if $B = PA$ where $P$ is an invertible $m \times m$ matrix.
+\end{corollary*}
+
+\begin{theorem}
+  For an $n \times n$ matrix $A$, the following are equivalent.
+  \begin{enumerate}[(i)]
+    \item $A$ is invertible.
+    \item The homogeneous system $AX = 0$ has only the trivial solution $X = 0$.
+    \item The system of equations $AX = Y$ has a solution $X$ for each $n \times
+      1$ matrix $Y$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{corollary*}
+  A square matrix with either a left or right inverse is invertible.
+\end{corollary*}
+
+\begin{corollary*}
+  Let $A = A_1A_2 \cdots A_k$, where $A_1, \ldots, A_k$ are $n \times n$
+  matrices. Then $A$ is invertible if and only if each $A_j$ is invertible.
 \end{corollary*}
 
 \end{document}
