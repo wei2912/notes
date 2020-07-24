@@ -5,7 +5,6 @@
 \usepackage[shortlabels]{enumitem}
 
 \newtheorem{theorem}{Theorem}
-\newtheorem*{definition*}{Definition}
 \newtheorem*{corollary*}{Corollary}
 \newtheorem*{lemma*}{Lemma}
 
@@ -20,51 +19,7 @@
 
 \section{Linear Equations}
 
-\subsection{Fields}
-
-\paragraph{Field.} Suppose one has a set $F$ of objects $x, y, z, \ldots$ and
-two operations on the elements of $F$ as follows:
-
-\begin{enumerate}
-  \item Addition, which associates with each pair of elements $x, y \in F$ an
-    element $(x + y) \in F$.
-  \item Multiplication, which associates with each pair $x, y$ an element $xy
-    \in F$.
-\end{enumerate}
-
-If these two operations satisfy conditions (1)-(9) below, then the set $F$,
-together with these two operations, is called a \textbf{field}.
-
-\begin{enumerate}
-  \item Addition is commutative (i.e. $x + y = y + x$ for all $x, y \in F$).
-  \item Addtion is associative (i.e. $x + (y + z) = (x + y) + z$ for all $x, y,
-    z \in F$).
-  \item There is a unique element $0 \in F$ such that $x + 0 = x$, for every $x
-    \in F$.
-  \item To each $x \in F$ there corresponds a unique element $(-x) \in F$ such
-    that $x + (-x) = 0$.
-  \item Multiplication is commutative (i.e. $xy = yx$ for all $x, y \in F$).
-  \item Multiplication is associative (i.e. $x(yz) = (xy)z$ for all $x, y, z
-    \in F$).
-  \item There is a unique non-zero element $1 \in F$ such that $x1 = x$, for
-    every $x \in F$.
-  \item To each non-zero $x \in F$ there corresponds a unique element $x^{-1}
-    \in F$ such that $xx^{-1} = 1$.
-  \item Multiplication distributes over addition (i.e. $x(y + z) = xy + xz$ for
-    all $x, y, z \in F$).
-\end{enumerate}
-
-\paragraph{Subfield.} A \textbf{subfield} of a field $F$ is a subset $F_1
-\subseteq F$ which is itself a field under the same two operations of addition
-and multiplication.
-
-\paragraph{Characteristic.} For a field $F$, if it is possible to add the unit
-1 to itself a finite number of times and obtain 0: \[
-  1 + 1 + \cdots + 1 = 0,
-\] then the least $n$ such that the sum of $n$ 1's is 0 is called the
-\textbf{characteristic} of $F$. Otherwise, $F$ is called a field of
-\textbf{characteristic zero}.
-
+\setcounter{subsection}{1}
 \subsection{Systems of Linear Equations}
 
 \paragraph{System of linear equations.} Suppose $F$ is a field. We consider the
@@ -100,8 +55,7 @@ function $A$ from the set of pairs of integers $(i, j)$, $1 \leq i \leq m, 1
 \leq j \leq n$, into the field $F$. The \textbf{entries} of the matrix $A$ are
 the scalars $A(i, j) = A_{ij}$.
 
-\paragraph{Matrix of coefficients.} We can abbreviate the system \eqref{eq:1-1}
-by $AX = Y$ where
+We can abbreviate the system \eqref{eq:1-1} by $AX = Y$ where
 \begin{gather*}
   A = \begin{bmatrix}
     A_{11} & \cdots & A_{1n} \\
@@ -122,8 +76,8 @@ by $AX = Y$ where
 \end{gather*}
 We call $A$ the \textbf{matrix of coefficients} of the system.
 
-\paragraph{Elementary row operations (EROs).} Three \textbf{elementary row
-operations} can be carried out on a $m \times n$ matrix $A$ over the field $F$:
+\paragraph{Elementary row operations (EROs).} Three types of EROs can be carried
+out on a $m \times n$ matrix $A$ over the field $F$:
 \begin{enumerate}
   \item multiplication of one row of $A$ by a non-zero scalar $c$;
   \item replacement of the $r$th row of $A$ by row $r + cs$, $c$ any scalar and
@@ -136,11 +90,9 @@ operations} can be carried out on a $m \times n$ matrix $A$ over the field $F$:
   that $e_1(e(A)) = e(e_1(A)) = A$ for each $A$.
 \end{theorem}
 
-\begin{definition*}
-  If $A$ and $B$ are $m \times n$ matrices over the field $F$, we say that $B$
-  \textbf{is row-equivalent to} $A$ if $B$ can be obtained from $A$ by a finite
-  sequence of EROs.
-\end{definition*}
+If $A$ and $B$ are $m \times n$ matrices over the field $F$, we say that $B$
+\textbf{is row-equivalent to} $A$ if $B$ can be obtained from $A$ by a finite
+sequence of EROs.
 
 \begin{theorem}
   If $A$ and $B$ are row-equivalent $m \times n$ matrices, the homogeneous
@@ -148,14 +100,13 @@ operations} can be carried out on a $m \times n$ matrix $A$ over the field $F$:
   solutions.
 \end{theorem}
 
-\begin{definition*}
-  An $m \times n$ matrix $R$ is called \textbf{row-reduced} if:
-  \begin{enumerate}[(a)]
-    \item the first non-zero entry in each non-zero row of $R$ is equal to 1;
-    \item each column of $R$ which contains the leading non-zero entry of some
-      row has all its other entries 0.
-  \end{enumerate}
-\end{definition*}
+\paragraph{Row-reduced matrix.} An $m \times n$ matrix $R$ is called
+\textbf{row-reduced} if:
+\begin{enumerate}[(a)]
+  \item the first non-zero entry in each non-zero row of $R$ is equal to 1;
+  \item each column of $R$ which contains the leading non-zero entry of some
+    row has all its other entries 0.
+\end{enumerate}
 
 \begin{theorem} \label{thm:4}
   Every $m \times n$ matrix over the field $F$ is row-equivalent to a
@@ -164,21 +115,20 @@ operations} can be carried out on a $m \times n$ matrix $A$ over the field $F$:
 
 \subsection{Row-Reduced Echelon Matrices}
 
-\begin{definition*}
-  An $m \times n$ matrix $R$ is called a \textbf{row-reduced echelon matrix} if:
-  \begin{enumerate}[(a)]
-    \item $R$ is row-reduced;
-    \item every row of $R$ which has all its entries 0 occurs below every row
-      which has a non-zero entry;
-    \item if rows $1, \ldots, r$ are the non-zero rows of $R$, and if the
-      leading non-zero entry of row $i$ occurs in column $k_i$, $i = 1, \ldots,
-      r$, then $k_1 < k_2 < \cdots < k_r$.
-  \end{enumerate}
-\end{definition*}
+\paragraph{Row-reduced echelon matrix.} An $m \times n$ matrix $R$ is called a
+\textbf{row-reduced echelon matrix} if:
+\begin{enumerate}[(a)]
+  \item $R$ is row-reduced;
+  \item every row of $R$ which has all its entries 0 occurs below every row
+    which has a non-zero entry;
+  \item if rows $1, \ldots, r$ are the non-zero rows of $R$, and if the leading
+    non-zero entry of row $i$ occurs in column $k_i$, $i = 1, \ldots, r$, then
+    $k_1 < k_2 < \cdots < k_r$.
+\end{enumerate}
 
 \begin{theorem}
-  Every $m \times n$ matrix $A$ is row-equivalent to a row-reduced echelon
-  matrix (cf. \textbf{Theorem~\ref{thm:4}}).
+  Every $m \times n$ matrix over the field $F$ is row-equivalent to a
+  row-reduced echelon matrix (cf. \textbf{Theorem~\ref{thm:4}}).
 \end{theorem}
 
 \begin{theorem}
@@ -187,9 +137,9 @@ operations} can be carried out on a $m \times n$ matrix $A$ over the field $F$:
 \end{theorem}
 
 \begin{theorem}
-  If $A$ is an $n \times n$ (square) matrix, then $A$ is row-equivalent to the
-  $n \times n$ identity matrix if and only if the system of equations $AX = 0$
-  has only the trivial solution.
+  If $A$ is an $n \times n$ matrix, then $A$ is row-equivalent to the $n \times
+  n$ identity matrix iff the system of equations $AX = 0$ has only
+  the trivial solution.
 \end{theorem}
 
 \paragraph{Augmented matrix.} The \textbf{augmented matrix} $A'$ of the system
@@ -198,13 +148,11 @@ columns of $A$ and whose last column is $Y$.
 
 \subsection{Matrix Multiplication}
 
-\begin{definition*}
-  Let $A$ be an $m \times n$ matrix over the field $F$ and let $B$ be an $n
-  \times p$ matrix over $F$. The \textbf{product} $AB$ is the $m \times p$
-  matrix $C$ whose $i, j$ entry is \[
-    C_{ij} = \sum_{r=1}^n A_{ir}B_{rj}.
-  \]
-\end{definition*}
+\paragraph{Product.} Let $A$ be an $m \times n$ matrix over the field $F$ and
+let $B$ be an $n \times p$ matrix over $F$. The \textbf{product} $AB$ is the $m
+\times p$ matrix $C$ whose $i, j$ entry is \[
+  C_{ij} = \sum_{r=1}^n A_{ir}B_{rj}.
+\]
 
 \begin{theorem}
   If $A, B, C$ are matrices over the field $F$ such that the products $BC$ and
@@ -213,10 +161,8 @@ columns of $A$ and whose last column is $Y$.
   \]
 \end{theorem}
 
-\begin{definition*}
-  An $m \times n$ matrix is said to be an \textbf{elementary matrix} if it can
-  be obtained from the $m \times n$ identity matrix by means of a single ERO.
-\end{definition*}
+An $m \times n$ matrix is said to be an \textbf{elementary matrix} if it can be
+obtained from the $m \times n$ identity matrix by means of a single ERO.
 
 \begin{theorem}
   Let $e$ be an ERO and let $E$ be the $n \times m$ elementary matrix $E =
@@ -225,22 +171,14 @@ columns of $A$ and whose last column is $Y$.
   \]
 \end{theorem}
 
-\begin{corollary*}
-  Let $A$ and $B$ be $m \times n$ matrices over the field $F$. Then $B$ is
-  row-equivalent to $A$ if and only if $B = PA$, where $P$ is a product of $m
-  \times n$ elementary matrices.
-\end{corollary*}
-
 \subsection{Invertible Matrices}
 
-\begin{definition*}
-  Let $A$ be an $n \times n$ matrix over the field $F$. An $n \times n$ matrix
-  $B$ such that $BA = I$ is called a \textbf{left inverse} of $A$; an $n \times
-  n$ matrix $B$ such that $AB = I$ is called a \textbf{right inverse} of $A$. If
-  $AB = BA = I$, then $B$ is called a \textbf{two-sided inverse} (or simply
-  \textbf{the inverse}) of $A$, denoted as $A^{-1}$, and $A$ is said to be
-  \textbf{invertible}.
-\end{definition*}
+\paragraph{Inverses.} Let $A$ be an $n \times n$ matrix over the field $F$. An
+$n \times n$ matrix $B$ such that $BA = I$ is called a \textbf{left inverse} of
+$A$; an $n \times n$ matrix $B$ such that $AB = I$ is called a \textbf{right
+inverse} of $A$. If $AB = BA = I$, then $B$ is called a \textbf{two-sided
+inverse} (or simply \textbf{the inverse}) of $A$, denoted as $A^{-1}$, and $A$
+is said to be \textbf{invertible}.
 
 \begin{lemma*}
   If $A$ has a left inverse $B$ and a right inverse $C$, then $B = C$.
@@ -254,10 +192,6 @@ columns of $A$ and whose last column is $Y$.
       B^{-1}A^{-1}$.
   \end{enumerate}
 \end{theorem}
-
-\begin{corollary*}
-  A product of invertible matrices is invertible.
-\end{corollary*}
 
 \begin{theorem}
   An elementary matrix is invertible.
@@ -278,11 +212,6 @@ columns of $A$ and whose last column is $Y$.
   yields $A^{-1}$.
 \end{corollary*}
 
-\begin{corollary*}
-  Let $A$ and $B$ be $m \times n$ matrices. Then $B$ is row-equivalent to $A$ if
-  and only if $B = PA$ where $P$ is an invertible $m \times m$ matrix.
-\end{corollary*}
-
 \begin{theorem}
   For an $n \times n$ matrix $A$, the following are equivalent.
   \begin{enumerate}[(i)]
@@ -292,14 +221,5 @@ columns of $A$ and whose last column is $Y$.
       1$ matrix $Y$.
   \end{enumerate}
 \end{theorem}
-
-\begin{corollary*}
-  A square matrix with either a left or right inverse is invertible.
-\end{corollary*}
-
-\begin{corollary*}
-  Let $A = A_1A_2 \cdots A_k$, where $A_1, \ldots, A_k$ are $n \times n$
-  matrices. Then $A$ is invertible if and only if each $A_j$ is invertible.
-\end{corollary*}
 
 \end{document}
