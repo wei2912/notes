@@ -1,0 +1,100 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{csquotes}
+\usepackage[shortlabels]{enumitem}
+
+\newtheorem{theorem}{Theorem}
+\numberwithin{theorem}{section}
+\newtheorem{definition}{Definition}
+\numberwithin{definition}{section}
+
+\title{Notes to ``Principles of Mathematical Analysis'', 3rd edition (Rudin)}
+\author{Ng Wei En}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{The Real and Complex Number Systems}
+
+\subsection*{Ordered Sets}
+\addcontentsline{toc}{subsection}{Ordered Sets}
+
+\setcounter{definition}{7}
+\begin{definition}
+  Suppose $S$ is an ordered set, $E \subset S$, and $E$ is bounded above.
+  Suppose there exists an $\alpha \in S$ with the following properties:
+  \begin{enumerate}[(i)]
+    \item $\alpha$ is an upper bound of $E$.
+    \item If $\gamma < \alpha$ then $\gamma$ is not an upper bound of $E$.
+  \end{enumerate}
+  Then $\alpha$ is called the \emph{least upper bound} of $E$ or the
+  \emph{supremum} of $E$, and we write \[
+    \alpha = \sup E.
+  \]
+  The \emph{greatest lower bound}, or \emph{infimum}, of a set $E$ which is
+  bounded below is defined in the same manner: The statement \[
+    \alpha = \inf E
+  \] means that $\alpha$ is a lower bound of $E$ and that no $\beta$ with $\beta
+  > \alpha$ is a lower bound of $E$.
+\end{definition}
+
+\setcounter{definition}{9}
+\begin{definition}
+  An ordered set $S$ is said to have the \emph{least-upper-bound property} if
+  the following is true:
+  \[
+    \text{If } E \subset S, E \text{ is not empty}, \text{ and } E \text{ is
+    bounded above}, \text{ then } \sup E \text{ exists in } S.
+  \]
+\end{definition}
+
+\setcounter{theorem}{10}
+\begin{theorem}
+  Suppose $S$ is an ordered set with the least-upper-bound property, $B \subset
+  S$, $B$ is not empty, and $B$ is bounded below. Let $L$ be the set of all
+  lower bounds of $B$. Then \[
+    \alpha = \sup L
+  \] exists in $S$, and $\alpha = \inf B$.
+
+  In particular, $\inf B$ exists in $S$.
+\end{theorem}
+
+\subsection*{The Real Field}
+\addcontentsline{toc}{subsection}{The Real Field}
+
+\setcounter{theorem}{18}
+\begin{theorem}
+  There exists an ordered field $R$ which has the least-upper-bound property.
+  Moreover, $R$ contains $Q$ as a subfield.
+\end{theorem}
+
+\begin{theorem}
+  \begin{enumerate}[(a)]
+    \item If $x \in R$, $y \in R$, and $x > 0$, then there is a positive integer
+      $n$ such that $nx > y$.
+    \item If $x \in R, y \in R$, and $x < y$, then there exists a $p \in Q$ such
+      that $x < p < y$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+  For every real $x > 0$ and every integer $n > 0$ there is one and only one
+  positive real $y$ such that $y^n = x$.
+\end{theorem}
+
+\subsection*{The Complex Field}
+\addcontentsline{toc}{subsection}{The Complex Field}
+
+\setcounter{theorem}{34}
+\begin{theorem}
+  If $a_1, \ldots, a_n$ and $b_1, \ldots, b_n$ are complex numbers, then \[
+    \left|\sum_{j=1}^n a_j\overline{b}_j\right|^2 \leq
+    \sum_{j=1}^n |a_j|^2 \sum_{j=1}^n |b_j|^2
+  \].
+\end{theorem}
+
+\end{document}

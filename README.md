@@ -13,6 +13,8 @@ Mechanics, 2nd edition by David Jeffrey Griffiths.
 Theory, 2nd edition by Kenneth Ireland and Michael Rosen.
 * `linalg` (Notes only, Chapter 1): Linear Algebra, 2nd edition by Kenneth
 Hoffman and Ray Kunze.
+* `po-math-analysis` (Notes only, Chapter 1): Principles of Mathematical
+Analysis, 3rd edition by Walter Rudin.
 * `qc-and-qi` (Notes only, Chapter 1 to 2.5): Quantum Computation and Quantum
 Information, 10th anniversary edition by Michael Nielsen and Isaac Chung.
 
