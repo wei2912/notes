@@ -6,11 +6,12 @@ solutions for articles, books and courses.
 
 # Books
 
-* `calculus` (Notes only, Chapter 1 to 12): Calculus, 3rd edition by Michael
+* `calculus` (Notes only, Chapter 1 to 13): Calculus, 3rd edition by Michael
 Spivak.
 * `intro-to-qm` (Notes only, Chapter 1 to 2): Introduction to Quantum
 Mechanics, 2nd edition by David Jeffrey Griffiths.
-Theory, 2nd edition by Kenneth Ireland and Michael Rosen.
+* `ireland-rosen` (Notes only, Chapter 1): A Classical Introduction to Modern
+Number Theory, 2nd edition by Kenneth Ireland and Michael Rosen.
 * `linalg` (Notes only, Chapter 1): Linear Algebra, 2nd edition by Kenneth
 Hoffman and Ray Kunze.
 * `po-math-analysis` (Notes only, Chapter 1): Principles of Mathematical
