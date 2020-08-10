@@ -1,0 +1,230 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[shortlabels]{enumitem}
+
+\newtheorem{corollary}{Corollary}
+\newtheorem*{definition*}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\numberwithin{proposition}{subsection}
+\newtheorem{theorem}{Theorem}
+
+\DeclareMathOperator{\ord}{ord}
+
+\begin{document}
+
+\title{Notes to Ireland \& Rosen, "A Classical Introduction to Modern Number
+Theory"}
+\maketitle
+
+\section{Unique Factorisation}
+
+\subsection{Unique Factorization in $\mathbb{Z}$}
+
+$\mathbb{Z}$ denotes the ring of integers, with 1 and -1 the \emph{units} of
+$\mathbb{Z}$.
+
+\begin{definition*}[Order]
+  Let $n \in \mathbb{Z}$ and let $p$ be a prime. Then if $n$ is not zero, there
+  is a nonnegative integer $a$ such that $p^a \mid n$ but $p^{a + 1} \nmid n$.
+  The number $a$ is called the \emph{order} of $n$ at $p$ and is denoted by
+  $\ord_p n$.
+\end{definition*}
+
+\begin{lemma}
+  Every nonzero integer can be written as a product of primes.
+\end{lemma}
+
+\begin{theorem}[Unique Factorisation Theorem]
+  For every nonzero integer $n$ there is a prime factorisation \[ n =
+  (-1)^{\epsilon(n)} \prod_p p^{a(p)}, \] with the exponents uniquely
+  determined by $n$. In fact, we have $a(p) = \ord_p n$.
+\end{theorem}
+
+We establish a few preliminary results to produce the proof of Theorem 1.
+
+\begin{lemma}[Euclidean division]
+  If $a, b \in \mathbb{Z}$, there exist $q, r \in \mathbb{Z}$ such that $a = qb
+  + r$ with $0 \leq r < b$.
+\end{lemma}
+
+\begin{definition*}[Ideal]
+  If $a_1, a_2, \ldots, a_n \in \mathbb{Z}$, we define $(a_1, a_2, \ldots,
+  a_n)$ to be the set of all integers of the form $a_1x_1 + a_2x_2 + \ldots +
+  a_nx_n$ with $x_1, x_2, \ldots, x_n \in \mathbb{Z}$.
+
+  Let $A = (a_1, a_2, \ldots, a_n)$. Notice that the sum and difference of two
+  elements in $A$ are again in $A$. Also, if $a \in A$ and $r \in \mathbb{Z}$,
+  then $ra \in A$. In ring-theoretic language, $A$ is an \emph{ideal} in the
+  ring $\mathbb{Z}$.
+\end{definition*}
+
+\begin{lemma}
+  If $a, b \in \mathbb{Z}$, then there is a $d \in \mathbb{Z}$ such that
+  $(a, b) = (d)$.
+\end{lemma}
+
+\begin{definition*}[Greatest Common Divisor]
+  Let $a, b \in \mathbb{Z}$. An integer $d$ is called a \emph{greatest common
+  divisor} of $a$ and $b$ if $d$ is a divisor of both $a$ and $b$ and if every
+  other common divisor of $a$ and $b$ divides $d$.
+\end{definition*}
+
+\begin{lemma}
+  Let $a, b \in \mathbb{Z}$. If $(a, b) = (d)$ then $d$ is a greatest common
+  divisor of $a$ and $b$.
+\end{lemma}
+
+\begin{definition*}[Relatively prime]
+  We say that two integers $a$ and $b$ are \emph{relatively prime} if the only
+  common divisors are $\pm 1$, the units.
+\end{definition*}
+Since $(a, b) = (d)$ with $d$ the greatest common divisor of $a$ and $b$, it
+will not be too confusing to use the symbol $(a, b)$ for both the set and the
+greatest common divisor.
+
+\begin{proposition}
+  Suppose that $a \mid bc$ and that $(a, b) = 1$. Then $a \mid c$.
+\end{proposition}
+
+\begin{corollary}
+  If $p$ is a prime and $p \mid bc$, then either $p \mid b$ or $p \mid c$.
+\end{corollary}
+
+\begin{corollary}
+  Suppose that $p$ is a prime and that $a, b \in \mathbb{Z}$. Then $\ord_p ab =
+  \ord_p a + \ord_p b$.
+\end{corollary}
+
+Now, we are in a position to prove the main theorem.
+
+\begin{proof}
+  Apply the function $\ord_q$ to both sides of the equation \[ n =
+  (-1)^{\epsilon(n)} \prod_p p^{a(p)}, \] and use the property of $\ord_q$
+  given by Corollary 2. The result is \[ \ord_q n = \epsilon(n)\ord_q(-1) +
+  \sum_p a(p)\ord_q p. \]
+
+  Now, from the definition of $\ord_q$ we have $\ord_q(-1) = 0$ and $\ord_q(p)
+  = 0$ if $p \neq q$ and 1 if $p = q$. Thus the right-hand side collapses to
+  the single term $a(q)$, i.e., $\ord_q n = a(q)$.
+\end{proof}
+
+\subsection{Unique Factorization in $k[x]$}
+
+We consider the ring $k[x]$ of polynomials with coefficients in a field $k$. If
+$f, g \in k[x]$, we say that $f$ divides $g$ if there is an $h \in k[x]$ such
+that $g = hf$.
+
+If $\deg f$ denotes the degree of $f$, we have $\deg fg = \deg f + \deg g$.
+Also, remember that $\deg f = 0$ iff $f$ is a nonzero constant. It follows
+that $f \mid g$ and $g | f$ iff $f = cg$, where c is a nonzero constant. It
+also follows that the only polynomials that divide all the others are the
+nonzero constants. These are the \emph{units} of $k[x]$.
+
+\begin{definition*}[Irreduciblity]
+  A nonconstant polynomial $p$ is said to be \emph{irreducible} if $q \mid p$
+  implies that $q$ is either a constant or a constant times $p$.
+\end{definition*}
+
+\setcounter{lemma}{0}
+\begin{lemma}
+  Every nonconstant polynomial is the product of irreducible polynomials.
+\end{lemma}
+
+\begin{definition*}[Monic]
+  A polynomial $f$ is called \emph{monic} if its leading coefficient is 1.
+  Every polynomial (except zero) is a constant times a monic polynomial.
+\end{definition*}
+
+\begin{definition*}[Order]
+  Let $p$ be a monic irreducible polynomial. We define $\ord_p f$ to be the
+  integer $a$ defined by the property that $p^a \mid f$ but that $p^{a + 1}
+  \mid f$. Such an integer must exist since the degree of the powers of $p$ get
+  larger and larger. Notice that $\ord_p f = 0$ iff $p \nmid f$.
+\end{definition*}
+
+\begin{theorem}
+  Let $f \in k[x]$. Then we can write \[ f = c\prod_p p^{a(p)}, \] where the
+  product is over all monic irreducible polynomials and $c$ is a constant. The
+  constant $c$ and the exponents $a(p)$ are uniquely determined by $f$; in
+  fact, $a(p) = \ord_p f$.
+\end{theorem}
+
+The existence of such a product follows immediately from Lemma 1. As before,
+the uniqueness is more difficult to prove.
+
+\begin{lemma}[Euclidean division]
+  Let $f, g \in k[x]$. If $g \neq 0$, there exist polynomials $h, r \in k[x]$
+  such that $f = hg + r$, where either $r = 0$ or $r \neq 0$ and $\deg r < \deg
+  g$.
+\end{lemma}
+
+\begin{definition*}
+  If $f_1, f_2, \ldots, f_n \in k[x]$, then $(f_1, f_2, \ldots, f_n)$ is the
+  set of all polynomials of the form $f_1h_1 + f_2h_2$
+\end{definition*}
+
+\begin{definition*}[Ideal]
+  If $f_1, f_2, \ldots, f_n \in k[x]$, then $(f_1, f_2, \ldots, f_n)$ is the
+  set of all polynomials of the form $f_1h_1 + f_2h_2 + \ldots + f_nh_n$, where
+  $h_1, h_2, \ldots, h_n \in k[x]$.
+
+  In ring-theoretic language $(f_1, f_2, \ldots, f_n)$ is the ideal generated
+  by $f_1, f_2, \ldots, f_n$.
+\end{definition*}
+
+\begin{lemma}
+  Given $f, g \in k[x]$ there is a $d \in k[x]$ such that $(f, g) = (d)$.
+\end{lemma}
+
+\begin{definition*}[Greatest Common Divisor]
+  Let $f, g \in k[x]$. Then $d \in k[x]$ is said to be a \emph{greatest common
+  divisor} of $f$ and $g$ if $d$ divides $f$ and $g$ and every common divisor
+  of $f$ and $g$ divides $d$.
+\end{definition*}
+
+Notice that the greatest common divisor of two polynomials is determined up to
+multiplication by a constant. If we require it to be monic, it is uniquely
+determined.
+
+\begin{lemma}
+  Let $f, g \in k[x]$. By Lemma 3 there is a $d \in k[x]$ such that $(f, g) =
+  (d)$. $d$ is a greatest common divisor of $f$ and $g$.
+\end{lemma}
+
+\begin{definition*}[Relatively prime]
+  Two polynomials $f$ and $g$ are said to be \emph{relatively prime} if the
+  only common divisors of $f$ and $g$ are constants. In other words, $(f, g) =
+  (1)$.
+\end{definition*}
+
+\begin{proposition}
+  If $f$ and $g$ are relatively prime and $f \mid gh$, then $f \mid h$.
+\end{proposition}
+
+\setcounter{corollary}{0}
+\begin{corollary}
+  If $p$ is an irreducible polynomial and $p \mid fg$, then $p \mid f$ or $p
+  \mid g$.
+\end{corollary}
+
+\begin{corollary}
+  If $p$ is a monic irreducible polynomial and $f, g \in k[x]$, we have
+  $\ord_p fg = \ord_p f + \ord_p g$.
+\end{corollary}
+
+The proof of Theorem 2 is now easy.
+
+\begin{proof}
+  Apply the function $\ord_q$ to both sides of the relation \[ f =
+  c\prod_p p^{a(p)}. \] We find that \[ \ord_q f = \ord_q c +
+  \sum_p a(p)\ord_q p. \] Now, since $c$ is a constant $q \nmid c$ and
+  $\ord_q c = 0$. Moreover, $\ord_q p = 0$ if $q \neq p$ and 1 if $q = p$. Thus
+  the above relation yields $\ord_q f = a(q)$. It is clear that if the
+  exponents are uniquely determined by $f$, then so is $c$. This completes the
+  proof.
+\end{proof}
+
+\end{document}
+
