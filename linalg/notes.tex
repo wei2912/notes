@@ -1,7 +1,6 @@
 \documentclass{article}
 
 \usepackage{amsmath,amssymb,amsthm}
-\usepackage{csquotes}
 \usepackage[shortlabels]{enumitem}
 
 \newtheorem{theorem}{Theorem}
@@ -25,14 +24,12 @@
 \paragraph{System of linear equations.} Suppose $F$ is a field. We consider the
 problem of finding $n$ scalars $x_1, \ldots, x_n \in F$ which satisfy the
 conditions
-\begin{equation}\label{eq:1-1}\tag{1-1}
-  \begin{aligned}
-    A_{11}x_1 + A_{12}x_2 + \cdots + A_{1n}x_n &= y_1 \\
-    A_{21}x_1 + A_{22}x_2 + \cdots + A_{2n}x_n &= y_2 \\
-    &\vdots \\
-    A_{m1}x_1 + A_{m2}x_2 + \cdots + A_{mn}x_n &= y_m
-  \end{aligned}
-\end{equation}
+\begin{align*}\label{eq:1-1}\tag{1-1}
+  A_{11}x_1 + A_{12}x_2 + \cdots + A_{1n}x_n &= y_1 \\
+  A_{21}x_1 + A_{22}x_2 + \cdots + A_{2n}x_n &= y_2 \\
+  &\vdots \\
+  A_{m1}x_1 + A_{m2}x_2 + \cdots + A_{mn}x_n &= y_m
+\end{align*}
 while $y_1, \ldots, y_m$ and $A_{ij}$, $1 \leq i \leq m, 1 \leq j \leq n$, are
 given elements of $F$. We call \eqref{eq:1-1} a \textbf{system of $m$ linear
 equations in $n$ unknowns}. Any $n$-tuple $(x_1, \ldots, x_n)$ of elements of
