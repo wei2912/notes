@@ -1,0 +1,112 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[shortlabels]{enumitem}
+\usepackage{systeme}
+
+\title{Solutions to ``Linear Algebra'', 2nd edition (Hoffman, Kunze)}
+\author{Ng Wei En}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Linear Equations}
+
+\setcounter{subsection}{1}
+\subsection{Systems of Linear Equations}
+
+\paragraph{6.} Prove that if two homogeneous systems of linear equations in two
+unknowns have the same solutions, then they are equivalent.
+
+\begin{proof}
+  We express these two systems of linear equations as:
+  \begin{align*}
+    a_{11}x + a_{12}y &= 0 & b_{11}x + b_{12}y &= 0 \\
+    a_{21}x + a_{22}y &= 0 & b_{21}x + b_{22}y &= 0 \\
+    &\vdots & &\vdots \\
+    a_{m1}x + a_{m2}y &= 0 & b_{m1}x + b_{m2}y &= 0 \\
+  \end{align*}
+  Each system consists of a set of lines through $(0, 0)$ in the $x$-$y$ plane.
+  Thus the two systems have the same solution iff they both have either $(0, 0)$
+  as their only solution (Case 1) or single line $ux + vy = 0$ as their common
+  solution (Case 2).
+
+  In Case 1, all equations are simply multiples of the same line, so clearly the
+  two systems are equivalent.
+
+  In Case 2, assume WLOG that the first two equations in the first system are
+  different lines. Then \[
+    \frac{a_{11}}{a_{12}} \neq \frac{a_{21}}{a_{22}}.
+  \] We need to show that there exists some $(u, v)$ that solves
+  \begin{align*}
+    a_{11}u + a_{12}v &= b_{i1} \\
+    a_{21}u + a_{22}v &= b_{i2}
+  \end{align*}
+  for some $i$. Solving for $u$ and $v$, \[
+    u = \frac{a_{22}b_{i1} - a_{12}b_{i2}}{a_{11}a_{22} - a_{12}a_{21}}, \\
+    v = \frac{a_{21}b_{i1} - a_{11}b_{i2}}{a_{12}a_{21} - a_{11}a_{22}}.
+  \] Since $a_{11}a_{22} - a_{12}a_{21} \neq 0$, both $u$ and $v$ are
+  well-defined, thus the two systems are equivalent.
+\end{proof}
+
+\paragraph{7.} Prove that each subfield of the field of complex numbers contains
+every rational number.
+
+\begin{proof}
+  For a subfield $F$ of $C$, $1 \in F$ and $n \cdot 1 = 0 \in F \subseteq C
+  \iff n = 0$ as $C$ has characteristic zero, so $n = 1, 2, 3, \ldots$ are all
+  distinct elements of $F$. Each of these elements have additive inverses $-1,
+  -2, -3, \ldots$ which are also distinct elements of $F$, and therefore $Z
+  \subseteq F$.
+
+  For all $n \in Z$, $n \neq 0$, their multiplicative inverses $\frac{1}{n}$ are
+  also distinct elements of $F$. Consider a rational number $\frac{m}{n} \in Q$.
+  Then, $m, n \in Z \implies m, \frac{1}{n} \in F$ and so $m \cdot \frac{1}{n} =
+  \frac{m}{n} \in F$. Hence, we can conclude that $Q \subseteq F$.
+\end{proof}
+
+\paragraph{8.} Prove that each field of characteristic zero contains a copy of
+the rational number field.
+
+\begin{proof}
+  For a field $F$ of characteristic zero, let its additive and multiplicative
+  identity be $0_F$ and $1_F$ respectively, and define \[
+    n_F = \underbrace{1_F + 1_F + \cdots + 1_F}_{n\text{ terms}}.
+  \] Define the additive and multiplicative inverse of $n_F$ as $-n_F$ and
+  $n_F^{-1}$ respectively. As $F$ has characteristic zero, if $n \neq m$ then
+  $n_F \neq m_F$. For $m, n \in Z$, let $\left(\frac{m}{n}\right)_F = m_F \cdot
+  n_F^{-1}$; if $\frac{m}{n} \neq \frac{m'}{n'}$ then
+  $\left(\frac{m}{n}\right)_F \neq \left(\frac{m'}{n'}\right)_F$. So the map
+  $h: \frac{m}{n} \to \left(\frac{m}{n}\right)_F$ is a bijection from $Q$ to a
+  subset of $F$, with $h(0) = 0_F$, $h(1) = 1_F$, $h(x + y) = h(x) + h(y)$ and
+  $h(xy) = h(x)h(y)$.
+\end{proof}
+
+\setcounter{subsection}{5}
+\subsection{Invertible Matrices}
+
+\paragraph{9.} An $n \times n$ matrix $A$ is called \textbf{upper-triangular} if
+$A_{ij} = 0$ for $i > j$, that is, if every entry below the main diagonal is 0.
+Prove that an upper-triangular (square) matrix is invertible if and only if
+every entry on its main diagonal is different from 0.
+
+\begin{proof}
+  Suppose $A_{ii} \neq 0$ for all $i$. Construct the matrix $A'$ by dividing
+  each row $i$ of $A$ by $A_{ii}$ such that $A'_{ii} = 1$ for all $i$. Then,
+  $I_n$ can be easily obtained by applying elementary row operations on $A'$ to
+  eliminate all non-zero entries above the main diagonal. Hence, $A$ is
+  row-equivalent to $I_n$ and invertible by \textbf{Theorem 12}.
+
+  Now, suppose $A_{ii} = 0$ for some $i$. If $A_{ii} = 0$ for all $i$, then the
+  last row of $A$ is all zeroes and $A$ cannot be row-equivalent to $I_n$. Now,
+  taking $i'$ as the largest index such that $A_{i'i'} = 0$ and $A_{ii} \neq 0$
+  for all $i > i'$, construct the matrix $A'$ by dividing all rows $i$ below row
+  $i'$ of $A$ by $A_{ii}$ such that $A'_{ii} = 1$ for all $i > i'$. Then add
+  multiples of these rows below row $i'$ such that row $i'$ is all zeroes. Then
+  $A$ cannot be row-equivalent to $I_n$.
+\end{proof}
+
+\end{document}

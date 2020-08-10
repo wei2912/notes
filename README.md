@@ -12,8 +12,8 @@ Spivak.
 Mechanics, 2nd edition by David Jeffrey Griffiths.
 * `ireland-rosen` (Notes only, Chapter 1): A Classical Introduction to Modern
 Number Theory, 2nd edition by Kenneth Ireland and Michael Rosen.
-* `linalg` (Notes only, Chapter 1): Linear Algebra, 2nd edition by Kenneth
-Hoffman and Ray Kunze.
+* `linalg` (Notes and Solutions, Chapter 1): Linear Algebra, 2nd edition by
+Kenneth Hoffman and Ray Kunze.
 * `po-math-analysis` (Notes only, Chapter 1): Principles of Mathematical
 Analysis, 3rd edition by Walter Rudin.
 * `qc-and-qi` (Notes only, Chapter 1 to 2.5): Quantum Computation and Quantum
