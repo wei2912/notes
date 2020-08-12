@@ -1,0 +1,138 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[shortlabels]{enumitem}
+
+\title{Solutions to ``Principles of Mathematical Analysis'', 3rd edition (Rudin)}
+\author{Ng Wei En}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{The Real and Complex Number Systems}
+
+\paragraph{6.} Fix $b > 1$.
+\begin{enumerate}[(a)]
+  \item If $m, n, p, q$ are integers, $n > 0$, $q > 0$, and $r = m/n = p/q$,
+    prove that \[
+      (b^m)^{1/n} = (b^p)^{1/q}.
+    \] Hence it makes sense to define $b^r = (b^m)^{1/n}$.
+    \begin{proof}
+      Since $mq = np$, \[
+        ((b^m)^{1/n})^{mq} = ((b^m)^{1/n})^{np} = b^{mp}.
+      \] Applying \textbf{Theorem 1.21} twice, we have \[
+        (b^m)^{1/n} = (b^p)^{1/q}.
+      \]
+    \end{proof}
+
+  \item Prove that $b^{r+s} = b^rb^s$ if $r$ and $s$ are rational.
+    \begin{proof}
+      Let $r = m/n$, $s = p/q$. Then
+      \begin{align*}
+        (b^{r+s})^{nq}
+        &= ((b^{mq+np})^{1/nq})^{nq} \\
+        &= b^{mq+np} \\
+        &= b^{mq}b^{np} \\
+        &= ((b^m)^{1/n}(b^p)^{1/q})^{nq} = (b^rb^s)^{nq}.
+      \end{align*}
+      Hence, by \textbf{Theorem 1.21}, $b^{r+s} = b^rb^s$.
+    \end{proof}
+
+  \item If $x$ is real, define $B(x)$ to be the set of all numbers $b^t$, where
+    $t$ is rational and $t \leq x$. Prove that \[
+      b^r = \sup B(r)
+    \] when $r$ is rational. Hence it makes sense to define \[
+      b^x = \sup B(x)
+    \] for every real $x$.
+    \begin{proof}
+      It is clear that $b^r$ is an upper bound for $B(r)$. For $q \in Q^+$, $b
+      > 1 \implies b^q > 1$. Hence if $t < r$, $b^t < b^tb^{r-t} < b^{t+(r-t)}
+      = b^r$, and so $b^r$ is the least upper bound.
+    \end{proof}
+
+  \item Prove that $b^{x+y} = b^xb^y$ for all real $x$ and $y$.
+    \begin{proof}
+      By definition $b^{x+y} = \sup B(x + y)$, where $B(x + y)$ is the set of
+      all numbers $b^t$ with $t$ rational and $t \leq x + y$. Let $r$ be any
+      rational number satisfying $t - y < r < x$, and let $s = t - r$. Then $t$
+      can be rewritten as $r + s$, with $r \leq x$ and $s \leq y$. Conversely,
+      any pair of rational numbers $r, s$ with $r \leq x$ and $s \leq y$ yields
+      a rational sum $t = r + s \leq x + y$. Hence $B(x + y)$ can be described
+      as the set of all products $uv$, where $u \in B(x)$ and $v \in B(y)$.
+
+      Let $M = \sup B(x)\sup B(y)$. Since any such product is at most $M$, we
+      can conclude that $M$ is an upper bound for $B(x + y)$. Suppose that for
+      some real $c$ we have $0 < c < M = \sup B(x)\sup B(y)$. Then \[
+        \frac{c}{\sup B(x)} < \sup B(y).
+      \] Let $m = \frac{1}{2}\left(\frac{c}{\sup B(x)} + \sup B(y)\right)$; then
+      \[
+        \frac{c}{\sup B(x)} < m < \sup B(y)
+      \] and there exists $u \in B(x), v \in B(y)$ such that $c/m \leq u$ and $m
+      \leq v$. But $c < M$, so $c$ cannot be an upper bound for $B(x + y)$ and
+      it follows that $\sup B(x + y) = \sup B(x)\sup B(y)$, or \[
+        b^{x+y} = b^xb^y,
+      \] as required.
+    \end{proof}
+\end{enumerate}
+
+\paragraph{7.} Fix $b > 1, y > 0$, and prove that there is a unique real $x$
+such that $b^x = y$, by completing the following outline. (This $x$ is called
+the \emph{logarithm of $y$ to the base $b$}.)
+\begin{enumerate}[(a)]
+  \item For any positive integer $n$, $b^n - 1 \geq n(b - 1)$.
+    \begin{proof}
+      Using the binomial theorem, \[
+        b^n = (1 + (b - 1))^n \geq 1^n + n1^{n-1}(b - 1),
+      \] so $b^n - 1 \geq n(b - 1)$.
+    \end{proof}
+
+  \item Hence $b - 1 \geq n(b^{1/n} - 1)$.
+    \begin{proof}
+      Replacing $b$ with $b^{1/n}$, $b - 1 \geq n(b^{1/n} - 1)$.
+    \end{proof}
+
+  \item If $t > 1$ and $n > (b - 1)/(t - 1)$, then $b^{1/n} < t$.
+    \begin{proof}
+      From \[
+        \frac{b - 1}{t - 1}(b^{1/n} - 1) < n(b^{1/n} - 1) \leq b - 1,
+      \] it is clear that $b^{1/n} - 1 < t - 1$ and so $b^{1/n} < t$.
+    \end{proof}
+
+  \item If $w$ is such that $b^w < y$, then $b^{w+(1/n)} < y$ for sufficiently
+    large $n$; to see this, apply part (c) with $t = y \cdot b^{-w}$.
+    \begin{proof}
+      If $n > (b - 1)/(y \cdot b^{-w} - 1)$, then from (c) $b^{1/n} < y \cdot
+      b^{-w}$ and so $b^{w+(1/n)} < y$.
+    \end{proof}
+
+  \item If $b^w > y$, then $b^{w-(1/n)} > y$ for sufficiently large $n$.
+    \begin{proof}
+      Applying part (c) with $t = y^{-1} \cdot b^{w}$, if $n > (b - 1)/(y^{-1}
+      \cdot b^{w} - 1)$ then $b^{1/n} < y^{-1} \cdot b^{w}$ and so $b^{w-(1/n)}
+      > y$.
+    \end{proof}
+
+  \item Let $A$ be the set of all $w$ such that $b^w < y$, and show that $x =
+    \sup A$ satisfies $b^x = y$.
+    \begin{proof}
+      Suppose $b^x < y$. Then by (d), $b^{x+(1/n)} < y$ for sufficiently large
+      $n$ and so $x + (1/n) \in A$, contradicting that $x$ is an upper bound on
+      $A$.
+
+      On the other hand, suppose $b^x > y$. Then by (e), $b^{x-(1/n)} > y$ for
+      sufficiently large $n$ and so so $x - (1/n)$ is an upper bound on $A$,
+      contradicting that $x$ is the least upper bound on $A$.
+    \end{proof}
+
+  \item Prove that this $x$ is unique.
+    \begin{proof}
+      Suppose $x_1, x_2 \in R$, $x_1 < x_2$ and $b^{x_1} = b^{x_2}$. Then \[
+        b^{x_1}b^{x_2-x_1} = b^{x_2} = b^{x_1},
+      \] so $b^{x_2-x_1} = 1$ for $x_2 - x_1 > 0$ which is impossible.
+    \end{proof}
+\end{enumerate}
+
+\end{document}
