@@ -219,4 +219,76 @@ is said to be \textbf{invertible}.
   \end{enumerate}
 \end{theorem}
 
+\section{Vector Spaces}
+
+\subsection{Vector Spaces}
+
+\paragraph{Vector space.} A \textbf{vector space} consists of the following:
+\begin{enumerate}
+  \item a field $F$ of scalars;
+  \item a set $V$ of vectors;
+  \item vector addition which associates with each pair of vectors $\alpha,
+    \beta \in V$ a vector $\alpha + \beta \in V$, in such a way that
+    \begin{enumerate}[(a)]
+      \item $\alpha + \beta = \beta + \alpha$;
+      \item $\alpha + (\beta + \gamma) = (\alpha + \beta) + \gamma$;
+      \item there is a unique vector $0 \in V$ such that $\alpha + 0 = \alpha$
+        for all $\alpha \in V$,
+      \item for each vector $\alpha \in V$ there is a unique vector $-a \in V$
+        such that $\alpha + (-\alpha) = 0$;
+    \end{enumerate}
+  \item scalar multiplication which associates with each scalar $c \in F$ and
+    vector $\alpha \in V$ a vector $ca \in V$, in such a way that
+    \begin{enumerate}[(a)]
+      \item $1\alpha = \alpha$ for every $\alpha \in V$;
+      \item $(c_1c_2)\alpha = c_1(c_2\alpha)$;
+      \item $c(\alpha + \beta) = c\alpha + c\beta$;
+      \item $(c_1 + c_2)\alpha = c_1\alpha + c_2\alpha$.
+    \end{enumerate}
+\end{enumerate}
+
+\paragraph{Linear combination.} A vector $\beta \in V$ is said to be a
+\textbf{linear combination} of the vectors $\alpha_1, \ldots, \alpha_n \in V$
+provided there exist scalars $c_1, \ldots, c_n \in F$ such that \[
+  \beta = c_1\alpha_1 + \cdots + c_n\alpha_n = \sum_{i=1}^n c_i\alpha_i.
+\]
+
+\subsection{Subspaces}
+
+\paragraph{Subspace.} Let $V$ be a vector space over the field $F$. A
+\textbf{subspace} of $V$ is a subset $W$ of $V$ which is itself a vector space
+over $F$ with the operations of vector addition and scalar multiplication on
+$V$.
+
+\setcounter{theorem}{0}
+\begin{theorem}
+  A non-empty subset $W$ of $V$ is a subspace of $V$ if and only if for each
+  pair of vectors $\alpha, \beta \in W$ and each scalar $c \in F$ the vector
+  $c\alpha + \beta$ is again in $W$.
+\end{theorem}
+
+\begin{theorem}
+  Let $V$ be a vector space over the field $F$. The intersection of any
+  collection of subspaces of $V$ is a subspace of $V$.
+\end{theorem}
+
+\paragraph{Subspace spanned by a set of vectors.} Let $S$ be a set of vectors
+in a vector space $V$. The \textbf{subspace spanned} by $S$ is defined to be
+the intersection $W$ of all subspaces of $V$ which contain $S$.
+
+\begin{theorem}
+  The subspace spanned by a non-empty subset $S$ of a vector space $V$ is the
+  set of all linear combinations of vectors in $S$.
+\end{theorem}
+
+\paragraph{Sum of sets of vectors.} If $S_1, S_2, \ldots, S_k$ are subsets of a
+vector space $V$, the set of all sums \[
+  \alpha_1 + \alpha_2 + \cdots + \alpha_k
+\] of vectors $\alpha_i \in S_i$ is called the \textbf{sum} of the subsets $S_1,
+S_2, \ldots, S_k$ and is denoted by \[
+  S_1 + S_2 + \cdots + S_k
+\] or by \[
+  \sum_{i=1}^k S_i.
+\]
+
 \end{document}

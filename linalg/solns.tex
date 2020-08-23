@@ -109,4 +109,147 @@ every entry on its main diagonal is different from 0.
   $A$ cannot be row-equivalent to $I_n$.
 \end{proof}
 
+\section{Vector Spaces}
+
+\setcounter{subsection}{1}
+\subsection{Subspaces}
+
+\paragraph{6.}
+\begin{enumerate}[(a)]
+  \item Prove that the only subspaces of $R^1$ are $R^1$ and the zero subspace.
+    \begin{proof}
+      Suppose $V = \{0\}$, the zero subspace; clearly, $V$ is a subspace of
+      $R^1$. Now suppose that for a subspace $V$ of $R^1$ there exists $v \in
+      V \subseteq R^1$ with $v \neq 0$. Consider some $\alpha \in R$; then
+      $\alpha = \frac{\alpha}{v} \cdot v \in V$ where $\frac{\alpha}{v}$ is a
+      scalar in $R$, and so $V = R^1$.
+    \end{proof}
+  \item Prove that a subspace of $R^2$ is $R^2$, or the zero subspace, or
+    consists of all scalar multiples of some fixed vector in $R^2$.
+    \begin{proof}
+      Suppose that for a subspace $V$ of $R^2$ there exists $v_1 \in V$ with
+      $v_1 \neq 0$. Then for all $\alpha \in R$, $\alpha v_1 \in V$. So if $V
+      \neq \{0\}$ then $\{\alpha v_1 \mid \alpha \in R\} \subseteq V$.
+
+      If for all $v \in V$ we have $v = \alpha v_1$ for some $\alpha \in R$,
+      then it is clear that $V = \{\alpha v_1 \mid \alpha \in R\}$ and consists
+      of all scalar multiples of $v_1 \in R^2$.
+
+      Now suppose that there exists a $v_2 \in V, v_2 \neq 0$ such that $v_2
+      \neq \alpha v_1$ for all $\alpha \in R$. Defining $v_1 = \begin{bmatrix}
+        a \\
+        b
+      \end{bmatrix}$ and $v_2 = \begin{bmatrix}
+        c \\
+        d
+      \end{bmatrix}$, we may construct a matrix $A = \begin{bmatrix}
+        v_1 & v_2
+      \end{bmatrix}
+      = \begin{bmatrix}
+        a & c \\
+        b & d
+      \end{bmatrix}$. Suppose $a \neq 0$ and let $r = c/a$; then, $ra = c$ and
+      it follows that $rb \neq d$ since $v_2$ is not a scalar multiple of $v_1$.
+      A similar argument holds for $a = 0$ and $b \neq 0$. Thus, $ad - bc \neq
+      0$ and it follows from \textbf{Exercise 1.6.8} that $A$ is invertible.
+
+      From \textbf{Theorem 1.13}, any vector $v \in R^2$ can be rewritten
+      into $v = A\begin{bmatrix}
+        e \\
+        f
+      \end{bmatrix} = ev_1 + fv_2$ for $e, f \in R$. Hence, $V = R^2$ if there
+      exist two non-zero vectors $v_1, v_2 \in R^2$ which are not scalar
+      multiples of each other.
+    \end{proof}
+  \item Can you describe the subspaces of $R^3$?
+
+    \begin{proof}
+      The subspaces of $R^3$ are either the zero subspace, all scalar multiples
+      of some fixed vector in $R^3$, all linear combinations of two non-parallel
+      vectors in $R^3$, or $R^3$.
+    \end{proof}
+\end{enumerate}
+
+\paragraph{7.} Let $W_1$ and $W_2$ be subspaces of a vector space $V$ such that
+the set-theoretical union of $W_1$ and $W_2$ is also a subspace. Prove that one
+of the spaces $W_i$ is contained in the other.
+
+\begin{proof}
+  Suppose $W_1 \not\subseteq W_2$ and $W_2 \not\subseteq W_1$. Consider $v_1 \in
+  W_1 \setminus W_2$ and $v_2 \in W_2 \setminus W_1$; since $v_1 + v_2 \in W_1
+  \cup W_2$, there must exist some $w'_1 \in W_1$ such that $w'_1 = v_1 + v_2$
+  or some $w'_2 \in W_2$ such that $w'_2 = v_1 + v_2 \in W_2$.
+
+  If the former is true, then with $w'_1 \in W_1$ and $v_1 \in W_1 \setminus W_2
+  \subset W_1$, we must have $w'_1 - v_1 = v_2 \in W_1$. This contradicts the
+  assumption that $v_2 \not\in W_1$. Likewise, the latter contradicts the
+  assumption that $v_1 \not\in W_2$. Hence, it is proven that either $W_1
+  \subseteq W_2$ or $W_2 \subseteq W_1$.
+\end{proof}
+
+\paragraph{8.} Let $V$ be the vector space of all functions from $R$ into $R$;
+let $V_e$ be the subset of even functions, $f(-x) = f(x)$; let $V_o$ be the
+subset of odd functions, $f(-x) = -f(x)$.
+
+\begin{enumerate}[(a)]
+  \item Prove that $V_e$ and $V_o$ are subspaces of $V$.
+
+    \begin{proof}
+      By \textbf{Theorem 2.1}, $V_e$ is a subspace of $V$ if and only if for
+      each pair of vectors $\alpha, \beta \in V_e$ and each scalar $c \in R$
+      the vector $c\alpha + \beta$ is again in $V_e$. Let $\gamma = c\alpha + 
+      \beta$. Then \[
+        \gamma(-x) = c\alpha(-x) + \beta(-x) = c\alpha(x) + \beta(x) =
+        \gamma(x),
+      \] so $\gamma$ is even and in $V_e$. Hence, $V_e$ is a subspace of $V$.
+
+      Similarly, for each pair of vectors $\alpha, \beta \in V_o$ and each
+      scalar $c \in R$ the vector $\gamma = c\alpha + \beta$ has the property
+      that \[
+        \gamma(-x) = c\alpha(-x) + \beta(-x) = c[-\alpha(x)] + [-\beta(x)] =
+        -[c\alpha(x) + \beta(x)] = -\gamma(x),
+      \] so it is odd and in $V_o$. Hence, $V_o$ is also a subspace of $V$.
+    \end{proof}
+  \item Prove that $V_e + V_o = V$.
+
+    \begin{proof}
+      Let $f \in V$, and define $f_e(x) = [f(x) + f(-x)]/2$ and $f_o(x) =
+      [f(x) - f(-x)]/2$ so that $f = f_e + f_o$. It is clear that \[
+        f_e(-x) = \frac{f(-x) + f(x)}{2} = \frac{f(x) + f(-x)}{2} = f_e(x)
+      \] and \[
+        f_o(-x) = \frac{f(-x) - f(x)}{2} = -\frac{f(x) - f(-x)}{2} = -f_o(x),
+      \] so $f_e \in V_e$ and $f_o \in V_o$. Therefore any function $f = f_e +
+      f_o \in V$ for some $f_e \in V_e$ and $f_o \in V_o$, proving that $V_e +
+      V_o = V$.
+    \end{proof}
+  \item Prove that $V_e \cap V_o = \{0\}$.
+
+    \begin{proof}
+      For a function $f \in V$ to be in both $V_e$ and $V_o$, it must be even
+      and odd (i.e. $f(x) = f(-x)$ and $f(x) = -f(-x)$ respectively). Clearly,
+      only the zero function fulfils both properties.
+    \end{proof}
+\end{enumerate}
+
+\paragraph{9.} Let $W_1$ and $W_2$ be subspaces of a vector space $V$ such that
+$W_1 + W_2 = V$ and $W_1 \cap W_2 = \{0\}$. Prove that for each vector $\alpha$
+in $V$ there are unique vectors $\alpha_1$ in $W_1$ and $\alpha_2$ in $W_2$ such
+that $\alpha = \alpha_1 + \alpha_2$.
+
+\begin{proof}
+  By definition of $V = W_1 + W_2$, for any vector $\alpha \in V$ there must
+  exist a pair of vectors $\alpha_1 \in W_1$ and $\alpha_2 \in W_2$ such that
+  $\alpha = \alpha_1 + \alpha_2$.
+
+  Now suppose $\alpha = \alpha_1 + \alpha_2$ for $\alpha_i \in W_i$ and $\alpha
+  = \beta_1 + \beta_2$ for $\beta_i \in W_i$. Then $\alpha_1 + \alpha_2 =
+  \beta_1 + \beta_2$ which implies that $\alpha_1 - \beta_1 = \beta_2 -
+  \alpha_2$. Suppose $\gamma = \alpha_1 - \beta_1 = \beta_2 - \alpha_2$; it then
+  follows that $\gamma = \alpha_1 - \beta_1 \in W_1$ and $\gamma = \alpha_2 -
+  \beta_2 \in W_2$. From $W_1 \cap W_2 = \{0\}$ it is clear that $\gamma = 0$,
+  thus $\alpha_1 - \beta_1 = 0 \iff \alpha_1 = \beta_1$. Similarly, it can be
+  shown that $\alpha_2 = \beta_2$. This proves that the vectors $\alpha_1$ and
+  $\alpha_2$ are unique.
+\end{proof}
+
 \end{document}
