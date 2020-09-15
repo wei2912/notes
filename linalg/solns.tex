@@ -252,4 +252,39 @@ that $\alpha = \alpha_1 + \alpha_2$.
   $\alpha_2$ are unique.
 \end{proof}
 
+\subsection{Bases and Dimensions}
+
+\paragraph{9.}
+
+\begin{proof}
+  Suppose $c_1(\alpha + \beta) + c_2(\beta + \gamma) + c_3(\gamma + \alpha) =
+  0$. Rearranging this equation yields $(c_1 + c_3)\alpha + (c_1 + c_2) \beta +
+  (c_2 + c_3)\gamma$. Since $\alpha, \beta, \gamma$ are linearly independent, it
+  follows that $c_1 + c_3 = c_1 + c_2 = c_2 + c_3 = 0$. This gives a system of
+  equations in $c_1, c_2, c_3$ with matrix \[
+    \begin{bmatrix}
+      1 & 0 & 1 \\
+      1 & 1 & 0 \\
+      0 & 1 & 1
+    \end{bmatrix}
+  \] which can be easily shown to be row-reducible to the identity matrix. By
+  \textbf{Theorem 1.7}, the only solution is $c_1 = c_2 = c_3 = 0$. Thus
+  $(\alpha + \beta), (\beta + \gamma), (\gamma + \alpha)$ are linearly
+  independent.
+\end{proof}
+
+\paragraph{14.}
+
+\begin{proof}
+  Suppose $\{r_1, r_2, \ldots, r_n\}$ is a basis for $V$ over the field
+  $\mathbb{Q}$, for some $n \in \mathbb{Z}^+$. Then any element of $V$ can be
+  written as \[
+    c_1r_1 + c_2r_2 + \ldots + c_nr_n,
+  \] so any element of $V$ can be mapped to a $n$-tuple of rational numbers in
+  $\mathbb{Q}^n$. This suggests that $\vert V \vert = \vert \mathbb{Q}^n \vert$.
+  However, $V = \mathbb{R}$ is uncountable, while $\mathbb{Q}$ and by extension
+  $\mathbb{Q}^n$ is countable, leading to a contradiction. Therefore no finite
+  basis exists for the vector space $V$.
+\end{proof}
+
 \end{document}
