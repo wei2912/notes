@@ -326,4 +326,82 @@ $V$ is \textbf{finite-dimensional} if it has a finite basis.
   \end{enumerate}
 \end{corollary}
 
+\begin{lemma*}
+  Let $S$ be a linearly independent subset of a vector space $V$. Suppose
+  $\beta$ is a vector in $V$ which is not in the subspace spanned by $S$. Then
+  the set obtained by adjoining $\beta$ to $S$ is linearly independent.
+\end{lemma*}
+
+\begin{theorem}
+  If $W$ is a subspace of a finite-dimensional vector space $V$, every linearly
+  independent subset of $W$ is finite and is part of a (finite) basis for $W$.
+\end{theorem}
+
+\setcounter{corollary}{0}
+\begin{corollary}
+  If $W$ is a proper subspace of a finite dimensional vector space $V$, then
+  $W$ is finite-dimensional and $\dim W < \dim V$.
+\end{corollary}
+
+\begin{corollary}
+  In a finite-dimensional vector space $V$ every non-empty linearly independent
+  set of vectors is part of a basis.
+\end{corollary}
+
+\begin{corollary}
+  Let $A$ be an $n \times n$ matrix over a field $F$, and suppose the row
+  vectors of $A$ form a linearly independent set of vectors in $F^n$. Then $A$
+  is invertible.
+\end{corollary}
+
+\begin{theorem}
+  If $W_1$ and $W_2$ are finite-dimensional subspaces of a vector space $V$,
+  then $W_1 + W_2$ is finite-dimensional and \[
+    \dim W_1 + \dim W_2 = \dim (W_1 \cap W_2) + \dim (W_1 + W_2).
+  \]
+\end{theorem}
+
+\subsection{Coordinates}
+
+\paragraph{Ordered basis.} If $V$ is a finite-dimensional vector space, an
+\textbf{ordered basis} for $V$ is a finite sequence of vectors which is linearly
+independent and spans $V$.
+
+Given $\alpha \in V$ and an ordered basis $B = \{\alpha_1, \ldots, \alpha_n\}$
+for $V$, there is a unique $n$-tuple $(x_1, \ldots, x_n)$ of scalars such that
+$\alpha = \sum_{i=1}^n x_ia_i$. $x_i$ is the \textbf{$i$th coordinate of
+$\alpha$ relative to the ordered basis $B$}. The corresponding
+\textbf{coordinate matrix} is \[
+  X = \begin{bmatrix}
+    x_1 \\
+    \vdots \\
+    x_n
+  \end{bmatrix}.
+\] which is often denoted as $[\alpha]_B$.
+
+\begin{theorem}
+  Let $V$ be an $n$-dimensional vector space over the field $F$, and let $B = \{
+  \alpha_1, \ldots, \alpha_n\}$ and $B' = \{\alpha'_1, \ldots, \alpha'_n\}$ be
+  two ordered bases of $V$. Then there is a unique, necessarily invertible, $n
+  \times n$ matrix $P$ with entries in $F$ such that
+  \begin{enumerate}[(i)]
+    \item $[\alpha]_B = P[\alpha]_{B'}$
+    \item $[\alpha]_{B'} = P^{-1}[\alpha]_B$
+  \end{enumerate}
+  for every vector $\alpha \in V$. The columns of $P$ are given by \[
+    P_j = [\alpha'_j]_B,\quad j = 1, \ldots, n.
+  \]
+\end{theorem}
+
+\begin{theorem}
+  Suppose $P$ is an $n \times n$ invertible matrix over $F$. Let $V$ be an
+  $n$-dimensional vector space over $F$, and let $B$ be an ordered basis of $V$.
+  Then there is a unique ordered basis $B'$ of $V$ such that
+  \begin{enumerate}[(i)]
+    \item $[\alpha]_B = P[\alpha]_{B'}$
+    \item $[\alpha]_{B'} = P^{-1}[\alpha]_B$
+  \end{enumerate}
+  for every vector $\alpha \in V$.
+\end{theorem}
+
 \end{document}

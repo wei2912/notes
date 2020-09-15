@@ -254,7 +254,10 @@ that $\alpha = \alpha_1 + \alpha_2$.
 
 \subsection{Bases and Dimensions}
 
-\paragraph{9.}
+\paragraph{9.} Let $V$ be a vector space over a subfield $F$ of the complex
+numbers. Suppose $\alpha$, $\beta$ and $\gamma$ are linearly independent vectors
+in $V$. Prove that $(\alpha + \beta), (\beta + \gamma)$, and $(\gamma + \alpha)$
+are linearly independent.
 
 \begin{proof}
   Suppose $c_1(\alpha + \beta) + c_2(\beta + \gamma) + c_3(\gamma + \alpha) =
@@ -273,18 +276,150 @@ that $\alpha = \alpha_1 + \alpha_2$.
   independent.
 \end{proof}
 
-\paragraph{14.}
+\paragraph{14.} Let $V$ be the set of real numbers. Regard $V$ as a vector space
+over the field of rational numbers, with the usual operations. Prove that this
+vector space is not finite-dimensional.
 
 \begin{proof}
   Suppose $\{r_1, r_2, \ldots, r_n\}$ is a basis for $V$ over the field
-  $\mathbb{Q}$, for some $n \in \mathbb{Z}^+$. Then any element of $V$ can be
-  written as \[
+  $Q$, for some $n \in Z^+$. Then any element of $V$ can be written as \[
     c_1r_1 + c_2r_2 + \ldots + c_nr_n,
   \] so any element of $V$ can be mapped to a $n$-tuple of rational numbers in
-  $\mathbb{Q}^n$. This suggests that $\vert V \vert = \vert \mathbb{Q}^n \vert$.
-  However, $V = \mathbb{R}$ is uncountable, while $\mathbb{Q}$ and by extension
-  $\mathbb{Q}^n$ is countable, leading to a contradiction. Therefore no finite
-  basis exists for the vector space $V$.
+  $Q^n$. This suggests that $\vert V \vert = \vert Q^n \vert$. However, $V = R$
+  is uncountable, while $Q$ and by extension $Q^n$ is countable, leading to a
+  contradiction. Therefore no finite basis exists for the vector space $V$.
+\end{proof}
+
+\subsection{Coordinates}
+
+\paragraph{5.} Let $\alpha = (x_1, x_2)$ and $\beta = (y_1, y_2)$ be vectors in
+$R^2$ such that \[
+  x_1y_1 + x_2y_2 = 0,\quad
+  x_1^2 + x_2^2 = y_1^2 + y_2^2 = 1.
+\] Prove that $B = \{\alpha, \beta\}$ is a basis for $R^2$. Find the coordinates
+of the vector $(a, b)$ in the ordered basis $B = \{\alpha, \beta\}$. (The
+conditions on $\alpha$ and $\beta$ say, geometrically, that $\alpha$ and $\beta$
+are perpendicular and each has length 1.)
+
+\begin{proof}
+  By \textbf{Theorem 5}, any linearly independent subset of $R^2$ is finite and
+  is part of a basis for $R^2$. It is sufficient to prove that $\alpha$ and
+  $\beta$ are linearly independent, such that $B$ spans a subspace of $R^2$ with
+  dimension two (which is $R^2$ itself.)
+
+  Suppose that $\beta = c\alpha$ for some $c \in R$, such that $y_1 = cx_1$,
+  $y_2 = cx_2$. Then \[
+    0 = x_1y_1 + x_2y_2 = x_1(cx_1) + x_2(cx_2) = c(x_1^2 + x_2^2) = c \cdot 1 =
+    c
+  \] which implies that $c = 0$, contradicting $y_1^2 + y_2^2 = 1$. Thus,
+  $\alpha$ and $\beta$ are linearly independent and $B = \{\alpha, \beta\}$
+  forms a basis for $R^2$.
+
+  Let $P = \begin{bmatrix}
+    \alpha & \beta
+  \end{bmatrix} = \begin{bmatrix}
+    x_1 & y_1 \\
+    x_2 & y_2
+  \end{bmatrix}$. By \textbf{Corollary 3 to Theorem 5}, $P$ is invertible and so
+  \[
+    P^{-1} = \frac{1}{x_1y_2 - x_2y_1}\begin{bmatrix}
+      y_2 & -y_1 \\
+      -x_2 & x_1
+    \end{bmatrix}.
+  \] Therefore \[
+    \begin{bmatrix}
+      a \\
+      b
+    \end{bmatrix}_B = P^{-1}\begin{bmatrix}
+      a \\
+      b
+    \end{bmatrix} = \frac{1}{x_1y_2 - x_2y_1}\begin{bmatrix}
+      ay_2 - by_1 \\
+      -ax_2 + bx_1
+    \end{bmatrix}.
+  \]
+\end{proof}
+
+\paragraph{6.} Let $V$ be the vector space over the complex numbers of all
+functions from $R$ into $C$, i.e., the space of all complex-valued functions on
+the real line. Let $f_1(x) = 1$, $f_2(x) = e^{ix}$, $f_3(x) = e^{-ix}$.
+
+\begin{enumerate}[(a)]
+  \item Prove that $f_1$, $f_2$ and $f_3$ are linearly independent.
+    \begin{proof}
+      Consider the equation \[
+        c_1f_1(x) + c_2f_2(x) + c_3f_3(x) = 0 \iff
+        c_1 + c_2e^{ix} + c_3e^{-ix} = 0
+      \] for some $c_1, c_2, c_3 \in R$. Let $y = e^{ix} \in C$. Then the
+      equation can be rewritten into \[
+        c_1 + c_2y + \frac{c_3}{y} = 0,
+      \] or the quadratic equation \[
+        c_2y^2 + c_1y + c_3 = 0.
+      \] Assume not all $c_1, c_2, c_3$ are zero. Then $y$ takes on at most two
+      distinct values, by the fundamental theorem of algebra. But $e^{ix}$ takes
+      on infinitely many distinct values as $x$ varies in $R$, so there is a
+      contradiction. Hence, the only solution to the equation is $c_1 = c_2 =
+      c_3 = 0$ and $f_1$, $f_2$ and $f_3$ are linearly independent.
+    \end{proof}
+
+  \item Let $g_1(x) = 1$, $g_2(x) = \cos x$, $g_3(x) = \sin x$. Find an
+    invertible $3 \times 3$ matrix $P$ such that \[
+      g_i = \sum_{i=1}^3 P_{ij}f_i.
+    \]
+    \begin{proof}
+      Note that $f_2(x) = e^{ix} = \cos x + i\sin x$ and $f_3(x) = e^{-ix} =
+      \cos x - i\sin x$. Hence, we may express \[
+        g_1 = f_1,\quad
+        g_2 = \frac{1}{2}(f_2 + f_3),\quad
+        g_3 = \frac{-i}{2}(f_2 - f_3),
+      \] and so \[
+        P = \begin{bmatrix}
+          1 & 0 & 0 \\
+          0 & 1/2 & i/2 \\
+          0 & 1/2 & -i/2
+        \end{bmatrix}.
+      \]
+    \end{proof}
+\end{enumerate}
+
+\paragraph{7.} Let $V$ be the (real) vector space of all polynomial functions
+from $R$ into $R$ of degree 2 or less, i.e., the space of all functions $f$ of
+the form \[
+  f(x) = c_0 + c_1x + c_2x^2.
+\] Let $t$ be a fixed real number and define \[
+  g_1(x) = 1,\quad
+  g_2(x) = x + t,\quad
+  g_3(x) = (x + t)^2.
+\] Prove that $B = \{g_1, g_2, g_3\}$ is a basis for $V$. If \[
+  f(x) = c_0 + c_1x + c_2x^2
+\] what are the coordinates of $f$ in this ordered basis $B$?
+
+\begin{proof}
+  From \textbf{Example 16} it is clear that $V$ has dimension 3. Thus by
+  \textbf{Corollary 2(b) to Theorem 4}, as $B$ has 3 vectors, it is sufficient
+  to prove that $B$ is linearly independent for $B$ to span $V$.
+
+  Consider the equation \[
+    b_1g_1(x) + b_2g_2(x) + b_3g_3(x) = 0
+  \] for some $b_1, b_2, b_3 \in R$. Suppose not all $b_1, b_2, b_3$ are zero.
+  Then the left hand side can be rewritten as \[
+    b_1 + b_2(x + t) + b_3(x + t)^2 = (b_1 + b_2t + b_3t^2) + (b_2 + 2b_3t)x +
+    b_3x^2,
+  \] and it follows that $x$ takes on at most two distinct values by the
+  fundamental theorem of algebra. But this contradicts the fact that $x$ can
+  take on any real value. Therefore we have $b_1 = b_2 = b_3 = 0$ as the only
+  solution to the equation, and $B = \{g_1, g_2, g_3\}$ is linearly independent.
+
+  Suppose $f(x) = b_1g_1(x) + b_2g_2(x) + b_3g_3(x)$ for some $b_1, b_2, b_3 \in
+  R$; it follows that
+  \begin{align*}
+    b_3 &= c_2, \\
+    b_2 &= c_1 - 2b_3t = c_1 - 2c_2t, \\
+    b_1 &= c_0 - b_2t - b_3t^2 = c_0 - c_1t + c_2t^2.
+  \end{align*}
+  Therefore $f(x)$ can be written as the coordinate vector \[
+    (c_0 - c_1t + c_2t^2, c_1 - 2c_2t, c_2).
+  \]
 \end{proof}
 
 \end{document}
