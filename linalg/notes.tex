@@ -3,7 +3,9 @@
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage[shortlabels]{enumitem}
 
-\newtheorem{theorem}{Theorem}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\nullity}{nullity}
+\newtheorem{theorem}{Theorem}[section]
 \newtheorem*{lemma*}{Lemma}
 
 \title{Notes to ``Linear Algebra'', 2nd edition (Hoffman, Kunze)}
@@ -257,7 +259,6 @@ provided there exist scalars $c_1, \ldots, c_n \in F$ such that \[
 over $F$ with the operations of vector addition and scalar multiplication on
 $V$.
 
-\setcounter{theorem}{0}
 \begin{theorem}
   A non-empty subset $W$ of $V$ is a subspace of $V$ if and only if for each
   pair of vectors $\alpha, \beta \in W$ and each scalar $c \in F$ the vector
@@ -408,5 +409,47 @@ statements are equivalent:
   \item $A$ and $B$ have the same row space.
   \item $B = PA$, where $P$ is an invertible $m \times m$ matrix.
 \end{enumerate}
+
+\section{Linear Transformations}
+
+\subsection{Linear Transformation}
+
+\paragraph{Linear transformation.} Let $V$ and $W$ be vector spaces over the
+field $F$. A \textbf{linear transformation from $V$ into $W$} is a function $T$
+from $V$ into $W$ such that \[
+  T(c\alpha + \beta) = c(T\alpha) + T\beta
+\] for all $\alpha, \beta \in V$ and all scalars $c \in F$.
+
+\begin{theorem}
+  Let $V$ be a finite-dimensional vector space over the field $F$ and let
+  $\{\alpha_1, \ldots, \alpha_n\}$ be an ordered basis for $V$. Let $W$ be a
+  vector space over the same field $F$ and let $\beta_1, \ldots, \beta_n$ be any
+  vectors in $W$. Then there is precisely one linear transformation $T$ from $V$
+  into $W$ such that \[
+    T\alpha_j = \beta_j, \quad j = 1, \ldots, n.
+  \]
+\end{theorem}
+
+\paragraph{Null space.} Let $V$ and $W$ be vector spaces over the field $F$ and
+let $T$ be a linear transformation from $V$ into $W$. The \textbf{null space} of
+$T$ is the set of all vectors $\alpha \in V$ such that $T\alpha = 0$.
+
+If $V$ is finite-dimensional, the \textbf{rank} of $T$ is the dimension of the
+range of $T$ and the \textbf{nullity} of $T$ is the dimension of the null space
+of $T$.
+
+\begin{theorem}
+  Let $V$ and $W$ be vector spaces over the field $F$ and let $T$ be a linear
+  transformation from $V$ into $W$. Suppose that $V$ is finite-dimensional. Then
+  \[
+    \rank(T) + \nullity(T) = \dim V.
+  \]
+\end{theorem}
+
+\begin{theorem}
+  If $A$ is an $m \times n$ matrix with entries in the field $F$, then \[
+    \text{row rank }(A) = \text{column rank }(A).
+  \]
+\end{theorem}
 
 \end{document}
