@@ -452,6 +452,8 @@ of $T$.
   \]
 \end{theorem}
 
+\subsection{The Algebra of Linear Transformations}
+
 \begin{theorem}
   Let $V$ and $W$ be vector spaces over the field $F$. Let $T$ and $U$ be linear
   transformations from $V$ into $W$, and $c$ be any element of $F$. The function
@@ -523,5 +525,71 @@ space of $T$ is $\{0\}$.
     \item $T$ is onto, that is, the range of $T$ is $W$.
   \end{enumerate}
 \end{theorem}
+
+\subsection{Isomorphism}
+
+\paragraph{Isomorphism.} If $V$ and $W$ are vector spaces over the field $F$,
+any one-one linear transformation $T$ of $V$ onto $W$ is called an
+\textbf{isomorphism of $V$ onto $W$}.
+
+\begin{theorem}
+  Every $n$-dimensional vector space over the field $F$ is isomorphic to the
+  space $F^n$.
+\end{theorem}
+
+\subsection{Representation of Transformations by Matrices}
+
+\begin{theorem}
+  Let $V$ be an $n$-dimensional vector space over the field $F$ and $W$ an
+  $m$-dimensional vector space over $F$. Let $B$ be an ordered basis for $V$ and
+  $B'$ be an ordered basis for $W$. For each linear transformation $T$ from $V$
+  into $W$, there is an $m \times n$ matrix $A$ with entries in $F$ such that \[
+    [T\alpha]_{B'} = A[\alpha]_B
+  \] for every vector $\alpha \in V$. Furthermore, $T \to A$ is a one-one
+  correspondence between the set of all linear transformations from $V$ into $W$
+  and the set of all $m \times n$ matrices over the field $F$.
+\end{theorem}
+
+The matrix $A$ which is associated with $T$ is called the \textbf{matrix of $T$
+relative to the ordered bases $B$, $B'$}.
+
+\begin{theorem}
+  Let $V$ be an $n$-dimensional vector space over the field $F$ and let $W$ be
+  an $m$-dimensional vector space over $F$. For each pair of ordered bases $B$,
+  $B'$ for $V$ and $W$ respectively, the function which assigns to a linear
+  transformation $T$ its matrix relative to $B$, $B'$ is an isomorphism between
+  the space $L(V, W)$ and the space of all $m \times n$ matrices over the field
+  $F$.
+\end{theorem} 
+
+\begin{theorem}
+  Let $V$, $W$ and $Z$ be finite-dimensional vector spaces over the field $F$;
+  let $T$ be a linear transformation from $V$ into $W$ and $U$ a linear
+  transformation from $W$ into $Z$. If $B$, $B'$, and $B''$ are ordered bases
+  for the spaces $V$, $W$, and $Z$, respectively, if $A$ is the matrix of $T$
+  relative to the pair $B$, $B'$, and $B$ is the matrix of $U$ relative to the
+  pair $B'$, $B''$, then the matrix of the composition $UT$ relative to the pair
+  $B$, $B''$ is the product matrix $C = BA$.
+\end{theorem}
+
+\begin{theorem}
+  Let $V$ be a finite-dimensional vector space over the field $F$ and let \[
+    B = \{\alpha_1, \ldots, \alpha_n\}\quad\text{and}\quad
+    B' = \{\alpha'_1, \ldots, \alpha'_n\}.
+  \] be ordered bases for $V$. Suppose $T$ is a linear operator on $V$. If $P =
+  \begin{bmatrix}
+    P_1 & \ldots & P_n
+  \end{bmatrix}$ is the $n \times n$ matrix with columns $P_j = [\alpha'_j]_B$,
+  then \[
+    [T]_{B'} = P^{-1}[T]_BP.
+  \] Alternatively, if $U$ is the invertible operator on $V$ defined by
+  $U\alpha_j = \alpha'_j$, $j = 1, \ldots, n$, then \[
+    [T]_{B'} = [U]^{-1}_B [T]_B [U]_B.
+  \]
+\end{theorem}
+
+\paragraph{Similarity.} Let $A$ and $B$ be $n \times n$ (square) matrices over
+the field $F$. We say that \textbf{$B$ is similar to $A$ over $F$} if there is
+an invertible $n \times n$ matrix $P$ over $F$ such that $B = P^{-1}AP$.
 
 \end{document}
