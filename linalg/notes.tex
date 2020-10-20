@@ -493,14 +493,19 @@ where $V$ and $W$ are vector spaces over the same field.
   \end{enumerate}
 \end{lemma*}
 
+\paragraph{Invertible.} The function $T$ from $V$ into $W$ is called
+\textbf{invertible} if there exists a function $U$ from $W$ into $V$ such that
+$UT$ is the identity function on $V$ and $TU$ is the identity function on $W$.
+
 \begin{theorem}
   Let $V$ and $W$ be vector spaces over the field $F$ and let $T$ be a linear
   transformation from $V$ into $W$. If $T$ is invertible, then the inverse
   function $T^{-1}$ is a linear transformation from $W$ onto $V$.
 \end{theorem}
 
-A linear transformation is defined as \textbf{non-singular}/\textbf{invertible}
-if $T\gamma = 0 \implies \gamma = 0$, i.e. if the null space of $T$ is $\{0\}$.
+\paragraph{Non-singular.} A linear transformation is defined as
+\textbf{non-singular} if $T\gamma = 0 \implies \gamma = 0$, i.e. if the null
+space of $T$ is $\{0\}$.
 
 \begin{theorem}
   Let $T$ be a linear transformation from $V$ into $W$. Then $T$ is non-singular
