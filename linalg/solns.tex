@@ -442,7 +442,7 @@ example of such a linear transformation $T$?)
 
   $T$ satisfies $T^2(\alpha) = 0$ for all $\alpha \in V$. An example of such a
   $T$ for $V
-  = \mathbb{R}^2$ is \[Z
+  = \mathbb{R}^2$ is \[
     T(\alpha) = \begin{bmatrix}
       0 & 0 \\
       1 & 0
@@ -474,6 +474,66 @@ $V$ into $V$. Prove that the following two statements about $T$ are equivalent.
   for some $\alpha \in V$. But $\beta$ is in the null space of $T$, so $T(\beta)
   = T(T\alpha) = 0$. By (b) it follows that $T\alpha = \beta = 0$, so (a) is
   true.
+\end{proof}
+
+\subsection{The Algebra of Linear Transformations}
+
+\paragraph{6.} Let $T$ be a linear transformation from $R^3$ into $R^2$, and let
+$U$ be a linear transformation from $R^2$ into $R^3$. Prove that the
+transformation $UT$ is not invertible. Generalize the theorem.
+
+\begin{proof}
+  Let $\{\alpha_1, \alpha_2, \alpha_3\}$ be a basis for $R^3$. Then
+  $T(\alpha_1), T(\alpha_2), T(\alpha_3)$ must be linearly dependent by
+  \textbf{Theorem 2.4}, since $\dim R^2 = 2 < 3$.
+
+  Suppose $b_1T(\alpha_1) + b_2T(\alpha_2) + b_3T(\alpha_3) = 0$ and not all
+  $b_1, b_2, b_3$ are zero. Then $b_1\alpha_1 + b_2\alpha_2 + b_3\alpha_3 \neq
+  0$ by the linear independence of $\alpha_1, \alpha_2, \alpha_3$, and \[
+    UT(b_1\alpha_1 + b_2\alpha_2 + b_3\alpha_3)
+    = U(b_1T(\alpha_1) + b_2T(\alpha_2) + b_3T(\alpha_3))
+    = U(0)
+    = 0.
+  \] Hence, $UT$ is not non-singular, and it follows from \textbf{Theorem 9}
+  that $UT$ is not invertible. This generalises to any linear transformations
+  $T$ from $R^m$ into $R^n$ and $U$ from $R^n$ into $R^m$, where $m < n$.
+\end{proof}
+
+\paragraph{9.} Let $T$ be a linear operator on the finite-dimensional space $V$.
+Suppose there is a linear operator $U$ on $V$ such that $TU = I$. Prove that $T$
+is invertible and $U = T^{-1}$. Give an example which shows that this is false
+when $V$ is not finite dimensional. (Hint: Let $T = D$, the differentiation
+operator on the space of polynomial functions.)
+
+\begin{proof}
+  Since $TU$ is onto, it follows that $T$ is onto. By \textbf{Theorem 9}, $T$ is
+  invertible with inverse $T^{-1} = U$.
+
+  For $V$ not finite dimensional, consider $T = D$, the differentiation operator
+  on the space of polynomial functions, and define $U$ by $(Uf)(x) = \int_0^x
+  f(t) \,dt$ for all polynomials $f(x)$. Then $UT = I$, but $TU(x + 1) = T(1) =
+  x \neq x + 1$ so $TU \neq I$. Hence $T$ is not invertible.
+\end{proof}
+
+\paragraph{11.} Let $V$ be a finite-dimensional vector space and let $T$ be a
+linear operator on $V$. Suppose that $\rank(T^2) = \rank(T)$. Prove that the
+range and null space of $T$ are disjoint, i.e., have only the zero vector in
+common.
+
+\begin{proof}
+  Let $\{\alpha_1, \alpha_2, \ldots, \alpha_n\}$ be a basis for $V$. Suppose
+  $k = \rank(T)$ and suppose WLOG that for $S = \{\alpha_1, \alpha_2, \ldots,
+  \alpha_k\}$, $T(S)$ is linearly independent. Then $S$ is a basis for the range
+  of $T$ and it follows that $T^2(S)$ spans the range of $T^2$. Since the
+  dimension of the range of $T^2$ is also equal to $k$, by \textbf{Theorem 2.4},
+  $T^2(S)$ is a basis for the range of $T^2$.
+
+  Now suppose $v$ is a vector in both the range and null space of $T$ such that
+  $v = c_1T\alpha_1 + \cdots + c_kT\alpha_k$ and $0 = Tv = T(c_1T\alpha_1 +
+  \cdots + c_kT\alpha_k) = c_1T^2\alpha_1 + \cdots + c_kT^2\alpha_k$. But
+  $T^2(S)$ is linearly independent, so $c_1 = \ldots = c_k = 0$ which implies
+  $v = 0$. Therefore we have shown that the range and null space of $T$ have
+  only the zero vector in common.
 \end{proof}
 
 \end{document}
