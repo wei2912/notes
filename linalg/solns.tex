@@ -536,4 +536,107 @@ common.
   only the zero vector in common.
 \end{proof}
 
+\setcounter{subsection}{3}
+\subsection{Representation of Transformations by Matrices}
+
+\paragraph{8.} Let $\theta$ be a real number. Prove that the following two
+matrices are similar over the field of complex numbers: \[
+  \begin{bmatrix}
+    \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta
+  \end{bmatrix},\quad
+  \begin{bmatrix}
+    e^{i\theta} & 0 \\ 0 & e^{-i\theta}
+  \end{bmatrix}.
+\]
+
+\begin{proof}
+  Let $T$ be the linear operator on $C^2$ which is represented by the first
+  matrix in the standard ordered basis $B$ respectively. Also, let \[
+    \alpha_1 = \begin{bmatrix}
+      i \\ 1
+    \end{bmatrix},\quad
+    \alpha_2 = \begin{bmatrix}
+      1 \\ i
+    \end{bmatrix}.
+  \] Observe that \[
+    T\alpha_1 = \begin{bmatrix}
+      i\cos\theta - \sin\theta \\ \cos\theta + i\sin\theta
+    \end{bmatrix} = \begin{bmatrix}
+      i(\cos\theta + i\sin\theta) \\ \cos\theta + i\sin\theta
+    \end{bmatrix} = e^{i\theta}\alpha_1
+  \] and \[
+    T\alpha_2 = \begin{bmatrix}
+      \cos\theta - i\sin\theta \\ i\cos\theta + \sin\theta
+    \end{bmatrix} = \begin{bmatrix}
+      \cos(-\theta) + i\sin(-\theta) \\ i(\cos(-\theta) + i\sin(-\theta))
+    \end{bmatrix} = e^{-i\theta}\alpha_2.
+  \] Since $\alpha_1$ and $\alpha_2$ are linearly independent, $B' = \{\alpha_1,
+  \alpha_2\}$ forms an ordered basis for $C^2$. Hence, the matrix of $T$ with
+  respect to $B'$ is \[
+    [T]_{B'} = \begin{bmatrix}
+      e^{i\theta} & 0 \\ 0 & e^{-i\theta}
+    \end{bmatrix}.
+  \] By Theorem 14, $[T]_B$ and $[T]_{B'}$ are similar.
+\end{proof}
+
+\paragraph{9.} Let $V$ be a finite-dimensional vector space over the field $F$
+and let $S$ and $T$ be linear operators on $V$. When do there exist ordered
+bases $B$ and $B'$ for $V$ such that $[S]_B = [T]_{B'}$? Prove that such bases
+exist if and only if there is an invertible linear operator $U$ on $V$ such that
+$T = USU^{-1}$.
+
+\begin{proof}
+  Suppose there exists bases $B = \{\alpha_1, \alpha_2, \ldots, \alpha_n\}$ and
+  $B' = \{\beta_1, \beta_2, \ldots, \beta_n\}$ for $V$ such that $[S]_B =
+  [T]_{B'}$. Let $U$ be the matrix which carries $B$ onto $B'$. By Theorem 4,
+  $[USU^{-1}]_{B'} = [U]_B^{-1}[USU^{-1}]_B[U]_B$. Since $[USU^{-1}]_B
+  = [U]_B[S]_B[U]_B^{-1}$, it follows that $[USU^{-1}]_{B'} = [U]_B^{-1}[U]_B
+  [S]_B[U]_B^{-1}[U]_B = [S]_B = [T]_{B'}$ and hence $T = USU^{-1}$.
+
+  Conversely, assume $T = USU^{-1}$ for some invertible $U$. Let $B$ be any
+  ordered basis for $V$ and let $B'$ be its image under $U$. Then $[T]_{B'} =
+  [USU^{-1}]_{B'} = [U]_{B'}[S]_{B'}[U]_{B'}^{-1}$. By Theorem 14, since
+  $U^{-1}$ carries $B'$ into $B$, $[T]_{B'} = [S]_B$.
+\end{proof}
+
+\paragraph{10.} Prove that if $S$ is a linear operator on $R^2$ such that $S^2 =
+S$, then $S = 0$, or $S = 1$, or there is an ordered basis $B$ for $R^2$ such
+that $[S]_B = \begin{bmatrix}
+  1 & 0 \\ 0 & 0
+\end{bmatrix}$.
+
+\begin{proof}
+  Suppose $S^2 = S$. Note that if $y = Sx$ for some $x \in R$, then $Sy = S(Sx)
+  = S^2x = Sx = y$.
+
+  Let $e_1, e_2$ be the standard basis vectors for $R^2$ and consider $\{Se_1,
+  Se_2\}$. If $Se_1 = Se_2 = 0$ then $S = 0$ and so $[S]_B = 0$. Suppose WLOG
+  that $Se_1 \neq 0$.
+
+  \textit{Case 1}: Suppose there exists some $c \in R$ such that $Se_2 = cSe_1$.
+  Then $S(e_2 - ce_1) = 0$ and $S$ is singular, since $e_2 - ce_1 \neq 0$ by the
+  linear independence of $\{e_1, e_2\}$. Since $Se_1 \neq 0$, the range of $S$
+  has dimension 1.
+
+  Let $\{\alpha_1\}$ be a basis for the range of $S$ and $\{\alpha_1,
+  \alpha_2\}$ be a basis for $R^2$. Then $S\alpha_2 = k\alpha_1$ for some real
+  $k$. Define $\alpha'_2 = \alpha_2 - k\alpha_1$ such that $B = \{\alpha_1,
+  \alpha'_2\}$ forms a basis for $R^2$. Observe that since $\alpha_1$ is in the
+  range of $S$, we have \[
+    S\alpha_1 = \alpha_1.
+  \] Also, \[
+    S\alpha'_2 = S(\alpha_2 - k\alpha_1) = S\alpha_2 - k(S\alpha_1) = k\alpha_1
+    - k\alpha_1 = 0.
+  \] Hence, we have \[
+    [S]_B = \begin{bmatrix}
+      1 & 0 \\ 0 & 0
+    \end{bmatrix}.
+  \]
+
+  \textit{Case 2}: Suppose that $\{Se_1, Se_2\}$ are linearly independent. Let
+  $\alpha_i = Se_i$ for $i = 1, 2$. Then $B = \{\alpha_1, \alpha_2\}$ forms a
+  basis for $R^2$. Since $S\alpha_1 = \alpha_1$ and $S\alpha_2 = \alpha_2$, it
+  is clear that $[S]_B$ is the identity matrix.
+\end{proof}
+
 \end{document}
