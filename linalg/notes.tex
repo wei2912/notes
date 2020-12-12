@@ -592,4 +592,40 @@ relative to the ordered bases $B$, $B'$}.
 the field $F$. We say that \textbf{$B$ is similar to $A$ over $F$} if there is
 an invertible $n \times n$ matrix $P$ over $F$ such that $B = P^{-1}AP$.
 
+\subsection{Linear Functionals}
+
+\paragraph{Linear functional.} For a vector space $V$ over the field $F$, a
+linear transformation $f$ from $V$ into the scalar field $F$ is called a
+\textbf{linear functional} on $V$.
+
+\paragraph{Dual space.} The \textbf{dual space} of a vector space $V$ is denoted
+by $V^* = L(V, F)$.
+
+\begin{theorem}
+  Let $V$ be a finite-dimensional vector space over the field $F$, and let $B =
+  \{\alpha_1, \ldots, \alpha_n\}$ be a basis for $V$. Then there is a unique
+  dual basis $B^* = \{f_1, \ldots, f_n\}$ for $V^*$ such that $f_i(\alpha_i) =
+  \delta_{ij}$. For each linear functional $f$ on $V$ we have \[
+    f = \sum_{i=1}^n f(\alpha_i)f_i
+  \] and for each vector $\alpha \in V$ we have \[
+    \alpha = \sum_{i=1}^n f_i(\alpha)\alpha_i.
+  \]
+\end{theorem}
+
+\paragraph{Annihilator.} If $V$ is a vector space over the field $F$ and $S$ is
+a subset of $V$, the \textbf{annihilator} of $S$ is the set $S^0$ of linear
+functionals $f$ on $V$ such that $f(\alpha) = 0$ for every $\alpha \in S$.
+
+\begin{theorem}
+  Let $V$ be a finite-dimensional vector space over the field $F$, and let $W$
+  be a subspace of $V$. Then \[
+    \dim W + \dim W^0 = \dim V.
+  \]
+\end{theorem}
+
+Let $V$ be a $n$-dimensional vector space. It follows that if $W$ is a
+$k$-dimensional subspace of $V$, then $W$ is the intersection of $(n - k)$
+hyperspaces in $V$. Also, if $W_1$ and $W_2$ are subspaces of $V$, then $W_1 =
+W_2$ if and only if $W_1^0 = W_2^0$.
+
 \end{document}
