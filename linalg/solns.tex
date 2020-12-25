@@ -113,6 +113,37 @@ every entry on its main diagonal is different from 0.
   $A$ cannot be row-equivalent to $I_n$.
 \end{proof}
 
+\paragraph{10.} Prove the following generalization of Exercise 6. If $A$ is an
+$m \times n$ matrix, $B$ is an $n \times m$ matrix and $n < m$, then $AB$ is not
+invertible.
+
+\begin{proof}
+  TODO
+\end{proof}
+
+\paragraph{11.} Let $A$ be an $m \times n$ matrix. Show that by means of a
+finite number of elementary row and/or column operations one can pass from $A$
+to a matrix $R$ which is both `row-reduced echelon' and `column-reduced
+echelon,' i.e., $R_{ij} = 0$ if $i \neq 0$, $R_{ii} = 1$, $1 \leq i \leq r$,
+$R_{ii} = 0$ if $i > r$.
+
+\begin{proof}
+  TODO
+\end{proof}
+
+\paragraph{12.} The result of Example 16 suggests that perhaps the matrix \[
+  A = \begin{bmatrix}
+    1 & \frac{1}{2} & \cdots & \frac{1}{n} \\
+    \frac{1}{2} & \frac{1}{3} & \cdots & \frac{1}{n + 1} \\
+    \vdots & \vdots & & \vdots \\
+    \frac{1}{n} & \frac{1}{n + 1} & \cdots & \frac{1}{2n - 1} \\
+  \end{bmatrix}
+\] is invertible and $A^{-1}$ has integer entries. Can you prove that?
+
+\begin{proof}
+  TODO
+\end{proof}
+
 \section{Vector Spaces}
 
 \setcounter{subsection}{1}
@@ -640,6 +671,25 @@ that $[S]_B = \begin{bmatrix}
   is clear that $[S]_B$ is the identity matrix.
 \end{proof}
 
+\paragraph{11.} Let $W$ be the space of all $n \times 1$ column matrices over a
+field $F$. If $A$ is an $n \times n$ matrix over $F$, then $A$ defines a linear
+operator $L_A$ on $W$ through left multiplication: $L_A(X) = AX$. Prove that
+every linear operator on $W$ is left multiplication by some $n \times n$ matrix,
+i.e., is $L_A$ for some $A$.
+
+\begin{proof}
+  TODO
+\end{proof}
+
+Now suppose $V$ is an $n$-dimensional vector space over the field $F$, and let
+$B$ be an ordered basis for $V$. For each $\alpha \in V$, define $U\alpha =
+[\alpha]_B$. Prove that $U$ is an isomorphism of $V$ onto $W$. Accordingly,
+$UTU^{-1}$ is left multiplication by some $n \times n$ matrix $A$. What is $A$?
+
+\begin{proof}
+  TODO
+\end{proof}
+
 \paragraph{12.} Let $V$ be a $n$-dimensional vector space over the field $f$,
 and let $B = \{\alpha_1, \ldots, \alpha_n\}$ be an ordered basis for $V$.
 \begin{enumerate}[(a)]
@@ -688,6 +738,23 @@ and let $B = \{\alpha_1, \ldots, \alpha_n\}$ be an ordered basis for $V$.
       TODO
     \end{proof}
 \end{enumerate}
+
+\paragraph{13.} Let $V$ and $W$ be finite-dimensional vector spaces over the
+field $F$ and let $T$ be a linear transformation from $V$ into $W$. If \[
+  B = \{\alpha_1, \ldots, \alpha_n\} \text{ and }
+  B' = \{\beta_1, \ldots, \beta_n\}
+\] are ordered bases for $V$ and $W$, respectively, define the linear
+transformations $E^{p,q}$ as in the proof of Theorem 5: $E^{p,q}(\alpha_i) =
+\delta_{iq}\beta_p$. Then the $E^{p,q}$, $1 \leq p \leq m$, $1 \leq q \leq n$,
+form a basis for $L(V, W)$, and so \[
+  T = \sum_{p=1}^m \sum_{q=1}^n A_{pq}E^{p,q}
+\] for certain scalars $A_{pq}$ (the coordinates of $T$ in the basis for $L(V,
+W)$). Show that the matrix $A$ with entries $A(p, q) = A_{pq}$ is precisely the
+matrix of $T$ relative to the pair $B, B'$.
+
+\begin{proof}
+  TODO
+\end{proof}
 
 \subsection{Linear Functionals}
 
@@ -775,6 +842,18 @@ g(\alpha)$ is also a linear functional on $V$. Prove that either $f = 0$ or $g =
     (f(\alpha_i) + 0)(0 + g(\alpha_j)) \neq 0
   \] since $f(\alpha_i), g(\alpha_j) \neq 0$. This leads to a contradiction.
   Therefore, $f = g = 0$.
+\end{proof}
+
+\paragraph{14.} Let $F$ be a field of characteristic zero and let $V$ be a
+finite-dimensional vector space over $F$. If $\alpha_1, \ldots, \alpha_m$ are
+finitely many vectors in $V$, each different from zero vector, prove that there
+is a linear functional $f$ on $V$ such that \[
+  f(\alpha_i) \neq 0,\quad
+  i = 1, \ldots, m.
+\]
+
+\begin{proof}
+  TODO
 \end{proof}
 
 \paragraph{16.} Show that the trace functional on $n \times n$ matrices is
