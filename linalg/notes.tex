@@ -628,4 +628,40 @@ $k$-dimensional subspace of $V$, then $W$ is the intersection of $(n - k)$
 hyperspaces in $V$. Also, if $W_1$ and $W_2$ are subspaces of $V$, then $W_1 =
 W_2$ if and only if $W_1^0 = W_2^0$.
 
+\subsection{The Double Dual}
+
+\begin{theorem}
+  Let $V$ be a finite-dimensional vector space over the field $F$. For each
+  vector $\alpha \in V$ define \[
+    L_{\alpha}(f) = f(\alpha),\quad f \in V^*.
+  \] The mapping $\alpha \to L_a$ is then an isomorphism of $V$ onto $V^{**}$.
+\end{theorem}
+
+\begin{theorem}
+  If $S$ is any subset of a finite-dimensional vector space $V$, then $(S^0)^0$
+  is the subspace spanned by $S$.
+\end{theorem}
+
+\paragraph{Hyperspace.} If $V$ is a vector space, a \textbf{hyperspace} in $V$
+is a maximal proper subspace of $V$.
+
+\begin{theorem}
+  If $f$ is a non-zero linear functional on the vector space $V$, then the null
+  space of $f$ is a hyperspace in $V$. Conversely, every hyperspace in $V$ is
+  the null space of a (not unique) non-zero linear functional on $V$.
+\end{theorem}
+
+\begin{lemma*}
+  If $f$ and $g$ are linear functionals on a vector space $V$, then $g$ is a
+  scalar multiple of $f$ if and only if the null space of $g$ contains the null
+  space of $f$, that is, if and only if $f(\alpha) = 0$ implies $g(\alpha) = 0$.
+\end{lemma*}
+
+\begin{theorem}
+  Let $g, f_1, \ldots, f_r$ be linear functionals on a vector space $V$ with
+  respective null spaces $N, N_1, \ldots, N_r$. Then $g$ is a linear combination
+  of $f_1, \ldots, f_r$ if and only if $N$ contains the intersection $N_1 \cap
+  \ldots \cap N_r$.
+\end{theorem}
+
 \end{document}
