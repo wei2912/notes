@@ -664,4 +664,41 @@ is a maximal proper subspace of $V$.
   \ldots \cap N_r$.
 \end{theorem}
 
+\subsection{The Transpose of a Linear Transformation}
+
+\begin{theorem}
+  Let $V$ and $W$ be vector spaces over the field $F$. For each linear
+  transformation $T$ from $V$ into $W$, there is a unique linear transformation
+  $T^t$ from $W^*$ into $V^*$ such that \[
+    (T^tg)(\alpha) = g(T\alpha)
+  \] for every $g \in W^*$ and $\alpha \in V$.
+\end{theorem}
+
+\begin{theorem}
+  Let $V$ and $W$ be vector spaces over the field $F$, and let $T$ be a linear
+  transformation from $V$ into $W$. The null space of $T^t$ is the annihilator of the range of $T$. If $V$ and $W$ are finite-dimensional, then
+  \begin{enumerate}[(i)]
+    \item $rank(T^t) = rank(T)$
+    \item the range of $T^t$ is the annihilator of the null space of $T$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+  Let $V$ and $W$ be finite-dimensional vector spaces over the field $F$. Let
+  $B$ be an ordered basis for $V$ with dual basis $B^*$, and let $B'$ be an
+  ordered basis for $W$ with dual basis $B'^*$. Let $T$ be a linear
+  transformation from $V$ into $W$; let $A$ be the matrix of $T$ relative to
+  $B$, $B'$ and let $B$ be the matrix of $T^t$ relative to $B'^*, B^*$. Then
+  $B_{ij} = A_{ji}$.
+\end{theorem}
+
+\paragraph{Transpose.} If $A$ is an $m \times n$ matrix over the field $F$, the
+\textbf{transpose} of $A$ is the $n \times m$ matrix $A^t$ defined by
+$A^t_{ij} = A_{ji}$.
+
+\begin{theorem}
+  Let $A$ be any $m \times n$ matrix over the field $F$. Then the row rank of
+  $A$ is equal to the column rank of $A$.
+\end{theorem}
+
 \end{document}
