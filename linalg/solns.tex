@@ -929,4 +929,38 @@ $f_i(x_j) = \delta_{ij}$.
   TODO
 \end{proof}
 
+\subsection{The Transpose of a Linear Transformation}
+
+\paragraph{4.} Let $V$ be a finite-dimensional vector space over the field $F$
+and let $T$ be a linear operator on $V$. Let $c$ be a scalar and suppose there
+is a non-zero vector $\alpha \in V$ such that $T\alpha = c\alpha$. Prove that
+there is a non-zero linear functional $f$ on $V$ such that $T^tf = cf$.
+
+\begin{proof}
+  Define $U = T - cI$. Then $U\alpha = 0$, so $rank(U) < n$ and likewise
+  $rank(U^t) < n$. Hence, there exists some non-zero $f \in V^*$ such that
+  $U^tf = 0$. But $U^t = T^t - cI$, so $T^tf = cf$.
+\end{proof}
+
+\paragraph{7.} Let $V$ be a finite-dimensional vector space over the field $F$.
+Show that $T \to T^t$ is an isomorphism of $L(V, V)$ onto $L(V^*, V^*)$.
+
+\begin{proof}
+  TODO
+\end{proof}
+
+\paragraph{8.} Let $V$ be the vector space of $n \times n$ matrices over the
+field $F$.
+\begin{enumerate}[(a)]
+  \item If $B$ is a fixed $n \times n$ matrix, define a function $f_B$ on $V$ by
+    $f_B(A) = \tr(B^tA)$. Show that $f_B$ is a linear functional on $V$.
+  \item Show that every linear functional on $V$ is of the above form, i.e., is
+    $f_B$ for some $B$.
+  \item Show that $B \to f_B$ is an isomorphism of $V$ onto $V^*$.
+\end{enumerate}
+
+\begin{proof}
+  TODO
+\end{proof}
+
 \end{document}
