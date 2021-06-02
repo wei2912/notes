@@ -1,11 +1,11 @@
 \documentclass{article}
 
 \usepackage{amsmath,amssymb,amsthm}
-\usepackage{csquotes}
 \usepackage[shortlabels]{enumitem}
 
 \newtheorem{theorem}{Theorem}
 \numberwithin{theorem}{section}
+\newtheorem*{corollary*}{Corollary}
 
 \title{Notes to ``Principles of Mathematical Analysis'', 3rd edition (Rudin)}
 \author{Ng Wei En}
@@ -86,6 +86,160 @@ bounded below is defined in the same manner: The statement \[
     \left|\sum_{j=1}^n a_j\overline{b}_j\right|^2 \leq
     \sum_{j=1}^n |a_j|^2 \sum_{j=1}^n |b_j|^2
   \].
+\end{theorem}
+
+\section{Basic Topology}
+
+\subsection*{Finite, Countable, and Uncountable Sets}
+\addcontentsline{toc}{subsection}{Finite, Countable, and Uncountable Sets}
+
+For any positive integer $n$, let $J_n$ be the set whose elements are the
+integers $1, 2, \ldots, n$; let $J$ be the set consisting of all positive
+integers. For any set $A$, we say:
+\begin{itemize}[(a)]
+  \item $A$ is \emph{finite} if $A \sim J_n$ for some $n$ (the empty set is also
+    considered to be finite).
+  \item $A$ is \emph{infinite} if $A$ is not finite.
+  \item $A$ is \emph{countable} if $A \sim J$.
+  \item $A$ is \emph{uncountable} if $A$ is neither finite nor countable.
+  \item $A$ is \emph{at most countable} if $A$ is finite or countable.
+\end{itemize}
+
+\paragraph{Sequences.} A \emph{sequence} is a function $f$ defined on the set
+$J$ of all positive integers. If $f(n) = x_n$, for $n \in J$, the sequence $f$
+can be denoted by the symbol $\{x_n\}$, or by $x_1, x_2, x_3, \ldots$. The
+values of $f$, that is, the elements $x_n$, are called the \emph{terms} of the
+sequence. If $A$ is a set and if $x_n \in A$ for all $n \in J$, then $\{x_n\}$
+is said to be a \emph{sequence} in $A$, or a \emph{sequence of elements of $A$}.
+
+\setcounter{theorem}{7}
+\begin{theorem}
+  Every infinite subset of a countable set $A$ is countable.
+\end{theorem}
+
+\setcounter{theorem}{11}
+\begin{theorem}
+  Let $\{E_n\}$, $n = 1, 2, 3, \ldots$, be a sequence of countable sets, and put
+  \[
+    S = \bigcup_{n=1}^{\infty} E_n.
+  \] Then $S$ is countable.
+\end{theorem}
+
+\begin{theorem}
+  Let $A$ be a countable set, and let $B_n$ be the set of all $n$-tuples $(a_1,
+  \ldots, a_n)$, where $a_k \in A$ ($k = 1, \ldots, n$), and the elements $a_1,
+  \ldots, a_n$ need not be distinct. Then $B_n$ is countable.
+\end{theorem}
+
+\begin{corollary*}
+  The set of all rational numbers is countable.
+\end{corollary*}
+
+\setcounter{theorem}{13}
+\begin{theorem}
+  Let $A$ be the set of all sequences whose elements are the digits 0 and 1.
+  This set is uncountable.
+\end{theorem}
+
+\subsection*{Metric Spaces}
+\addcontentsline{toc}{subsection}{Metric Spaces}
+
+\paragraph{Metric spaces.} A set $X$, whose elements we shall call
+\emph{points}, is said to be a \emph{metric space} if with any two points $p$
+and $q$ of $X$ there is associated a real number $d(p, q)$, called the
+\emph{distance} from $p$ to $q$, such that
+\begin{enumerate}[(a)]
+  \item $d(p, q) > 0$ if $p \neq 0$; $d(p, p) = 0$;
+  \item $d(p, q) = d(q, p)$;
+  \item $d(p, q) \leq d(p, r) + d(r, q)$, for any $r \in X$.
+\end{enumerate}
+Any function with these three properties is called a \emph{distance function},
+or a \emph{metric}.
+
+\paragraph{$k$-cells.} If $a_i < b_i$ for $i = 1, \ldots, k$, the set of all
+points $\mathbf{x} = (x_1, \ldots, x_k)$ in $R^k$ whose coordinates satisfy the
+inequalities $a_i \leq x_i \leq b_i$ ($1 \leq i \leq k$) is called a
+\emph{$k$-cell}.
+
+\paragraph{Open \& closed balls.} If $\mathbf{x} \in R^k$ and $r > 0$, the
+\emph{open} (or \emph{closed}) \emph{ball} $B$ with center at $\mathbf{x}$ and
+radius $r$ is defined to be the set of all $\mathbf{y} \in R^k$ such that
+$|\mathbf{y} - \mathbf{x}| < r$ (or $|\mathbf{y} - \mathbf{x}| \leq r$).
+
+\paragraph{Convex.} We call a set $E \subset R^k$ \emph{convex} if \[
+  \lambda\mathbf{x} + (1 - \lambda)\mathbf{y} \in E
+\] whenever $\mathbf{x} \in E$, $\mathbf{y} \in E$, and $0 < \lambda < 1$.
+
+\paragraph{Neighbourhoods.} A \emph{neighborhood} of $p$ is a set $N_r(p)$
+consisting of all $q$ such that $d(p, q) < r$, for some $r > 0$. The number $r$
+is called the \emph{radius} of $N_r(p)$.
+
+\paragraph{Limit \& isolated points.} A point $p$ is a \emph{limit point} of the
+set $E$ if \emph{every} neighborhood of $p$ contains a point $q \neq p$ such
+that $q \in E$. Otherwise, it is called an \emph{isolated point} of $E$.
+
+\paragraph{Interior points.} A point $p$ is an \emph{interior point} of $E$ if
+there is a neighborhood $N$ of $p$ such that $N \subset E$.
+
+\paragraph{Closed \& open sets.} The set $E$ is \emph{closed} if every limit
+point of $E$ is a point of $E$, and \emph{open} if every point of $E$ is an
+interior point of $E$.
+
+\paragraph{Complement set.} The \emph{complement} of $E$ (denoted by $E^c$)
+is the set of all points $p \in X$ such that $p \notin E$.
+
+\paragraph{Perfect sets.} The set $E$ is \emph{perfect} if $E$ is closed and if
+every point of $E$ is a limit point of $E$.
+
+\paragraph{Bounded sets.} The set $E$ is \emph{bounded} if there is a real
+number $M$ and a point $q \in X$ such that $d(p, q) < M$ for all $p \in E$.
+
+\paragraph{Dense sets.} The set $E$ is \emph{dense in the set $X$} if every
+point of $X$ is a limit point of $E$, or a point of $E$ (or both).
+
+\setcounter{theorem}{18}
+\begin{theorem}
+  Every neighborhood is an open set.
+\end{theorem}
+
+\begin{theorem}
+  If $p$ is a limit point of a set $E$, then every neighborhood of $p$ contains
+  infinitely many points of $E$.
+\end{theorem}
+
+\begin{corollary*}
+  A finite point set has no limit points.
+\end{corollary*}
+
+\setcounter{theorem}{21}
+\begin{theorem}
+  Let $\{E_{\alpha}\}$ be a (finite or infinite) collection of sets
+  $E_{\alpha}$. Then \[
+    \left(\bigcup_{\alpha} E_{\alpha}\right)^c =
+    \bigcap_{\alpha} E_{\alpha}^c.
+  \]
+\end{theorem}
+
+\begin{theorem}
+  A set $E$ is open if and only if its complement is closed.
+\end{theorem}
+
+\begin{corollary*}
+  A set $F$ is closed if and only if its complement is open.
+\end{corollary*}
+
+\setcounter{theorem}{23}
+\begin{theorem}
+  \begin{enumerate}[(a)]
+    \item For any collection $\{G_{\alpha}\}$ of open sets, $\cup_{\alpha}
+      G_{\alpha}$ is open.
+    \item For any collection $\{F_{\alpha}\}$ of closed sets, $\cap_{\alpha}
+      F_{\alpha}$ is closed.
+    \item For any finite collection $G_1, \cdots, G_n$ of open sets,
+      $\cap_{i=1}^n G_i$ is open.
+    \item For any finite collection $F_1, \cdots, F_n$ of closed sets,
+      $\cup_{i=1}^n F_i$ is closed.
+  \end{enumerate}
 \end{theorem}
 
 \end{document}
