@@ -6,6 +6,8 @@ solutions for articles, books and courses.
 
 # Books
 
+* `algebra` (Notes and Solutions, Chapter 1.1): Abstract Algebra, 3rd edition by
+David S. Dummit and Richard M. Foote.
 * `calculus` (Notes only, Chapter 1 to 13): Calculus, 3rd edition by Michael
 Spivak.
 * `intro-to-qm` (Notes only, Chapter 1 to 2): Introduction to Quantum

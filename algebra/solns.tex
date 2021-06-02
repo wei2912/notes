@@ -1,0 +1,200 @@
+\documentclass{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[shortlabels]{enumitem}
+
+\title{Solutions to ``Abstract Algebra'', 3rd edition (Dummit, Foote)}
+\author{Ng Wei En}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Introduction to Groups}
+
+\subsection{Basic Axioms and Examples}
+
+\paragraph{1.}
+\begin{enumerate}[(a)]
+  \item Not associative. $(0 \star 1) \star 1 = (0 - 1) - 1 = -2 \neq 0 = 0 -
+    (1 - 1) = 0 \star (1 \star 1)$.
+  \item Associative. \begin{align*}
+      (a \star b) \star c
+      &= (a + b + ab) \star c \\
+      &= (a + b + ab) + c + (a + b + ab)c \\
+      &= (a + b + c) + (ab + ac + bc) + abc \\
+      &= a + (b + c + bc) + a(b + c + bc) \\
+      &= a \star (b + c + bc) \\
+      &= a \star (b \star c).
+    \end{align*}
+  \item Not associative. $(0 \star 1) \star 1 = \frac{\frac{0 + 1}{5} + 1}{5} =
+    \frac{6}{25} \neq \frac{2}{25} = \frac{0 + \frac{1 + 1}{5}}{5} = 0 \star (1
+    \star 1)$.
+  \item Associative. \begin{align*}
+      ((a, b) \star (c, d)) \star (e, f)
+      &= (ad + bc, bd) \star (e, f) \\
+      &= ((ad + bc)f + bde, bdf) \\
+      &= (adf + bcf + bde, bdf) \\
+      &= (adf + b(cf + de), bdf) \\
+      &= (a, b) \star (cf + de, df) \\
+      &= (a, b) \star ((c, d) \star (e, f)).
+    \end{align*}
+  \item Not associative. $(1 \star 2) \star 2 = \frac{1}{2} \star 2 =
+    \frac{\frac{1}{2}}{2} = \frac{1}{4} \neq 1 = \frac{1}{\frac{2}{2}} = 1
+    \star \frac{2}{2} = 1 \star (2 \star 2)$.
+\end{enumerate}
+
+\paragraph{2.}
+\begin{enumerate}[(a)]
+  \item Not commutative. $0 \star 1 = 0 - 1 = -1 \neq 1 = 1 - 0 = 1 \star 0$.
+  \item Commutative by symmetry.
+  \item Commutative by symmetry.
+  \item Commutative. \begin{align*}
+      (a, b) \star (c, d)
+      &= (ad + bc, bd) \\
+      &= (cb + da, db) \\
+      &= (c, d) \star (a, b).
+    \end{align*}
+  \item Not commutative. $1 \star 2 = \frac{1}{2} \neq \frac{2}{1} = 2 \star 1$.
+\end{enumerate}
+
+\paragraph{5.}
+\begin{proof}
+  Consider $\overline{0} \in \mathbb{Z}/n\mathbb{Z}$. Then for all $\overline{x}
+  \in \mathbb{Z}/n\mathbb{Z}$, $\overline{0} \cdot \overline{x} = \overline{0x}
+  = \overline{0}$. Hence, there does not exist a multiplicative inverse for
+  $\overline{0}$.
+\end{proof}
+
+\paragraph{6.} Note that addition is associative with identity 0, so it suffices
+to check for existence of inverse and closure.
+\begin{enumerate}[(a)]
+  \item Group. Any rational number $\frac{a}{b}$ in lowest terms has an inverse
+    $\frac{-a}{b}$ in the set. Also, any two numbers $\frac{a}{b}$ and
+    $\frac{c}{d}$ when added will yield a fraction with an odd denominator.
+    Since all factors of an odd number are odd, the fraction when written in
+    lowest terms will be in the set.
+  \item Not a group. $\frac{1}{2} + \frac{1}{2} = \frac{2}{2} = \frac{1}{1}$
+    which is not in the set.
+  \item Not a group. $\frac{1}{2} + \frac{1}{2} = 1 \geq 1$.
+  \item Not a group. $\frac{3}{2} + (-1) = \frac{1}{2} < 1$.
+  \item Group. Any rational number $\frac{a}{b}$ with $b = 1, 2$ has an inverse
+    $\frac{-a}{b}$ in the set. Also, any rational numbers $\frac{a}{b}$ and
+    $\frac{c}{d}$ for $1 \leq b, d \leq 2$ can be written as $\frac{a'}{2}$ and
+    $\frac{c'}{2}$ respectively, so $\frac{a}{b} + \frac{c}{d} = \frac{a'}{2} +
+    \frac{c'}{2} = \frac{a' + c'}{2}$ which when written in lowest terms will be
+    in the set.
+  \item Not a group. $\frac{1}{2} + \frac{1}{3} = \frac{5}{6}$ which is not in
+    the set.
+\end{enumerate}
+
+\paragraph{7.}
+\begin{proof}
+  Since $[a]$ is well defined for all $a \in \mathbb{R}$, it is clear that $x
+  \star y$ is well defined. Also, for all $a \in \mathbb{R}$, we have $[a] \leq
+  a < [a] + 1$ by definition. It follows that for all $x, y \in G$, \[
+    0 \leq (x + y) - [x + y] = x \star y < 1
+  \] and so $x \star y \in G$.
+
+  Observe that for any $x \in \mathbb{R}$ and $y \in \mathbb{Z}$, since $[x]
+  \leq x < [x] + 1 \implies [x] + y \leq x + y < ([x] + y) + 1$ and $[x] + y \in
+  \mathbb{Z}$, we have $[x + y] = [x] + y$. Hence, for any $x, y, z \in
+  \mathbb{G}$, \begin{align*}
+    (x \star y) \star z
+    &= (x + y - [x + y]) \star z \\
+    &= (x + y - [x + y]) + z - [(x + y - [x + y]) + z] \\
+    &= x + y + z - [x + y] - ([x + y + z] - [x + y]) \because [x + y] \in
+    \mathbb{Z} \\
+    &= x + y + z - [x + y + z].
+  \end{align*} Similarly, \begin{align*}
+    x \star (y \star z)
+    &= x \star (y + z - [y + z]) \\
+    &= x + (y + z - [y + z]) - [x + (y + z - [y + z])] \\
+    &= x + y + z - [y + z] - ([x + y + z] - [y + z]) \\
+    &= x + y + z - [x + y + z].
+  \end{align*}
+  Hence, $\star$ is associative. Clearly, $0 \in G$ is the identity element and 
+  every $x \in G$ has an inverse $1 - x$ if $x \neq 0$ and $0$ if $x = 0$.
+  Therefore $G$ is a group. Since $\star$ is commutative, $G$ is abelian.
+\end{proof}
+
+\paragraph{11.}
+\begin{align*}
+  \overline{0}\text{ is the additive identity}
+  &\implies |\overline{0}| = 1, \\
+  12(\overline{1}) = \overline{12} = \overline{0}
+  &\implies |\overline{1}| = 12, \\
+  6(\overline{2}) = \overline{12} = \overline{0}
+  &\implies |\overline{2}| = 6, \\
+  4(\overline{3}) = \overline{12} = \overline{0}
+  &\implies |\overline{3}| = 4, \\
+  3(\overline{4}) = \overline{12} = \overline{0}
+  &\implies |\overline{4}| = 3, \\
+  12(\overline{5}) = \overline{60} = \overline{0}
+  &\implies |\overline{5}| = 12, \\
+  2(\overline{6}) = \overline{12} = \overline{0}
+  &\implies |\overline{6}| = 2, \\
+  12(\overline{7}) = \overline{84} = \overline{0}
+  &\implies |\overline{7}| = 12, \\
+  3(\overline{8}) = \overline{24} = \overline{0}
+  &\implies |\overline{8}| = 3, \\
+  4(\overline{9}) = \overline{36} = \overline{0}
+  &\implies |\overline{9}| = 4, \\
+  6(\overline{10}) = \overline{60} = \overline{0}
+  &\implies |\overline{10}| = 6, \\
+  12(\overline{11}) = \overline{132} = \overline{0}
+  &\implies |\overline{11}| = 12.
+\end{align*}
+
+\paragraph{15.}
+\begin{proof}
+  For all $a_1, a_2, \ldots, a_n \in G$, \begin{align*}
+    &(a_1a_2 \cdots a_{n-1}a_n) \cdot (a_n^{-1}a_{n-1}^{-1} \cdots
+    a_2^{-1}a_1^{-1}) \\
+    &= (a_1a_2 \cdots a_{n-1}) \cdot (a_n a_n^{-1}) \cdot
+    (a_{n-1}^{-1} \cdots a_2^{-1}a_1^{-1}) \\
+    &= (a_1a_2 \cdots a_{n-1}) \cdot 1 \cdot
+    (a_{n-1}^{-1} \cdots a_2^{-1}a_1^{-1}) \\
+    &= (a_1a_2 \cdots a_{n-1}) \cdot (a_{n-1}^{-1} \cdots a_2^{-1}a_1^{-1}).
+  \end{align*}
+  This process can be repeated until the expression is reduced to the identity
+  $1 \in G$. By the uniqueness of the identity, we have \[
+    (a_1a_2 \cdots a_n)^{-1} = a_n^{-1}a_{n-1}^{-1} \cdots a_1^{-1}.
+  \]
+\end{proof}
+
+\paragraph{17.}
+\begin{proof}
+  From $|x| = n$ it follows that $x \cdot x^{n-1} = x^n = 1$. By the uniqueness
+  of identity, we have $x^{-1} = x^{n-1}$.
+\end{proof}
+
+\paragraph{20.}
+\begin{proof}
+  Suppose $|x| = n$ for some $x \in G$. Then $x^n \cdot (x^{-1})^n = 1$, but
+  since $x^n = 1$ we have $(x^{-1})^n = 1 \implies |x^{-1}| \leq n$.
+
+  Now suppose $|x^{-1}| = m < n$. Then \[
+    (x^{-1})^m = 1 \implies (x^{-1})^m \cdot x^n = 1 \implies x^{n-m} = 1.
+  \] But $n - m \in \mathbb{Z}^+$ and $n - m < n$ which contradicts the
+  minimality of $|x|$.
+\end{proof}
+
+\paragraph{22.}
+\begin{proof}
+  Suppose $|x| = n$. Note that $(g^{-1}xg)^k = g^{-1}x^kg$ for all $k \in
+  \mathbb{Z}^+$, so \[
+    |g^{-1}xg| = k \iff g^{-1}x^kg = 1 \iff x^k = gg^{-1} = 1 \iff k = n
+  \] which proves $|x| = |g^{-1}xg|$. Hence, $|ab| = |a^{-1}aba| = |ba|$.
+\end{proof}
+
+\paragraph{25.}
+\begin{proof}
+  Let $x, y \in G$. Then $(xy)^2 = 1$; but \[
+    1 = (xy)^2 = xyxy \implies x \cdot 1 \cdot y = x^2yxy^2 \implies xy = yx
+  \] since $x^2 = y^2 = 1$. Therefore $G$ is abelian.
+\end{proof}
+
+\end{document}
