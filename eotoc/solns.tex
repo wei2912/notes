@@ -176,4 +176,23 @@
     \]
 \end{enumerate}
 
+\paragraph{2.1.7.}
+\begin{proof}
+  Consider some unreachable state $q'$ of $M$. Let $K' = K \setminus \{q'\}$,
+  $F' = F \setminus \{q'\}$, and define $M' = (K', \Sigma, \delta, q_0, F')$.
+  
+  Suppose $w_0 \in L(M)$. Then \[
+    (q_0, w_0) \vdash_M (q_1, w_1) \vdash_M \cdots \vdash_M (q_{n-1}, w_{n-1})
+    \vdash_M (q_n, e)
+  \] for some $q_0, \ldots, q_n \in K$ and $q_n \in F$. Since $q'$ is
+  unreachable, we have $q_i \neq q'$ for all $0 \leq i \leq n$, so $q_0, \ldots,
+  q_n \in K'$ and $q_n \in F'$. Hence, $(q_0, w_0) \vdash_{M'}^* (q_n, e)$ and
+  so $w_0 \in L(M')$. Conversely, for all $w'_0 \in L(M')$, since $K' \subseteq
+  K$ and $F' \subseteq F$, it is clear that $w'_0 \in L(M)$. Therefore $L(M) =
+  L(M')$.
+
+  Breadth first search would be sufficient for finding all reachable states,
+  with time complexity $\mathcal{O}(\min(|\Sigma|, |K|)|K|\log|K|)$.
+\end{proof}
+
 \end{document}
