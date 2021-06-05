@@ -6,10 +6,12 @@ solutions for articles, books and courses.
 
 # Books
 
-* `algebra` (Notes and Solutions, Chapter 1.1): Abstract Algebra, 3rd edition by
+* `algebra` (Solutions only, Chapter 1.1): Abstract Algebra, 3rd edition by
 David S. Dummit and Richard M. Foote.
 * `calculus` (Notes only, Chapter 1 to 13): Calculus, 3rd edition by Michael
 Spivak.
+* `eotoc` (Solutions only, Chapter 2.1): Elements of the Theory of Computation,
+2nd edition by Harry R. Lewis and Christos H. Papadimitriou.
 * `intro-to-qm` (Notes only, Chapter 1 to 2): Introduction to Quantum
 Mechanics, 2nd edition by David Jeffrey Griffiths.
 * `ireland-rosen` (Notes only, Chapter 1): A Classical Introduction to Modern
