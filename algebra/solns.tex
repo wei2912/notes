@@ -274,4 +274,108 @@ to check for existence of inverse and closure.
   $b^2 = (sr)^2 = srsr = s(sr^{-1})r = s^2 = 1$, and $(ab)^n = (ssr)^n = r^n$.
 \end{proof}
 
+\subsection{Symmetric Groups}
+
+\paragraph{1.}
+\begin{align*}
+  \sigma &= (1\ 3\ 5)(2\ 4) \\
+  \tau &= (1\ 5)(2\ 3) \\
+  \sigma^2 &= (1\ 5\ 3) \\
+  \sigma\tau &= (2\ 5\ 3\ 4) \\
+  \tau\sigma &= (1\ 2\ 4\ 3) \\
+  \tau^2\sigma &= (1\ 3\ 5)(2\ 4)
+\end{align*}
+
+\paragraph{4.}
+\begin{enumerate}[(a)]
+  \item \begin{align*}
+      |1| &= 1 \\
+      |(1 2)| &= 2 \\
+      |(1 3)| &= 2 \\
+      |(2 3)| &= 2 \\
+      |(1 2 3)| &= 3 \\
+      |(1 3 2)| &= 3
+  \end{align*}
+\end{enumerate}
+
+\paragraph{8.}
+\begin{proof}
+  Suppose that $S_\Omega$ is a finite group and let $n$ be the order of
+  $S_\Omega$. Pick some $m \in \mathbb{Z}$ such that $n < m!$. Clearly, we have
+  $S_m \subseteq S_\Omega$, since each permutation in $S_m$ can be extended to
+  a permutation of $S_\Omega$ by mapping all numbers greater than $m$ to
+  themselves. But this implies that $|S_m| \subseteq |S_\Omega| \iff m! \leq n$
+  which is absurd.
+\end{proof}
+
+\paragraph{9.}
+\begin{enumerate}[(a)]
+  \item $i = 1, 5, 7, 11$
+  \item $i = 1, 3, 5, 7$
+  \item $i = 1, 3, 5, 9, 11, 13$
+\end{enumerate}
+
+\paragraph{10.}
+\begin{proof}
+  We prove this statement by induction on $i$.
+
+  \textbf{Base case}: Suppose $i = 1$. Clearly, for $k \in
+  \{1, 2, \ldots, m-1\}$ we have $\sigma(a_k) = a_{k+1}$ since $k + 1 \leq m$.
+  If $k = m$, then by definition $\sigma(a_k) = \sigma(a_m) = a_1$. But $a_1 =
+  a_{m+1} = a_{k+1}$ since the least residue $m+1$ mod $m$ is $1$, which
+  proves the base case.
+
+  \textbf{Inductive hypothesis}: Assume that for some $i \in \mathbb{Z}^+$,
+  $\sigma^i(a_k) = a_{k+i}$ for $k \in \{1, 2, \ldots, m\}$.
+
+  \textbf{Inductive step}: Consider $\sigma^{i+1}(a_k)$ for $k \in \{1, 2,
+  \ldots, m\}$. Since $\sigma(a_k) = a_{k+1}$ by the base case, we have \[
+    \sigma^{i+1}(a_k) = \sigma^i(\sigma(a_k)) = \sigma^i(a_{k+1}).
+  \] If $k + 1 \leq m$, then $\sigma^i(a_{k+1}) = a_{k+1+i}$ by the inductive
+  hypothesis. Otherwise, we have $k = m$, so $a_{k+1} = a_1$ by the base case
+  and \[
+    \sigma^i(a_{k+1}) = \sigma^i(a_1) = a_{1+i} = a_{m+i+1} = a_{k+i+1}
+  \] since the least residue of $m+i+1$ mod $m$ is the same as that of $i+1$.
+\end{proof}
+
+\paragraph{11.}
+\begin{proof}
+  ($\Rightarrow$): Suppose $\sigma^i$ is a $m$-cycle. Let $d = \gcd(i, m)$ and
+  $i = dp$, $m = dq$ for some $p, q \in \mathbb{Z}^+$. Then we have \[
+    \sigma^d = (1\ d+1\ \ldots\ (q-1)d+1)
+  \] since $\sigma^d(x) = x+d$ for $x \in \{1, \ldots, m\}$, where $x+d$ is
+  replaced by its least residue mod $m$ when $x+d > m$. It follows that
+  $dq = m = |\sigma^i| = |(\sigma^d)^p| \leq |\sigma^d| = q$, so we must have
+  $d = 1$ and $i$ relatively prime to $m$.
+
+  \textbf{($\Leftarrow$)}: Suppose $i$ is relatively prime to $m$. Let $x, y \in
+  \{1, i+1, \ldots, (m-1)i+1\}$ such that the least residues of $x$ and $y$ mod
+  $m$ are equal. WLOG, assume $x \geq y$. Then $m \mid x - y = di$ for some $d
+  \in \{0, 1, \ldots, m-1\}$. Since $i$ and $m$ are relatively prime, $m \mid d$
+  and so $d = 0$, which implies $x = y$. Therefore it follows that \[
+    \{1, \sigma^i(1), \ldots, \sigma^{(m-1)i}(1)\}
+    = \{1, i+1, \ldots, (m-1)i+1\}
+    = \{1, 2, \ldots, m-1\}
+  \] where each element is replaced by its least residue mod $m$, so $|\sigma^i|
+  = m$.
+\end{proof}
+
+\paragraph{13.}
+\begin{proof}
+  ($\Rightarrow$): Let $\sigma \in S_n$ such that $|\sigma| = 2$. Suppose
+  $\sigma = \sigma_1\tau\sigma_2$ for some disjoint $\sigma_1, \sigma_2, \tau
+  \in S_n$ where $\tau$ is a $k$-cycle with $k > 2$. Then we have $|\sigma| =
+  |\sigma_1\tau\sigma_2| \geq |\tau| = k > 2$ which is absurd.
+
+  ($\Leftarrow$): Let $\sigma = \sigma_1\ldots\sigma_m \in S_n$ for some $m \in
+  \mathbb{Z}^+$ and disjoint 2-cycles $\sigma_1, \ldots, \sigma_m$. Then we have
+  \[
+    |\sigma| \geq \max\{|\sigma_1|, \ldots, |\sigma_m|\} = 2.
+  \] Consider some $x \in \{1, \ldots, n\}$. Then either $\sigma_i(x) = x$
+  for all $i \in \{1, \ldots, m\}$, which implies $\sigma(x) = x$, or there
+  exists exactly one $\sigma_i$ (by the disjointness of $\sigma_1, \ldots,
+  \sigma_m$) such that $\sigma_i(x) \neq x$ and $\sigma_i^2(x) = x$, which
+  implies that $\sigma^2(x) = x$. It follows that $|\sigma| \leq 2$.
+\end{proof}
+
 \end{document}
