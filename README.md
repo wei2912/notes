@@ -6,13 +6,13 @@ solutions for articles, books and courses.
 
 # Books
 
-* `algebra` (Solutions only, Chapter 1.1 to 1.3): Abstract Algebra, 3rd edition
+* `algebra` (Solutions only, Chapter 1.1-1.3): Abstract Algebra, 3rd edition
 by David S. Dummit and Richard M. Foote.
-* `calculus` (Notes only, Chapter 1 to 13): Calculus, 3rd edition by Michael
+* `calculus` (Notes only, Chapter 1-13): Calculus, 3rd edition by Michael
 Spivak.
-* `eotoc` (Solutions only, Chapter 2.1): Elements of the Theory of Computation,
+* `eotoc` (Solutions only, Chapter 2.1-2.2): Elements of the Theory of Computation,
 2nd edition by Harry R. Lewis and Christos H. Papadimitriou.
-* `intro-to-qm` (Notes only, Chapter 1 to 2): Introduction to Quantum
+* `intro-to-qm` (Notes only, Chapter 1-2): Introduction to Quantum
 Mechanics, 2nd edition by David Jeffrey Griffiths.
 * `ireland-rosen` (Notes only, Chapter 1): A Classical Introduction to Modern
 Number Theory, 2nd edition by Kenneth Ireland and Michael Rosen.
@@ -20,12 +20,12 @@ Number Theory, 2nd edition by Kenneth Ireland and Michael Rosen.
 Kenneth Hoffman and Ray Kunze.
 * `po-math-analysis` (Notes and Solutions, Chapter 1): Principles of
 Mathematical Analysis, 3rd edition by Walter Rudin.
-* `qc-and-qi` (Notes only, Chapter 1 to 2.5): Quantum Computation and Quantum
+* `qc-and-qi` (Notes only, Chapter 1-2.5): Quantum Computation and Quantum
 Information, 10th anniversary edition by Michael Nielsen and Isaac Chung.
 
 # Courses
 
-* `aofa` (Notes only, Week 1 to Week 9):
+* `aofa` (Notes only, Week 1-9):
 [Analysis of Algorithms](https://www.coursera.org/learn/analysis-of-algorithms)
 by Robert Sedgewick on Coursera.
 * `crypto` (Notes only, Week 1):

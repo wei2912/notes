@@ -195,4 +195,67 @@
   with time complexity $\mathcal{O}(\min(|\Sigma|, |K|)|K|\log|K|)$.
 \end{proof}
 
+\subsection{Nondeterministic Finite Automata}
+
+\paragraph{2.2.1.}
+\begin{enumerate}[(a)]
+  \item \begin{enumerate}[(i)]
+      \item Accepted.
+      \item Accepted.
+      \item Not accepted.
+      \item Accepted.
+    \end{enumerate}
+  \item \begin{enumerate}[(i)]
+      \item Accepted.
+      \item Accepted.
+      \item Accepted.
+      \item Accepted.
+      \item Not accepted.
+    \end{enumerate}
+\end{enumerate}
+
+\paragraph{2.2.2.}
+\begin{enumerate}[(a)]
+  \item $a^*$
+  \item $e \cup ((b \cup ba)a)^*(b \cup ba)$
+\end{enumerate}
+
+\paragraph{2.2.3.}
+\begin{enumerate}[(a)]
+  \item \begin{tikzpicture}[auto]
+    \node (q0) [state, initial, initial text = {}] at (0,0) {$q_0$};
+    \node (q1) [state] at (2,0) {$q_1$};
+    \node (q2) [state, accepting] at (2,-2) {$q_2$};
+    \node (q3) [state] at (4,-2) {$q_3$};
+    \node (q4) [state, accepting] at (4,0) {$q_4$};
+    \node (q1') [state, accepting] at (0, -2) {$q_1'$};
+
+    \path [-stealth, thick]
+      (q0) edge node {a} (q1)
+      (q0) edge node {a} (q1')
+      (q1) edge [bend left] node {b} (q2)
+      (q2) edge [bend left] node {a} (q1)
+      (q2) edge node {b} (q3)
+      (q3) edge [bend left] node {a} (q4)
+      (q4) edge [bend left] node {b} (q3)
+      (q1') edge [loop right] node {a} ();
+    \end{tikzpicture}
+\end{enumerate}
+
+\paragraph{2.2.4.}
+\begin{enumerate}[(a)]
+  \item \begin{proof}
+    Suppose a string $w \in L$ is missing a symbol $a_i$ for some $i \in \{1,
+    \ldots, n\}$. Then $w = c_1 \ldots c_n$ where $c_1, \ldots, c_n \in \{a_1,
+    \ldots, a_{i-1}, a_{i+1}, \ldots, a_n\}$. Thus, we have \[
+      (q_i, c_1 \ldots c_n) \vdash (q_i, c_2 \ldots c_n) \vdash \cdots \vdash
+      (q_i, e)
+    \] by the definition of the transition function, and so $(q_i, w) \vdash^*
+    (q_i, e)$.
+    \end{proof}
+  \item Any such automaton $(K, \Sigma, \Delta, S, F)$ can be written in our
+    definition as $(K \cup \{q_0\}, \Sigma, \Delta_0, q_0, F)$ where $\Delta_0
+    = \Delta \cup \{(q_0, e, q) \mid q \in S\}$.
+\end{enumerate}
+
 \end{document}
