@@ -378,4 +378,144 @@ to check for existence of inverse and closure.
   implies that $\sigma^2(x) = x$. It follows that $|\sigma| \leq 2$.
 \end{proof}
 
+\subsection{Matrix Groups}
+
+\paragraph{2.} \[
+  GL_2(\mathbb{F}_2) = \left\{
+    \begin{pmatrix}
+      0 & 1 \\
+      1 & 0
+    \end{pmatrix},
+    \begin{pmatrix}
+      0 & 1 \\
+      1 & 1
+    \end{pmatrix},
+    \begin{pmatrix}
+      1 & 0 \\
+      0 & 1
+    \end{pmatrix},
+    \begin{pmatrix}
+      1 & 1 \\
+      0 & 1
+    \end{pmatrix},
+    \begin{pmatrix}
+      1 & 0 \\
+      1 & 1
+    \end{pmatrix},
+    \begin{pmatrix}
+      1 & 1 \\
+      1 & 0
+    \end{pmatrix}
+  \right\}.
+\] \begin{align*}
+  \left|\begin{pmatrix}
+    0 & 1 \\
+    1 & 0
+  \end{pmatrix}\right| &= 2 \\
+  \left|\begin{pmatrix}
+    0 & 1 \\
+    1 & 0
+  \end{pmatrix}\right| &= 3 \\
+  \left|\begin{pmatrix}
+    1 & 0 \\
+    0 & 1
+  \end{pmatrix}\right| &= 1 \\
+  \left|\begin{pmatrix}
+    1 & 1 \\
+    0 & 1
+  \end{pmatrix}\right| &= 2 \\
+  \left|\begin{pmatrix}
+    1 & 0 \\
+    1 & 1
+  \end{pmatrix}\right| &= 2 \\
+  \left|\begin{pmatrix}
+    1 & 1 \\
+    1 & 0
+  \end{pmatrix}\right| &= 3
+\end{align*}
+
+\paragraph{3.}
+\begin{proof}
+  \[
+    \begin{pmatrix}
+      1 & 1 \\
+      1 & 0
+    \end{pmatrix}\begin{pmatrix}
+      0 & 1 \\
+      1 & 0
+    \end{pmatrix} = \begin{pmatrix}
+      1 & 1 \\
+      0 & 1
+    \end{pmatrix} \neq \begin{pmatrix}
+      1 & 0 \\
+      1 & 1
+    \end{pmatrix} = \begin{pmatrix}
+      0 & 1 \\
+      1 & 0
+    \end{pmatrix}\begin{pmatrix}
+      1 & 1 \\
+      1 & 0
+    \end{pmatrix}.
+  \]
+\end{proof}
+
+\paragraph{4.}
+\begin{proof}
+  Suppose $n = pq$ for some $p, q \in \mathbb{Z}_{\geq 2}$. Observe that for any
+  $k \in \{1, \ldots, n-1\}$, we may write $k = pd + r$ where $0 \leq d < q$ and
+  $0 \leq r < p$. Then \[
+    \overline{q} \cdot k = \overline{q} \cdot (pd + r) = \overline{pq} \cdot d +
+    \overline{q} \cdot r = \overline{q} \cdot r
+  \] since $\overline{pq} = \overline{n} = \overline{0}$. Hence any product of
+  $\overline{q}$ with some element in $\mathbb{Z}/n\mathbb{Z}$ must be in the
+  set $S = \{\overline{q}, \overline{q} \cdot 2, \ldots, \overline{q} \cdot
+  (p-1)\}$. But $\overline{1} \not\in S$ since $q \geq 2$, so $\overline{q}$
+  does not have a multiplicative inverse in $\mathbb{Z}/n\mathbb{Z}$.
+\end{proof}
+
+\paragraph{6.}
+\begin{proof}
+  Let $M_n(F)$ be the set of all $n \times n$ matrices over $F$. Clearly
+  $|GL_n(F)| \leq |M_n(F)| = q^{n^2}$. But the zero matrix $0_n \in M_n(F)$ and
+  $0_n \not\in GL_n(F)$, so equality is not possible.
+\end{proof}
+
+\paragraph{7.}
+\begin{proof}
+  Consider the set $S$ of all non-invertible matrices in $M_2(\mathbb{F}_p)$,
+  and let $V = \mathbb{F}_p^2$.
+
+  \textbf{Case 1}: Consider $S_1$, the set of all matrices in $S$ which have a
+  non-zero first row. Since the second row is a multiple of the first row, we
+  have $|S_1| = |V \setminus\{(0, 0)\}| \times p = (p^2 - 1)p$.
+
+  \textbf{Case 2}: Consider $S_2$, the set of all matrices in $S$ which have a
+  zero first row. Then the second row is always a multiple of the first row, so
+  we have $|S_2| = 1 \times |V| = p^2$.
+
+  Therefore, $|GL_2(\mathbb{F}_p)| = p^4 - (p^2 - 1)p - p^2 = p^4 - p^3 - p^2 +
+  p$.
+\end{proof}
+
+\paragraph{8.}
+\begin{proof}
+  A similar argument to Q3 can be employed, considering the product of the
+  $n \times n$ matrices \[
+    \begin{pmatrix}
+      1 & 1 & 0 & \cdots & 0 \\
+      1 & 0 & 0 & \cdots & 0 \\
+      0 & 0 & 0 & \cdots & 0 \\
+      \vdots & \vdots & \vdots & \ddots & \vdots \\
+      0 & 0 & 0 & \cdots & 0 \\
+    \end{pmatrix},
+    \begin{pmatrix}
+      0 & 1 & 0 & \cdots & 0 \\
+      1 & 1 & 0 & \cdots & 0 \\
+      0 & 0 & 0 & \cdots & 0 \\
+      \vdots & \vdots & \vdots & \ddots & \vdots \\
+      0 & 0 & 0 & \cdots & 0 \\
+    \end{pmatrix}.
+  \]
+\end{proof}
+
 \end{document}
