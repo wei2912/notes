@@ -576,4 +576,116 @@ to check for existence of inverse and closure.
   \rangle
 \]
 
+\subsection{Homomorphisms and Isomorphisms}
+
+\paragraph{2.}
+\begin{proof}
+  Let $n = |x|$. Then $\varphi(x)^n = \varphi(x^n) = \varphi(1)$ from Q1. Since
+  $\varphi(1) \cdot \varphi(y) = \varphi(y) = \varphi(y) \cdot \varphi(1)$,
+  $\varphi(1)$ is the unique identity of $G$, so $|\varphi(x)| \leq n$.
+
+  Now suppose $|\varphi(x)| = k < n$ for some $k \in \mathbb{Z}^+$. Then
+  $\varphi(1) = \varphi(x)^k = \varphi(x^k)$, which is absurd since $1 \neq x^k$
+  and $\varphi$ is bijective.
+
+  It follows that since $\varphi$ is an isomorphism, $G$ and $H$ have the same
+  number of elements of order $n$ for each $n \in \mathbb{Z}^+$.
+\end{proof}
+\begin{proof}[NB]
+  This does not hold if $\varphi$ is a homomorphism. Consider the unique
+  homomorphism $\psi: D_8 \to D_4$ that maps the generators of $D_8$ to those of
+  $D_4$ (using the presentation $D_{2n} = \langle r, s \mid r^n = s^2 = 1,\,
+  sr = r^{-1}s\rangle$). Then $|r| = 4$ while $|\varphi(r)| = 2$.
+\end{proof}
+
+\paragraph{3.}
+\begin{proof}
+  Suppose $G$ is abelian. Then $\varphi(x)\varphi(y) = \varphi(xy) =
+  \varphi(yx) = \varphi(y)\varphi(x)$ for all $x, y \in G$. Since $\varphi$ is
+  surjective, it follows that $ab = ba$ for all $a, b \in H$, so $H$ is abelian.
+
+  Now suppose $H$ is abelian. Let $a, b \in H$. Since $\varphi$ is bijective,
+  there exists some unique $x, y \in G$ such that $\varphi(x) = a$ and
+  $\varphi(y) = b$. Then $\varphi(xy) = \varphi(x)\varphi(y) = ab = ba =
+  \varphi(y)\varphi(x) = \varphi(yx)$, so $xy = yx$ since $\varphi$ is
+  injective.
+\end{proof}
+\begin{proof}[NB]
+  If $\varphi$ is a homomorphism, it is sufficient for $\varphi$ to be
+  surjective, as demonstrated in the first part of this proof.
+\end{proof}
+
+\paragraph{4.}
+\begin{proof}
+  Observe that all elements in $\mathbb{R} - \{0\}$ have order 1, 2 or infinity.
+  However, $i \in \mathbb{C} - \{0\}$ has order 4. By Q2(a), it follows that
+  the two groups cannot be isomorphic.
+\end{proof}
+
+\paragraph{7.}
+\begin{proof}
+  Observe that $D_8$ has 5 elements of order 2: $r^2$, $s$, $sr$, $sr^2$ and
+  $sr^3$. However, as proven in Q1.5.1, $Q_8$ only has 1 element of order 2,
+  $-1$. By Q2(a), it follows that the two groups cannot be isomorphic.
+\end{proof}
+
+\paragraph{10.}
+\begin{enumerate}[(a)]
+  \item \begin{proof}
+      This is evident from the fact that $\varphi(\sigma) = \theta \circ \sigma
+      \circ \theta^{-1}$ is a bijection on $\Omega$.
+    \end{proof}
+  \item \begin{proof}
+      Define $\psi: S_\Omega \to S_\Delta$ by $\psi(\sigma) = \theta^{-1}
+      \circ \sigma \circ \theta$ for all $\sigma \in S_\Omega$. Clearly, $\psi$
+      is a two-sided inverse for $\varphi$.
+    \end{proof}
+  \item \begin{proof}
+      We have \begin{align*}
+        \varphi(\sigma \circ \tau)
+        &= \theta \circ (\sigma \circ \tau) \circ \theta^{-1} \\
+        &= \theta \circ (\sigma \circ \theta^{-1} \circ \theta \circ \tau)
+        \circ \theta^{-1} \\
+        &= (\theta \circ \sigma \circ \theta^{-1}) \circ (\theta \circ \tau
+        \circ \theta^{-1}) \\
+        &= \varphi(\sigma) \circ \varphi(\tau)
+      \end{align*} as required.
+    \end{proof}
+\end{enumerate}
+
+\paragraph{13.}
+\begin{proof}
+  We know that $\varphi(G) \subseteq H$, so it is sufficient to prove that
+  $\varphi(G)$ satisfies the group axioms. By definition, for all $x \in G$, \[
+    \varphi(1)\varphi(x) = \varphi(1 \cdot x) = \varphi(x) = \varphi(x \cdot 1)
+    = \varphi(x)\varphi(1),
+  \] so $\varphi(G)$ has identity $\varphi(1)$. Also, \[
+    \varphi(x)\varphi(x^{-1}) = \varphi(x \cdot x^{-1}) = \varphi(1) = \varphi(x^{-1} \cdot x)
+    = \varphi(x^{-1})\varphi(x),
+  \] so there exists some inverse $\varphi(x^{-1}) \in \varphi(G)$. Clearly, the
+  operation of $\varphi(G)$ is associative. It follows that $\varphi(G)$ is a
+  subgroup of $H$.
+
+  Now suppose that $\varphi$ is injective. Then we have a bijection between $G$
+  and $\varphi(G)$, so $G \cong \varphi(G)$.
+\end{proof}
+
+\paragraph{14.}
+\begin{proof}
+  Similar to Q13, it suffices to prove that $\ker(\varphi)$ satisfies the group
+  axioms. Clearly $\varphi(1_G) = 1_H$ (as proven in Q13), so $1_G \in
+  \ker(\varphi)$. Also, for any $x \in \ker(\varphi)$, \[
+    1_H = \varphi(1_G) = \varphi(x \cdot x^{-1}) = \varphi(x)\varphi(x^{-1}) =
+    1_H\varphi(x^{-1}) = \varphi(x^{-1}),
+  \] so $x^{-1} \in \ker(\varphi)$. Clearly, the operation of $\ker(\varphi)$
+  is associative. It follows that $\ker(\phi)$ is a subgroup of $G$.
+
+  It is obvious that if $\varphi$ is injective then $\ker(\varphi) = \{1_G\}$
+  from the earlier part. Now suppose $\ker(\varphi) = \{1_G\}$. Consider $x, x'
+  \in G$ such that $\varphi(x) = \varphi(x')$. Then \[
+    1_H = \varphi(x)\varphi(x^{-1}) = \varphi(x')\varphi(x^{-1}) =
+    \varphi(x'x^{-1}),
+  \] so we have $x'x^{-1} = 1_G$ and so $x' = x$. Thus $\varphi$ is injective.
+\end{proof}
+
 \end{document}
