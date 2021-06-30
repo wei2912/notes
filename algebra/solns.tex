@@ -688,4 +688,59 @@ to check for existence of inverse and closure.
   \] so we have $x'x^{-1} = 1_G$ and so $x' = x$. Thus $\varphi$ is injective.
 \end{proof}
 
+\subsection{Group Actions}
+
+\paragraph{3.}
+\begin{proof}
+  Observe that $0 \cdot (x, y) = (x + 0y, y) = (x, y)$. Also, for any $r_1, r_2
+  \in \mathbb{R}$, \[
+    r_2 \cdot (r_1 \cdot (x, y)) = r_2 \cdot (x + r_1y, y) =
+    ((x + r_1y) + r_2y, y)
+  \] and \[
+    (r_1 + r_2) \cdot (x, y)  = (x + (r_1 + r_2)y, y),
+  \] so the additive group $\mathbb{R}$ acts on the x, y plane $\mathbb{R}
+  \times \mathbb{R}$.
+\end{proof}
+
+\paragraph{5.}
+\begin{proof}
+  Let $\varphi_1$ be the action of $G$ on $A$ and let $g \in \ker(\varphi_1)$.
+  By definition, we have $g \cdot a = a = 1_{S_A}(a)$ for all $a \in A$.
+  Now consider some corresponding permutation representation $\varphi_2: G \to
+  S_A$ to the action of $G$ on $A$ and let $g \in \ker(\varphi_2)$. Then clearly
+  $\varphi(g) = 1_{S_A}$. Therefore, the two kernels $\ker(\varphi_1)$ and
+  $\ker(\varphi_2)$ must be the same.
+\end{proof}
+
+\paragraph{17.}
+\begin{proof}
+  Let $x, y \in G$. Then \[
+    g(xy)g^{-1} = (gxg^{-1})(gyg^{-1}),
+  \] so conjugation by $g$ is a homomorphism. Clearly this homomorphism is
+  injective, since $gxg^{-1} = gyg^{-1} \iff x = y$, so it must be an
+  isomorphism on $G$. It follows from the proof of Q1.6.2 that $|x| =
+  |gxg^{-1}|$ for all $x \in G$. Furthermore, by this isomorphism, we have
+  $|A| = |gAg^{-1}|$ for any subset $A \subseteq G$.
+\end{proof}
+
+\paragraph{18.}
+\begin{proof}
+  Let $a, b, c \in A$. Clearly the relation $\sim$ on $A$ is reflexive since
+  $a = 1_Ha$. It is also obvious that $\sim$ is transitive, since if $a = h_1b$
+  and $b = h_2c$, it follows that $a = h_1(h_2c) = (h_1h_2)c$ by definition.
+  Lastly, since $h \in H$, we have $a = hb \iff b = 1_Hb = h^{-1}hb = h^{-1}a$,
+  so $\sim$ is symmetric. This completes the proof.
+\end{proof}
+
+\paragraph{19.}
+\begin{proof}
+  Let $\varphi: H \to O$ defined by $h \mapsto hx$ and consider some $y \in O$.
+  By definition, $y = hx$ for some $h \in H$, so we have $\varphi(h) = y$. Thus
+  $\varphi$ is surjective. Now suppose that for some $h_1, h_2 \in H$, we have
+  $h_1x = h_2x$. It follows that $h_1 = h_2$ and so $\varphi$ is injective.
+
+  By Q18 and the previous part, $G$ can be partitioned into orbits, each with
+  cardinality $|H|$. It stands to reason that $|H|$ must divide $|G|$.
+\end{proof}
+
 \end{document}
