@@ -6,6 +6,8 @@
 \title{Solutions to ``Abstract Algebra'', 3rd edition (Dummit, Foote)}
 \author{Ng Wei En}
 
+\DeclareMathOperator{\lcm}{lcm}
+
 \begin{document}
 
 \maketitle
@@ -487,7 +489,7 @@ to check for existence of inverse and closure.
 
   \textbf{Case 1}: Consider $S_1$, the set of all matrices in $S$ which have a
   non-zero first row. Since the second row is a multiple of the first row, we
-  have $|S_1| = |V \setminus\{(0, 0)\}| \times p = (p^2 - 1)p$.
+  have $|S_1| = |V - \{(0, 0)\}| \times p = (p^2 - 1)p$.
 
   \textbf{Case 2}: Consider $S_2$, the set of all matrices in $S$ which have a
   zero first row. Then the second row is always a multiple of the first row, so
@@ -741,6 +743,41 @@ to check for existence of inverse and closure.
 
   By Q18 and the previous part, $G$ can be partitioned into orbits, each with
   cardinality $|H|$. It stands to reason that $|H|$ must divide $|G|$.
+\end{proof}
+
+\section{Subgroups}
+
+\subsection{Definition and Examples}
+
+\paragraph{4.}
+\begin{proof}
+  Consider $G = \mathbb{R} - \{0\}$ (under multiplication) and $H = \mathbb{Z} -
+  \{0\}$ (under multiplication). Clearly $H$ is infinite and closed under
+  multiplication, but it is not closed under inverses. Thus $H \nleq G$.
+\end{proof}
+
+\paragraph{5.}
+\begin{proof}
+  Suppose there exists some group $G$ and subgroup $H \leq G$ with $n = |G| > 2$
+  and $|H| = n - 1$. Let $G - H = \{y\}$. Then there exists some $y^{-1} \in G$.
+
+  \textbf{Case 1}: $y^{-1} \in H$. Since $H$ is a subgroup, we have $y \in H$
+  which is absurd.
+
+  \textbf{Case 2}: $y^{-1} \not\in H$. Then we have $y = y^{-1}$. Pick some
+  $x \in G$ such that $x \neq 1_G$. Since $xy \neq y$, we have $xy \in H$.
+  But $x \in H$, so $x^{-1} \in H$ and thus $x^{-1} \cdot xy = y \in H$ which is
+  absurd.
+\end{proof}
+
+\paragraph{6.}
+\begin{proof}
+  Let $H = \{g \in G \mid |g| < \infty\}$. Since $|1| = 1$, we have $1 \in H$,
+  so $H$ is non-empty. Now let $x, y \in H$ and $|x| = m$, $|y| = n$ for some
+  $m, n \in \mathbb{Z}^+$. From $y^n = 1$ it follows that $(y^{-1})^n =
+  y^n(y^{-1})^n = 1$, so $|y^{-1}| = n$. Therefore $y^{-1} \in H$. Since
+  $|xy^{-1}| = \lcm(m, n) < \infty$, we have $xy^{-1} \in H$ which completes the
+  proof.
 \end{proof}
 
 \end{document}

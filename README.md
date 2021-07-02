@@ -6,7 +6,7 @@ solutions for articles, books and courses.
 
 # Books
 
-* `algebra` (Solutions only, Chapter 1.1-1.7): Abstract Algebra, 3rd edition
+* `algebra` (Solutions only, Chapter 1.1-2.1): Abstract Algebra, 3rd edition
 by David S. Dummit and Richard M. Foote.
 * `calculus` (Notes only, Chapter 1-13): Calculus, 3rd edition by Michael
 Spivak.
