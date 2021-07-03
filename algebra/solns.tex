@@ -780,4 +780,56 @@ to check for existence of inverse and closure.
   proof.
 \end{proof}
 
+\subsection{Centralizers and Normalizers, Stabilizers and Kernels}
+
+\paragraph{2.}
+\begin{proof}
+  We know that \begin{align*}
+    C_G(Z(G))
+    &= \{g \in G \mid gag^{-1} = a \text{ for all } a \in Z(G)\}
+  \end{align*} Let $a \in Z(G)$ and $x \in G$. By definition, we have $ax = xa$,
+  so it follows that $a = xax^{-1}$ and $x \in C_G(Z(G))$. Thus $G \leq
+  C_G(Z(G))$; but since $C_G(Z(G)) \leq Z(G) \leq G$, equality is forced.
+\end{proof}
+
+\paragraph{3.}
+\begin{proof}
+  Since $A \subseteq B$, it is clear that \begin{align*}
+    C_G(B)
+    &= \{g \in G \mid gbg^{-1} = b \text{ for all } b \in B\} \\
+    &\subseteq \{g \in G \mid gag^{-1} = a \text{ for all } a \in A\} \\
+    &= C_G(A).
+  \end{align*}
+  As $C_G(B)$ is a group, we may conclude that $C_G(B) \leq C_G(A)$.
+\end{proof}
+
+\paragraph{6.}
+\begin{enumerate}[(a)]
+  \item \begin{proof}
+      Suppose $H \leq G$ and let $h \in H$. Since $H$ is a group and closed
+      under multiplication, we have $hHh^{-1} \subseteq H$. Now consider some
+      $g \in H$ and let $h' = h^{-1}gh \in H$. Then $g = hh'h^{-1} \in
+      hHh^{-1}$, so $hHh^{-1} \supseteq H$. Hence $hHh^{-1} = H$ and we have
+      $H \leq N_G(H)$.
+    \end{proof}
+    \begin{proof}[NB]
+      Consider the group $G = Q_8$ and $H = \{1, i\}$, which is clearly not a
+      subgroup of $G$. Since $i \cdot i = -1 \not\in H$, we have $i \not\in
+      N_G(H)$, so $H \nleq N_G(H)$.
+    \end{proof}
+  \item \begin{proof}
+      Since $C_H(H) = C_G(H) \cap H$, we have \[
+        H \leq C_G(H) \iff C_H(H) = H \iff H \text{ is abelian}.
+      \]
+    \end{proof}
+\end{enumerate}
+
+\paragraph{8.}
+\begin{proof}
+  For all $\sigma \in G = S_n$ and $j \in S = \{1, 2, \ldots, n\}$, define
+  $\sigma: j \mapsto \sigma(j)$. Then $G_i = \{\sigma \in G \mid \sigma(i) =
+  i\}$ is simply the stabiliser of $i$ in $G$, which is a subgroup of $G$. From
+  $G_i \cong S_{n-1}$, we have $|G_i| = (n-1)!$.
+\end{proof}
+
 \end{document}
