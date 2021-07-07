@@ -832,4 +832,51 @@ to check for existence of inverse and closure.
   $G_i \cong S_{n-1}$, we have $|G_i| = (n-1)!$.
 \end{proof}
 
+\subsection{Cyclic Groups and Cyclic Subgroups}
+
+\paragraph{16.}
+\begin{proof}
+  Let $k = |xy|$. Consider $(xy)^k$ for some $k \in \mathbb{Z}^+$. Since $x$
+  and $y$ commute, we have $1 = (xy)^k = x^ky^k$.
+
+  \textbf{Case 1}: Suppose $x^k = (y^k)^{-1}$. Then clearly $x = y^{-1}$ and
+  $xy = 1$, so $k = 1 \mid \lcm(m, n)$.
+
+  \textbf{Case 2}: Suppose $x^k \neq (y^k)^{-1}$. Then we must have $x^k = y^k =
+  1$, so $k \mid |x| = m$ and $k \mid |y| = n$. Hence $k \mid \lcm(m, n)$ as
+  required.
+\end{proof}
+\begin{proof}[NB]
+  If $x$ and $y$ do not commute, it is not necessary for $|xy| \mid \lcm(m, n)$.
+  An example is $D_3$ where $r, s \in D_3$ are two non-commuting elements.
+  While $|r| = 3$ and $|s| = 2$, we know that $|sr| = 2$ since $sr \neq 1$ while
+  $(sr)^2 = srr^{-1}s = s^2 = 1$.
+\end{proof}
+
+\paragraph{23.}
+\begin{proof}
+  Consider the two distinct subgroups $\langle 2^n - 1 \rangle$ and $\langle
+  2^{n-1} - 1 \rangle$, both of order 2 for $n \geq 3$. Suppose
+  $(\mathbb{Z}/2^n\mathbb{Z})^\times = \langle x \rangle$ for some $x \in
+  \mathbb{Z}/2^n\mathbb{Z}$. Then we have $|x| = 2^n$ with $x^{m_1} = 2^n - 1$
+  and $x^{m_2} = 2^{n-1} - 1$ for some $0 \leq m_1, m_2 \leq 2^n - 1$. But this
+  implies that $x^{2m_1} = x^{2m_2} = 1$, or $2^n - 1 \mid d$ where $d =
+  \gcd(2m_1, 2m_2)$ and $0 \leq d \leq 2(2^n - 1)$. Since $d$ is even and $2^n
+  - 1$ is odd, we have $d = 2(2^n - 1)$, implying that $m_1 = m_2 = 2^n - 1$
+  which is absurd.
+\end{proof}
+
+\paragraph{25.}
+\begin{proof}
+  Let $\varphi$ be the map $x \mapsto x^k$ acting on $G$ and suppose $x_1^k =
+  x_2^k$ for some $x_1, x_2 \in G$. Then $x_1^k(x_2)^{-k} = 1$. Since $G$ is
+  cyclic, it is also abelian and thus $(x_1x_2^{-1})^k = 1$. But $k$ and $n$ are
+  relatively prime, so we have $x_1x_2^{-1} = 1$ and thus $x_1 = x_2$ as
+  required.
+
+  Now let $H$ be some finite group of order $n$. By Lagrange's theorem, any
+  cyclic subgroup $G$ of $H$ has the property that $|G| \mid n$. Thus, for any
+  $k$ relatively prime to $n$ (and thus $|G|$), $\varphi$ is surjective.
+\end{proof}
+
 \end{document}
