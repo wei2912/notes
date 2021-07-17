@@ -6,8 +6,8 @@ solutions for articles, books and courses.
 
 # Books
 
-* `algebra` (Solutions only, Chapter 1.1-2.4): Abstract Algebra, 3rd edition
-by David S. Dummit and Richard M. Foote.
+* `algebra` (Solutions only, Chapter 1.1-2.4, 3.1): Abstract Algebra, 3rd
+edition by David S. Dummit and Richard M. Foote.
 * `calculus` (Notes only, Chapter 1-13): Calculus, 3rd edition by Michael
 Spivak.
 * `eotoc` (Solutions only, Chapter 2.1-2.2): Elements of the Theory of Computation,

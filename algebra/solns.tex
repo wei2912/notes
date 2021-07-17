@@ -970,4 +970,42 @@ to check for existence of inverse and closure.
     \end{proof}
 \end{enumerate}
 
+\section{Quotient Groups and Homomorphisms}
+
+\subsection{Definitions and Examples}
+
+\paragraph{1.}
+\begin{proof}
+  Let $x, y \in \varphi^{-1}(E)$. Then $\varphi(x), \varphi(y) \in E$, so \[
+    \varphi(xy^{-1}) = \varphi(x)\varphi(y)^{-1} \in E
+    \iff xy^{-1} \in \varphi^{-1}(E)
+  \] and it follows that $\varphi^{-1}(E) \leq G$.
+
+  Now suppose $E \trianglelefteq H$ and let $g \in G$, $x \in \varphi^{-1}(E)$.
+  Then \[
+    \varphi(gxg^{-1}) = \varphi(g)\varphi(x)\varphi(g)^{-1} \in
+    \varphi(g)E\varphi(g)^{-1} = E
+    \iff gxg^{-1} \in \varphi^{-1}(E),
+  \] so $\varphi^{-1}(E) \trianglelefteq G$. Since $\{1_H\}
+  \trianglelefteq H$, it follows that $\ker \varphi \trianglelefteq G$.
+\end{proof}
+
+\paragraph{2.}
+\begin{proof}
+  The result is evident from the fact that $Y = X^{-1}Z \in G/K$.
+\end{proof}
+
+\paragraph{5.}
+\begin{proof}
+  Let $m \in \mathbb{Z},\ 0 \leq m < n$. Then \[
+    g^m \not\in N \iff (gN)^m = g^mN \neq 1N
+  \] and \[
+    g^n \in N \iff (gN)^n = g^nN = 1N,
+  \] so $|gN| = n$.
+\end{proof}
+\begin{proof}[Example]
+  Consider the additive group $G = \mathbb{Z}/2\mathbb{Z}$ and $N = G$. Then
+  $|\overline{1} + N| = |\overline{0} + N| = 1 < 2 = |\overline{1}|$.
+\end{proof}
+
 \end{document}
