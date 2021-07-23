@@ -1008,4 +1008,37 @@ to check for existence of inverse and closure.
   $|\overline{1} + N| = |\overline{0} + N| = 1 < 2 = |\overline{1}|$.
 \end{proof}
 
+\subsection{More on Cosets and Lagrange's Theorem}
+
+\paragraph{4.}
+\begin{proof}
+  Since $Z(G)$ is a subgroup of $G$, by Lagrange's Theorem we have $|Z(G)| \mid
+  |G|$. WLOG, suppose $|Z(G)| = p$. Since $Z(G) \trianglelefteq G$, we have
+  $|G/Z(G)| = q$. By 3.1.36, from the cyclic property of $G/Z(G)$ it follows
+  that $G$ is abelian and $Z(G) = G$ which is absurd. Thus, we have $|Z(G)| = 1$
+  or $|Z(G)| = |G|$ (i.e. $G$ is abelian).
+\end{proof}
+
+\paragraph{5.}
+\begin{enumerate}[(a)]
+  \item \begin{proof}
+      It is evident that $gHg^{-1}$ is non-empty. For any $h_1, h_2 \in H$, we
+      have \[
+        (gh_1g^{-1}) \cdot (gh_2g^{-1})^{-1} = (gh_1g^{-1}) \cdot
+        (gh_2^{-1}g^{-1}) = g(h_1h_2^{-1})g^{-1} \in gHg^{-1}
+      \] since $h_1h_2^{-1} \in H$, so $gHg^{-1} \leq G$.
+
+      Now consider some homomorphism $\varphi: H \to gHg^{-1}$ defined by $h
+      \mapsto ghg^{-1}$, which is clearly surjective. Suppose this homomorphism
+      is not injective. Then there exists some $h_1, h_2 \in H,\ h_1 \neq h_2$
+      such that $gh_1g^{-1} = gh_2g^{-1}$, which is clearly absurd. Thus
+      $\varphi$ is an isomorphism and $H \cong gHg^{-1}$.
+    \end{proof}
+  \item \begin{proof}
+      For all $g \in G$, we have $|gHg^{-1}| = |H|$. By the uniqueness of $H$,
+      it follows that $gHg^{-1} = H$ for all $g \in G$, so $H \trianglelefteq
+      G$.
+    \end{proof}
+\end{enumerate}
+
 \end{document}
